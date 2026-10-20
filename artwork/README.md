@@ -67,3 +67,20 @@ gate. It must NOT trigger a full v1.1 release. Remaining Canva requests must
 be retrieved as image files, reviewed for correct composition and originality,
 and checked in separately. Canva job submissions without image exports are
 not finished artwork.
+
+
+## Approval-gated full-catalogue migration
+
+When 224 separate, non-duplicated original WebP files really exist in
+`icons/original/` and each manifest item has passed its individual visual QA
+and is explicitly marked `approved`, migrate the catalogue with:
+
+    node artwork/verify.cjs --complete
+    node artwork/sync-catalog-art.cjs --dry-run --complete
+    node artwork/sync-catalog-art.cjs --apply --complete
+
+The migration updates both `data/catalog.json` and `scripts/catalog.js`
+with matching `modules/gathering-crafting/icons/original/...` URLs.
+It refuses missing/corrupt art, exact duplicate bytes, unapproved images,
+and mismatched catalogue data. It DOES NOT publish a release, alter module
+versions, or rewrite the production download URL.
