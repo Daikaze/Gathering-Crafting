@@ -27,6 +27,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/brass-ingot.webp",
+        "sha256": "f8e9d27c79e7d80b152050d6df070a7ea6615fe515927a3a96e759df830d1eb4",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-brass-ingot.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -48,6 +62,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/bronze-buckles.webp",
+        "sha256": "e63afc592281d5b5169e26581e55d756d6af77513779827e5073fe5611b30a72",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-bronze-buckles.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -69,6 +97,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/bronze-ingot.webp",
+        "sha256": "fddb37c7fd0ffe8f721481fb121c2e68b8893454949e4869e80be26f510125f6",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-bronze-ingot.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -90,6 +132,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/bronze-shield-boss.webp",
+        "sha256": "ba19c0df2e09fb6568fc423d7f9fcd5c8f2512d0fb7687a0466e6a7f6997afa6",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-bronze-shield-boss.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -111,6 +167,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/copper-bracers.webp",
+        "sha256": "e402e61c33c91991bf82713181a92580b71b5aa1577b58fc76eed67760ce70a7",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-copper-bracers.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -132,6 +202,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/copper-ingot.webp",
+        "sha256": "ca2311a4d92a710e40c525bd92da623e1a7ad3a5d3f04b2fc08a453416cdceac",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-copper-ingot.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -153,6 +237,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/copper-wire.webp",
+        "sha256": "24780cb3ff71573cbedcaf452facebd2e095caae7b1fd9485ef59b70dc22366c",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-copper-wire.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -174,6 +272,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/iron-chain.webp",
+        "sha256": "0311af0c676346b707c7b6646c9b9be4b76bc9fa730a8a9630a0362bec77230b",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-iron-chain.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -195,6 +307,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/iron-dagger.webp",
+        "sha256": "9964de6aefe34f6ddc78639e474a730034eac3bc67775d5dc9251d3e8319e72e",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-iron-dagger.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -216,6 +342,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/iron-ingot.webp",
+        "sha256": "3cd0b45ead2bd895ef2ac8a124f5c05ca68164470c14d59619f7f7d3d86beca2",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-iron-ingot.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -258,6 +398,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/lantern-frame.webp",
+        "sha256": "0b0265827151d330b79e3399a51bc25f2ee46bb1b1314c5631965c42481fcb05",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-lantern-frame.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -279,6 +433,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/nickel-ingot.webp",
+        "sha256": "9ad4c78b925baf3cee271fdf19dfda5c286ab371a3d3f9229f633d6ec4bb28ab",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-nickel-ingot.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -300,6 +468,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/tin-ingot.webp",
+        "sha256": "6dc2cbbf2509824412a4f22c84a75dad0599a8d2b57df0ebae8ec0077809379b",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-tin-ingot.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -321,6 +503,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/tin-solder.webp",
+        "sha256": "f51492a12bb2071e02c03cc84001d73cfd07b0fb76043145534d65a495ddf737",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-tin-solder.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -342,6 +538,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/brass-compass.webp",
+        "sha256": "61f875213382f124f3cd8e99a113a3bd1dfe808971e18a2f44004b55bc74459b",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-brass-compass.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -363,6 +573,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/cobalt-ingot.webp",
+        "sha256": "bdab1cae5d2d8dec59c6d6c95b16e7bba2c8930ef9fd2895a0892f6ecf42fa55",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-cobalt-ingot.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -384,6 +608,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/cobalt-lockbox.webp",
+        "sha256": "bb351d32edbfec9210db763fba63cbf06e2b29a8841cd0f172ff433080303496",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-cobalt-lockbox.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -405,6 +643,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/electrum-ingot.webp",
+        "sha256": "7953ac7c8c312261b743feda773198dcbe0194bba89d13cfada8fd07dbee9db8",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-electrum-ingot.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -426,6 +678,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/gold-ingot.webp",
+        "sha256": "3b8efaa1b31b7b0f593fad133be9fb03137b7f14ab02d0ef93abbc3fadef46d6",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-gold-ingot.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
@@ -447,6 +713,20 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "localArtworkCandidate": {
+        "source": "gathering-crafting-20-art-overlay.zip",
+        "file": "icons/original/recipes/golden-seal.webp",
+        "sha256": "a5af9bc1fe9e308e8bd0e2e4d84fd7304816f334ede4c7da721ee54cef8034a7",
+        "resolution": "1254x1254",
+        "state": "verified-in-external-overlay-needs-github-binary-import",
+        "preview": "icons/illustrated/craft-golden-seal.webp"
+      },
+      "generationRequest": {
+        "provider": "ChatGPT image generation",
+        "date": "2026-10-21",
+        "state": "file-ready-outside-github",
+        "note": "Real original standalone art verified in 20-art overlay ZIP. Installer tested, but binary files not yet committed to GitHub; status remains not-generated until committed and visually approved."
       }
     },
     {
