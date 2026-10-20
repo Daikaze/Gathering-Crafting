@@ -35,7 +35,7 @@ for(const entry of paintedEntries){
   paintedHashes.add(require('node:crypto').createHash('sha256').update(buf).digest('hex'));
 }
 assert.equal(paintedHashes.size,10,'Every Alchemy art image must be independently created');
-assert.ok(cat.materials.every(m=>m.img.includes('/icons/illustrated/')||(m.id==='iron-ore'&&m.img.includes('/icons/handpainted/'))));
+assert.ok(cat.materials.every(m=>m.img.includes('/icons/illustrated/')||((m.id==='iron-ore'||paintedAlchemyMaterials.has(m.id))&&m.img.includes('/icons/handpainted/'))));
 for(const m of cat.materials)assert.ok(fs.existsSync(path.join(base,m.img.replace('modules/gathering-crafting/',''))),m.img);
 for(const r of cat.recipes)assert.ok(fs.existsSync(path.join(base,r.img.replace('modules/gathering-crafting/',''))),r.img);
 const hooksOnce=new Map(),hooksOn=new Map(),world=new Map(),messages=[],packs=new Map();let roll=19,counter=0,failOutput=false,failChat=false;
