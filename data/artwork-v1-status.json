@@ -1,0 +1,2508 @@
+{
+  "title": "Gathering & Crafting — 1.0 original art production readiness",
+  "targetRelease": "1.0.0",
+  "requirements": [
+    "Every unique item has its own separately generated original D&D 5e-inspired painted picture, matching its exact name and description",
+    "No crop from a composite or sprite sheet",
+    "No reused art under different item IDs",
+    "If a material is also a recipe result, reuse exactly the same artwork path for the same item",
+    "Preserve GM-custom artwork on migration",
+    "Do not release 1.0.0 until all items pass manual visual review and automated packaging checks"
+  ],
+  "counts": {
+    "catalogEntries": 224,
+    "uniqueItems": 204,
+    "paintedReady": 11,
+    "waitingForIndividualArt": 193
+  },
+  "records": [
+    {
+      "id": "brimstone",
+      "name": "Brimstone",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/brimstone.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "coal",
+      "name": "Coal",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/coal.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "copper-ore",
+      "name": "Copper Ore",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/copper-ore.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "hematite",
+      "name": "Hematite",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/hematite.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "iron-ore",
+      "name": "Iron Ore",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/handpainted/iron-ore.webp"
+      ],
+      "stage": "painted-ready"
+    },
+    {
+      "id": "nickel-ore",
+      "name": "Nickel Ore",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/nickel-ore.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "quartz",
+      "name": "Quartz",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/quartz.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "saltpeter",
+      "name": "Saltpeter",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/saltpeter.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "sulfur",
+      "name": "Sulfur",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/sulfur.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "tin-ore",
+      "name": "Tin Ore",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/tin-ore.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "azurite",
+      "name": "Azurite",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/azurite.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "cobalt-ore",
+      "name": "Cobalt Ore",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/cobalt-ore.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "gold-ore",
+      "name": "Gold Ore",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/gold-ore.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "jade",
+      "name": "Jade",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/jade.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/obsidian.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "silver-ore",
+      "name": "Silver Ore",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/silver-ore.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "sunstone",
+      "name": "Sunstone",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/sunstone.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "mithral-ore",
+      "name": "Mithral Ore",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/mithral-ore.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "moonstone",
+      "name": "Moonstone",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/moonstone.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "platinum-ore",
+      "name": "Platinum Ore",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/platinum-ore.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "adamantine-ore",
+      "name": "Adamantine Ore",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/adamantine-ore.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "dragonshard",
+      "name": "Dragonshard",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/dragonshard.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "starmetal-ore",
+      "name": "Starmetal Ore",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/starmetal-ore.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "voidglass",
+      "name": "Voidglass",
+      "kinds": [
+        "Ore & Mineral"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/voidglass.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "brass-ingot",
+      "name": "Brass Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/brass-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-brass-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "bronze-ingot",
+      "name": "Bronze Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/bronze-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-bronze-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "copper-ingot",
+      "name": "Copper Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/copper-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-copper-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "iron-ingot",
+      "name": "Iron Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/iron-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-iron-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "nickel-ingot",
+      "name": "Nickel Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/nickel-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-nickel-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "tin-ingot",
+      "name": "Tin Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/tin-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-tin-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "cobalt-ingot",
+      "name": "Cobalt Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/cobalt-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-cobalt-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "electrum-ingot",
+      "name": "Electrum Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/electrum-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-electrum-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "gold-ingot",
+      "name": "Gold Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/gold-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-gold-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "silver-ingot",
+      "name": "Silver Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/silver-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-silver-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steel-ingot",
+      "name": "Steel Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/steel-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-steel-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "blacksteel-ingot",
+      "name": "Blacksteel Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/blacksteel-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-blacksteel-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "dusksteel-ingot",
+      "name": "Dusksteel Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/dusksteel-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-dusksteel-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "mithral-ingot",
+      "name": "Mithral Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/mithral-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-mithral-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "platinum-ingot",
+      "name": "Platinum Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/platinum-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-platinum-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "runesteel-ingot",
+      "name": "Runesteel Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/runesteel-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-runesteel-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "adamantine-ingot",
+      "name": "Adamantine Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/adamantine-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-adamantine-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "dragonsilver-ingot",
+      "name": "Dragonsilver Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/dragonsilver-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-dragonsilver-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "moonsteel-ingot",
+      "name": "Moonsteel Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/moonsteel-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-moonsteel-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "starmetal-ingot",
+      "name": "Starmetal Ingot",
+      "kinds": [
+        "Refined Metal",
+        "metallurgy"
+      ],
+      "entryCount": 2,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/starmetal-ingot.webp",
+        "modules/gathering-crafting/icons/illustrated/craft-starmetal-ingot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "bitterroot",
+      "name": "Bitterroot",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/bitterroot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "blue-moss",
+      "name": "Blue Moss",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/blue-moss.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "bogmint",
+      "name": "Bogmint",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/bogmint.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "dawnberry",
+      "name": "Dawnberry",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/dawnberry.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "feather-reed",
+      "name": "Feather Reed",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/feather-reed.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "kingsfoil",
+      "name": "Kingsfoil",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/handpainted/alchemy/kingsfoil.webp"
+      ],
+      "stage": "painted-ready"
+    },
+    {
+      "id": "marsh-kelp",
+      "name": "Marsh Kelp",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/marsh-kelp.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "pearlcap",
+      "name": "Pearlcap",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/pearlcap.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "pure-water",
+      "name": "Purified Water",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/pure-water.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "redroot",
+      "name": "Redroot",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/redroot.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "sea-salt",
+      "name": "Sea Salt",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/sea-salt.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "silverleaf",
+      "name": "Silverleaf",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/silverleaf.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "sunpetal",
+      "name": "Sunpetal",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/sunpetal.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "thornbriar",
+      "name": "Thornbriar",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/thornbriar.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "amber-resin",
+      "name": "Amber Resin",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/amber-resin.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "ashfern",
+      "name": "Ashfern",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/ashfern.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "dreamlily",
+      "name": "Dreamlily",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/dreamlily.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "duskbell",
+      "name": "Duskbell",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/duskbell.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "duskshade",
+      "name": "Duskshade",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/duskshade.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "emberblossom",
+      "name": "Emberblossom",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/emberblossom.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "embercap",
+      "name": "Embercap",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/embercap.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "frostleaf",
+      "name": "Frostleaf",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/frostleaf.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "glowshroom",
+      "name": "Glowshroom",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/handpainted/alchemy/glowshroom.webp"
+      ],
+      "stage": "painted-ready"
+    },
+    {
+      "id": "gravebloom",
+      "name": "Gravebloom",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/gravebloom.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "heartseed",
+      "name": "Heartseed",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/heartseed.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "merrowreed",
+      "name": "Merrow Reed",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/merrowreed.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "mistflower",
+      "name": "Mistflower",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/mistflower.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "moonbloom",
+      "name": "Moonbloom",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/moonbloom.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "skyblossom",
+      "name": "Skyblossom",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/skyblossom.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "stormthistle",
+      "name": "Stormthistle",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/stormthistle.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "wolfsbane",
+      "name": "Wolfsbane",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/wolfsbane.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "crimson-sap",
+      "name": "Crimson Sap",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/crimson-sap.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "faerie-thyme",
+      "name": "Faerie Thyme",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/faerie-thyme.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "ghost-orchid",
+      "name": "Ghost Orchid",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/ghost-orchid.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "nightshade",
+      "name": "Nightshade",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/nightshade.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "shade-spore",
+      "name": "Shade Spore",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/shade-spore.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "starflower",
+      "name": "Starflower",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/starflower.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "thunderbloom",
+      "name": "Thunderbloom",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/thunderbloom.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "whisper-seed",
+      "name": "Whisper Seed",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/whisper-seed.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "phoenix-ash",
+      "name": "Phoenix Ash",
+      "kinds": [
+        "Alchemical Ingredient"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/phoenix-ash.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "beast-hide",
+      "name": "Beast Hide",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/beast-hide.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "spider-silk",
+      "name": "Spider Silk",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/handpainted/alchemy/spider-silk.webp"
+      ],
+      "stage": "painted-ready"
+    },
+    {
+      "id": "wolf-fang",
+      "name": "Wolf Fang",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/wolf-fang.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "ghoul-claw",
+      "name": "Ghoul Claw",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/ghoul-claw.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "griffon-feather",
+      "name": "Griffon Feather",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/griffon-feather.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "serpent-scale",
+      "name": "Serpent Scale",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/serpent-scale.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "slime-core",
+      "name": "Slime Core",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/slime-core.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "venom-sac",
+      "name": "Venom Sac",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/venom-sac.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "basilisk-eye",
+      "name": "Basilisk Eye",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/basilisk-eye.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "ectoplasm",
+      "name": "Ectoplasm",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/ectoplasm.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "manticore-spike",
+      "name": "Manticore Spike",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/manticore-spike.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "shadow-essence",
+      "name": "Shadow Essence",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/shadow-essence.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "troll-blood",
+      "name": "Troll Blood",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/troll-blood.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "wyvern-stinger",
+      "name": "Wyvern Stinger",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/wyvern-stinger.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "chimera-horn",
+      "name": "Chimera Horn",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/chimera-horn.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "demon-ichor",
+      "name": "Demon Ichor",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/demon-ichor.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "dragon-scale",
+      "name": "Dragon Scale",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/dragon-scale.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "kraken-ink",
+      "name": "Kraken Ink",
+      "kinds": [
+        "Monster Drop"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/kraken-ink.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "bronze-buckles",
+      "name": "Bronze Buckles",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-bronze-buckles.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "bronze-shield-boss",
+      "name": "Bronze Shield Boss",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-bronze-shield-boss.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "copper-bracers",
+      "name": "Copper Bracers",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-copper-bracers.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "copper-wire",
+      "name": "Copper Wire",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-copper-wire.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "iron-chain",
+      "name": "Iron Chain",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-iron-chain.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "iron-dagger",
+      "name": "Iron Dagger",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-iron-dagger.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "iron-nails",
+      "name": "Iron Nails",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-iron-nails.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "lantern-frame",
+      "name": "Lantern Frame",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-lantern-frame.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "tin-solder",
+      "name": "Tin Solder",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-tin-solder.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "brass-compass",
+      "name": "Brass Compass",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-brass-compass.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "cobalt-lockbox",
+      "name": "Cobalt Lockbox",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-cobalt-lockbox.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "golden-seal",
+      "name": "Golden Seal",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-golden-seal.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "silver-circlet",
+      "name": "Silver Circlet",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-silver-circlet.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "silvered-arrowheads",
+      "name": "Silvered Arrowheads",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-silvered-arrowheads.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "silvered-blade",
+      "name": "Silvered Blade",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-silvered-blade.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steel-arrowheads",
+      "name": "Steel Arrowheads",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-steel-arrowheads.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steel-chain-shirt",
+      "name": "Steel Chain Shirt",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-steel-chain-shirt.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steel-dagger",
+      "name": "Steel Dagger",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-steel-dagger.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steel-gauntlets",
+      "name": "Steel Gauntlets",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-steel-gauntlets.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steel-greaves",
+      "name": "Steel Greaves",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-steel-greaves.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steel-helm",
+      "name": "Steel Helm",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-steel-helm.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steel-rivets",
+      "name": "Steel Rivets",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-steel-rivets.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steel-shield",
+      "name": "Steel Shield",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-steel-shield.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steel-spear",
+      "name": "Steel Spear",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-steel-spear.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steel-sword",
+      "name": "Steel Sword",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-steel-sword.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "blacksteel-armor-plates",
+      "name": "Blacksteel Plates",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-blacksteel-armor-plates.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "dusksteel-buckler",
+      "name": "Dusksteel Buckler",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-dusksteel-buckler.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "mithral-blade",
+      "name": "Mithral Blade",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-mithral-blade.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "mithral-chain",
+      "name": "Mithral Chain",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-mithral-chain.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "platinum-circlet",
+      "name": "Platinum Circlet",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-platinum-circlet.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "runesteel-chisel",
+      "name": "Runesteel Chisel",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-runesteel-chisel.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "adamantine-blade",
+      "name": "Adamantine Blade",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-adamantine-blade.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "adamantine-shield",
+      "name": "Adamantine Shield",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-adamantine-shield.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "dragonsilver-charm",
+      "name": "Dragonsilver Charm",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-dragonsilver-charm.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "moonsteel-diadem",
+      "name": "Moonsteel Diadem",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-moonsteel-diadem.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "starmetal-spearhead",
+      "name": "Starmetal Spearhead",
+      "kinds": [
+        "metallurgy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-starmetal-spearhead.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "acid-flask",
+      "name": "Acid Flask",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-acid-flask.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "antitoxin",
+      "name": "Antitoxin Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-antitoxin.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "clear-mind-tonic",
+      "name": "Clear Mind Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-clear-mind-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "coolblood-draught",
+      "name": "Coolblood Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-coolblood-draught.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "dew-of-focus",
+      "name": "Dew of Focus",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-dew-of-focus.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "healing-potion",
+      "name": "Healing Potion",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/handpainted/alchemy/healing-potion.webp"
+      ],
+      "stage": "painted-ready"
+    },
+    {
+      "id": "minor-healing-potion",
+      "name": "Minor Healing Potion",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-minor-healing-potion.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "petrichor-elixir",
+      "name": "Petrichor Elixir",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-petrichor-elixir.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "shimmerlight-phial",
+      "name": "Shimmerlight Phial",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-shimmerlight-phial.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "soothing-mixture",
+      "name": "Soothing Mixture",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-soothing-mixture.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "steady-hand-tonic",
+      "name": "Steady Hand Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-steady-hand-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "warmblood-draught",
+      "name": "Warmblood Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-warmblood-draught.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "mana-restorative",
+      "name": "Arcane Clarity Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-mana-restorative.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "breath-of-tides",
+      "name": "Breath of Tides",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-breath-of-tides.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "cinder-breath",
+      "name": "Cinder Breath Phial",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-cinder-breath.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "courage-tonic",
+      "name": "Courage Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-courage-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "emberguard-draught",
+      "name": "Emberguard Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-emberguard-draught.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "featherfall-philter",
+      "name": "Featherfall Philter",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/handpainted/alchemy/featherfall-philter.webp"
+      ],
+      "stage": "painted-ready"
+    },
+    {
+      "id": "frost-breath",
+      "name": "Frost Breath Phial",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-frost-breath.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "frostguard-draught",
+      "name": "Frostguard Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-frostguard-draught.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "graveward-draught",
+      "name": "Graveward Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-graveward-draught.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "greater-healing-potion",
+      "name": "Greater Healing Potion",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-greater-healing-potion.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "hunters-instinct-tonic",
+      "name": "Hunter’s Instinct Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-hunters-instinct-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "moonveil-tonic",
+      "name": "Moonveil Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-moonveil-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "night-eye-elixir",
+      "name": "Night-Eye Elixir",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-night-eye-elixir.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "night-vision-draught",
+      "name": "Night-Vision Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-night-vision-draught.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "serpent-antivenom",
+      "name": "Serpent Antivenom",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-serpent-antivenom.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "shrink-sip",
+      "name": "Shrink Sip",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-shrink-sip.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "silentstep-elixir",
+      "name": "Silentstep Elixir",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-silentstep-elixir.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "sleep-draught",
+      "name": "Sleep Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-sleep-draught.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "slime-slick-oil",
+      "name": "Slime Slick Oil",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-slime-slick-oil.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "spark-bottle",
+      "name": "Spark Bottle",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-spark-bottle.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "stoneheart-tonic",
+      "name": "Stoneheart Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-stoneheart-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "stormguard-draught",
+      "name": "Stormguard Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-stormguard-draught.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "swiftclaw-mixture",
+      "name": "Swiftclaw Mixture",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-swiftclaw-mixture.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "swiftstep-elixir",
+      "name": "Swiftstep Elixir",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-swiftstep-elixir.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "toxinward-draught",
+      "name": "Toxinward Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-toxinward-draught.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "basilisk-salve",
+      "name": "Basilisk Salve",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-basilisk-salve.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "bloodrush-tonic",
+      "name": "Bloodrush Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-bloodrush-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "cleansefire-vial",
+      "name": "Cleansefire Vial",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-cleansefire-vial.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "dreamwalk-tonic",
+      "name": "Dreamwalk Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-dreamwalk-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "faerie-form-draught",
+      "name": "Faerie-Form Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-faerie-form-draught.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "genderflux-elixir",
+      "name": "Genderflux Elixir",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/handpainted/alchemy/genderflux-elixir.webp"
+      ],
+      "stage": "painted-ready"
+    },
+    {
+      "id": "ghost-ink-tonic",
+      "name": "Ghost-Ink Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-ghost-ink-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "glider-mixture",
+      "name": "Glider Mixture",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-glider-mixture.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "growth-draught",
+      "name": "Growth Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/handpainted/alchemy/growth-draught.webp"
+      ],
+      "stage": "painted-ready"
+    },
+    {
+      "id": "ironhide-tonic",
+      "name": "Ironhide Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-ironhide-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "merrows-embrace",
+      "name": "Merrow’s Embrace",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-merrows-embrace.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "mistveil-phial",
+      "name": "Mistveil Phial",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-mistveil-phial.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "moon-sight-tonic",
+      "name": "Moon-Sight Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-moon-sight-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "purifying-draught",
+      "name": "Purifying Draught",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-purifying-draught.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "shadow-skin-tonic",
+      "name": "Shadow-Skin Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-shadow-skin-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "spider-climb-serum",
+      "name": "Spider-Climb Serum",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-spider-climb-serum.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "stoneform-lacquer",
+      "name": "Stoneform Lacquer",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-stoneform-lacquer.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "stormsight-elixir",
+      "name": "Stormsight Elixir",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-stormsight-elixir.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "superior-healing-potion",
+      "name": "Superior Healing Potion",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-superior-healing-potion.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "chimera-might-elixir",
+      "name": "Chimera Might Elixir",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-chimera-might-elixir.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "dragonfire-tonic",
+      "name": "Dragonfire Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/handpainted/alchemy/dragonfire-tonic.webp"
+      ],
+      "stage": "painted-ready"
+    },
+    {
+      "id": "dragons-breath-elixir",
+      "name": "Dragon’s Breath Elixir",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-dragons-breath-elixir.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "ichor-philter",
+      "name": "Ichor Philter",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-ichor-philter.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "inkcloud-tonic",
+      "name": "Inkcloud Tonic",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-inkcloud-tonic.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "phoenix-renewal",
+      "name": "Phoenix Renewal Elixir",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-phoenix-renewal.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "regeneration-serum",
+      "name": "Regeneration Serum",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-regeneration-serum.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "supreme-healing-potion",
+      "name": "Supreme Healing Potion",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp"
+      ],
+      "stage": "pending-individual-art"
+    },
+    {
+      "id": "voidward-philter",
+      "name": "Voidward Philter",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/handpainted/alchemy/voidward-philter.webp"
+      ],
+      "stage": "painted-ready"
+    },
+    {
+      "id": "wyvern-poison",
+      "name": "Wyvern Poison",
+      "kinds": [
+        "alchemy"
+      ],
+      "entryCount": 1,
+      "artwork": [
+        "modules/gathering-crafting/icons/handpainted/alchemy/wyvern-poison.webp"
+      ],
+      "stage": "painted-ready"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 name: Package module
 on:
   push:
-    branches: [main]
+    branches: [main, artwork-v1-prep]
     paths-ignore:
       - 'dist/**'
   workflow_dispatch:
@@ -20,6 +20,8 @@ jobs:
           for bundle in icons/illustrated-assets/*.zip; do unzip -q -o "$bundle" -d .; done
       - name: Test module
         run: node tests/smoke.cjs
+      - name: Audit original artwork completeness
+        run: node tests/artwork-release-gate.cjs
       - name: Package Foundry module
         run: |
           VERSION="$(node -p "require('./module.json').version")"
@@ -27,6 +29,7 @@ jobs:
           rsync -a --exclude=.git --exclude=.github --exclude=dist --exclude=staging --exclude=illustrated-assets ./ staging/gathering-crafting/
           (cd staging && zip -q -r "../dist/gathering-crafting-v${VERSION}.zip" gathering-crafting)
       - name: Publish zip
+        if: github.ref == 'refs/heads/main'
         run: |
           VERSION="$(node -p "require('./module.json').version")"
           git config user.name "github-actions[bot]"
