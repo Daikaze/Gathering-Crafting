@@ -1,0 +1,172 @@
+/* Gathering & Crafting — icon-first charcoal/brass UI for Foundry V14 */
+.gathering-crafting {
+  --gc-bg: #101923; --gc-panel:#1a2634; --gc-elev:#223344;
+  --gc-border:rgba(181,203,218,.14); --gc-text:#edf3f6; --gc-muted:#9aacba;
+  --gc-gold:#dfb56d; --gc-glow:#e6be7b; --gc-green:#83d6ad; --gc-danger:#ed8992;
+  color:var(--gc-text); min-width:460px;
+}
+.gathering-crafting .window-content {padding:0!important;overflow:hidden!important;background:var(--gc-bg)!important;color:var(--gc-text);}
+.gathering-crafting .gc-root {display:flex;flex-direction:column;width:100%;height:100%;min-height:360px;background:linear-gradient(135deg,#111b26 0%,#0d1721 80%);font:inherit;color:var(--gc-text);box-sizing:border-box;}
+.gathering-crafting .gc-root * {box-sizing:border-box;}
+.gathering-crafting button {font:inherit;cursor:pointer;white-space:normal;color:inherit;margin:0;min-height:0;background:none;border:0;box-shadow:none;}
+.gathering-crafting button:focus-visible, .gathering-crafting input:focus-visible, .gathering-crafting select:focus-visible {outline:2px solid var(--gc-glow);outline-offset:2px;}
+.gathering-crafting button:disabled {opacity:.45;cursor:not-allowed;filter:grayscale(.45);}
+.gathering-crafting .gc-top {display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 22px 17px;background:radial-gradient(circle at 11% 50%,rgba(230,181,100,.14),transparent 42%),#172431;border-bottom:1px solid rgba(226,180,105,.15);}
+.gathering-crafting .gc-brand {display:flex;align-items:center;gap:13px;min-width:0;}
+.gathering-crafting .gc-brand-logo {width:50px;height:50px;flex:0 0 50px;border:1px solid rgba(229,179,92,.42);border-radius:13px;background:linear-gradient(145deg,#463c2f,#252b33);color:var(--gc-gold);display:grid;place-items:center;font-size:25px;box-shadow:inset 0 0 17px rgba(229,179,92,.09);}
+.gathering-crafting .gc-subtitle {font-size:9px;font-weight:800;letter-spacing:2px;color:#bdad8f;}
+.gathering-crafting .gc-brand-title {font-weight:800;font-size:23px;letter-spacing:.1px;line-height:1.2;white-space:nowrap;}
+.gathering-crafting .gc-brand-title span {color:var(--gc-gold);}
+.gathering-crafting .gc-top-right {display:flex;align-items:center;gap:12px;min-width:0;}
+.gathering-crafting .gc-selectwrap {display:flex;align-items:center;gap:9px;min-width:145px;max-width:230px;border:1px solid var(--gc-border);background:rgba(9,16,24,.57);padding:0 9px;border-radius:9px;color:var(--gc-gold);}
+.gathering-crafting .gc-selectwrap select {padding:8px 5px;border:0!important;outline:none!important;min-width:0;width:100%;color:var(--gc-text);background:transparent;font-size:12px;box-shadow:none;}
+.gathering-crafting select option {color:#101923;background:#eff4f7;}
+.gathering-crafting .gc-energy {display:flex;align-items:center;gap:7px;padding:10px 11px;border-radius:9px;background:rgba(223,181,109,.13);border:1px solid rgba(223,181,109,.2);color:var(--gc-gold);white-space:nowrap;}
+.gathering-crafting .gc-energy b {font-size:16px;}
+.gathering-crafting .gc-energy small {font-size:10px;color:#d8bf92;}
+.gathering-crafting .gc-tabs {display:flex;gap:5px;padding:10px 20px 0;background:#172431;border-bottom:1px solid var(--gc-border);}
+.gathering-crafting .gc-nav {display:flex;align-items:center;justify-content:center;gap:9px;padding:11px 19px!important;border-radius:9px 9px 0 0!important;color:var(--gc-muted)!important;font-size:12px!important;font-weight:700!important;transition:background .15s,color .15s;}
+.gathering-crafting .gc-nav:hover {background:rgba(250,250,250,.045);color:white!important;}
+.gathering-crafting .gc-nav.is-active {background:#243342!important;color:var(--gc-gold)!important;box-shadow:inset 0 -2px 0 var(--gc-gold)!important;}
+.gathering-crafting .gc-content {flex:1;min-height:0;overflow:auto;padding:20px 22px 25px;scrollbar-color:#405263 transparent;scrollbar-width:thin;}
+.gathering-crafting .gc-section-head {margin:0 0 18px;display:flex;align-items:center;justify-content:space-between;}
+.gathering-crafting .gc-section-head h2 {display:flex;align-items:center;gap:10px;margin:0 0 6px;font-size:20px;line-height:1.3;font-weight:800;color:var(--gc-text);border:none;text-shadow:none;}
+.gathering-crafting .gc-section-head h2 i {color:var(--gc-gold);font-size:17px;}
+.gathering-crafting .gc-section-head p {font-size:12px;color:var(--gc-muted);margin:0;line-height:1.6;}
+.gathering-crafting .gc-toolbar {display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;}
+.gathering-crafting .gc-mode {display:flex;gap:6px;background:#111e2a;padding:4px;border:1px solid var(--gc-border);border-radius:10px;min-width:0;}
+.gathering-crafting .gc-mode button {display:flex;align-items:center;gap:7px;min-width:0;padding:7px 12px!important;border-radius:7px!important;color:var(--gc-muted)!important;font-size:11px;font-weight:700;text-align:left;}
+.gathering-crafting .gc-mode button small {display:block;color:#8fa2af;font-size:9px;font-weight:400;white-space:nowrap;}
+.gathering-crafting .gc-mode button.is-on {color:var(--gc-gold)!important;background:#29394a!important;box-shadow:0 1px 4px rgba(0,0,0,.2);}
+.gathering-crafting .gc-mode button.is-on small {color:#b7c2c7;}
+.gathering-crafting .gc-search {display:flex;align-items:center;gap:8px;border:1px solid var(--gc-border);border-radius:9px;background:#15222f;padding:0 10px;color:#8c9ead;min-width:160px;flex:1;max-width:250px;}
+.gathering-crafting .gc-root input:not([type=checkbox]):not([type=color]), .gathering-crafting .gc-root select {appearance:auto;}
+.gathering-crafting .gc-search input {min-width:0;width:100%;background:transparent!important;border:0!important;box-shadow:none!important;outline:none!important;color:var(--gc-text)!important;padding:10px 0!important;font-size:11px;}
+.gathering-crafting .gc-notice {padding:11px 13px;margin:0 0 16px;background:rgba(91,135,162,.10);border:1px solid rgba(112,152,174,.18);border-radius:9px;display:flex;align-items:flex-start;gap:9px;color:#c0d3df;font-size:11px;line-height:1.5;}
+.gathering-crafting .gc-notice i {color:#89bedc;margin-top:2px;}
+.gathering-crafting .gc-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+.gathering-crafting .gc-tile {min-width:0;overflow:hidden;border:1px solid var(--gc-border);border-radius:12px;background:linear-gradient(#1e2c3b,#192633);box-shadow:0 6px 15px rgba(1,6,12,.09);display:flex;flex-direction:column;}
+.gathering-crafting .gc-tile:hover {border-color:rgba(221,178,108,.38);}
+.gathering-crafting .gc-tile[hidden]{display:none!important;}
+.gathering-crafting .gc-tile-banner {position:relative;height:83px;flex:0 0 83px;padding:10px 12px;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 45% 105%,rgba(139,185,151,.16),transparent 60%),linear-gradient(110deg,#273d42,#1d333d);border-bottom:1px solid var(--gc-border);}
+.gathering-crafting .gc-node:nth-child(3n + 2) .gc-tile-banner {background:radial-gradient(ellipse at 45% 105%,rgba(187,145,102,.19),transparent 60%),linear-gradient(110deg,#3e3531,#263642);}
+.gathering-crafting .gc-node:nth-child(3n + 3) .gc-tile-banner {background:radial-gradient(ellipse at 45% 105%,rgba(118,105,180,.20),transparent 60%),linear-gradient(110deg,#302e43,#20313c);}
+.gathering-crafting .gc-craft-art {background:radial-gradient(ellipse at 45% 100%,rgba(225,167,82,.23),transparent 64%),linear-gradient(110deg,#3a3432,#233441);}
+.gathering-crafting .gc-hero-icon {height:54px;width:54px;display:grid;place-items:center;border-radius:50%;font-size:26px;background:rgba(15,22,27,.44);border:1px solid rgba(224,235,222,.13);color:#d6e5cf;text-shadow:0 2px 11px rgba(135,229,179,.27);}
+.gathering-crafting .gc-craft-art .gc-hero-icon {color:#e8c68c;text-shadow:0 2px 11px rgba(239,191,110,.2);}
+.gathering-crafting .gc-dc {position:absolute;right:8px;top:8px;background:rgba(4,12,20,.5);border:1px solid rgba(255,255,255,.09);color:#cbd9e0;padding:4px 6px;border-radius:5px;font-size:9px;font-weight:700;}
+.gathering-crafting .gc-tile-body {padding:14px;display:flex;flex:1;flex-direction:column;gap:0;min-width:0;}
+.gathering-crafting .gc-tile-body h3 {font-size:14px;margin:0 0 6px;font-weight:800;border:0;color:var(--gc-text);line-height:1.3;}
+.gathering-crafting .gc-tile-body>p {font-size:10px;line-height:1.55;min-height:33px;color:#9eb0bd;margin:0 0 12px;}
+.gathering-crafting .gc-loot {display:flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,.075);background:rgba(2,10,17,.20);padding:8px;border-radius:8px;margin-top:auto;margin-bottom:10px;min-height:50px;}
+.gathering-crafting .gc-loot>div {min-width:0;}
+.gathering-crafting .gc-loot b {font-size:10px;line-height:1.3;display:block;}
+.gathering-crafting .gc-loot small {color:#9fadb9;font-size:10px;}
+.gathering-crafting .gc-mat-icon {display:inline-grid;place-items:center;flex:0 0 29px;width:29px;height:29px;background:color-mix(in srgb,var(--gc-mat,#97bace) 14%,transparent);border:1px solid color-mix(in srgb,var(--gc-mat,#97bace) 25%,transparent);border-radius:7px;font-size:14px;color:var(--gc-mat,#97bace);}
+.gathering-crafting .gc-rare {font-size:9px;color:#c4a1ea;margin-left:auto;white-space:nowrap;}
+.gathering-crafting .gc-primary {border:1px solid rgba(255,226,161,.25)!important;border-radius:7px!important;background:linear-gradient(120deg,#c69b59,#ad7940)!important;color:#211c15!important;font-size:11px!important;font-weight:800!important;padding:10px 9px!important;min-height:36px!important;display:flex;align-items:center;justify-content:center;gap:8px;text-align:center;width:100%;transition:filter .12s;}
+.gathering-crafting .gc-primary:hover:not(:disabled) {filter:brightness(1.11);}
+.gathering-crafting .gc-category {display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px;}
+.gathering-crafting .gc-category button {display:flex;gap:7px;align-items:center;border:1px solid var(--gc-border)!important;border-radius:7px!important;padding:8px 12px!important;color:#aebdca!important;background:#172533!important;font-size:10px!important;}
+.gathering-crafting .gc-category button.is-on {border-color:#d3a86d!important;color:var(--gc-gold)!important;background:#2d3540!important;}
+.gathering-crafting .gc-recipe-meta {color:#d1b990;font-size:10px;min-height:23px;}
+.gathering-crafting .gc-ingredients {display:flex;flex-direction:column;gap:5px;margin:0 0 12px;min-height:42px;}
+.gathering-crafting .gc-ingredient {display:flex;align-items:center;gap:7px;background:#141f2b;padding:5px 7px;border-radius:6px;min-width:0;border:1px solid rgba(255,255,255,.045);}
+.gathering-crafting .gc-ingredient span:nth-child(2) {flex:1;min-width:0;color:#c3d1dc;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.gathering-crafting .gc-ingredient .gc-mat-icon {width:21px;height:21px;flex-basis:21px;border-radius:5px;font-size:10px;}
+.gathering-crafting .gc-ingredient b {font-size:10px;color:var(--gc-green);white-space:nowrap;}
+.gathering-crafting .gc-ingredient.gc-miss b {color:var(--gc-danger);}
+.gathering-crafting .gc-stats {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-bottom:18px;}
+.gathering-crafting .gc-stats>div {padding:17px;display:flex;align-items:center;gap:12px;background:#1b2a39;border:1px solid var(--gc-border);border-radius:10px;}
+.gathering-crafting .gc-stats i {color:var(--gc-gold);font-size:20px;}
+.gathering-crafting .gc-stats b {font-size:19px;}
+.gathering-crafting .gc-stats small {color:var(--gc-muted);font-size:10px;}
+.gathering-crafting .gc-material-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;}
+.gathering-crafting .gc-material {display:flex;align-items:center;gap:12px;border:1px solid var(--gc-border);border-radius:10px;background:#1a2938;padding:13px;min-width:0;}
+.gathering-crafting .gc-material.is-zero {opacity:.57;}
+.gathering-crafting .gc-inv-icon {width:42px;height:42px;flex:0 0 42px;border-radius:9px;display:grid;place-items:center;background:color-mix(in srgb,var(--gc-mat) 16%,transparent);color:var(--gc-mat);font-size:21px;}
+.gathering-crafting .gc-inv-name {display:flex;flex-direction:column;gap:4px;min-width:0;flex:1;}
+.gathering-crafting .gc-inv-name b {font-size:12px;}
+.gathering-crafting .gc-inv-name small {font-size:10px;line-height:1.3;color:var(--gc-muted);}
+.gathering-crafting .gc-material strong {color:var(--gc-gold);font-size:17px;white-space:nowrap;}
+.gathering-crafting .gc-empty {display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;min-height:120px;color:var(--gc-muted);font-size:12px;text-align:center;padding:20px;border:1px dashed var(--gc-border);border-radius:10px;grid-column:1/-1;}
+.gathering-crafting .gc-empty i {font-size:25px;}
+.gathering-crafting .gc-footer {padding:9px 19px;display:flex;justify-content:space-between;gap:10px;font-size:9px;background:#121f2b;border-top:1px solid rgba(255,255,255,.06);color:#778c9e;}
+.gathering-crafting .gc-footer i {color:var(--gc-gold);margin-right:5px;}
+.gathering-crafting .gc-gm-layout {display:grid;grid-template-columns:210px minmax(0,1fr);gap:14px;}
+.gathering-crafting .gc-gm-side {border:1px solid var(--gc-border);border-radius:11px;padding:13px;background:#1a2938;min-width:0;}
+.gathering-crafting .gc-gm-title {display:flex;align-items:center;gap:10px;font-weight:800;font-size:13px;margin:0 0 12px;color:var(--gc-gold);}
+.gathering-crafting .gc-gm-group {display:flex;align-items:center;gap:10px;width:100%;text-align:left;border-radius:7px!important;padding:10px 9px!important;color:#bdcdd9!important;font-size:11px!important;}
+.gathering-crafting .gc-gm-group.is-on {color:var(--gc-gold)!important;background:#293a4a!important;}
+.gathering-crafting .gc-gm-group span {margin-left:auto;color:#91a5b5;font-size:10px;}
+.gathering-crafting .gc-gm-limit {margin:18px 0 12px;padding-top:16px;border-top:1px solid var(--gc-border);}
+.gathering-crafting .gc-gm-limit label {font-size:10px;color:var(--gc-muted);display:block;margin-bottom:6px;}
+.gathering-crafting .gc-inline {display:flex;gap:6px;align-items:center;}
+.gathering-crafting .gc-inline input {width:100%;}
+.gathering-crafting .gc-inline button {width:36px;flex-shrink:0;align-self:stretch;border:1px solid var(--gc-border)!important;border-radius:6px!important;color:var(--gc-gold)!important;background:#24394a!important;}
+.gathering-crafting .gc-help {font-size:10px;line-height:1.55;color:#91a5b5;margin:10px 0 0;}
+.gathering-crafting .gc-reset {margin-top:6px;}
+.gathering-crafting .gc-secondary {border:1px solid var(--gc-border)!important;padding:9px!important;border-radius:7px!important;background:#283a4a!important;color:#d3e0e7!important;font-size:11px!important;font-weight:700!important;}
+.gathering-crafting .gc-secondary:hover {filter:brightness(1.1);}
+.gathering-crafting .gc-gm-main {min-width:0;display:grid;gap:13px;grid-template-columns:minmax(190px,.78fr) minmax(220px,1.22fr);align-items:start;}
+.gathering-crafting .gc-library {border:1px solid var(--gc-border);background:#1a2938;border-radius:10px;min-width:0;overflow:hidden;}
+.gathering-crafting .gc-lib-header {padding:12px 12px;background:#213243;border-bottom:1px solid var(--gc-border);display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.gathering-crafting .gc-lib-header strong {font-size:12px;}
+.gathering-crafting .gc-lib-header button {padding:6px 9px!important;border-radius:6px!important;background:#31485c!important;color:var(--gc-gold)!important;border:1px solid rgba(223,181,109,.2)!important;font-size:10px!important;white-space:nowrap;}
+.gathering-crafting .gc-lib-list {padding:7px;max-height:440px;overflow:auto;}
+.gathering-crafting .gc-library-item {display:flex;align-items:center;gap:8px;text-align:left;width:100%;border-radius:6px!important;padding:10px 7px!important;color:#bacbd8!important;font-size:10px!important;}
+.gathering-crafting .gc-library-item.is-active {background:#2d4050!important;color:var(--gc-gold)!important;}
+.gathering-crafting .gc-library-item:hover {background:#283c4e!important;}
+.gathering-crafting .gc-library-item span {flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;}
+.gathering-crafting .gc-library-item i:last-child {font-size:9px;}
+.gathering-crafting .gc-placeholder {min-height:230px;}
+.gathering-crafting .gc-gm-form {min-width:0;border:1px solid var(--gc-border);background:#1a2938;border-radius:10px;padding:15px;}
+.gathering-crafting .gc-gm-form h3 {font-size:13px;color:#f2d6a9;margin:0 0 16px;padding:0 0 12px;border-bottom:1px solid var(--gc-border);font-weight:800;}
+.gathering-crafting .gc-fields {display:flex;flex-direction:column;gap:11px;}
+.gathering-crafting .gc-field {display:flex;flex-direction:column;gap:5px;min-width:0;}
+.gathering-crafting .gc-field span {color:#adc0cc;font-size:10px;}
+.gathering-crafting .gc-root input:not([type=checkbox]),.gathering-crafting .gc-root select {background:#11202d;color:#dce8f0;border:1px solid #3a4d5d;border-radius:6px;height:33px;padding:4px 8px;box-shadow:none;font-size:11px;max-width:100%;}
+.gathering-crafting .gc-root input[type=color] {width:100%;padding:4px 7px;cursor:pointer;}
+.gathering-crafting .gc-checkbox {display:flex;gap:7px;align-items:center;color:#c7d5e1;font-size:11px;}
+.gathering-crafting .gc-checkbox input {width:15px;height:15px;}
+.gathering-crafting .gc-ingredients-editor {padding:10px;background:#142331;border:1px solid var(--gc-border);border-radius:8px;}
+.gathering-crafting .gc-ingredient-title {font-size:11px;font-weight:800;display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:9px;}
+.gathering-crafting .gc-ingredient-title button {font-size:10px!important;color:var(--gc-gold)!important;}
+.gathering-crafting .gc-ingredient-rows {display:flex;flex-direction:column;gap:7px;}
+.gathering-crafting .gc-ing-row {display:flex;align-items:center;gap:5px;}
+.gathering-crafting .gc-ing-row select {min-width:0;flex:1;}
+.gathering-crafting .gc-ing-row input {width:55px;flex-shrink:0;}
+.gathering-crafting .gc-ing-row button {width:24px;flex-shrink:0;color:var(--gc-danger)!important;}
+.gathering-crafting .gc-form-actions {display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-top:17px;}
+.gathering-crafting .gc-form-actions .gc-primary {width:auto;padding:10px 14px!important;}
+.gathering-crafting .gc-danger {border:1px solid rgba(237,137,146,.25)!important;border-radius:7px!important;background:rgba(237,137,146,.09)!important;color:var(--gc-danger)!important;padding:9px!important;font-size:11px!important;}
+.gc-chat {padding:4px 2px;line-height:1.5;}
+.gc-chat h3 {margin:2px 0 8px;}
+.gc-chat p {margin:4px 0;}
+.gc-launcher {display:inline-flex;align-items:center;gap:5px;margin:4px!important;padding:6px 8px!important;border:1px solid rgba(213,168,86,.4)!important;border-radius:6px!important;color:#e3bb73!important;font-size:11px!important;background:rgba(79,64,42,.22)!important;cursor:pointer;}
+.gc-launcher:hover {filter:brightness(1.1);}
+@media(max-width:940px){
+  .gathering-crafting .gc-top {gap:8px;padding:12px;}
+  .gathering-crafting .gc-brand-title{font-size:18px;}
+  .gathering-crafting .gc-brand-logo{width:40px;height:40px;flex-basis:40px;}
+  .gathering-crafting .gc-content{padding:16px;}
+  .gathering-crafting .gc-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .gathering-crafting .gc-gm-layout{grid-template-columns:160px minmax(0,1fr);}
+  .gathering-crafting .gc-gm-main{grid-template-columns:minmax(0,1fr);}
+}
+@media(max-width:630px){
+  .gathering-crafting .gc-top,.gathering-crafting .gc-toolbar{flex-wrap:wrap;}
+  .gathering-crafting .gc-tabs{padding:7px 6px 0;}
+  .gathering-crafting .gc-nav{padding:10px 7px!important;flex:1;}
+  .gathering-crafting .gc-nav span{font-size:10px;}
+  .gathering-crafting .gc-top-right{flex:1;justify-content:space-between;}
+  .gathering-crafting .gc-mode{width:100%;justify-content:stretch;}
+  .gathering-crafting .gc-mode button{flex:1;}
+  .gathering-crafting .gc-search{width:100%;max-width:none;}
+  .gathering-crafting .gc-grid{grid-template-columns:minmax(0,1fr);}
+  .gathering-crafting .gc-material-grid{grid-template-columns:minmax(0,1fr);}
+  .gathering-crafting .gc-gm-layout{grid-template-columns:minmax(0,1fr);}
+  .gathering-crafting .gc-stats{gap:5px;}
+  .gathering-crafting .gc-stats>div{flex-wrap:wrap;padding:10px;}
+  .gathering-crafting .gc-footer{flex-wrap:wrap;}
+}
