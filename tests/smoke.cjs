@@ -2,7 +2,8 @@
 const vm=require('node:vm'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const base=path.join(__dirname,'..');
 const catalogJS=fs.readFileSync(path.join(base,'scripts/catalog.js'),'utf8').replace('export const CATALOG','const CATALOG');
-const moduleJS=fs.readFileSync(path.join(base,'scripts/main.js'),'utf8').replace("import { CATALOG } from './catalog.js';",'');
+const itemsJS=fs.readFileSync(path.join(base,'scripts/items.js'),'utf8').replaceAll(/^export /gm,'');
+const moduleJS=fs.readFileSync(path.join(base,'scripts/main.js'),'utf8').replace(/^import .*;$/gm,'');
 const cat=JSON.parse(fs.readFileSync(path.join(base,'data/catalog.json'),'utf8'));
 assert.equal(cat.materials.length,54);assert.equal(cat.recipes.length,72);assert.equal(cat.nodes.length,42);
 assert.equal(cat.recipes.filter(r=>r.category==='metallurgy').length,36);
@@ -40,15 +41,15 @@ const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clea
   ChatMessage:{getSpeaker:()=>({alias:'Hero'}),create:async msg=>{if(failChat)throw Error('chat is offline');messages.push(msg);}},
   Roll:class{constructor(expr,vars={}){this.total=expr.startsWith('1d20')?roll+Number(vars.bonus||0):7;}async evaluate(){return this;}},
   fromUuid:async()=>null,CONST:{KEYBINDING_PRECEDENCE:{NORMAL:0}}};
-vm.createContext(context);vm.runInContext(`${catalogJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,CATALOG};`,context);
+vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,CATALOG};`,context);
 const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog}=context.testAPI;
 (async()=>{
   hooksOnce.get('init')();assert.equal(context.game.settings.get('gathering-crafting','database').recipes.length,72);
-  await hooksOnce.get('ready')();assert.equal(packs.size,2);
-  assert.equal(packs.get('world.gc-materials').items.length,54);assert.equal(packs.get('world.gc-creations').items.length,72);
+  await hooksOnce.get('ready')();assert.equal(packs.size,3);
+  assert.equal(packs.get('world.gc-ores-metals').items.length,26);assert.equal(packs.get('world.gc-ready-items').items.length,72);
   const db=context.game.settings.get('gathering-crafting','database');
-  assert.equal(db.catalogVersion,2);
-  await syncCompendiums();assert.equal(packs.get('world.gc-materials').items.length,54,'sync must not duplicate entries');
+  assert.equal(db.catalogVersion,3);
+  await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,26,'sync must not duplicate entries');
   const app=new GatheringCrafting();app.tab='craft';assert.ok(app.template().includes('Metallurgy'));assert.ok(app.template().includes('Alchemy'));
   assert.ok(!/[А-Яа-я]/.test(app.template()),'UI should contain no Bulgarian text');
   assert.ok(app.recipeCard(db,db.recipes.find(r=>r.id==='healing-potion'),actor).includes('Redroot'));
@@ -59,7 +60,7 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   await grantMaterial(actor,db.materials.find(m=>m.id==='iron-ingot'),4);
   const beforeCoal=count(actor,'coal');await app.craft('steel-ingot');assert.equal(count(actor,'coal'),beforeCoal-2);assert.equal(count(actor,'iron-ingot'),3);assert.equal(count(actor,'steel-ingot'),1);
   // Imported compendium Items are recognized as recipe ingredients when copied to actors.
-  const herb=packs.get('world.gc-materials').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='redroot');
+  const herb=packs.get('world.gc-ingredients').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='redroot');
   actor.items.push(new ItemDoc({...herb.toObject(),_id:undefined,system:{...herb.system,quantity:3}},actor));
   await grantMaterial(actor,db.materials.find(m=>m.id==='sunpetal'),3);
   await app.craft('healing-potion');

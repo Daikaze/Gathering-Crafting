@@ -1,0 +1,30 @@
+name: Package module
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'dist/**'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test module
+        run: node tests/smoke.cjs
+      - name: Package Foundry module
+        run: |
+          mkdir -p dist staging/gathering-crafting
+          rsync -a --exclude=.git --exclude=.github --exclude=dist --exclude=staging ./ staging/gathering-crafting/
+          (cd staging && zip -q -r ../dist/gathering-crafting-v0.3.0.zip gathering-crafting)
+      - name: Publish zip
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist/gathering-crafting-v0.3.0.zip
+          if ! git diff --cached --quiet; then git commit -m "build: package Gathering & Crafting v0.3.0"; git push; fi
