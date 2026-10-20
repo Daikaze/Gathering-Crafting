@@ -1,8 +1,8 @@
 {
   "id": "gathering-crafting",
   "title": "Gathering & Crafting",
-  "description": "Icon-first gathering and crafting for D&D 5e. Gather resources, choose risk versus reward, and craft recipes with GM-controlled content.",
-  "version": "0.1.0",
+  "description": "English-first metallurgy and alchemy for Foundry V14 / dnd5e 5.3.3: 54 materials, 72 recipes, harvesting, potions, and world compendiums.",
+  "version": "0.2.0",
   "authors": [
     {
       "name": "Averis Workshop"
@@ -32,14 +32,7 @@
   "styles": [
     "styles/module.css"
   ],
-  "languages": [
-    {
-      "lang": "bg",
-      "name": "Български",
-      "path": "languages/bg.json"
-    }
-  ],
   "url": "https://github.com/Daikaze/Gathering-Crafting",
   "manifest": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/module.json",
-  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v0.1.0.zip"
+  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v0.2.0.zip"
 }

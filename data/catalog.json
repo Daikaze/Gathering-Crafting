@@ -1,0 +1,2911 @@
+{
+  "settings": {
+    "dailyLimit": 6,
+    "sceneOnly": false
+  },
+  "materials": [
+    {
+      "id": "copper-ore",
+      "name": "Copper Ore",
+      "group": "Ore & Mineral",
+      "tier": 1,
+      "icon": "fa-mountain",
+      "color": "#cd996e",
+      "img": "modules/gathering-crafting/icons/v2/copper-ore.svg",
+      "description": "Unprocessed copper ore gathered from mineral deposits."
+    },
+    {
+      "id": "tin-ore",
+      "name": "Tin Ore",
+      "group": "Ore & Mineral",
+      "tier": 1,
+      "icon": "fa-mountain",
+      "color": "#bdccd2",
+      "img": "modules/gathering-crafting/icons/v2/tin-ore.svg",
+      "description": "Unprocessed tin ore gathered from mineral deposits."
+    },
+    {
+      "id": "iron-ore",
+      "name": "Iron Ore",
+      "group": "Ore & Mineral",
+      "tier": 1,
+      "icon": "fa-mountain",
+      "color": "#aab6c7",
+      "img": "modules/gathering-crafting/icons/v2/iron-ore.svg",
+      "description": "Unprocessed iron ore gathered from mineral deposits."
+    },
+    {
+      "id": "coal",
+      "name": "Coal",
+      "group": "Ore & Mineral",
+      "tier": 1,
+      "icon": "fa-mountain",
+      "color": "#9da3ab",
+      "img": "modules/gathering-crafting/icons/v2/coal.svg",
+      "description": "Unprocessed coal gathered from mineral deposits."
+    },
+    {
+      "id": "silver-ore",
+      "name": "Silver Ore",
+      "group": "Ore & Mineral",
+      "tier": 2,
+      "icon": "fa-mountain",
+      "color": "#dae2ec",
+      "img": "modules/gathering-crafting/icons/v2/silver-ore.svg",
+      "description": "Unprocessed silver ore gathered from mineral deposits."
+    },
+    {
+      "id": "gold-ore",
+      "name": "Gold Ore",
+      "group": "Ore & Mineral",
+      "tier": 2,
+      "icon": "fa-mountain",
+      "color": "#e6bd5f",
+      "img": "modules/gathering-crafting/icons/v2/gold-ore.svg",
+      "description": "Unprocessed gold ore gathered from mineral deposits."
+    },
+    {
+      "id": "quartz",
+      "name": "Quartz",
+      "group": "Ore & Mineral",
+      "tier": 1,
+      "icon": "fa-mountain",
+      "color": "#e3dbea",
+      "img": "modules/gathering-crafting/icons/v2/quartz.svg",
+      "description": "Unprocessed quartz gathered from mineral deposits."
+    },
+    {
+      "id": "sulfur",
+      "name": "Sulfur",
+      "group": "Ore & Mineral",
+      "tier": 1,
+      "icon": "fa-mountain",
+      "color": "#dcca60",
+      "img": "modules/gathering-crafting/icons/v2/sulfur.svg",
+      "description": "Unprocessed sulfur gathered from mineral deposits."
+    },
+    {
+      "id": "mithral-ore",
+      "name": "Mithral Ore",
+      "group": "Ore & Mineral",
+      "tier": 3,
+      "icon": "fa-mountain",
+      "color": "#9adced",
+      "img": "modules/gathering-crafting/icons/v2/mithral-ore.svg",
+      "description": "Unprocessed mithral ore gathered from mineral deposits."
+    },
+    {
+      "id": "adamantine-ore",
+      "name": "Adamantine Ore",
+      "group": "Ore & Mineral",
+      "tier": 4,
+      "icon": "fa-mountain",
+      "color": "#a397c9",
+      "img": "modules/gathering-crafting/icons/v2/adamantine-ore.svg",
+      "description": "Unprocessed adamantine ore gathered from mineral deposits."
+    },
+    {
+      "id": "starmetal-ore",
+      "name": "Starmetal Ore",
+      "group": "Ore & Mineral",
+      "tier": 4,
+      "icon": "fa-mountain",
+      "color": "#89aef4",
+      "img": "modules/gathering-crafting/icons/v2/starmetal-ore.svg",
+      "description": "Unprocessed starmetal ore gathered from mineral deposits."
+    },
+    {
+      "id": "obsidian",
+      "name": "Obsidian",
+      "group": "Ore & Mineral",
+      "tier": 2,
+      "icon": "fa-mountain",
+      "color": "#ae8cd0",
+      "img": "modules/gathering-crafting/icons/v2/obsidian.svg",
+      "description": "Unprocessed obsidian gathered from mineral deposits."
+    },
+    {
+      "id": "moonstone",
+      "name": "Moonstone",
+      "group": "Ore & Mineral",
+      "tier": 3,
+      "icon": "fa-mountain",
+      "color": "#ccd8fd",
+      "img": "modules/gathering-crafting/icons/v2/moonstone.svg",
+      "description": "Unprocessed moonstone gathered from mineral deposits."
+    },
+    {
+      "id": "azurite",
+      "name": "Azurite",
+      "group": "Ore & Mineral",
+      "tier": 2,
+      "icon": "fa-mountain",
+      "color": "#7d9fe1",
+      "img": "modules/gathering-crafting/icons/v2/azurite.svg",
+      "description": "Unprocessed azurite gathered from mineral deposits."
+    },
+    {
+      "id": "copper-ingot",
+      "name": "Copper Ingot",
+      "group": "Refined Metal",
+      "tier": 1,
+      "icon": "fa-layer-group",
+      "color": "#d5a16a",
+      "img": "modules/gathering-crafting/icons/v2/copper-ingot.svg",
+      "description": "Refined copper ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "tin-ingot",
+      "name": "Tin Ingot",
+      "group": "Refined Metal",
+      "tier": 1,
+      "icon": "fa-layer-group",
+      "color": "#b9c9cb",
+      "img": "modules/gathering-crafting/icons/v2/tin-ingot.svg",
+      "description": "Refined tin ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "iron-ingot",
+      "name": "Iron Ingot",
+      "group": "Refined Metal",
+      "tier": 1,
+      "icon": "fa-layer-group",
+      "color": "#b0bbc6",
+      "img": "modules/gathering-crafting/icons/v2/iron-ingot.svg",
+      "description": "Refined iron ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "bronze-ingot",
+      "name": "Bronze Ingot",
+      "group": "Refined Metal",
+      "tier": 1,
+      "icon": "fa-layer-group",
+      "color": "#c9a66a",
+      "img": "modules/gathering-crafting/icons/v2/bronze-ingot.svg",
+      "description": "Refined bronze ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "steel-ingot",
+      "name": "Steel Ingot",
+      "group": "Refined Metal",
+      "tier": 2,
+      "icon": "fa-layer-group",
+      "color": "#c6d0d9",
+      "img": "modules/gathering-crafting/icons/v2/steel-ingot.svg",
+      "description": "Refined steel ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "silver-ingot",
+      "name": "Silver Ingot",
+      "group": "Refined Metal",
+      "tier": 2,
+      "icon": "fa-layer-group",
+      "color": "#dce5f0",
+      "img": "modules/gathering-crafting/icons/v2/silver-ingot.svg",
+      "description": "Refined silver ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "gold-ingot",
+      "name": "Gold Ingot",
+      "group": "Refined Metal",
+      "tier": 2,
+      "icon": "fa-layer-group",
+      "color": "#ecc46c",
+      "img": "modules/gathering-crafting/icons/v2/gold-ingot.svg",
+      "description": "Refined gold ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "mithral-ingot",
+      "name": "Mithral Ingot",
+      "group": "Refined Metal",
+      "tier": 3,
+      "icon": "fa-layer-group",
+      "color": "#9ee6ee",
+      "img": "modules/gathering-crafting/icons/v2/mithral-ingot.svg",
+      "description": "Refined mithral ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "adamantine-ingot",
+      "name": "Adamantine Ingot",
+      "group": "Refined Metal",
+      "tier": 4,
+      "icon": "fa-layer-group",
+      "color": "#a995ce",
+      "img": "modules/gathering-crafting/icons/v2/adamantine-ingot.svg",
+      "description": "Refined adamantine ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "starmetal-ingot",
+      "name": "Starmetal Ingot",
+      "group": "Refined Metal",
+      "tier": 4,
+      "icon": "fa-layer-group",
+      "color": "#86b1f6",
+      "img": "modules/gathering-crafting/icons/v2/starmetal-ingot.svg",
+      "description": "Refined starmetal ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "moonsteel-ingot",
+      "name": "Moonsteel Ingot",
+      "group": "Refined Metal",
+      "tier": 4,
+      "icon": "fa-layer-group",
+      "color": "#ccd5fc",
+      "img": "modules/gathering-crafting/icons/v2/moonsteel-ingot.svg",
+      "description": "Refined moonsteel ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "blacksteel-ingot",
+      "name": "Blacksteel Ingot",
+      "group": "Refined Metal",
+      "tier": 3,
+      "icon": "fa-layer-group",
+      "color": "#9676b8",
+      "img": "modules/gathering-crafting/icons/v2/blacksteel-ingot.svg",
+      "description": "Refined blacksteel ingot used in advanced metallurgy recipes."
+    },
+    {
+      "id": "redroot",
+      "name": "Redroot",
+      "group": "Alchemical Ingredient",
+      "tier": 1,
+      "icon": "fa-leaf",
+      "color": "#c66b70",
+      "img": "modules/gathering-crafting/icons/v2/redroot.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Redroot."
+    },
+    {
+      "id": "silverleaf",
+      "name": "Silverleaf",
+      "group": "Alchemical Ingredient",
+      "tier": 1,
+      "icon": "fa-leaf",
+      "color": "#b7c8bc",
+      "img": "modules/gathering-crafting/icons/v2/silverleaf.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Silverleaf."
+    },
+    {
+      "id": "blue-moss",
+      "name": "Blue Moss",
+      "group": "Alchemical Ingredient",
+      "tier": 1,
+      "icon": "fa-leaf",
+      "color": "#75b9d4",
+      "img": "modules/gathering-crafting/icons/v2/blue-moss.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Blue Moss."
+    },
+    {
+      "id": "sunpetal",
+      "name": "Sunpetal",
+      "group": "Alchemical Ingredient",
+      "tier": 1,
+      "icon": "fa-leaf",
+      "color": "#e3bb72",
+      "img": "modules/gathering-crafting/icons/v2/sunpetal.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Sunpetal."
+    },
+    {
+      "id": "moonbloom",
+      "name": "Moonbloom",
+      "group": "Alchemical Ingredient",
+      "tier": 2,
+      "icon": "fa-leaf",
+      "color": "#bab4e3",
+      "img": "modules/gathering-crafting/icons/v2/moonbloom.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Moonbloom."
+    },
+    {
+      "id": "frostleaf",
+      "name": "Frostleaf",
+      "group": "Alchemical Ingredient",
+      "tier": 2,
+      "icon": "fa-leaf",
+      "color": "#97d6dd",
+      "img": "modules/gathering-crafting/icons/v2/frostleaf.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Frostleaf."
+    },
+    {
+      "id": "embercap",
+      "name": "Embercap",
+      "group": "Alchemical Ingredient",
+      "tier": 2,
+      "icon": "fa-leaf",
+      "color": "#d9895e",
+      "img": "modules/gathering-crafting/icons/v2/embercap.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Embercap."
+    },
+    {
+      "id": "duskshade",
+      "name": "Duskshade",
+      "group": "Alchemical Ingredient",
+      "tier": 2,
+      "icon": "fa-leaf",
+      "color": "#aa83bf",
+      "img": "modules/gathering-crafting/icons/v2/duskshade.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Duskshade."
+    },
+    {
+      "id": "thornbriar",
+      "name": "Thornbriar",
+      "group": "Alchemical Ingredient",
+      "tier": 1,
+      "icon": "fa-leaf",
+      "color": "#8fb58d",
+      "img": "modules/gathering-crafting/icons/v2/thornbriar.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Thornbriar."
+    },
+    {
+      "id": "ghost-orchid",
+      "name": "Ghost Orchid",
+      "group": "Alchemical Ingredient",
+      "tier": 3,
+      "icon": "fa-flask",
+      "color": "#cecfea",
+      "img": "modules/gathering-crafting/icons/v2/ghost-orchid.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Ghost Orchid."
+    },
+    {
+      "id": "starflower",
+      "name": "Starflower",
+      "group": "Alchemical Ingredient",
+      "tier": 3,
+      "icon": "fa-flask",
+      "color": "#d9bcf5",
+      "img": "modules/gathering-crafting/icons/v2/starflower.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Starflower."
+    },
+    {
+      "id": "stormthistle",
+      "name": "Stormthistle",
+      "group": "Alchemical Ingredient",
+      "tier": 2,
+      "icon": "fa-leaf",
+      "color": "#8dbbda",
+      "img": "modules/gathering-crafting/icons/v2/stormthistle.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Stormthistle."
+    },
+    {
+      "id": "dreamlily",
+      "name": "Dreamlily",
+      "group": "Alchemical Ingredient",
+      "tier": 2,
+      "icon": "fa-leaf",
+      "color": "#ce9ace",
+      "img": "modules/gathering-crafting/icons/v2/dreamlily.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Dreamlily."
+    },
+    {
+      "id": "bitterroot",
+      "name": "Bitterroot",
+      "group": "Alchemical Ingredient",
+      "tier": 1,
+      "icon": "fa-leaf",
+      "color": "#ac9578",
+      "img": "modules/gathering-crafting/icons/v2/bitterroot.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Bitterroot."
+    },
+    {
+      "id": "bogmint",
+      "name": "Bogmint",
+      "group": "Alchemical Ingredient",
+      "tier": 1,
+      "icon": "fa-leaf",
+      "color": "#86c5a5",
+      "img": "modules/gathering-crafting/icons/v2/bogmint.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Bogmint."
+    },
+    {
+      "id": "nightshade",
+      "name": "Nightshade",
+      "group": "Alchemical Ingredient",
+      "tier": 3,
+      "icon": "fa-flask",
+      "color": "#9d7caf",
+      "img": "modules/gathering-crafting/icons/v2/nightshade.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Nightshade."
+    },
+    {
+      "id": "marsh-kelp",
+      "name": "Marsh Kelp",
+      "group": "Alchemical Ingredient",
+      "tier": 1,
+      "icon": "fa-leaf",
+      "color": "#88aeb2",
+      "img": "modules/gathering-crafting/icons/v2/marsh-kelp.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Marsh Kelp."
+    },
+    {
+      "id": "glowshroom",
+      "name": "Glowshroom",
+      "group": "Alchemical Ingredient",
+      "tier": 2,
+      "icon": "fa-leaf",
+      "color": "#b2d995",
+      "img": "modules/gathering-crafting/icons/v2/glowshroom.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Glowshroom."
+    },
+    {
+      "id": "ashfern",
+      "name": "Ashfern",
+      "group": "Alchemical Ingredient",
+      "tier": 2,
+      "icon": "fa-leaf",
+      "color": "#b2a99c",
+      "img": "modules/gathering-crafting/icons/v2/ashfern.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Ashfern."
+    },
+    {
+      "id": "amber-resin",
+      "name": "Amber Resin",
+      "group": "Alchemical Ingredient",
+      "tier": 2,
+      "icon": "fa-leaf",
+      "color": "#e5a865",
+      "img": "modules/gathering-crafting/icons/v2/amber-resin.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Amber Resin."
+    },
+    {
+      "id": "crimson-sap",
+      "name": "Crimson Sap",
+      "group": "Alchemical Ingredient",
+      "tier": 3,
+      "icon": "fa-flask",
+      "color": "#ba697e",
+      "img": "modules/gathering-crafting/icons/v2/crimson-sap.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Crimson Sap."
+    },
+    {
+      "id": "mistflower",
+      "name": "Mistflower",
+      "group": "Alchemical Ingredient",
+      "tier": 2,
+      "icon": "fa-leaf",
+      "color": "#a4c5db",
+      "img": "modules/gathering-crafting/icons/v2/mistflower.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Mistflower."
+    },
+    {
+      "id": "whisper-seed",
+      "name": "Whisper Seed",
+      "group": "Alchemical Ingredient",
+      "tier": 3,
+      "icon": "fa-flask",
+      "color": "#b5c5cf",
+      "img": "modules/gathering-crafting/icons/v2/whisper-seed.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Whisper Seed."
+    },
+    {
+      "id": "dawnberry",
+      "name": "Dawnberry",
+      "group": "Alchemical Ingredient",
+      "tier": 1,
+      "icon": "fa-leaf",
+      "color": "#d7987e",
+      "img": "modules/gathering-crafting/icons/v2/dawnberry.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Dawnberry."
+    },
+    {
+      "id": "shade-spore",
+      "name": "Shade Spore",
+      "group": "Alchemical Ingredient",
+      "tier": 3,
+      "icon": "fa-flask",
+      "color": "#aa93ba",
+      "img": "modules/gathering-crafting/icons/v2/shade-spore.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Shade Spore."
+    },
+    {
+      "id": "sea-salt",
+      "name": "Sea Salt",
+      "group": "Alchemical Ingredient",
+      "tier": 1,
+      "icon": "fa-leaf",
+      "color": "#cbdee5",
+      "img": "modules/gathering-crafting/icons/v2/sea-salt.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Sea Salt."
+    },
+    {
+      "id": "pure-water",
+      "name": "Purified Water",
+      "group": "Alchemical Ingredient",
+      "tier": 1,
+      "icon": "fa-leaf",
+      "color": "#7bbbd5",
+      "img": "modules/gathering-crafting/icons/v2/pure-water.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Purified Water."
+    },
+    {
+      "id": "phoenix-ash",
+      "name": "Phoenix Ash",
+      "group": "Alchemical Ingredient",
+      "tier": 4,
+      "icon": "fa-flask",
+      "color": "#e7a26c",
+      "img": "modules/gathering-crafting/icons/v2/phoenix-ash.svg",
+      "description": "An alchemical ingredient used in brews and tonics: Phoenix Ash."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "node-copper-ore",
+      "name": "Copper Ore Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing copper ore.",
+      "materialId": "copper-ore",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 3,
+      "active": true,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-tin-ore",
+      "name": "Tin Ore Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing tin ore.",
+      "materialId": "tin-ore",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 3,
+      "active": true,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-iron-ore",
+      "name": "Iron Ore Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing iron ore.",
+      "materialId": "iron-ore",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 3,
+      "active": true,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-coal",
+      "name": "Coal Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing coal.",
+      "materialId": "coal",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 3,
+      "active": true,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-silver-ore",
+      "name": "Silver Ore Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing silver ore.",
+      "materialId": "silver-ore",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 3,
+      "active": true,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-gold-ore",
+      "name": "Gold Ore Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing gold ore.",
+      "materialId": "gold-ore",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 3,
+      "active": true,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-quartz",
+      "name": "Quartz Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing quartz.",
+      "materialId": "quartz",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 3,
+      "active": true,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-sulfur",
+      "name": "Sulfur Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing sulfur.",
+      "materialId": "sulfur",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 3,
+      "active": true,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-mithral-ore",
+      "name": "Mithral Ore Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing mithral ore.",
+      "materialId": "mithral-ore",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 14,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": false,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-adamantine-ore",
+      "name": "Adamantine Ore Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing adamantine ore.",
+      "materialId": "adamantine-ore",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 16,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": false,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-starmetal-ore",
+      "name": "Starmetal Ore Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing starmetal ore.",
+      "materialId": "starmetal-ore",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 16,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": false,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-obsidian",
+      "name": "Obsidian Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing obsidian.",
+      "materialId": "obsidian",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 3,
+      "active": true,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-moonstone",
+      "name": "Moonstone Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing moonstone.",
+      "materialId": "moonstone",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 14,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": false,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-azurite",
+      "name": "Azurite Deposit",
+      "icon": "fa-mountain",
+      "description": "A mineral deposit containing azurite.",
+      "materialId": "azurite",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "ath",
+      "minYield": 1,
+      "maxYield": 3,
+      "active": true,
+      "group": "metallurgy"
+    },
+    {
+      "id": "node-redroot",
+      "name": "Redroot Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of redroot ready to be harvested.",
+      "materialId": "redroot",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-silverleaf",
+      "name": "Silverleaf Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of silverleaf ready to be harvested.",
+      "materialId": "silverleaf",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-blue-moss",
+      "name": "Blue Moss Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of blue moss ready to be harvested.",
+      "materialId": "blue-moss",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-sunpetal",
+      "name": "Sunpetal Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of sunpetal ready to be harvested.",
+      "materialId": "sunpetal",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-moonbloom",
+      "name": "Moonbloom Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of moonbloom ready to be harvested.",
+      "materialId": "moonbloom",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-frostleaf",
+      "name": "Frostleaf Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of frostleaf ready to be harvested.",
+      "materialId": "frostleaf",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-embercap",
+      "name": "Embercap Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of embercap ready to be harvested.",
+      "materialId": "embercap",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-duskshade",
+      "name": "Duskshade Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of duskshade ready to be harvested.",
+      "materialId": "duskshade",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-thornbriar",
+      "name": "Thornbriar Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of thornbriar ready to be harvested.",
+      "materialId": "thornbriar",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-ghost-orchid",
+      "name": "Ghost Orchid Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of ghost orchid ready to be harvested.",
+      "materialId": "ghost-orchid",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 14,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": false,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-starflower",
+      "name": "Starflower Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of starflower ready to be harvested.",
+      "materialId": "starflower",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 14,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": false,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-stormthistle",
+      "name": "Stormthistle Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of stormthistle ready to be harvested.",
+      "materialId": "stormthistle",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-dreamlily",
+      "name": "Dreamlily Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of dreamlily ready to be harvested.",
+      "materialId": "dreamlily",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-bitterroot",
+      "name": "Bitterroot Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of bitterroot ready to be harvested.",
+      "materialId": "bitterroot",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-bogmint",
+      "name": "Bogmint Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of bogmint ready to be harvested.",
+      "materialId": "bogmint",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-nightshade",
+      "name": "Nightshade Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of nightshade ready to be harvested.",
+      "materialId": "nightshade",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 14,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": false,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-marsh-kelp",
+      "name": "Marsh Kelp Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of marsh kelp ready to be harvested.",
+      "materialId": "marsh-kelp",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-glowshroom",
+      "name": "Glowshroom Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of glowshroom ready to be harvested.",
+      "materialId": "glowshroom",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-ashfern",
+      "name": "Ashfern Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of ashfern ready to be harvested.",
+      "materialId": "ashfern",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-amber-resin",
+      "name": "Amber Resin Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of amber resin ready to be harvested.",
+      "materialId": "amber-resin",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-crimson-sap",
+      "name": "Crimson Sap Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of crimson sap ready to be harvested.",
+      "materialId": "crimson-sap",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 14,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": false,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-mistflower",
+      "name": "Mistflower Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of mistflower ready to be harvested.",
+      "materialId": "mistflower",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 12,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-whisper-seed",
+      "name": "Whisper Seed Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of whisper seed ready to be harvested.",
+      "materialId": "whisper-seed",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 14,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": false,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-dawnberry",
+      "name": "Dawnberry Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of dawnberry ready to be harvested.",
+      "materialId": "dawnberry",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-shade-spore",
+      "name": "Shade Spore Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of shade spore ready to be harvested.",
+      "materialId": "shade-spore",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 14,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": false,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-sea-salt",
+      "name": "Sea Salt Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of sea salt ready to be harvested.",
+      "materialId": "sea-salt",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-pure-water",
+      "name": "Purified Water Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of purified water ready to be harvested.",
+      "materialId": "pure-water",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 10,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": true,
+      "group": "alchemy"
+    },
+    {
+      "id": "node-phoenix-ash",
+      "name": "Phoenix Ash Patch",
+      "icon": "fa-leaf",
+      "description": "A patch of phoenix ash ready to be harvested.",
+      "materialId": "phoenix-ash",
+      "bonusId": "",
+      "bonusChance": 0,
+      "dc": 16,
+      "skill": "sur",
+      "minYield": 1,
+      "maxYield": 2,
+      "active": false,
+      "group": "alchemy"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "copper-ingot",
+      "name": "Copper Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "copper-ore",
+          "qty": 3
+        }
+      ],
+      "description": "Smelt copper ore into a clean ingot.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/copper-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "tin-ingot",
+      "name": "Tin Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "tin-ore",
+          "qty": 3
+        }
+      ],
+      "description": "Smelt tin ore into a soft ingot.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/tin-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "iron-ingot",
+      "name": "Iron Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "iron-ore",
+          "qty": 3
+        },
+        {
+          "id": "coal",
+          "qty": 1
+        }
+      ],
+      "description": "Smelt iron ore using coal.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/iron-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "bronze-ingot",
+      "name": "Bronze Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "copper-ingot",
+          "qty": 2
+        },
+        {
+          "id": "tin-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "Alloy copper and tin.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/bronze-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "steel-ingot",
+      "name": "Steel Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "iron-ingot",
+          "qty": 2
+        },
+        {
+          "id": "coal",
+          "qty": 2
+        }
+      ],
+      "description": "Temper iron with carbon.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/steel-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "silver-ingot",
+      "name": "Silver Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "silver-ore",
+          "qty": 3
+        }
+      ],
+      "description": "Refine precious silver.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/silver-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "gold-ingot",
+      "name": "Gold Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "gold-ore",
+          "qty": 3
+        }
+      ],
+      "description": "Refine pure gold.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/gold-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "mithral-ingot",
+      "name": "Mithral Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "mithral-ore",
+          "qty": 3
+        },
+        {
+          "id": "quartz",
+          "qty": 1
+        }
+      ],
+      "description": "Refine lightweight mithral.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/mithral-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "adamantine-ingot",
+      "name": "Adamantine Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 4,
+      "ingredients": [
+        {
+          "id": "adamantine-ore",
+          "qty": 3
+        },
+        {
+          "id": "coal",
+          "qty": 2
+        }
+      ],
+      "description": "Smelt adamantine in a high-temperature furnace.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/adamantine-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 20,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "starmetal-ingot",
+      "name": "Starmetal Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 4,
+      "ingredients": [
+        {
+          "id": "starmetal-ore",
+          "qty": 3
+        },
+        {
+          "id": "azurite",
+          "qty": 1
+        }
+      ],
+      "description": "Stabilize rare starmetal.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/starmetal-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 20,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "moonsteel-ingot",
+      "name": "Moonsteel Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 4,
+      "ingredients": [
+        {
+          "id": "mithral-ingot",
+          "qty": 1
+        },
+        {
+          "id": "moonstone",
+          "qty": 2
+        }
+      ],
+      "description": "Alloy mithral and moonstone.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/moonsteel-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 20,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "blacksteel-ingot",
+      "name": "Blacksteel Ingot",
+      "category": "metallurgy",
+      "subcategory": "Smelting",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "steel-ingot",
+          "qty": 2
+        },
+        {
+          "id": "obsidian",
+          "qty": 1
+        }
+      ],
+      "description": "Darken steel with obsidian dust.",
+      "icon": "fa-fire-burner",
+      "img": "modules/gathering-crafting/icons/v2/blacksteel-ingot.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "copper-wire",
+      "name": "Copper Wire",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "copper-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "Fine wire for metal fittings.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-copper-wire.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "tin-solder",
+      "name": "Tin Solder",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "tin-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "Solder used for precise metal joints.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-tin-solder.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "iron-nails",
+      "name": "Iron Nails",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "iron-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "A bundle of 20 forged nails.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-iron-nails.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "bronze-buckles",
+      "name": "Bronze Buckles",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "bronze-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "Durable fastening hardware.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-bronze-buckles.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "iron-chain",
+      "name": "Iron Chain",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "iron-ingot",
+          "qty": 2
+        }
+      ],
+      "description": "A sturdy length of iron chain.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-iron-chain.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "steel-rivets",
+      "name": "Steel Rivets",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "steel-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "A set of reinforced rivets.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-steel-rivets.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "copper-bracers",
+      "name": "Copper Bracers",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "copper-ingot",
+          "qty": 2
+        },
+        {
+          "id": "tin-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "Decorative protective bracers; GM may link a game item.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-copper-bracers.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "bronze-shield-boss",
+      "name": "Bronze Shield Boss",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "bronze-ingot",
+          "qty": 2
+        }
+      ],
+      "description": "Metal shield reinforcement.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-bronze-shield-boss.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "iron-dagger",
+      "name": "Iron Dagger",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "iron-ingot",
+          "qty": 2
+        }
+      ],
+      "description": "A hand-forged dagger blueprint; link a dnd5e weapon for attack rolls.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-iron-dagger.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "steel-dagger",
+      "name": "Steel Dagger",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "steel-ingot",
+          "qty": 2
+        }
+      ],
+      "description": "Tempered steel dagger blueprint; link a dnd5e weapon for attack rolls.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-steel-dagger.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "silvered-blade",
+      "name": "Silvered Blade",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "silver-ingot",
+          "qty": 2
+        },
+        {
+          "id": "steel-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "Silvered weapon blueprint; GM determines combat properties.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-silvered-blade.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "golden-seal",
+      "name": "Golden Seal",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "gold-ingot",
+          "qty": 1
+        },
+        {
+          "id": "copper-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "An engraved metal seal.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-golden-seal.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "steel-gauntlets",
+      "name": "Steel Gauntlets",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "steel-ingot",
+          "qty": 3
+        }
+      ],
+      "description": "Protective forged gauntlets; link equipment for armor effects.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-steel-gauntlets.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "steel-helm",
+      "name": "Steel Helm",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "steel-ingot",
+          "qty": 3
+        }
+      ],
+      "description": "Reinforced metal helm; GM-defined armor properties.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-steel-helm.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "steel-shield",
+      "name": "Steel Shield",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "steel-ingot",
+          "qty": 4
+        },
+        {
+          "id": "bronze-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "Metal shield blueprint; link equipment to gain AC.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-steel-shield.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "steel-sword",
+      "name": "Steel Sword",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "steel-ingot",
+          "qty": 4
+        }
+      ],
+      "description": "Longsword blueprint; link a weapon for attacks.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-steel-sword.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "silver-circlet",
+      "name": "Silver Circlet",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "silver-ingot",
+          "qty": 2
+        },
+        {
+          "id": "quartz",
+          "qty": 1
+        }
+      ],
+      "description": "Finely wrought circlet.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-silver-circlet.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "mithral-chain",
+      "name": "Mithral Chain",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "mithral-ingot",
+          "qty": 3
+        }
+      ],
+      "description": "Lightweight mithral chain blueprint.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-mithral-chain.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "mithral-blade",
+      "name": "Mithral Blade",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "mithral-ingot",
+          "qty": 4
+        },
+        {
+          "id": "silver-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "Rare lightweight blade blueprint; GM-defined mechanics.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-mithral-blade.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "blacksteel-armor-plates",
+      "name": "Blacksteel Plates",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "blacksteel-ingot",
+          "qty": 4
+        }
+      ],
+      "description": "Dark metal armor plates blueprint.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-blacksteel-armor-plates.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "adamantine-shield",
+      "name": "Adamantine Shield",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 4,
+      "ingredients": [
+        {
+          "id": "adamantine-ingot",
+          "qty": 4
+        },
+        {
+          "id": "steel-ingot",
+          "qty": 1
+        }
+      ],
+      "description": "Extremely durable shield blueprint; GM-defined properties.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-adamantine-shield.svg",
+      "outputQuantity": 1,
+      "dc": 20,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "adamantine-blade",
+      "name": "Adamantine Blade",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 4,
+      "ingredients": [
+        {
+          "id": "adamantine-ingot",
+          "qty": 5
+        },
+        {
+          "id": "coal",
+          "qty": 1
+        }
+      ],
+      "description": "Dense metal blade blueprint; GM-defined mechanics.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-adamantine-blade.svg",
+      "outputQuantity": 1,
+      "dc": 20,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "moonsteel-diadem",
+      "name": "Moonsteel Diadem",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 4,
+      "ingredients": [
+        {
+          "id": "moonsteel-ingot",
+          "qty": 3
+        },
+        {
+          "id": "moonstone",
+          "qty": 1
+        }
+      ],
+      "description": "Ceremonial diadem of moonsteel.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-moonsteel-diadem.svg",
+      "outputQuantity": 1,
+      "dc": 20,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "starmetal-spearhead",
+      "name": "Starmetal Spearhead",
+      "category": "metallurgy",
+      "subcategory": "Forging",
+      "tier": 4,
+      "ingredients": [
+        {
+          "id": "starmetal-ingot",
+          "qty": 3
+        },
+        {
+          "id": "quartz",
+          "qty": 2
+        }
+      ],
+      "description": "Rare spearhead blueprint; GM-defined attack item.",
+      "icon": "fa-hammer",
+      "img": "modules/gathering-crafting/icons/v2/craft-starmetal-spearhead.svg",
+      "outputQuantity": 1,
+      "dc": 20,
+      "outputItemUuid": "",
+      "effect": "",
+      "outputType": "loot"
+    },
+    {
+      "id": "minor-healing-potion",
+      "name": "Minor Healing Potion",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "redroot",
+          "qty": 1
+        },
+        {
+          "id": "silverleaf",
+          "qty": 1
+        }
+      ],
+      "description": "Restore 1d4 + 1 hit points.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-minor-healing-potion.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "healing:1d4+1",
+      "outputType": "consumable"
+    },
+    {
+      "id": "healing-potion",
+      "name": "Healing Potion",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "redroot",
+          "qty": 1
+        },
+        {
+          "id": "sunpetal",
+          "qty": 1
+        }
+      ],
+      "description": "Restore 2d4 + 2 hit points.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-healing-potion.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "healing:2d4+2",
+      "outputType": "consumable"
+    },
+    {
+      "id": "greater-healing-potion",
+      "name": "Greater Healing Potion",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "redroot",
+          "qty": 1
+        },
+        {
+          "id": "ghost-orchid",
+          "qty": 1
+        }
+      ],
+      "description": "Restore 4d4 + 4 hit points.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-greater-healing-potion.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "healing:4d4+4",
+      "outputType": "consumable"
+    },
+    {
+      "id": "superior-healing-potion",
+      "name": "Superior Healing Potion",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "ghost-orchid",
+          "qty": 1
+        },
+        {
+          "id": "crimson-sap",
+          "qty": 1
+        }
+      ],
+      "description": "Restore 8d4 + 8 hit points.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-superior-healing-potion.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "healing:8d4+8",
+      "outputType": "consumable"
+    },
+    {
+      "id": "supreme-healing-potion",
+      "name": "Supreme Healing Potion",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 4,
+      "ingredients": [
+        {
+          "id": "phoenix-ash",
+          "qty": 2
+        },
+        {
+          "id": "ghost-orchid",
+          "qty": 1
+        }
+      ],
+      "description": "Restore 10d4 + 20 hit points.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-supreme-healing-potion.svg",
+      "outputQuantity": 1,
+      "dc": 20,
+      "outputItemUuid": "",
+      "effect": "healing:10d4+20",
+      "outputType": "consumable"
+    },
+    {
+      "id": "mana-restorative",
+      "name": "Arcane Clarity Tonic",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "moonbloom",
+          "qty": 1
+        },
+        {
+          "id": "blue-moss",
+          "qty": 1
+        }
+      ],
+      "description": "For 10 minutes, gain advantage on one Arcana check.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-mana-restorative.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "advantage:arcana",
+      "outputType": "consumable"
+    },
+    {
+      "id": "antitoxin",
+      "name": "Antitoxin Draught",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "bitterroot",
+          "qty": 1
+        },
+        {
+          "id": "bogmint",
+          "qty": 1
+        }
+      ],
+      "description": "Gain advantage on saving throws against poison for 1 hour.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-antitoxin.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "advantage:poison-save",
+      "outputType": "consumable"
+    },
+    {
+      "id": "clear-mind-tonic",
+      "name": "Clear Mind Tonic",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "bogmint",
+          "qty": 1
+        },
+        {
+          "id": "dawnberry",
+          "qty": 1
+        }
+      ],
+      "description": "Gain advantage on your next Intelligence check within 1 hour.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-clear-mind-tonic.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "advantage:int-check",
+      "outputType": "consumable"
+    },
+    {
+      "id": "steady-hand-tonic",
+      "name": "Steady Hand Tonic",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "silverleaf",
+          "qty": 1
+        },
+        {
+          "id": "thornbriar",
+          "qty": 1
+        }
+      ],
+      "description": "Gain advantage on your next Sleight of Hand check within 1 hour.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-steady-hand-tonic.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "advantage:sleight",
+      "outputType": "consumable"
+    },
+    {
+      "id": "night-eye-elixir",
+      "name": "Night-Eye Elixir",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "nightshade",
+          "qty": 1
+        },
+        {
+          "id": "glowshroom",
+          "qty": 1
+        }
+      ],
+      "description": "Gain 30 ft. darkvision for 1 hour; GM adjudicates existing darkvision.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-night-eye-elixir.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "darkvision:30",
+      "outputType": "consumable"
+    },
+    {
+      "id": "emberguard-draught",
+      "name": "Emberguard Draught",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "frostleaf",
+          "qty": 1
+        },
+        {
+          "id": "ashfern",
+          "qty": 1
+        }
+      ],
+      "description": "Gain resistance to fire damage for 1 minute.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-emberguard-draught.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "resistance:fire",
+      "outputType": "consumable"
+    },
+    {
+      "id": "frostguard-draught",
+      "name": "Frostguard Draught",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "embercap",
+          "qty": 1
+        },
+        {
+          "id": "sunpetal",
+          "qty": 1
+        }
+      ],
+      "description": "Gain resistance to cold damage for 1 minute.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-frostguard-draught.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "resistance:cold",
+      "outputType": "consumable"
+    },
+    {
+      "id": "stormguard-draught",
+      "name": "Stormguard Draught",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "stormthistle",
+          "qty": 1
+        },
+        {
+          "id": "sea-salt",
+          "qty": 1
+        }
+      ],
+      "description": "Gain resistance to lightning damage for 1 minute.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-stormguard-draught.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "resistance:lightning",
+      "outputType": "consumable"
+    },
+    {
+      "id": "toxinward-draught",
+      "name": "Toxinward Draught",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "bitterroot",
+          "qty": 1
+        },
+        {
+          "id": "nightshade",
+          "qty": 1
+        }
+      ],
+      "description": "Gain resistance to poison damage for 1 minute.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-toxinward-draught.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "resistance:poison",
+      "outputType": "consumable"
+    },
+    {
+      "id": "cinder-breath",
+      "name": "Cinder Breath Phial",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "embercap",
+          "qty": 1
+        },
+        {
+          "id": "ashfern",
+          "qty": 1
+        }
+      ],
+      "description": "Exhale cinders in a 10-ft cone; targets make DC 12 Dex save or take 2d6 fire damage. GM resolves the effect.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-cinder-breath.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "damage:2d6:fire",
+      "outputType": "consumable"
+    },
+    {
+      "id": "frost-breath",
+      "name": "Frost Breath Phial",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "frostleaf",
+          "qty": 1
+        },
+        {
+          "id": "mistflower",
+          "qty": 1
+        }
+      ],
+      "description": "Exhale frost in a 10-ft cone; targets make DC 12 Dex save or take 2d6 cold damage. GM resolves the effect.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-frost-breath.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "damage:2d6:cold",
+      "outputType": "consumable"
+    },
+    {
+      "id": "spark-bottle",
+      "name": "Spark Bottle",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "stormthistle",
+          "qty": 1
+        },
+        {
+          "id": "glowshroom",
+          "qty": 1
+        }
+      ],
+      "description": "Throw up to 20 ft; 1 target makes DC 12 Dex save or takes 2d6 lightning damage. GM resolves the effect.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-spark-bottle.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "damage:2d6:lightning",
+      "outputType": "consumable"
+    },
+    {
+      "id": "acid-flask",
+      "name": "Acid Flask",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "marsh-kelp",
+          "qty": 1
+        },
+        {
+          "id": "sulfur",
+          "qty": 1
+        }
+      ],
+      "description": "Throw up to 20 ft; 1 target makes DC 11 Dex save or takes 2d6 acid damage. GM resolves the effect.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-acid-flask.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "damage:2d6:acid",
+      "outputType": "consumable"
+    },
+    {
+      "id": "sleep-draught",
+      "name": "Sleep Draught",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "dreamlily",
+          "qty": 1
+        },
+        {
+          "id": "duskshade",
+          "qty": 1
+        }
+      ],
+      "description": "Unwilling target makes DC 12 Con save or is drowsy for 1 minute; GM adjudicates.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-sleep-draught.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "save:con",
+      "outputType": "consumable"
+    },
+    {
+      "id": "dreamwalk-tonic",
+      "name": "Dreamwalk Tonic",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "dreamlily",
+          "qty": 1
+        },
+        {
+          "id": "ghost-orchid",
+          "qty": 1
+        }
+      ],
+      "description": "For 10 minutes gain advantage on checks to interpret dreams.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-dreamwalk-tonic.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "advantage:dream",
+      "outputType": "consumable"
+    },
+    {
+      "id": "swiftstep-elixir",
+      "name": "Swiftstep Elixir",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "stormthistle",
+          "qty": 1
+        },
+        {
+          "id": "sunpetal",
+          "qty": 1
+        }
+      ],
+      "description": "Increase walking speed by 10 ft for 10 minutes.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-swiftstep-elixir.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "speed:10",
+      "outputType": "consumable"
+    },
+    {
+      "id": "silentstep-elixir",
+      "name": "Silentstep Elixir",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "mistflower",
+          "qty": 1
+        },
+        {
+          "id": "duskshade",
+          "qty": 1
+        }
+      ],
+      "description": "Gain advantage on one Stealth check within 1 hour.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-silentstep-elixir.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "advantage:stealth",
+      "outputType": "consumable"
+    },
+    {
+      "id": "stoneheart-tonic",
+      "name": "Stoneheart Tonic",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "thornbriar",
+          "qty": 1
+        },
+        {
+          "id": "redroot",
+          "qty": 1
+        }
+      ],
+      "description": "Gain 1d4 temporary hit points for 1 hour.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-stoneheart-tonic.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "temp:1d4",
+      "outputType": "consumable"
+    },
+    {
+      "id": "ironhide-tonic",
+      "name": "Ironhide Tonic",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "ashfern",
+          "qty": 1
+        },
+        {
+          "id": "crimson-sap",
+          "qty": 1
+        }
+      ],
+      "description": "Gain 2d4 temporary hit points for 1 hour.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-ironhide-tonic.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "temp:2d4",
+      "outputType": "consumable"
+    },
+    {
+      "id": "breath-of-tides",
+      "name": "Breath of Tides",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "marsh-kelp",
+          "qty": 1
+        },
+        {
+          "id": "blue-moss",
+          "qty": 1
+        }
+      ],
+      "description": "Breathe underwater for 10 minutes.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-breath-of-tides.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "waterbreathing",
+      "outputType": "consumable"
+    },
+    {
+      "id": "dew-of-focus",
+      "name": "Dew of Focus",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "silverleaf",
+          "qty": 1
+        },
+        {
+          "id": "pure-water",
+          "qty": 1
+        }
+      ],
+      "description": "Gain advantage on one Perception check within 1 hour.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-dew-of-focus.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "advantage:perception",
+      "outputType": "consumable"
+    },
+    {
+      "id": "warmblood-draught",
+      "name": "Warmblood Draught",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "embercap",
+          "qty": 1
+        },
+        {
+          "id": "dawnberry",
+          "qty": 1
+        }
+      ],
+      "description": "Ignore mundane cold discomfort for 1 hour (not damage resistance).",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-warmblood-draught.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "utility:warmth",
+      "outputType": "consumable"
+    },
+    {
+      "id": "coolblood-draught",
+      "name": "Coolblood Draught",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "frostleaf",
+          "qty": 1
+        },
+        {
+          "id": "bogmint",
+          "qty": 1
+        }
+      ],
+      "description": "Ignore mundane heat discomfort for 1 hour (not damage resistance).",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-coolblood-draught.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "utility:cooling",
+      "outputType": "consumable"
+    },
+    {
+      "id": "soothing-mixture",
+      "name": "Soothing Mixture",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "moonbloom",
+          "qty": 1
+        },
+        {
+          "id": "bogmint",
+          "qty": 1
+        }
+      ],
+      "description": "Gain advantage on one check to calm a frightened creature within 1 hour.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-soothing-mixture.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "advantage:persuasion",
+      "outputType": "consumable"
+    },
+    {
+      "id": "courage-tonic",
+      "name": "Courage Tonic",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 2,
+      "ingredients": [
+        {
+          "id": "sunpetal",
+          "qty": 1
+        },
+        {
+          "id": "thornbriar",
+          "qty": 1
+        }
+      ],
+      "description": "Gain advantage on your next saving throw against frightened within 1 hour.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-courage-tonic.svg",
+      "outputQuantity": 1,
+      "dc": 14,
+      "outputItemUuid": "",
+      "effect": "advantage:fear-save",
+      "outputType": "consumable"
+    },
+    {
+      "id": "mistveil-phial",
+      "name": "Mistveil Phial",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "mistflower",
+          "qty": 1
+        },
+        {
+          "id": "shade-spore",
+          "qty": 1
+        }
+      ],
+      "description": "Create a 5-ft cloud of mist for 1 round; GM adjudicates obscurement.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-mistveil-phial.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "utility:mist",
+      "outputType": "consumable"
+    },
+    {
+      "id": "shimmerlight-phial",
+      "name": "Shimmerlight Phial",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 1,
+      "ingredients": [
+        {
+          "id": "glowshroom",
+          "qty": 1
+        },
+        {
+          "id": "quartz",
+          "qty": 1
+        }
+      ],
+      "description": "Shed dim light in a 10-ft radius for 10 minutes.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-shimmerlight-phial.svg",
+      "outputQuantity": 1,
+      "dc": 11,
+      "outputItemUuid": "",
+      "effect": "utility:light",
+      "outputType": "consumable"
+    },
+    {
+      "id": "bloodrush-tonic",
+      "name": "Bloodrush Tonic",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "crimson-sap",
+          "qty": 1
+        },
+        {
+          "id": "embercap",
+          "qty": 1
+        }
+      ],
+      "description": "Gain advantage on one Athletics check within 10 minutes.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-bloodrush-tonic.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "advantage:athletics",
+      "outputType": "consumable"
+    },
+    {
+      "id": "moon-sight-tonic",
+      "name": "Moon-Sight Tonic",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "moonbloom",
+          "qty": 1
+        },
+        {
+          "id": "starflower",
+          "qty": 1
+        }
+      ],
+      "description": "Gain advantage on one Investigation check within 1 hour.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-moon-sight-tonic.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "advantage:investigation",
+      "outputType": "consumable"
+    },
+    {
+      "id": "purifying-draught",
+      "name": "Purifying Draught",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 3,
+      "ingredients": [
+        {
+          "id": "ghost-orchid",
+          "qty": 1
+        },
+        {
+          "id": "sea-salt",
+          "qty": 1
+        }
+      ],
+      "description": "End one mundane intoxication or minor nonmagical ailment at GM discretion.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-purifying-draught.svg",
+      "outputQuantity": 1,
+      "dc": 17,
+      "outputItemUuid": "",
+      "effect": "utility:purify",
+      "outputType": "consumable"
+    },
+    {
+      "id": "phoenix-renewal",
+      "name": "Phoenix Renewal Elixir",
+      "category": "alchemy",
+      "subcategory": "Potions & Tonics",
+      "tier": 4,
+      "ingredients": [
+        {
+          "id": "phoenix-ash",
+          "qty": 2
+        },
+        {
+          "id": "starflower",
+          "qty": 1
+        }
+      ],
+      "description": "Restore 6d4 + 6 hit points and end the poisoned condition.",
+      "icon": "fa-flask-vial",
+      "img": "modules/gathering-crafting/icons/v2/craft-phoenix-renewal.svg",
+      "outputQuantity": 1,
+      "dc": 20,
+      "outputItemUuid": "",
+      "effect": "healing:6d4+6",
+      "outputType": "consumable"
+    }
+  ],
+  "catalogVersion": 2
+}

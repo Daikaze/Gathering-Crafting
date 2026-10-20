@@ -1,0 +1,73 @@
+id,name,category,subcategory,tier,ingredients,description
+copper-ingot,Copper Ingot,metallurgy,Smelting,1,3 copper-ore,Smelt copper ore into a clean ingot.
+tin-ingot,Tin Ingot,metallurgy,Smelting,1,3 tin-ore,Smelt tin ore into a soft ingot.
+iron-ingot,Iron Ingot,metallurgy,Smelting,1,3 iron-ore+1 coal,Smelt iron ore using coal.
+bronze-ingot,Bronze Ingot,metallurgy,Smelting,1,2 copper-ingot+1 tin-ingot,Alloy copper and tin.
+steel-ingot,Steel Ingot,metallurgy,Smelting,2,2 iron-ingot+2 coal,Temper iron with carbon.
+silver-ingot,Silver Ingot,metallurgy,Smelting,2,3 silver-ore,Refine precious silver.
+gold-ingot,Gold Ingot,metallurgy,Smelting,2,3 gold-ore,Refine pure gold.
+mithral-ingot,Mithral Ingot,metallurgy,Smelting,3,3 mithral-ore+1 quartz,Refine lightweight mithral.
+adamantine-ingot,Adamantine Ingot,metallurgy,Smelting,4,3 adamantine-ore+2 coal,Smelt adamantine in a high-temperature furnace.
+starmetal-ingot,Starmetal Ingot,metallurgy,Smelting,4,3 starmetal-ore+1 azurite,Stabilize rare starmetal.
+moonsteel-ingot,Moonsteel Ingot,metallurgy,Smelting,4,1 mithral-ingot+2 moonstone,Alloy mithral and moonstone.
+blacksteel-ingot,Blacksteel Ingot,metallurgy,Smelting,3,2 steel-ingot+1 obsidian,Darken steel with obsidian dust.
+copper-wire,Copper Wire,metallurgy,Forging,1,1 copper-ingot,Fine wire for metal fittings.
+tin-solder,Tin Solder,metallurgy,Forging,1,1 tin-ingot,Solder used for precise metal joints.
+iron-nails,Iron Nails,metallurgy,Forging,1,1 iron-ingot,A bundle of 20 forged nails.
+bronze-buckles,Bronze Buckles,metallurgy,Forging,1,1 bronze-ingot,Durable fastening hardware.
+iron-chain,Iron Chain,metallurgy,Forging,1,2 iron-ingot,A sturdy length of iron chain.
+steel-rivets,Steel Rivets,metallurgy,Forging,2,1 steel-ingot,A set of reinforced rivets.
+copper-bracers,Copper Bracers,metallurgy,Forging,1,2 copper-ingot+1 tin-ingot,Decorative protective bracers; GM may link a game item.
+bronze-shield-boss,Bronze Shield Boss,metallurgy,Forging,1,2 bronze-ingot,Metal shield reinforcement.
+iron-dagger,Iron Dagger,metallurgy,Forging,1,2 iron-ingot,A hand-forged dagger blueprint; link a dnd5e weapon for attack rolls.
+steel-dagger,Steel Dagger,metallurgy,Forging,2,2 steel-ingot,Tempered steel dagger blueprint; link a dnd5e weapon for attack rolls.
+silvered-blade,Silvered Blade,metallurgy,Forging,2,2 silver-ingot+1 steel-ingot,Silvered weapon blueprint; GM determines combat properties.
+golden-seal,Golden Seal,metallurgy,Forging,2,1 gold-ingot+1 copper-ingot,An engraved metal seal.
+steel-gauntlets,Steel Gauntlets,metallurgy,Forging,2,3 steel-ingot,Protective forged gauntlets; link equipment for armor effects.
+steel-helm,Steel Helm,metallurgy,Forging,2,3 steel-ingot,Reinforced metal helm; GM-defined armor properties.
+steel-shield,Steel Shield,metallurgy,Forging,2,4 steel-ingot+1 bronze-ingot,Metal shield blueprint; link equipment to gain AC.
+steel-sword,Steel Sword,metallurgy,Forging,2,4 steel-ingot,Longsword blueprint; link a weapon for attacks.
+silver-circlet,Silver Circlet,metallurgy,Forging,2,2 silver-ingot+1 quartz,Finely wrought circlet.
+mithral-chain,Mithral Chain,metallurgy,Forging,3,3 mithral-ingot,Lightweight mithral chain blueprint.
+mithral-blade,Mithral Blade,metallurgy,Forging,3,4 mithral-ingot+1 silver-ingot,Rare lightweight blade blueprint; GM-defined mechanics.
+blacksteel-armor-plates,Blacksteel Plates,metallurgy,Forging,3,4 blacksteel-ingot,Dark metal armor plates blueprint.
+adamantine-shield,Adamantine Shield,metallurgy,Forging,4,4 adamantine-ingot+1 steel-ingot,Extremely durable shield blueprint; GM-defined properties.
+adamantine-blade,Adamantine Blade,metallurgy,Forging,4,5 adamantine-ingot+1 coal,Dense metal blade blueprint; GM-defined mechanics.
+moonsteel-diadem,Moonsteel Diadem,metallurgy,Forging,4,3 moonsteel-ingot+1 moonstone,Ceremonial diadem of moonsteel.
+starmetal-spearhead,Starmetal Spearhead,metallurgy,Forging,4,3 starmetal-ingot+2 quartz,Rare spearhead blueprint; GM-defined attack item.
+minor-healing-potion,Minor Healing Potion,alchemy,Potions & Tonics,1,1 redroot+1 silverleaf,Restore 1d4 + 1 hit points.
+healing-potion,Healing Potion,alchemy,Potions & Tonics,1,1 redroot+1 sunpetal,Restore 2d4 + 2 hit points.
+greater-healing-potion,Greater Healing Potion,alchemy,Potions & Tonics,2,1 redroot+1 ghost-orchid,Restore 4d4 + 4 hit points.
+superior-healing-potion,Superior Healing Potion,alchemy,Potions & Tonics,3,1 ghost-orchid+1 crimson-sap,Restore 8d4 + 8 hit points.
+supreme-healing-potion,Supreme Healing Potion,alchemy,Potions & Tonics,4,2 phoenix-ash+1 ghost-orchid,Restore 10d4 + 20 hit points.
+mana-restorative,Arcane Clarity Tonic,alchemy,Potions & Tonics,2,1 moonbloom+1 blue-moss,"For 10 minutes, gain advantage on one Arcana check."
+antitoxin,Antitoxin Draught,alchemy,Potions & Tonics,1,1 bitterroot+1 bogmint,Gain advantage on saving throws against poison for 1 hour.
+clear-mind-tonic,Clear Mind Tonic,alchemy,Potions & Tonics,1,1 bogmint+1 dawnberry,Gain advantage on your next Intelligence check within 1 hour.
+steady-hand-tonic,Steady Hand Tonic,alchemy,Potions & Tonics,1,1 silverleaf+1 thornbriar,Gain advantage on your next Sleight of Hand check within 1 hour.
+night-eye-elixir,Night-Eye Elixir,alchemy,Potions & Tonics,2,1 nightshade+1 glowshroom,Gain 30 ft. darkvision for 1 hour; GM adjudicates existing darkvision.
+emberguard-draught,Emberguard Draught,alchemy,Potions & Tonics,2,1 frostleaf+1 ashfern,Gain resistance to fire damage for 1 minute.
+frostguard-draught,Frostguard Draught,alchemy,Potions & Tonics,2,1 embercap+1 sunpetal,Gain resistance to cold damage for 1 minute.
+stormguard-draught,Stormguard Draught,alchemy,Potions & Tonics,2,1 stormthistle+1 sea-salt,Gain resistance to lightning damage for 1 minute.
+toxinward-draught,Toxinward Draught,alchemy,Potions & Tonics,2,1 bitterroot+1 nightshade,Gain resistance to poison damage for 1 minute.
+cinder-breath,Cinder Breath Phial,alchemy,Potions & Tonics,2,1 embercap+1 ashfern,Exhale cinders in a 10-ft cone; targets make DC 12 Dex save or take 2d6 fire damage. GM resolves the effect.
+frost-breath,Frost Breath Phial,alchemy,Potions & Tonics,2,1 frostleaf+1 mistflower,Exhale frost in a 10-ft cone; targets make DC 12 Dex save or take 2d6 cold damage. GM resolves the effect.
+spark-bottle,Spark Bottle,alchemy,Potions & Tonics,2,1 stormthistle+1 glowshroom,Throw up to 20 ft; 1 target makes DC 12 Dex save or takes 2d6 lightning damage. GM resolves the effect.
+acid-flask,Acid Flask,alchemy,Potions & Tonics,1,1 marsh-kelp+1 sulfur,Throw up to 20 ft; 1 target makes DC 11 Dex save or takes 2d6 acid damage. GM resolves the effect.
+sleep-draught,Sleep Draught,alchemy,Potions & Tonics,2,1 dreamlily+1 duskshade,Unwilling target makes DC 12 Con save or is drowsy for 1 minute; GM adjudicates.
+dreamwalk-tonic,Dreamwalk Tonic,alchemy,Potions & Tonics,3,1 dreamlily+1 ghost-orchid,For 10 minutes gain advantage on checks to interpret dreams.
+swiftstep-elixir,Swiftstep Elixir,alchemy,Potions & Tonics,2,1 stormthistle+1 sunpetal,Increase walking speed by 10 ft for 10 minutes.
+silentstep-elixir,Silentstep Elixir,alchemy,Potions & Tonics,2,1 mistflower+1 duskshade,Gain advantage on one Stealth check within 1 hour.
+stoneheart-tonic,Stoneheart Tonic,alchemy,Potions & Tonics,2,1 thornbriar+1 redroot,Gain 1d4 temporary hit points for 1 hour.
+ironhide-tonic,Ironhide Tonic,alchemy,Potions & Tonics,3,1 ashfern+1 crimson-sap,Gain 2d4 temporary hit points for 1 hour.
+breath-of-tides,Breath of Tides,alchemy,Potions & Tonics,2,1 marsh-kelp+1 blue-moss,Breathe underwater for 10 minutes.
+dew-of-focus,Dew of Focus,alchemy,Potions & Tonics,1,1 silverleaf+1 pure-water,Gain advantage on one Perception check within 1 hour.
+warmblood-draught,Warmblood Draught,alchemy,Potions & Tonics,1,1 embercap+1 dawnberry,Ignore mundane cold discomfort for 1 hour (not damage resistance).
+coolblood-draught,Coolblood Draught,alchemy,Potions & Tonics,1,1 frostleaf+1 bogmint,Ignore mundane heat discomfort for 1 hour (not damage resistance).
+soothing-mixture,Soothing Mixture,alchemy,Potions & Tonics,1,1 moonbloom+1 bogmint,Gain advantage on one check to calm a frightened creature within 1 hour.
+courage-tonic,Courage Tonic,alchemy,Potions & Tonics,2,1 sunpetal+1 thornbriar,Gain advantage on your next saving throw against frightened within 1 hour.
+mistveil-phial,Mistveil Phial,alchemy,Potions & Tonics,3,1 mistflower+1 shade-spore,Create a 5-ft cloud of mist for 1 round; GM adjudicates obscurement.
+shimmerlight-phial,Shimmerlight Phial,alchemy,Potions & Tonics,1,1 glowshroom+1 quartz,Shed dim light in a 10-ft radius for 10 minutes.
+bloodrush-tonic,Bloodrush Tonic,alchemy,Potions & Tonics,3,1 crimson-sap+1 embercap,Gain advantage on one Athletics check within 10 minutes.
+moon-sight-tonic,Moon-Sight Tonic,alchemy,Potions & Tonics,3,1 moonbloom+1 starflower,Gain advantage on one Investigation check within 1 hour.
+purifying-draught,Purifying Draught,alchemy,Potions & Tonics,3,1 ghost-orchid+1 sea-salt,End one mundane intoxication or minor nonmagical ailment at GM discretion.
+phoenix-renewal,Phoenix Renewal Elixir,alchemy,Potions & Tonics,4,2 phoenix-ash+1 starflower,Restore 6d4 + 6 hit points and end the poisoned condition.
