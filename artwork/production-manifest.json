@@ -2755,8 +2755,8 @@
       "generationRequest": {
         "provider": "Canva",
         "date": "2026-10-20",
-        "state": "submitted",
-        "note": "Standalone request accepted and Canva result viewer handles polling. Final image not yet exported to repo or human QA approved."
+        "state": "failed",
+        "note": "Previous job failed due to a provider copyright/trademark input flag; retry with neutral generic fantasy wording. This item has no approved new artwork."
       }
     },
     {
