@@ -38,8 +38,9 @@ jobs:
           ARCHIVE="dist/gathering-crafting-v${VERSION}.zip"
           unzip -t "$ARCHIVE" >/dev/null
           ACTUAL="$(unzip -Z -1 "$ARCHIVE" | grep -E '^gathering-crafting/icons/(illustrated|handpainted)/.*[.]webp$' | wc -l | tr -d ' ')"
-          test "$ACTUAL" -eq 224 || { echo "Expected 224 bundled item WebP artworks, found $ACTUAL"; exit 1; }
-          echo "Validated 224 art assets inside $ARCHIVE"
+          test "$ACTUAL" -ge 224 || { echo "Expected at least 224 bundled item WebP artworks, found $ACTUAL"; exit 1; }
+          node staging/gathering-crafting/tests/artwork.cjs
+          echo "Validated $ACTUAL bundled WebP assets; all 224 catalogue references resolve in the packaged module"
       - name: Publish zip
         if: github.event_name == 'push'
         run: |
