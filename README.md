@@ -1,4 +1,4 @@
-# Gathering & Crafting v0.8.2 — The Averis Workshop
+# Gathering & Crafting v1.0.0 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -33,7 +33,7 @@ For players there are four straightforward tabs: **Gather / Alchemy / Blacksmith
 - **Dozens of utility consumables** are real dnd5e consumables that can be used/consumed immediately from Inventory. Their item description and chat card spell out their effect; non-healing conditions, transformations, resistances, speed, advantage and durations are **GM adjudicated rather than silently automated** in this release. This includes special brews such as **Genderflux Elixir**, **Growth Draught**, **Shrink Sip**, **Featherfall Philter** and many monster-drop recipes. For reliable full automation, the GM can link a prepared dnd5e World Item to any recipe.
 - **Ingots, armor components, jewelry and crafting hardware** are real `loot` Items, not fake weapons or incomplete armor pieces with misleading combat bonuses.
 
-This is a **tested prototype**, not an assertion that every advanced Active Effect has been validated in a live dnd5e 5.3.3 server. The mock tests exercise the inventory and data path; a live-world test is still recommended.
+This release passes automated asset/inventory regression checks, but is **not** an assertion that every advanced Active Effect has been validated in a live dnd5e 5.3.3 server. The mock tests exercise the inventory and data path; a live-world test is still recommended.
 
 ## Install / update
 
@@ -41,7 +41,7 @@ This is a **tested prototype**, not an assertion that every advanced Active Effe
 
 `https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/module.json`
 
-Or extract the latest ZIP into `Data/modules/gathering-crafting`. Enable in a dnd5e 5.3.3 world and press **Alt+G**. The existing world database is backed up, then only the bundled icon references and schema version are upgraded. All GM-authored recipes, edits, inventory and old compendium items are preserved.
+Or extract the latest ZIP into `Data/modules/` (the ZIP already contains the `gathering-crafting/` directory). Enable in a dnd5e 5.3.3 world and press **Alt+G**. The existing world database is backed up, then only the bundled icon references and schema version are upgraded. All GM-authored recipes, edits, inventory and old compendium items are preserved.
 
 ## GM setup
 
@@ -49,6 +49,13 @@ Open the gear in the header → GM Studio. Define new materials, monster drops a
 
 `data/materials.csv` and `data/recipes.csv` are portable reference catalogs for offline review. `data/catalog.json` holds the same structured settings, resources and recipes. Check `CHANGELOG.md` for upgrade notes.
 
+
+## v1.0.0 release validation
+
+- All 224 catalogue entries have a distinct, locally bundled WebP file. **No image is missing** from the archive; both professions and the materials catalog load without an external item-art module.
+- Eleven items currently use individual original paintings. The other 213 entries use their own illustrated variant files, **not** separate independent original paintings. This difference is intentionally disclosed and remains a visual-art production task.
+- GitHub Actions tests the catalogue, recipes, inventory rollback, scroll retention, native D&D5e item data, compendium upgrades and all artwork paths. It also audits the installable ZIP for 224 WebP files.
+- A Foundry V14 live-world validation is still recommended before replacing a production campaign install. Back up your World folder before upgrading.
 
 ## v0.6.0 highlights
 
