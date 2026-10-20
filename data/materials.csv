@@ -1,103 +1,103 @@
 id,name,group,tier,description,img
-brimstone,Brimstone,Ore & Mineral,1,"A sulfurous yellow mineral with a sharp, infernal smell.",modules/gathering-crafting/icons/v6/brimstone.svg
-coal,Coal,Ore & Mineral,1,Unprocessed coal gathered from mineral deposits.,modules/gathering-crafting/icons/v6/coal.svg
-copper-ore,Copper Ore,Ore & Mineral,1,Unprocessed copper ore gathered from mineral deposits.,modules/gathering-crafting/icons/v6/copper-ore.svg
-hematite,Hematite,Ore & Mineral,1,Dense red-black ironstone used in pigments and reinforcing smelts.,modules/gathering-crafting/icons/v6/hematite.svg
-iron-ore,Iron Ore,Ore & Mineral,1,Unprocessed iron ore gathered from mineral deposits.,modules/gathering-crafting/icons/v6/iron-ore.svg
-nickel-ore,Nickel Ore,Ore & Mineral,1,A grey-green ore valued for resilient alloys. Blacksmiths prize it for tools that resist rust.,modules/gathering-crafting/icons/v6/nickel-ore.svg
-quartz,Quartz,Ore & Mineral,1,Unprocessed quartz gathered from mineral deposits.,modules/gathering-crafting/icons/v6/quartz.svg
-saltpeter,Saltpeter,Ore & Mineral,1,"Dry mineral crystals used in blasting charges, fireworks and reactive brews.",modules/gathering-crafting/icons/v6/saltpeter.svg
-sulfur,Sulfur,Ore & Mineral,1,Unprocessed sulfur gathered from mineral deposits.,modules/gathering-crafting/icons/v6/sulfur.svg
-tin-ore,Tin Ore,Ore & Mineral,1,Unprocessed tin ore gathered from mineral deposits.,modules/gathering-crafting/icons/v6/tin-ore.svg
-azurite,Azurite,Ore & Mineral,2,Unprocessed azurite gathered from mineral deposits.,modules/gathering-crafting/icons/v6/azurite.svg
-cobalt-ore,Cobalt Ore,Ore & Mineral,2,A cool blue ore used in arcane alloys and colorfast enamels.,modules/gathering-crafting/icons/v6/cobalt-ore.svg
-gold-ore,Gold Ore,Ore & Mineral,2,Unprocessed gold ore gathered from mineral deposits.,modules/gathering-crafting/icons/v6/gold-ore.svg
-jade,Jade,Ore & Mineral,2,A polished green stone often cut into amulets and ceremonial fittings.,modules/gathering-crafting/icons/v6/jade.svg
-obsidian,Obsidian,Ore & Mineral,2,Unprocessed obsidian gathered from mineral deposits.,modules/gathering-crafting/icons/v6/obsidian.svg
-silver-ore,Silver Ore,Ore & Mineral,2,Unprocessed silver ore gathered from mineral deposits.,modules/gathering-crafting/icons/v6/silver-ore.svg
-sunstone,Sunstone,Ore & Mineral,2,A warm amber crystal that catches and stores a glimmer of light.,modules/gathering-crafting/icons/v6/sunstone.svg
-mithral-ore,Mithral Ore,Ore & Mineral,3,Unprocessed mithral ore gathered from mineral deposits.,modules/gathering-crafting/icons/v6/mithral-ore.svg
-moonstone,Moonstone,Ore & Mineral,3,Unprocessed moonstone gathered from mineral deposits.,modules/gathering-crafting/icons/v6/moonstone.svg
-platinum-ore,Platinum Ore,Ore & Mineral,3,A pale noble ore used in luxury work and holy regalia.,modules/gathering-crafting/icons/v6/platinum-ore.svg
-adamantine-ore,Adamantine Ore,Ore & Mineral,4,Unprocessed adamantine ore gathered from mineral deposits.,modules/gathering-crafting/icons/v6/adamantine-ore.svg
-dragonshard,Dragonshard,Ore & Mineral,4,A volatile crystal saturated with draconic resonance.,modules/gathering-crafting/icons/v6/dragonshard.svg
-starmetal-ore,Starmetal Ore,Ore & Mineral,4,Unprocessed starmetal ore gathered from mineral deposits.,modules/gathering-crafting/icons/v6/starmetal-ore.svg
-voidglass,Voidglass,Ore & Mineral,4,"A dark, star-flecked volcanic glass that seems to drink the light around it.",modules/gathering-crafting/icons/v6/voidglass.svg
-brass-ingot,Brass Ingot,Refined Metal,1,"A bright alloy of copper and zinc with a resonant, musical ring.",modules/gathering-crafting/icons/v6/brass-ingot.svg
-bronze-ingot,Bronze Ingot,Refined Metal,1,Refined bronze ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/bronze-ingot.svg
-copper-ingot,Copper Ingot,Refined Metal,1,Refined copper ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/copper-ingot.svg
-iron-ingot,Iron Ingot,Refined Metal,1,Refined iron ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/iron-ingot.svg
-nickel-ingot,Nickel Ingot,Refined Metal,1,A corrosion-resistant bar of refined nickel.,modules/gathering-crafting/icons/v6/nickel-ingot.svg
-tin-ingot,Tin Ingot,Refined Metal,1,Refined tin ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/tin-ingot.svg
-cobalt-ingot,Cobalt Ingot,Refined Metal,2,A vivid blue alloy bar favored in rune-work and precision metalcraft.,modules/gathering-crafting/icons/v6/cobalt-ingot.svg
-electrum-ingot,Electrum Ingot,Refined Metal,2,A pale gold-silver alloy prized by nobles and old empires.,modules/gathering-crafting/icons/v6/electrum-ingot.svg
-gold-ingot,Gold Ingot,Refined Metal,2,Refined gold ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/gold-ingot.svg
-silver-ingot,Silver Ingot,Refined Metal,2,Refined silver ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/silver-ingot.svg
-steel-ingot,Steel Ingot,Refined Metal,2,Refined steel ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/steel-ingot.svg
-blacksteel-ingot,Blacksteel Ingot,Refined Metal,3,Refined blacksteel ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/blacksteel-ingot.svg
-dusksteel-ingot,Dusksteel Ingot,Refined Metal,3,A shadow-dark alloy that absorbs glare and dulls the ring of steel.,modules/gathering-crafting/icons/v6/dusksteel-ingot.svg
-mithral-ingot,Mithral Ingot,Refined Metal,3,Refined mithral ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/mithral-ingot.svg
-platinum-ingot,Platinum Ingot,Refined Metal,3,"A noble ingot used for reliquaries, circlets and high-value trade goods.",modules/gathering-crafting/icons/v6/platinum-ingot.svg
-runesteel-ingot,Runesteel Ingot,Refined Metal,3,A tempered alloy that holds glyphs and enchantment sigils with unusual clarity.,modules/gathering-crafting/icons/v6/runesteel-ingot.svg
-adamantine-ingot,Adamantine Ingot,Refined Metal,4,Refined adamantine ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/adamantine-ingot.svg
-dragonsilver-ingot,Dragonsilver Ingot,Refined Metal,4,"Rare silver infused with dragonshard dust, bright with magical potential.",modules/gathering-crafting/icons/v6/dragonsilver-ingot.svg
-moonsteel-ingot,Moonsteel Ingot,Refined Metal,4,Refined moonsteel ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/moonsteel-ingot.svg
-starmetal-ingot,Starmetal Ingot,Refined Metal,4,Refined starmetal ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v6/starmetal-ingot.svg
-bitterroot,Bitterroot,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Bitterroot.,modules/gathering-crafting/icons/v6/bitterroot.svg
-blue-moss,Blue Moss,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Blue Moss.,modules/gathering-crafting/icons/v6/blue-moss.svg
-bogmint,Bogmint,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Bogmint.,modules/gathering-crafting/icons/v6/bogmint.svg
-dawnberry,Dawnberry,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Dawnberry.,modules/gathering-crafting/icons/v6/dawnberry.svg
-feather-reed,Feather Reed,Alchemical Ingredient,1,A light river reed whose downy fibers are used in buoyant and falling draughts.,modules/gathering-crafting/icons/v6/feather-reed.svg
-kingsfoil,Kingsfoil,Alchemical Ingredient,1,A broad-leafed healing herb used to steady wounds and purge fatigue.,modules/gathering-crafting/icons/v6/kingsfoil.svg
-marsh-kelp,Marsh Kelp,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Marsh Kelp.,modules/gathering-crafting/icons/v6/marsh-kelp.svg
-pearlcap,Pearlcap,Alchemical Ingredient,1,"A small silver mushroom with a clean, clarifying taste.",modules/gathering-crafting/icons/v6/pearlcap.svg
-pure-water,Purified Water,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Purified Water.,modules/gathering-crafting/icons/v6/pure-water.svg
-redroot,Redroot,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Redroot.,modules/gathering-crafting/icons/v6/redroot.svg
-sea-salt,Sea Salt,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Sea Salt.,modules/gathering-crafting/icons/v6/sea-salt.svg
-silverleaf,Silverleaf,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Silverleaf.,modules/gathering-crafting/icons/v6/silverleaf.svg
-sunpetal,Sunpetal,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Sunpetal.,modules/gathering-crafting/icons/v6/sunpetal.svg
-thornbriar,Thornbriar,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Thornbriar.,modules/gathering-crafting/icons/v6/thornbriar.svg
-amber-resin,Amber Resin,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Amber Resin.,modules/gathering-crafting/icons/v6/amber-resin.svg
-ashfern,Ashfern,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Ashfern.,modules/gathering-crafting/icons/v6/ashfern.svg
-dreamlily,Dreamlily,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Dreamlily.,modules/gathering-crafting/icons/v6/dreamlily.svg
-duskbell,Duskbell,Alchemical Ingredient,2,"A purple bellflower used in shrinking, hush and twilight mixtures.",modules/gathering-crafting/icons/v6/duskbell.svg
-duskshade,Duskshade,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Duskshade.,modules/gathering-crafting/icons/v6/duskshade.svg
-emberblossom,Emberblossom,Alchemical Ingredient,2,A hot orange bloom favored in fireproofing and draconic brews.,modules/gathering-crafting/icons/v6/emberblossom.svg
-embercap,Embercap,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Embercap.,modules/gathering-crafting/icons/v6/embercap.svg
-frostleaf,Frostleaf,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Frostleaf.,modules/gathering-crafting/icons/v6/frostleaf.svg
-glowshroom,Glowshroom,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Glowshroom.,modules/gathering-crafting/icons/v6/glowshroom.svg
-gravebloom,Gravebloom,Alchemical Ingredient,2,A pale cemetery flower used in warding tonics and rites against undeath.,modules/gathering-crafting/icons/v6/gravebloom.svg
-heartseed,Heartseed,Alchemical Ingredient,2,"A warm, red seed believed to fortify vigor and size.",modules/gathering-crafting/icons/v6/heartseed.svg
-merrowreed,Merrow Reed,Alchemical Ingredient,2,A sea-marsh reed that stores brackish moisture and supports breathing elixirs.,modules/gathering-crafting/icons/v6/merrowreed.svg
-mistflower,Mistflower,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Mistflower.,modules/gathering-crafting/icons/v6/mistflower.svg
-moonbloom,Moonbloom,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Moonbloom.,modules/gathering-crafting/icons/v6/moonbloom.svg
-skyblossom,Skyblossom,Alchemical Ingredient,2,A high-cliff flower with airy pollen used in levity brews.,modules/gathering-crafting/icons/v6/skyblossom.svg
-stormthistle,Stormthistle,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Stormthistle.,modules/gathering-crafting/icons/v6/stormthistle.svg
-wolfsbane,Wolfsbane,Alchemical Ingredient,2,A bitter herb used in antivenoms and moonlit hunter brews.,modules/gathering-crafting/icons/v6/wolfsbane.svg
-crimson-sap,Crimson Sap,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Crimson Sap.,modules/gathering-crafting/icons/v6/crimson-sap.svg
-faerie-thyme,Faerie Thyme,Alchemical Ingredient,3,"A sweet herb tied to glamour, transmutation and playful body-altering brews.",modules/gathering-crafting/icons/v6/faerie-thyme.svg
-ghost-orchid,Ghost Orchid,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Ghost Orchid.,modules/gathering-crafting/icons/v6/ghost-orchid.svg
-nightshade,Nightshade,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Nightshade.,modules/gathering-crafting/icons/v6/nightshade.svg
-shade-spore,Shade Spore,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Shade Spore.,modules/gathering-crafting/icons/v6/shade-spore.svg
-starflower,Starflower,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Starflower.,modules/gathering-crafting/icons/v6/starflower.svg
-thunderbloom,Thunderbloom,Alchemical Ingredient,3,A crackling blue flower whose petals build static and volatile charge.,modules/gathering-crafting/icons/v6/thunderbloom.svg
-whisper-seed,Whisper Seed,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Whisper Seed.,modules/gathering-crafting/icons/v6/whisper-seed.svg
-phoenix-ash,Phoenix Ash,Alchemical Ingredient,4,An alchemical ingredient used in brews and tonics: Phoenix Ash.,modules/gathering-crafting/icons/v6/phoenix-ash.svg
-beast-hide,Beast Hide,Monster Drop,1,"Tough hide from common beasts, useful in hardy salves and bindings.",modules/gathering-crafting/icons/v6/beast-hide.svg
-spider-silk,Spider Silk,Monster Drop,1,Silky strands with impressive tensile strength and alchemical grip.,modules/gathering-crafting/icons/v6/spider-silk.svg
-wolf-fang,Wolf Fang,Monster Drop,1,"A sharp fang from a hunting wolf, often powdered into pursuit tonics.",modules/gathering-crafting/icons/v6/wolf-fang.svg
-ghoul-claw,Ghoul Claw,Monster Drop,2,A yellowed claw suited for paralytic compounds and graveward tonics.,modules/gathering-crafting/icons/v6/ghoul-claw.svg
-griffon-feather,Griffon Feather,Monster Drop,2,A broad flight feather used in brews of falling and glide.,modules/gathering-crafting/icons/v6/griffon-feather.svg
-serpent-scale,Serpent Scale,Monster Drop,2,Glossy scale flaked from a giant serpent; resilient and venom-shedding.,modules/gathering-crafting/icons/v6/serpent-scale.svg
-slime-core,Slime Core,Monster Drop,2,A wobbling nucleus of concentrated ooze essence.,modules/gathering-crafting/icons/v6/slime-core.svg
-venom-sac,Venom Sac,Monster Drop,2,A delicate poison bladder harvested from venomous creatures.,modules/gathering-crafting/icons/v6/venom-sac.svg
-basilisk-eye,Basilisk Eye,Monster Drop,3,A preserved reptilian eye still glimmering with petrifying alchemy.,modules/gathering-crafting/icons/v6/basilisk-eye.svg
-ectoplasm,Ectoplasm,Monster Drop,3,Ghostly residue bottled from a fading spirit or haunted chamber.,modules/gathering-crafting/icons/v6/ectoplasm.svg
-manticore-spike,Manticore Spike,Monster Drop,3,A barbed tail spike fit for piercing toxins and violent tonics.,modules/gathering-crafting/icons/v6/manticore-spike.svg
-shadow-essence,Shadow Essence,Monster Drop,3,A smoky residue captured from undead shadows and dim crossings.,modules/gathering-crafting/icons/v6/shadow-essence.svg
-troll-blood,Troll Blood,Monster Drop,3,Thick regenerative blood that bubbles if left uncorked.,modules/gathering-crafting/icons/v6/troll-blood.svg
-wyvern-stinger,Wyvern Stinger,Monster Drop,3,A vicious stinger packed with lingering venom.,modules/gathering-crafting/icons/v6/wyvern-stinger.svg
-chimera-horn,Chimera Horn,Monster Drop,4,A twisted horn heavy with bestial vitality and mutagenic force.,modules/gathering-crafting/icons/v6/chimera-horn.svg
-demon-ichor,Demon Ichor,Monster Drop,4,A tar-like infernal fluid used in dangerous but potent concoctions.,modules/gathering-crafting/icons/v6/demon-ichor.svg
-dragon-scale,Dragon Scale,Monster Drop,4,A dense draconic scale humming with elemental memory.,modules/gathering-crafting/icons/v6/dragon-scale.svg
-kraken-ink,Kraken Ink,Monster Drop,4,A pressurized ink sac containing abyssal pigment and sea magic.,modules/gathering-crafting/icons/v6/kraken-ink.svg
+brimstone,Brimstone,Ore & Mineral,1,"A sulfurous yellow mineral with a sharp, infernal smell.",modules/gathering-crafting/icons/v7/brimstone.svg
+coal,Coal,Ore & Mineral,1,Unprocessed coal gathered from mineral deposits.,modules/gathering-crafting/icons/v7/coal.svg
+copper-ore,Copper Ore,Ore & Mineral,1,Unprocessed copper ore gathered from mineral deposits.,modules/gathering-crafting/icons/v7/copper-ore.svg
+hematite,Hematite,Ore & Mineral,1,Dense red-black ironstone used in pigments and reinforcing smelts.,modules/gathering-crafting/icons/v7/hematite.svg
+iron-ore,Iron Ore,Ore & Mineral,1,Unprocessed iron ore gathered from mineral deposits.,modules/gathering-crafting/icons/v7/iron-ore.svg
+nickel-ore,Nickel Ore,Ore & Mineral,1,A grey-green ore valued for resilient alloys. Blacksmiths prize it for tools that resist rust.,modules/gathering-crafting/icons/v7/nickel-ore.svg
+quartz,Quartz,Ore & Mineral,1,Unprocessed quartz gathered from mineral deposits.,modules/gathering-crafting/icons/v7/quartz.svg
+saltpeter,Saltpeter,Ore & Mineral,1,"Dry mineral crystals used in blasting charges, fireworks and reactive brews.",modules/gathering-crafting/icons/v7/saltpeter.svg
+sulfur,Sulfur,Ore & Mineral,1,Unprocessed sulfur gathered from mineral deposits.,modules/gathering-crafting/icons/v7/sulfur.svg
+tin-ore,Tin Ore,Ore & Mineral,1,Unprocessed tin ore gathered from mineral deposits.,modules/gathering-crafting/icons/v7/tin-ore.svg
+azurite,Azurite,Ore & Mineral,2,Unprocessed azurite gathered from mineral deposits.,modules/gathering-crafting/icons/v7/azurite.svg
+cobalt-ore,Cobalt Ore,Ore & Mineral,2,A cool blue ore used in arcane alloys and colorfast enamels.,modules/gathering-crafting/icons/v7/cobalt-ore.svg
+gold-ore,Gold Ore,Ore & Mineral,2,Unprocessed gold ore gathered from mineral deposits.,modules/gathering-crafting/icons/v7/gold-ore.svg
+jade,Jade,Ore & Mineral,2,A polished green stone often cut into amulets and ceremonial fittings.,modules/gathering-crafting/icons/v7/jade.svg
+obsidian,Obsidian,Ore & Mineral,2,Unprocessed obsidian gathered from mineral deposits.,modules/gathering-crafting/icons/v7/obsidian.svg
+silver-ore,Silver Ore,Ore & Mineral,2,Unprocessed silver ore gathered from mineral deposits.,modules/gathering-crafting/icons/v7/silver-ore.svg
+sunstone,Sunstone,Ore & Mineral,2,A warm amber crystal that catches and stores a glimmer of light.,modules/gathering-crafting/icons/v7/sunstone.svg
+mithral-ore,Mithral Ore,Ore & Mineral,3,Unprocessed mithral ore gathered from mineral deposits.,modules/gathering-crafting/icons/v7/mithral-ore.svg
+moonstone,Moonstone,Ore & Mineral,3,Unprocessed moonstone gathered from mineral deposits.,modules/gathering-crafting/icons/v7/moonstone.svg
+platinum-ore,Platinum Ore,Ore & Mineral,3,A pale noble ore used in luxury work and holy regalia.,modules/gathering-crafting/icons/v7/platinum-ore.svg
+adamantine-ore,Adamantine Ore,Ore & Mineral,4,Unprocessed adamantine ore gathered from mineral deposits.,modules/gathering-crafting/icons/v7/adamantine-ore.svg
+dragonshard,Dragonshard,Ore & Mineral,4,A volatile crystal saturated with draconic resonance.,modules/gathering-crafting/icons/v7/dragonshard.svg
+starmetal-ore,Starmetal Ore,Ore & Mineral,4,Unprocessed starmetal ore gathered from mineral deposits.,modules/gathering-crafting/icons/v7/starmetal-ore.svg
+voidglass,Voidglass,Ore & Mineral,4,"A dark, star-flecked volcanic glass that seems to drink the light around it.",modules/gathering-crafting/icons/v7/voidglass.svg
+brass-ingot,Brass Ingot,Refined Metal,1,"A bright alloy of copper and zinc with a resonant, musical ring.",modules/gathering-crafting/icons/v7/brass-ingot.svg
+bronze-ingot,Bronze Ingot,Refined Metal,1,Refined bronze ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/bronze-ingot.svg
+copper-ingot,Copper Ingot,Refined Metal,1,Refined copper ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/copper-ingot.svg
+iron-ingot,Iron Ingot,Refined Metal,1,Refined iron ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/iron-ingot.svg
+nickel-ingot,Nickel Ingot,Refined Metal,1,A corrosion-resistant bar of refined nickel.,modules/gathering-crafting/icons/v7/nickel-ingot.svg
+tin-ingot,Tin Ingot,Refined Metal,1,Refined tin ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/tin-ingot.svg
+cobalt-ingot,Cobalt Ingot,Refined Metal,2,A vivid blue alloy bar favored in rune-work and precision metalcraft.,modules/gathering-crafting/icons/v7/cobalt-ingot.svg
+electrum-ingot,Electrum Ingot,Refined Metal,2,A pale gold-silver alloy prized by nobles and old empires.,modules/gathering-crafting/icons/v7/electrum-ingot.svg
+gold-ingot,Gold Ingot,Refined Metal,2,Refined gold ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/gold-ingot.svg
+silver-ingot,Silver Ingot,Refined Metal,2,Refined silver ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/silver-ingot.svg
+steel-ingot,Steel Ingot,Refined Metal,2,Refined steel ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/steel-ingot.svg
+blacksteel-ingot,Blacksteel Ingot,Refined Metal,3,Refined blacksteel ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/blacksteel-ingot.svg
+dusksteel-ingot,Dusksteel Ingot,Refined Metal,3,A shadow-dark alloy that absorbs glare and dulls the ring of steel.,modules/gathering-crafting/icons/v7/dusksteel-ingot.svg
+mithral-ingot,Mithral Ingot,Refined Metal,3,Refined mithral ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/mithral-ingot.svg
+platinum-ingot,Platinum Ingot,Refined Metal,3,"A noble ingot used for reliquaries, circlets and high-value trade goods.",modules/gathering-crafting/icons/v7/platinum-ingot.svg
+runesteel-ingot,Runesteel Ingot,Refined Metal,3,A tempered alloy that holds glyphs and enchantment sigils with unusual clarity.,modules/gathering-crafting/icons/v7/runesteel-ingot.svg
+adamantine-ingot,Adamantine Ingot,Refined Metal,4,Refined adamantine ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/adamantine-ingot.svg
+dragonsilver-ingot,Dragonsilver Ingot,Refined Metal,4,"Rare silver infused with dragonshard dust, bright with magical potential.",modules/gathering-crafting/icons/v7/dragonsilver-ingot.svg
+moonsteel-ingot,Moonsteel Ingot,Refined Metal,4,Refined moonsteel ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/moonsteel-ingot.svg
+starmetal-ingot,Starmetal Ingot,Refined Metal,4,Refined starmetal ingot used in advanced metallurgy recipes.,modules/gathering-crafting/icons/v7/starmetal-ingot.svg
+bitterroot,Bitterroot,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Bitterroot.,modules/gathering-crafting/icons/v7/bitterroot.svg
+blue-moss,Blue Moss,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Blue Moss.,modules/gathering-crafting/icons/v7/blue-moss.svg
+bogmint,Bogmint,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Bogmint.,modules/gathering-crafting/icons/v7/bogmint.svg
+dawnberry,Dawnberry,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Dawnberry.,modules/gathering-crafting/icons/v7/dawnberry.svg
+feather-reed,Feather Reed,Alchemical Ingredient,1,A light river reed whose downy fibers are used in buoyant and falling draughts.,modules/gathering-crafting/icons/v7/feather-reed.svg
+kingsfoil,Kingsfoil,Alchemical Ingredient,1,A broad-leafed healing herb used to steady wounds and purge fatigue.,modules/gathering-crafting/icons/v7/kingsfoil.svg
+marsh-kelp,Marsh Kelp,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Marsh Kelp.,modules/gathering-crafting/icons/v7/marsh-kelp.svg
+pearlcap,Pearlcap,Alchemical Ingredient,1,"A small silver mushroom with a clean, clarifying taste.",modules/gathering-crafting/icons/v7/pearlcap.svg
+pure-water,Purified Water,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Purified Water.,modules/gathering-crafting/icons/v7/pure-water.svg
+redroot,Redroot,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Redroot.,modules/gathering-crafting/icons/v7/redroot.svg
+sea-salt,Sea Salt,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Sea Salt.,modules/gathering-crafting/icons/v7/sea-salt.svg
+silverleaf,Silverleaf,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Silverleaf.,modules/gathering-crafting/icons/v7/silverleaf.svg
+sunpetal,Sunpetal,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Sunpetal.,modules/gathering-crafting/icons/v7/sunpetal.svg
+thornbriar,Thornbriar,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Thornbriar.,modules/gathering-crafting/icons/v7/thornbriar.svg
+amber-resin,Amber Resin,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Amber Resin.,modules/gathering-crafting/icons/v7/amber-resin.svg
+ashfern,Ashfern,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Ashfern.,modules/gathering-crafting/icons/v7/ashfern.svg
+dreamlily,Dreamlily,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Dreamlily.,modules/gathering-crafting/icons/v7/dreamlily.svg
+duskbell,Duskbell,Alchemical Ingredient,2,"A purple bellflower used in shrinking, hush and twilight mixtures.",modules/gathering-crafting/icons/v7/duskbell.svg
+duskshade,Duskshade,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Duskshade.,modules/gathering-crafting/icons/v7/duskshade.svg
+emberblossom,Emberblossom,Alchemical Ingredient,2,A hot orange bloom favored in fireproofing and draconic brews.,modules/gathering-crafting/icons/v7/emberblossom.svg
+embercap,Embercap,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Embercap.,modules/gathering-crafting/icons/v7/embercap.svg
+frostleaf,Frostleaf,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Frostleaf.,modules/gathering-crafting/icons/v7/frostleaf.svg
+glowshroom,Glowshroom,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Glowshroom.,modules/gathering-crafting/icons/v7/glowshroom.svg
+gravebloom,Gravebloom,Alchemical Ingredient,2,A pale cemetery flower used in warding tonics and rites against undeath.,modules/gathering-crafting/icons/v7/gravebloom.svg
+heartseed,Heartseed,Alchemical Ingredient,2,"A warm, red seed believed to fortify vigor and size.",modules/gathering-crafting/icons/v7/heartseed.svg
+merrowreed,Merrow Reed,Alchemical Ingredient,2,A sea-marsh reed that stores brackish moisture and supports breathing elixirs.,modules/gathering-crafting/icons/v7/merrowreed.svg
+mistflower,Mistflower,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Mistflower.,modules/gathering-crafting/icons/v7/mistflower.svg
+moonbloom,Moonbloom,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Moonbloom.,modules/gathering-crafting/icons/v7/moonbloom.svg
+skyblossom,Skyblossom,Alchemical Ingredient,2,A high-cliff flower with airy pollen used in levity brews.,modules/gathering-crafting/icons/v7/skyblossom.svg
+stormthistle,Stormthistle,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Stormthistle.,modules/gathering-crafting/icons/v7/stormthistle.svg
+wolfsbane,Wolfsbane,Alchemical Ingredient,2,A bitter herb used in antivenoms and moonlit hunter brews.,modules/gathering-crafting/icons/v7/wolfsbane.svg
+crimson-sap,Crimson Sap,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Crimson Sap.,modules/gathering-crafting/icons/v7/crimson-sap.svg
+faerie-thyme,Faerie Thyme,Alchemical Ingredient,3,"A sweet herb tied to glamour, transmutation and playful body-altering brews.",modules/gathering-crafting/icons/v7/faerie-thyme.svg
+ghost-orchid,Ghost Orchid,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Ghost Orchid.,modules/gathering-crafting/icons/v7/ghost-orchid.svg
+nightshade,Nightshade,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Nightshade.,modules/gathering-crafting/icons/v7/nightshade.svg
+shade-spore,Shade Spore,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Shade Spore.,modules/gathering-crafting/icons/v7/shade-spore.svg
+starflower,Starflower,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Starflower.,modules/gathering-crafting/icons/v7/starflower.svg
+thunderbloom,Thunderbloom,Alchemical Ingredient,3,A crackling blue flower whose petals build static and volatile charge.,modules/gathering-crafting/icons/v7/thunderbloom.svg
+whisper-seed,Whisper Seed,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Whisper Seed.,modules/gathering-crafting/icons/v7/whisper-seed.svg
+phoenix-ash,Phoenix Ash,Alchemical Ingredient,4,An alchemical ingredient used in brews and tonics: Phoenix Ash.,modules/gathering-crafting/icons/v7/phoenix-ash.svg
+beast-hide,Beast Hide,Monster Drop,1,"Tough hide from common beasts, useful in hardy salves and bindings.",modules/gathering-crafting/icons/v7/beast-hide.svg
+spider-silk,Spider Silk,Monster Drop,1,Silky strands with impressive tensile strength and alchemical grip.,modules/gathering-crafting/icons/v7/spider-silk.svg
+wolf-fang,Wolf Fang,Monster Drop,1,"A sharp fang from a hunting wolf, often powdered into pursuit tonics.",modules/gathering-crafting/icons/v7/wolf-fang.svg
+ghoul-claw,Ghoul Claw,Monster Drop,2,A yellowed claw suited for paralytic compounds and graveward tonics.,modules/gathering-crafting/icons/v7/ghoul-claw.svg
+griffon-feather,Griffon Feather,Monster Drop,2,A broad flight feather used in brews of falling and glide.,modules/gathering-crafting/icons/v7/griffon-feather.svg
+serpent-scale,Serpent Scale,Monster Drop,2,Glossy scale flaked from a giant serpent; resilient and venom-shedding.,modules/gathering-crafting/icons/v7/serpent-scale.svg
+slime-core,Slime Core,Monster Drop,2,A wobbling nucleus of concentrated ooze essence.,modules/gathering-crafting/icons/v7/slime-core.svg
+venom-sac,Venom Sac,Monster Drop,2,A delicate poison bladder harvested from venomous creatures.,modules/gathering-crafting/icons/v7/venom-sac.svg
+basilisk-eye,Basilisk Eye,Monster Drop,3,A preserved reptilian eye still glimmering with petrifying alchemy.,modules/gathering-crafting/icons/v7/basilisk-eye.svg
+ectoplasm,Ectoplasm,Monster Drop,3,Ghostly residue bottled from a fading spirit or haunted chamber.,modules/gathering-crafting/icons/v7/ectoplasm.svg
+manticore-spike,Manticore Spike,Monster Drop,3,A barbed tail spike fit for piercing toxins and violent tonics.,modules/gathering-crafting/icons/v7/manticore-spike.svg
+shadow-essence,Shadow Essence,Monster Drop,3,A smoky residue captured from undead shadows and dim crossings.,modules/gathering-crafting/icons/v7/shadow-essence.svg
+troll-blood,Troll Blood,Monster Drop,3,Thick regenerative blood that bubbles if left uncorked.,modules/gathering-crafting/icons/v7/troll-blood.svg
+wyvern-stinger,Wyvern Stinger,Monster Drop,3,A vicious stinger packed with lingering venom.,modules/gathering-crafting/icons/v7/wyvern-stinger.svg
+chimera-horn,Chimera Horn,Monster Drop,4,A twisted horn heavy with bestial vitality and mutagenic force.,modules/gathering-crafting/icons/v7/chimera-horn.svg
+demon-ichor,Demon Ichor,Monster Drop,4,A tar-like infernal fluid used in dangerous but potent concoctions.,modules/gathering-crafting/icons/v7/demon-ichor.svg
+dragon-scale,Dragon Scale,Monster Drop,4,A dense draconic scale humming with elemental memory.,modules/gathering-crafting/icons/v7/dragon-scale.svg
+kraken-ink,Kraken Ink,Monster Drop,4,A pressurized ink sac containing abyssal pigment and sea magic.,modules/gathering-crafting/icons/v7/kraken-ink.svg

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+    <defs>
+      <radialGradient id="bg" cx="50%" cy="42%" r="75%"><stop offset="0%" stop-color="#a0c6d5"/><stop offset="60%" stop-color="#183828"/><stop offset="100%" stop-color="#0c1d15"/></radialGradient>
+      <radialGradient id="glow" cx="50%" cy="46%" r="50%"><stop offset="0%" stop-color="#c3e0ec" stop-opacity="0.35"/><stop offset="100%" stop-color="#568295" stop-opacity="0"/></radialGradient>
+      <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#000" flood-opacity="0.45"/></filter>
+      <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7"/></filter>
+    </defs>
+    <rect width="256" height="256" rx="24" fill="url(#bg)"/>
+    <circle cx="128" cy="126" r="72" fill="url(#glow)" filter="url(#soft)"/>
+    
+    <rect x="4" y="4" width="248" height="248" rx="24" fill="none" stroke="#1d140d" stroke-width="8"/>
+    <rect x="8" y="8" width="240" height="240" rx="20" fill="none" stroke="#3f2a16" stroke-width="6"/>
+    <rect x="11" y="11" width="234" height="234" rx="18" fill="none" stroke="#a9782e" stroke-width="5"/>
+    <rect x="15" y="15" width="226" height="226" rx="16" fill="none" stroke="#f0e4bd" stroke-width="2.5" opacity="0.9"/>
+    <path d="M24 50h26M206 50h26M24 206h26M206 206h26" stroke="#a9782e" stroke-width="3" opacity="0.65"/>
+    <path d="M50 24v26M206 24v26M50 206v26M206 206v26" stroke="#a9782e" stroke-width="3" opacity="0.65"/>
+    <circle cx="128" cy="24" r="11" fill="#120c08" stroke="#f0e4bd" stroke-width="2"/><circle cx="128" cy="24" r="5" fill="#88c1d9"/>
+    
+    <g filter="url(#shadow)"><ellipse cx="128" cy="112" rx="20" ry="36" fill="#88c1d9" stroke="#422a20" stroke-width="2.5" transform="rotate(0 128 112)"/><ellipse cx="128" cy="112" rx="20" ry="36" fill="#88c1d9" stroke="#422a20" stroke-width="2.5" transform="rotate(45 128 112)"/><ellipse cx="128" cy="112" rx="20" ry="36" fill="#88c1d9" stroke="#422a20" stroke-width="2.5" transform="rotate(90 128 112)"/><ellipse cx="128" cy="112" rx="20" ry="36" fill="#88c1d9" stroke="#422a20" stroke-width="2.5" transform="rotate(135 128 112)"/><circle cx="128" cy="112" r="17" fill="#e0b955" stroke="#422a20" stroke-width="2.5"/><path d="M128 128v52" stroke="#557a4a" stroke-width="9" stroke-linecap="round"/><path d="M128 160c-16-4-24 16-40 12 10-16 18-28 40-20z" fill="#698f59" stroke="#45643b" stroke-width="2"/><path d="M128 172c16 0 26 18 40 12-8-16-18-28-40-20z" fill="#5d844e" stroke="#3f5d37" stroke-width="2"/></g>
+    </svg>

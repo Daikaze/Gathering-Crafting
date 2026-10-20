@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+    <defs>
+      <radialGradient id="bg" cx="50%" cy="42%" r="75%"><stop offset="0%" stop-color="#d8a98f"/><stop offset="60%" stop-color="#183828"/><stop offset="100%" stop-color="#0c1d15"/></radialGradient>
+      <radialGradient id="glow" cx="50%" cy="46%" r="50%"><stop offset="0%" stop-color="#edc9b6" stop-opacity="0.35"/><stop offset="100%" stop-color="#975f41" stop-opacity="0"/></radialGradient>
+      <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="#000" flood-opacity="0.45"/></filter>
+      <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="7"/></filter>
+    </defs>
+    <rect width="256" height="256" rx="24" fill="url(#bg)"/>
+    <circle cx="128" cy="126" r="72" fill="url(#glow)" filter="url(#soft)"/>
+    
+    <rect x="4" y="4" width="248" height="248" rx="24" fill="none" stroke="#1d140d" stroke-width="8"/>
+    <rect x="8" y="8" width="240" height="240" rx="20" fill="none" stroke="#3f2a16" stroke-width="6"/>
+    <rect x="11" y="11" width="234" height="234" rx="18" fill="none" stroke="#a9782e" stroke-width="5"/>
+    <rect x="15" y="15" width="226" height="226" rx="16" fill="none" stroke="#f0e4bd" stroke-width="2.5" opacity="0.9"/>
+    <path d="M24 50h26M206 50h26M24 206h26M206 206h26" stroke="#a9782e" stroke-width="3" opacity="0.65"/>
+    <path d="M50 24v26M206 24v26M50 206v26M206 206v26" stroke="#a9782e" stroke-width="3" opacity="0.65"/>
+    <circle cx="128" cy="24" r="11" fill="#120c08" stroke="#f0e4bd" stroke-width="2"/><circle cx="128" cy="24" r="5" fill="#dc946e"/>
+    
+    <g filter="url(#shadow)"><path d="M70 126c0-30 26-52 58-52s58 22 58 52c0 9-8 16-20 16H90c-12 0-20-7-20-16z" fill="#da8d64" stroke="#4b3025" stroke-width="3"/><rect x="113" y="130" width="30" height="46" rx="12" fill="#ecdcc5" stroke="#4b3025" stroke-width="3"/><circle cx="100" cy="106" r="9" fill="rgba(255,255,255,.35)"/><circle cx="129" cy="98" r="8" fill="rgba(255,255,255,.25)"/><circle cx="154" cy="112" r="7" fill="rgba(255,255,255,.30)"/></g>
+    </svg>

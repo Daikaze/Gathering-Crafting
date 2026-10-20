@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0 — Full Fantasy Art Pass & UX Fixes
+
+- Replaced the bundled item imagery with a stronger **fantasy item art** pass for every bundled material and crafted item.
+- Fixed the **Show more** button so expanding lists no longer jumps the window back to the top.
+- Added a safe **v0.6.0 migration** and artwork refresh for existing bundled entries while preserving GM custom art.
+- Kept the split **Alchemy** and **Blacksmithing** tabs and refreshed the footer copy.
+
 ## 0.5.1 — D&D Style Art Pass
 
 - Reworked every bundled item image into a more ornate **D&D-style fantasy inventory look** with parchment, brass framing and stronger loot-icon readability.

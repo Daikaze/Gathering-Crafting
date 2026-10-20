@@ -1,8 +1,8 @@
-/** Gathering & Crafting v0.5.1 — Foundry V14 / dnd5e 5.3.3. */
+/** Gathering & Crafting v0.6.0 — Foundry V14 / dnd5e 5.3.3. */
 import { CATALOG } from './catalog.js';
 import { makeMaterialData, makeCraftData, outputKind } from './items.js';
 const ID='gathering-crafting';
-const VERSION='0.5.1';
+const VERSION='0.6.0';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -135,7 +135,7 @@ function mergeCatalog(old){
   }
   return db;
 }
-const bundledArtwork=img=>/^modules\/gathering-crafting\/icons\/(?:painted|v2|v4|v5|v6)\//.test(String(img||''));
+const bundledArtwork=img=>/^modules\/gathering-crafting\/icons\/(?:painted|v2|v4|v5|v6|v7)\//.test(String(img||''));
 async function refreshOwnedArtwork(){
   const db=database();
   const knownMaterials=new Map(db.materials.map(m=>[m.id,m.img]));
@@ -196,12 +196,17 @@ async function syncCompendiums(){
 }
 class GatheringCrafting extends foundry.applications.api.ApplicationV2{
   static DEFAULT_OPTIONS={id:'gc-main-window',classes:['gathering-crafting'],window:{title:'Gathering & Crafting',icon:'fa-solid fa-hammer',resizable:true},position:{width:970,height:740}};
-  constructor(opts={}){super(opts);this.actorId=currentActor()?.id||null;this.tab='gather';this.gatherMode='careful';this.craftMode='steady';this.category='all';this.group='all';this.search='';this.page=1;this.showZero=false;this.readyOnly=false;this.editor={kind:'material',id:null};this.busy=false;this.searchTimer=null;}
+  constructor(opts={}){super(opts);this.actorId=currentActor()?.id||null;this.tab='gather';this.gatherMode='careful';this.craftMode='steady';this.category='all';this.group='all';this.search='';this.page=1;this.showZero=false;this.readyOnly=false;this.editor={kind:'material',id:null};this.busy=false;this.searchTimer=null;this.pendingScrollTop=null;}
   get actor(){return currentActor(this.actorId);}
   async _renderHTML(){const root=document.createElement('div');root.className='gc-root';root.innerHTML=this.template();return root;}
   _replaceHTML(result,content){content.replaceChildren(result);}
   async _onRender(context,options){await super._onRender(context,options);const root=this.element.querySelector('.gc-root');if(!root)return;
-    root.addEventListener('click',e=>this.click(e));root.addEventListener('change',e=>this.change(e));root.addEventListener('input',e=>this.input(e));root.addEventListener('submit',e=>this.submit(e));}
+    root.addEventListener('click',e=>this.click(e));root.addEventListener('change',e=>this.change(e));root.addEventListener('input',e=>this.input(e));root.addEventListener('submit',e=>this.submit(e));
+    // .gc-content is the scroll container; .window-content is intentionally overflow:hidden.
+    const scrollHost=this.element?.querySelector('.gc-content');
+    if(scrollHost&&Number.isFinite(this.pendingScrollTop))scrollHost.scrollTop=this.pendingScrollTop;
+    this.pendingScrollTop=null;}
+  rememberScroll(){const scrollHost=this.element?.querySelector('.gc-content');this.pendingScrollTop=scrollHost?.scrollTop??null;}
   refresh(){return this.render({force:true});}
   heading(ic,title,description){return `<header class="gc-section-head"><div><h2>${icon(ic)} ${esc(title)}</h2><p>${esc(description)}</p></div></header>`;}
   tabButton(id,ic,title){return `<button type="button" class="gc-nav ${this.tab===id?'is-active':''}" data-action="tab" data-id="${id}">${icon(ic)} <span>${title}</span></button>`;}
@@ -218,7 +223,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
       <div class="gc-top-right">${gm?`<button class="gc-gm-shortcut" type="button" data-action="tab" data-id="gm" aria-label="GM Workshop" title="GM Workshop">${icon('fa-gear')}</button>`:''}<label class="gc-selectwrap">${icon('fa-user')}<select name="actor" aria-label="Character">${choices}</select></label><div class="gc-energy" title="Remaining gathering actions">${icon('fa-bolt')} <b>${left}</b><small>/ ${cap} gathers</small></div></div></div>
       <nav class="gc-tabs">${this.tabButton('gather','fa-mountain','Gather')}${this.tabButton('alchemy','fa-flask','Alchemy')}${this.tabButton('blacksmithing','fa-hammer','Blacksmithing')}${this.tabButton('backpack','fa-box-open','Inventory')}</nav>
       <div class="gc-content">${!actor&&this.tab!=='gm'?'<div class="gc-empty">Select a character with Owner permission to get started.</div>':this.tab==='gather'?this.gatherTab(db,actor):this.tab==='alchemy'?this.craftTab(db,actor,'alchemy'):this.tab==='blacksmithing'||this.tab==='craft'?this.craftTab(db,actor,'metallurgy'):this.tab==='backpack'?this.inventoryTab(db,actor):gm?this.gmTab(db):''}</div>
-      <footer class="gc-footer"><span>${icon('fa-box')} Every resource and crafted product is a real D&D 5e Item with a custom module image.</span><span>v${VERSION} · Foundry V14 · dnd5e 5.3.3</span></footer>`;
+      <footer class="gc-footer"><span>${icon('fa-box')} Every resource and crafted product is a real D&D 5e Item with bundled fantasy artwork.</span><span>v${VERSION} · Foundry V14 · dnd5e 5.3.3</span></footer>`;
   }
   gatherTab(db,actor){const sceneOnly=!!db.settings.sceneOnly;
     const found=db.nodes.filter(n=>n.active&&(!sceneOnly||nodeTokens(n.id).length)&& (this.group==='all'||(n.group||'metallurgy')===this.group) &&(!this.search||`${n.name} ${n.description}`.toLowerCase().includes(this.search.toLowerCase())));
@@ -289,7 +294,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
   }
   async click(e){const button=e.target.closest('button[data-action]');if(!button||this.busy)return;const a=button.dataset.action,id=button.dataset.id;
     if(a==='tab'){this.tab=id;this.search='';this.group='all';this.page=1;this.readyOnly=false;return this.refresh();}
-    if(a==='more'){this.page++;return this.refresh();}
+    if(a==='more'){this.rememberScroll();this.page++;return this.refresh();}
     if(a==='readyOnly'){this.readyOnly=!this.readyOnly;this.page=1;return this.refresh();}
     if(a==='toggleZero'){this.showZero=!this.showZero;return this.refresh();}
     if(a==='gmode'){this.gatherMode=button.dataset.mode;return this.refresh();}
@@ -408,7 +413,9 @@ Hooks.once('init',()=>{
   game.settings.register(ID,'compendiumBootstrapped',{name:'Legacy compendiums created',scope:'world',config:false,type:Boolean,default:false});
   game.settings.register(ID,'compendiumBootstrapped030',{name:'v0.3 native item compendiums created',scope:'world',config:false,type:Boolean,default:false});
   game.settings.register(ID,'backup020',{name:'Catalogue backup before v0.3.0',scope:'world',config:false,type:Object,default:{}});
-  game.settings.register(ID,'backup040',{name:'Catalogue backup before v0.5.1',scope:'world',config:false,type:Object,default:{}});
+  game.settings.register(ID,'backup040',{name:'Catalogue backup before v0.5.0',scope:'world',config:false,type:Object,default:{}});
+  game.settings.register(ID,'backup050',{name:'Catalogue backup before v0.5.1',scope:'world',config:false,type:Object,default:{}});
+  game.settings.register(ID,'backup060',{name:'Catalogue backup before v0.6.0',scope:'world',config:false,type:Object,default:{}});
   game.keybindings.register(ID,'open',{name:'Open Gathering & Crafting',hint:'Open gathering and crafting for your selected character.',editable:[{key:'KeyG',modifiers:['ALT']}],onDown:()=>{open();return true;},restricted:false,precedence:CONST.KEYBINDING_PRECEDENCE.NORMAL});
 });
 Hooks.once('ready',async()=>{
@@ -416,7 +423,7 @@ Hooks.once('ready',async()=>{
   const mod=game.modules.get(ID);if(mod)mod.api={open,getDatabase:()=>clone(database()),syncCompendiums,version:VERSION};
   if(!game.user.isGM)return;
   try{
-    let old=database();const needsArtMigration=validDb(old)&&num(old.catalogVersion,0)<6;
+    let old=database();const needsArtMigration=validDb(old)&&num(old.catalogVersion,0)<7;
     if(!validDb(old)||num(old.catalogVersion,0)<2){
       if(validDb(old))await game.settings.set(ID,'backup010',clone(old));
       old=mergeCatalog(old);await game.settings.set(ID,'database',old);
@@ -424,7 +431,6 @@ Hooks.once('ready',async()=>{
     if(num(old.catalogVersion,0)<3){
       await game.settings.set(ID,'backup020',clone(old));
       const upgraded=clone(old);const known=new Map([...CATALOG.materials,...CATALOG.recipes].map(i=>[i.id,i]));
-      // Upgrade only bundled v2 icon paths; leave GM-authored paths and custom item edits alone.
       for(const entry of [...upgraded.materials,...upgraded.recipes]){
         const art=known.get(entry.id)?.img;
         if(art?.includes('/icons/painted/')&&String(entry.img||'').includes('/icons/v2/'))entry.img=art;
@@ -445,7 +451,33 @@ Hooks.once('ready',async()=>{
       upgraded.catalogVersion=5;
       await game.settings.set(ID,'database',upgraded);
       old=upgraded;
-      notify('Catalogue upgraded to v0.5.1. Existing recipes, items and GM edits were preserved.');
+      notify('Catalogue upgraded to v0.5.0. Existing recipes, items and GM edits were preserved.');
+    }
+    if(num(old.catalogVersion,0)<6){
+      await game.settings.set(ID,'backup050',clone(old));
+      const upgraded=mergeCatalog(old);const known=new Map([...CATALOG.materials,...CATALOG.recipes].map(i=>[i.id,i]));
+      for(const entry of [...upgraded.materials,...upgraded.recipes]){
+        const source=known.get(entry.id);const art=source?.img;const desc=source?.description;
+        if(art&&(!entry.img||/\/icons\/(v2|v4|v5|v6|painted)\//.test(String(entry.img||''))))entry.img=art;
+        if((!entry.description||!String(entry.description).trim())&&desc)entry.description=desc;
+      }
+      upgraded.catalogVersion=6;
+      await game.settings.set(ID,'database',upgraded);
+      old=upgraded;
+      notify('Catalogue upgraded to v0.5.1 with D&D-style artwork. Existing recipes, items and GM edits were preserved.');
+    }
+    if(num(old.catalogVersion,0)<7){
+      await game.settings.set(ID,'backup060',clone(old));
+      const upgraded=mergeCatalog(old);const known=new Map([...CATALOG.materials,...CATALOG.recipes].map(i=>[i.id,i]));
+      for(const entry of [...upgraded.materials,...upgraded.recipes]){
+        const source=known.get(entry.id);const art=source?.img;const desc=source?.description;
+        if(art&&(!entry.img||/\/icons\/(v2|v4|v5|v6|v7|painted)\//.test(String(entry.img||''))))entry.img=art;
+        if((!entry.description||!String(entry.description).trim())&&desc)entry.description=desc;
+      }
+      upgraded.catalogVersion=7;
+      await game.settings.set(ID,'database',upgraded);
+      old=upgraded;
+      notify('Catalogue upgraded to v0.6.0 with full fantasy item art. Existing recipes, items and GM edits were preserved.');
     }
     if(!game.settings.get(ID,'compendiumBootstrapped030')||needsArtMigration)await syncCompendiums();
     if(needsArtMigration)await refreshOwnedArtwork();

@@ -1,8 +1,8 @@
 {
   "id": "gathering-crafting",
   "title": "Gathering & Crafting",
-  "description": "Player-friendly English gathering module with D&D-style custom artwork for every item, split Alchemy and Blacksmithing tabs, 102 materials, 122 recipes and inventory quantity controls.",
-  "version": "0.5.1",
+  "description": "Player-friendly English gathering module with full fantasy item art for every bundled material and recipe, split Alchemy and Blacksmithing tabs, fixed Show More scrolling, 102 materials, 122 recipes and inventory controls.",
+  "version": "0.6.0",
   "authors": [
     {
       "name": "Averis Workshop"
@@ -34,5 +34,5 @@
   ],
   "url": "https://github.com/Daikaze/Gathering-Crafting",
   "manifest": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/module.json",
-  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v0.5.1.zip"
+  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v0.6.0.zip"
 }
