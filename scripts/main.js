@@ -1,8 +1,8 @@
-/** Gathering & Crafting v0.8.2 — Foundry V14 / dnd5e 5.3.3. */
+/** Gathering & Crafting v1.0.0 — Foundry V14 / dnd5e 5.3.3. */
 import { CATALOG } from './catalog.js';
 import { makeMaterialData, makeCraftData, outputKind } from './items.js';
 const ID='gathering-crafting';
-const VERSION='0.8.2';
+const VERSION='1.0.0';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
