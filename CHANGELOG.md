@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.2 — Hand-painted Alchemy Batch 01
+
+- Integrated ten individually generated, name-matched hand-painted Alchemy images, including ingredients, one Monster Drop and seven potions.
+- Added migration to catalog version 10 with backup082, safe in-world actor/Compendium image refresh, and preservation of GM art overrides.
+- Added image format, uniqueness, exact-path and migration regression tests.
+- Other items retain their existing fallback art; this is not the finished Alchemy set.
+
 ## 0.8.1 — First Original Painted Item
 
 - Added an independently generated, hand-painted D&D-style **Iron Ore** illustration as a standalone bundled WebP (not a crop from an art sheet).

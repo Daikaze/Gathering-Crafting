@@ -1,8 +1,8 @@
-/** Gathering & Crafting v0.8.1 — Foundry V14 / dnd5e 5.3.3. */
+/** Gathering & Crafting v0.8.2 — Foundry V14 / dnd5e 5.3.3. */
 import { CATALOG } from './catalog.js';
 import { makeMaterialData, makeCraftData, outputKind } from './items.js';
 const ID='gathering-crafting';
-const VERSION='0.8.1';
+const VERSION='0.8.2';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -419,6 +419,7 @@ Hooks.once('init',()=>{
   game.settings.register(ID,'backup050',{name:'Catalogue backup before v0.5.1',scope:'world',config:false,type:Object,default:{}});
   game.settings.register(ID,'backup060',{name:'Catalogue backup before v0.6.0',scope:'world',config:false,type:Object,default:{}});
   game.settings.register(ID,'backup081',{name:'Catalogue backup before v0.8.1',scope:'world',config:false,type:Object,default:{}});
+  game.settings.register(ID,'backup082',{name:'Catalogue backup before v0.8.2 Alchemy art',scope:'world',config:false,type:Object,default:{}});
   game.settings.register(ID,'backup080',{name:'Catalogue backup before v0.8.0',scope:'world',config:false,type:Object,default:{}});
   game.keybindings.register(ID,'open',{name:'Open Gathering & Crafting',hint:'Open gathering and crafting for your selected character.',editable:[{key:'KeyG',modifiers:['ALT']}],onDown:()=>{open();return true;},restricted:false,precedence:CONST.KEYBINDING_PRECEDENCE.NORMAL});
 });
@@ -427,7 +428,7 @@ Hooks.once('ready',async()=>{
   const mod=game.modules.get(ID);if(mod)mod.api={open,getDatabase:()=>clone(database()),syncCompendiums,version:VERSION};
   if(!game.user.isGM)return;
   try{
-    let old=database();const needsArtMigration=validDb(old)&&num(old.catalogVersion,0)<9;
+    let old=database();const needsArtMigration=validDb(old)&&num(old.catalogVersion,0)<10;
     if(!validDb(old)||num(old.catalogVersion,0)<2){
       if(validDb(old))await game.settings.set(ID,'backup010',clone(old));
       old=mergeCatalog(old);await game.settings.set(ID,'database',old);
@@ -507,6 +508,24 @@ Hooks.once('ready',async()=>{
       await game.settings.set(ID,'database',upgraded);
       old=upgraded;
       notify('Original painted Iron Ore artwork installed; other items and GM edits preserved.');
+    }
+    if(num(old.catalogVersion,0)<10){
+      await game.settings.set(ID,'backup082',clone(old));
+      const upgraded=mergeCatalog(old);
+      const paintedMaterialIds=new Set(["kingsfoil","glowshroom","spider-silk"]);
+      const paintedRecipeIds=new Set(["wyvern-poison","dragonfire-tonic","healing-potion","growth-draught","featherfall-philter","genderflux-elixir","voidward-philter"]);
+      for(const kind of ['materials','recipes']){
+        const selected=kind==='materials'?paintedMaterialIds:paintedRecipeIds;
+        const sources=new Map(CATALOG[kind].filter(x=>selected.has(x.id)).map(x=>[x.id,x.img]));
+        for(const entry of upgraded[kind]){
+          const desired=sources.get(entry.id);
+          if(desired&&(!entry.img||replaceableArtwork(entry.img)))entry.img=desired;
+        }
+      }
+      upgraded.catalogVersion=10;
+      await game.settings.set(ID,'database',upgraded);
+      old=upgraded;
+      notify('New individually painted Alchemy artwork installed; custom images and all recipes preserved.');
     }
     if(!game.settings.get(ID,'compendiumBootstrapped030')||needsArtMigration)await syncCompendiums();
     if(needsArtMigration)await refreshOwnedArtwork();

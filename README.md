@@ -1,4 +1,4 @@
-# Gathering & Crafting v0.8.1 — The Averis Workshop
+# Gathering & Crafting v0.8.2 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -68,3 +68,10 @@ Open the gear in the header → GM Studio. Define new materials, monster drops a
 - **Iron Ore** now uses its own independently generated fantasy painting, bundled under `icons/handpainted/iron-ore.webp`.
 - All other items retain the previous illustrative art for now; no claim is made that the 224 existing cropped/variant images are individually painted.
 - New art loads without any external Compendium packs. The migration preserves GM-set custom images and original item data.
+
+## Individually painted Alchemy art — Batch 01 (v0.8.2)
+
+- Ten **separate, named, 640×640 painted WebP items** have been integrated: Kingsfoil, Glowshroom, Spider Silk, Wyvern Poison, Dragonfire Tonic, Healing Potion, Growth Draught, Featherfall Philter, Genderflux Elixir, and Voidward Philter.
+- Artwork is included **locally in the module** under `icons/handpainted/alchemy/`; it does **not** fetch images from external Compendiums.
+- Other Alchemy items retain their existing fallback illustrations until they receive separately painted replacements. Do not treat this as the complete Alchemy art set.
+- On world update, only module-owned / previous imported images are changed. GM-picked image paths are preserved.

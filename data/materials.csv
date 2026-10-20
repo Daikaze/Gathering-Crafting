@@ -48,7 +48,7 @@ blue-moss,Blue Moss,Alchemical Ingredient,1,An alchemical ingredient used in bre
 bogmint,Bogmint,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Bogmint.,modules/gathering-crafting/icons/illustrated/bogmint.webp
 dawnberry,Dawnberry,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Dawnberry.,modules/gathering-crafting/icons/illustrated/dawnberry.webp
 feather-reed,Feather Reed,Alchemical Ingredient,1,A light river reed whose downy fibers are used in buoyant and falling draughts.,modules/gathering-crafting/icons/illustrated/feather-reed.webp
-kingsfoil,Kingsfoil,Alchemical Ingredient,1,A broad-leafed healing herb used to steady wounds and purge fatigue.,modules/gathering-crafting/icons/illustrated/kingsfoil.webp
+kingsfoil,Kingsfoil,Alchemical Ingredient,1,A broad-leafed healing herb used to steady wounds and purge fatigue.,modules/gathering-crafting/icons/handpainted/alchemy/kingsfoil.webp
 marsh-kelp,Marsh Kelp,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Marsh Kelp.,modules/gathering-crafting/icons/illustrated/marsh-kelp.webp
 pearlcap,Pearlcap,Alchemical Ingredient,1,"A small silver mushroom with a clean, clarifying taste.",modules/gathering-crafting/icons/illustrated/pearlcap.webp
 pure-water,Purified Water,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Purified Water.,modules/gathering-crafting/icons/illustrated/pure-water.webp
@@ -65,7 +65,7 @@ duskshade,Duskshade,Alchemical Ingredient,2,An alchemical ingredient used in bre
 emberblossom,Emberblossom,Alchemical Ingredient,2,A hot orange bloom favored in fireproofing and draconic brews.,modules/gathering-crafting/icons/illustrated/emberblossom.webp
 embercap,Embercap,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Embercap.,modules/gathering-crafting/icons/illustrated/embercap.webp
 frostleaf,Frostleaf,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Frostleaf.,modules/gathering-crafting/icons/illustrated/frostleaf.webp
-glowshroom,Glowshroom,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Glowshroom.,modules/gathering-crafting/icons/illustrated/glowshroom.webp
+glowshroom,Glowshroom,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Glowshroom.,modules/gathering-crafting/icons/handpainted/alchemy/glowshroom.webp
 gravebloom,Gravebloom,Alchemical Ingredient,2,A pale cemetery flower used in warding tonics and rites against undeath.,modules/gathering-crafting/icons/illustrated/gravebloom.webp
 heartseed,Heartseed,Alchemical Ingredient,2,"A warm, red seed believed to fortify vigor and size.",modules/gathering-crafting/icons/illustrated/heartseed.webp
 merrowreed,Merrow Reed,Alchemical Ingredient,2,A sea-marsh reed that stores brackish moisture and supports breathing elixirs.,modules/gathering-crafting/icons/illustrated/merrowreed.webp
@@ -84,7 +84,7 @@ thunderbloom,Thunderbloom,Alchemical Ingredient,3,A crackling blue flower whose 
 whisper-seed,Whisper Seed,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Whisper Seed.,modules/gathering-crafting/icons/illustrated/whisper-seed.webp
 phoenix-ash,Phoenix Ash,Alchemical Ingredient,4,An alchemical ingredient used in brews and tonics: Phoenix Ash.,modules/gathering-crafting/icons/illustrated/phoenix-ash.webp
 beast-hide,Beast Hide,Monster Drop,1,"Tough hide from common beasts, useful in hardy salves and bindings.",modules/gathering-crafting/icons/illustrated/beast-hide.webp
-spider-silk,Spider Silk,Monster Drop,1,Silky strands with impressive tensile strength and alchemical grip.,modules/gathering-crafting/icons/illustrated/spider-silk.webp
+spider-silk,Spider Silk,Monster Drop,1,Silky strands with impressive tensile strength and alchemical grip.,modules/gathering-crafting/icons/handpainted/alchemy/spider-silk.webp
 wolf-fang,Wolf Fang,Monster Drop,1,"A sharp fang from a hunting wolf, often powdered into pursuit tonics.",modules/gathering-crafting/icons/illustrated/wolf-fang.webp
 ghoul-claw,Ghoul Claw,Monster Drop,2,A yellowed claw suited for paralytic compounds and graveward tonics.,modules/gathering-crafting/icons/illustrated/ghoul-claw.webp
 griffon-feather,Griffon Feather,Monster Drop,2,A broad flight feather used in brews of falling and glide.,modules/gathering-crafting/icons/illustrated/griffon-feather.webp

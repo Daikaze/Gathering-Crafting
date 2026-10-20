@@ -501,7 +501,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#7ea65f",
-      "img": "modules/gathering-crafting/icons/illustrated/kingsfoil.webp",
+      "img": "modules/gathering-crafting/icons/handpainted/alchemy/kingsfoil.webp",
       "description": "A broad-leafed healing herb used to steady wounds and purge fatigue."
     },
     {
@@ -671,7 +671,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#b2d995",
-      "img": "modules/gathering-crafting/icons/illustrated/glowshroom.webp",
+      "img": "modules/gathering-crafting/icons/handpainted/alchemy/glowshroom.webp",
       "description": "An alchemical ingredient used in brews and tonics: Glowshroom."
     },
     {
@@ -861,7 +861,7 @@
       "tier": 1,
       "icon": "fa-skull",
       "color": "#d6e2e8",
-      "img": "modules/gathering-crafting/icons/illustrated/spider-silk.webp",
+      "img": "modules/gathering-crafting/icons/handpainted/alchemy/spider-silk.webp",
       "description": "Silky strands with impressive tensile strength and alchemical grip."
     },
     {
@@ -3568,7 +3568,7 @@
       ],
       "description": "Restore 2d4 + 2 hit points.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/illustrated/craft-healing-potion.webp",
+      "img": "modules/gathering-crafting/icons/handpainted/alchemy/healing-potion.webp",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3868,7 +3868,7 @@
       ],
       "description": "For 1 hour, you descend gently and can ignore the first 60 feet of falling damage you would take.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/illustrated/craft-featherfall-philter.webp",
+      "img": "modules/gathering-crafting/icons/handpainted/alchemy/featherfall-philter.webp",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4497,7 +4497,7 @@
       ],
       "description": "A transformative elixir that can alter the drinker’s sex characteristics until dispelled or reversed by another dose.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/illustrated/craft-genderflux-elixir.webp",
+      "img": "modules/gathering-crafting/icons/handpainted/alchemy/genderflux-elixir.webp",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4572,7 +4572,7 @@
       ],
       "description": "For 8 hours, the drinker grows roughly 6 inches taller and gains an imposing, sturdier frame.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/illustrated/craft-growth-draught.webp",
+      "img": "modules/gathering-crafting/icons/handpainted/alchemy/growth-draught.webp",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4876,7 +4876,7 @@
       ],
       "description": "For 1 hour, gain resistance to fire damage and a harmless ember-breath cosmetic effect.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/illustrated/craft-dragonfire-tonic.webp",
+      "img": "modules/gathering-crafting/icons/handpainted/alchemy/dragonfire-tonic.webp",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -5055,7 +5055,7 @@
       ],
       "description": "For 1 hour, gain advantage on one saving throw against fear or psychic disturbance.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/illustrated/craft-voidward-philter.webp",
+      "img": "modules/gathering-crafting/icons/handpainted/alchemy/voidward-philter.webp",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -5080,7 +5080,7 @@
       ],
       "description": "Apply to a weapon or ammunition. The next hit deals an extra 3d6 poison damage; GM resolves the application.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/illustrated/craft-wyvern-poison.webp",
+      "img": "modules/gathering-crafting/icons/handpainted/alchemy/wyvern-poison.webp",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -5088,5 +5088,5 @@
       "outputType": "consumable"
     }
   ],
-  "catalogVersion": 9
+  "catalogVersion": 10
 }
