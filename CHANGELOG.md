@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.5.1 — D&D Style Art Pass
+
+- Reworked every bundled item image into a more ornate **D&D-style fantasy inventory look** with parchment, brass framing and stronger loot-icon readability.
+- Updated all bundled material and recipe image paths to the new `icons/v6` art set.
+- Added a safe **v0.5.1 migration** and backup step that refreshes bundled artwork while preserving player inventories and GM edits.
+
+## 0.5.0 — Easier Player UI & Full Art Pass
+
+- Split the player-facing crafting workflow into separate **Alchemy** and **Blacksmithing** tabs for faster, cleaner navigation.
+- Added a fresh **custom artwork pass for every bundled material and recipe**, now using dedicated module-owned images in `icons/v5`.
+- Updated the Inventory presentation so the ready items are labeled as **Alchemy Items** and **Blacksmithing Items**.
+- Added a safe **v0.5.0 migration** with a backup and image refresh for bundled entries while preserving player inventories and GM edits.
+
 ## 0.4.0 — Campaign Expansion
 
 - Expanded the data set to **102 materials**, **122 recipes** and **71 nodes**, including a full **Monster Drop** progression layer for long campaigns.

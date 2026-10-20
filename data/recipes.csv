@@ -1,123 +1,123 @@
-id,name,category,subcategory,tier,ingredients,description
-brass-ingot,Brass Ingot,metallurgy,Smelting,1,1 copper-ingot+1 nickel-ingot,Blend bright copper with nickel to cast a resonant brass ingot.
-bronze-buckles,Bronze Buckles,metallurgy,Forging,1,1 bronze-ingot,Durable fastening hardware.
-bronze-ingot,Bronze Ingot,metallurgy,Smelting,1,2 copper-ingot+1 tin-ingot,Alloy copper and tin.
-bronze-shield-boss,Bronze Shield Boss,metallurgy,Forging,1,2 bronze-ingot,Metal shield reinforcement.
-copper-bracers,Copper Bracers,metallurgy,Forging,1,2 copper-ingot+1 tin-ingot,Decorative protective bracers; GM may link a game item.
-copper-ingot,Copper Ingot,metallurgy,Smelting,1,3 copper-ore,Smelt copper ore into a clean ingot.
-copper-wire,Copper Wire,metallurgy,Forging,1,1 copper-ingot,Fine wire for metal fittings.
-iron-chain,Iron Chain,metallurgy,Forging,1,2 iron-ingot,A sturdy length of iron chain.
-iron-dagger,Iron Dagger,metallurgy,Forging,1,2 iron-ingot,A hand-forged dagger blueprint; link a dnd5e weapon for attack rolls.
-iron-ingot,Iron Ingot,metallurgy,Smelting,1,3 iron-ore+1 coal,Smelt iron ore using coal.
-iron-nails,Iron Nails,metallurgy,Forging,1,1 iron-ingot,A bundle of 20 forged nails.
-lantern-frame,Lantern Frame,metallurgy,Forging,1,1 copper-ingot+1 brass-ingot,A sturdy brass lantern frame awaiting glass and oil.
-nickel-ingot,Nickel Ingot,metallurgy,Smelting,1,3 nickel-ore+1 coal,"Smelt nickel ore into a hard, corrosion-resistant ingot."
-tin-ingot,Tin Ingot,metallurgy,Smelting,1,3 tin-ore,Smelt tin ore into a soft ingot.
-tin-solder,Tin Solder,metallurgy,Forging,1,1 tin-ingot,Solder used for precise metal joints.
-brass-compass,Brass Compass,metallurgy,Forging,2,1 brass-ingot+1 azurite+1 quartz,A well-crafted travel compass with a polished brass body.
-cobalt-ingot,Cobalt Ingot,metallurgy,Smelting,2,3 cobalt-ore+1 quartz,Refine cobalt into a vivid blue ingot suited to rune work.
-cobalt-lockbox,Cobalt Lockbox,metallurgy,Forging,2,1 cobalt-ingot+1 steel-ingot,A compact lockbox plated with cobalt for documents or gems.
-electrum-ingot,Electrum Ingot,metallurgy,Smelting,2,1 silver-ingot+1 gold-ingot,Fuse gold and silver into an electrum trade ingot.
-gold-ingot,Gold Ingot,metallurgy,Smelting,2,3 gold-ore,Refine pure gold.
-golden-seal,Golden Seal,metallurgy,Forging,2,1 gold-ingot+1 copper-ingot,An engraved metal seal.
-silver-circlet,Silver Circlet,metallurgy,Forging,2,2 silver-ingot+1 quartz,Finely wrought circlet.
-silver-ingot,Silver Ingot,metallurgy,Smelting,2,3 silver-ore,Refine precious silver.
-silvered-arrowheads,Silvered Arrowheads,metallurgy,Forging,2,1 silver-ingot+1 steel-ingot,Twenty silvered arrowheads useful against supernatural prey.
-silvered-blade,Silvered Blade,metallurgy,Forging,2,2 silver-ingot+1 steel-ingot,Silvered weapon blueprint; GM determines combat properties.
-steel-arrowheads,Steel Arrowheads,metallurgy,Forging,2,1 steel-ingot,A bundle of twenty keen steel arrowheads ready for fletching.
-steel-chain-shirt,Steel Chain Shirt,metallurgy,Forging,2,4 steel-ingot+1 beast-hide,Interlocked rings forged into a wearable chain shirt.
-steel-dagger,Steel Dagger,metallurgy,Forging,2,2 steel-ingot,Tempered steel dagger blueprint; link a dnd5e weapon for attack rolls.
-steel-gauntlets,Steel Gauntlets,metallurgy,Forging,2,3 steel-ingot,Protective forged gauntlets; link equipment for armor effects.
-steel-greaves,Steel Greaves,metallurgy,Forging,2,2 steel-ingot+1 beast-hide,"Protective greaves for soldiers, mercenaries and caravan guards."
-steel-helm,Steel Helm,metallurgy,Forging,2,3 steel-ingot,Reinforced metal helm; GM-defined armor properties.
-steel-ingot,Steel Ingot,metallurgy,Smelting,2,2 iron-ingot+2 coal,Temper iron with carbon.
-steel-rivets,Steel Rivets,metallurgy,Forging,2,1 steel-ingot,A set of reinforced rivets.
-steel-shield,Steel Shield,metallurgy,Forging,2,4 steel-ingot+1 bronze-ingot,Metal shield blueprint; link equipment to gain AC.
-steel-spear,Steel Spear,metallurgy,Forging,2,2 steel-ingot+1 iron-ingot,A battlefield-ready steel spear balanced for melee or thrown use.
-steel-sword,Steel Sword,metallurgy,Forging,2,4 steel-ingot,Longsword blueprint; link a weapon for attacks.
-blacksteel-ingot,Blacksteel Ingot,metallurgy,Smelting,3,2 steel-ingot+1 obsidian,Darken steel with obsidian dust.
-blacksteel-armor-plates,Blacksteel Plates,metallurgy,Forging,3,4 blacksteel-ingot,Dark metal armor plates blueprint.
-dusksteel-buckler,Dusksteel Buckler,metallurgy,Forging,3,2 dusksteel-ingot+1 beast-hide,A compact buckler that catches little glare and muffles movement.
-dusksteel-ingot,Dusksteel Ingot,metallurgy,Smelting,3,1 steel-ingot+1 voidglass,Darken tempered steel with voidglass to make dusksteel.
-mithral-blade,Mithral Blade,metallurgy,Forging,3,4 mithral-ingot+1 silver-ingot,Rare lightweight blade blueprint; GM-defined mechanics.
-mithral-chain,Mithral Chain,metallurgy,Forging,3,3 mithral-ingot,Lightweight mithral chain blueprint.
-mithral-ingot,Mithral Ingot,metallurgy,Smelting,3,3 mithral-ore+1 quartz,Refine lightweight mithral.
-platinum-circlet,Platinum Circlet,metallurgy,Forging,3,1 platinum-ingot+1 moonstone,"A refined platinum circlet fit for nobles, priests or spellcasters."
-platinum-ingot,Platinum Ingot,metallurgy,Smelting,3,3 platinum-ore+1 coal,Smelt platinum into a noble ingot used in high-end craftwork.
-runesteel-chisel,Runesteel Chisel,metallurgy,Forging,3,1 runesteel-ingot+1 iron-ingot,A precision chisel built for engraving glyphs into stone or metal.
-runesteel-ingot,Runesteel Ingot,metallurgy,Smelting,3,1 steel-ingot+1 cobalt-ingot+1 quartz,Temper steel with cobalt and quartz to produce rune-friendly metal.
-adamantine-blade,Adamantine Blade,metallurgy,Forging,4,5 adamantine-ingot+1 coal,Dense metal blade blueprint; GM-defined mechanics.
-adamantine-ingot,Adamantine Ingot,metallurgy,Smelting,4,3 adamantine-ore+2 coal,Smelt adamantine in a high-temperature furnace.
-adamantine-shield,Adamantine Shield,metallurgy,Forging,4,4 adamantine-ingot+1 steel-ingot,Extremely durable shield blueprint; GM-defined properties.
-dragonsilver-charm,Dragonsilver Charm,metallurgy,Forging,4,1 dragonsilver-ingot+1 sunstone,A gleaming charm often used as a focus or protective keepsake.
-dragonsilver-ingot,Dragonsilver Ingot,metallurgy,Smelting,4,2 silver-ingot+1 dragonshard,Infuse silver with dragonshard dust to create dragonsilver.
-moonsteel-diadem,Moonsteel Diadem,metallurgy,Forging,4,3 moonsteel-ingot+1 moonstone,Ceremonial diadem of moonsteel.
-moonsteel-ingot,Moonsteel Ingot,metallurgy,Smelting,4,1 mithral-ingot+2 moonstone,Alloy mithral and moonstone.
-starmetal-ingot,Starmetal Ingot,metallurgy,Smelting,4,3 starmetal-ore+1 azurite,Stabilize rare starmetal.
-starmetal-spearhead,Starmetal Spearhead,metallurgy,Forging,4,3 starmetal-ingot+2 quartz,Rare spearhead blueprint; GM-defined attack item.
-acid-flask,Acid Flask,alchemy,Potions & Tonics,1,1 marsh-kelp+1 sulfur,Throw up to 20 ft; 1 target makes DC 11 Dex save or takes 2d6 acid damage. GM resolves the effect.
-antitoxin,Antitoxin Draught,alchemy,Potions & Tonics,1,1 bitterroot+1 bogmint,Gain advantage on saving throws against poison for 1 hour.
-clear-mind-tonic,Clear Mind Tonic,alchemy,Potions & Tonics,1,1 bogmint+1 dawnberry,Gain advantage on your next Intelligence check within 1 hour.
-coolblood-draught,Coolblood Draught,alchemy,Potions & Tonics,1,1 frostleaf+1 bogmint,Ignore mundane heat discomfort for 1 hour (not damage resistance).
-dew-of-focus,Dew of Focus,alchemy,Potions & Tonics,1,1 silverleaf+1 pure-water,Gain advantage on one Perception check within 1 hour.
-healing-potion,Healing Potion,alchemy,Potions & Tonics,1,1 redroot+1 sunpetal,Restore 2d4 + 2 hit points.
-minor-healing-potion,Minor Healing Potion,alchemy,Potions & Tonics,1,1 redroot+1 silverleaf,Restore 1d4 + 1 hit points.
-petrichor-elixir,Petrichor Elixir,alchemy,Potions & Tonics,1,1 kingsfoil+1 pure-water,A refreshing tonic that removes one level of mundane fatigue at GM discretion and steadies the stomach.
-shimmerlight-phial,Shimmerlight Phial,alchemy,Potions & Tonics,1,1 glowshroom+1 quartz,Shed dim light in a 10-ft radius for 10 minutes.
-soothing-mixture,Soothing Mixture,alchemy,Potions & Tonics,1,1 moonbloom+1 bogmint,Gain advantage on one check to calm a frightened creature within 1 hour.
-steady-hand-tonic,Steady Hand Tonic,alchemy,Potions & Tonics,1,1 silverleaf+1 thornbriar,Gain advantage on your next Sleight of Hand check within 1 hour.
-warmblood-draught,Warmblood Draught,alchemy,Potions & Tonics,1,1 embercap+1 dawnberry,Ignore mundane cold discomfort for 1 hour (not damage resistance).
-mana-restorative,Arcane Clarity Tonic,alchemy,Potions & Tonics,2,1 moonbloom+1 blue-moss,"For 10 minutes, gain advantage on one Arcana check."
-breath-of-tides,Breath of Tides,alchemy,Potions & Tonics,2,1 marsh-kelp+1 blue-moss,Breathe underwater for 10 minutes.
-cinder-breath,Cinder Breath Phial,alchemy,Potions & Tonics,2,1 embercap+1 ashfern,Exhale cinders in a 10-ft cone; targets make DC 12 Dex save or take 2d6 fire damage. GM resolves the effect.
-courage-tonic,Courage Tonic,alchemy,Potions & Tonics,2,1 sunpetal+1 thornbriar,Gain advantage on your next saving throw against frightened within 1 hour.
-emberguard-draught,Emberguard Draught,alchemy,Potions & Tonics,2,1 frostleaf+1 ashfern,Gain resistance to fire damage for 1 minute.
-featherfall-philter,Featherfall Philter,alchemy,Potions & Tonics,2,1 griffon-feather+1 skyblossom,"For 1 hour, you descend gently and can ignore the first 60 feet of falling damage you would take."
-frost-breath,Frost Breath Phial,alchemy,Potions & Tonics,2,1 frostleaf+1 mistflower,Exhale frost in a 10-ft cone; targets make DC 12 Dex save or take 2d6 cold damage. GM resolves the effect.
-frostguard-draught,Frostguard Draught,alchemy,Potions & Tonics,2,1 embercap+1 sunpetal,Gain resistance to cold damage for 1 minute.
-graveward-draught,Graveward Draught,alchemy,Potions & Tonics,2,1 gravebloom+1 ghoul-claw,"For 8 hours, gain advantage on one saving throw against paralysis, disease or undead stench."
-greater-healing-potion,Greater Healing Potion,alchemy,Potions & Tonics,2,1 redroot+1 ghost-orchid,Restore 4d4 + 4 hit points.
-hunters-instinct-tonic,Hunter’s Instinct Tonic,alchemy,Potions & Tonics,2,1 beast-hide+1 wolf-fang,Gain advantage on one Survival check to track prey within the next 8 hours.
-moonveil-tonic,Moonveil Tonic,alchemy,Potions & Tonics,2,1 moonbloom+1 faerie-thyme,"For 1 hour, your voice softens and illusion magic around you is harder to notice."
-night-eye-elixir,Night-Eye Elixir,alchemy,Potions & Tonics,2,1 nightshade+1 glowshroom,Gain 30 ft. darkvision for 1 hour; GM adjudicates existing darkvision.
-night-vision-draught,Night-Vision Draught,alchemy,Potions & Tonics,2,1 pearlcap+1 shadow-essence,Gain darkvision out to 60 feet for 1 hour.
-serpent-antivenom,Serpent Antivenom,alchemy,Potions & Tonics,2,1 serpent-scale+1 wolfsbane,End the poisoned condition or grant advantage on the next save against poison within 1 hour.
-shrink-sip,Shrink Sip,alchemy,Potions & Tonics,2,1 duskbell+1 faerie-thyme,"For 8 hours, the drinker becomes a little smaller and lighter, reducing their height by roughly 6 inches."
-silentstep-elixir,Silentstep Elixir,alchemy,Potions & Tonics,2,1 mistflower+1 duskshade,Gain advantage on one Stealth check within 1 hour.
-sleep-draught,Sleep Draught,alchemy,Potions & Tonics,2,1 dreamlily+1 duskshade,Unwilling target makes DC 12 Con save or is drowsy for 1 minute; GM adjudicates.
-slime-slick-oil,Slime Slick Oil,alchemy,Potions & Tonics,2,1 slime-core+1 pure-water,A slippery coating that grants advantage on one escape check from a grapple or restraint.
-spark-bottle,Spark Bottle,alchemy,Potions & Tonics,2,1 stormthistle+1 glowshroom,Throw up to 20 ft; 1 target makes DC 12 Dex save or takes 2d6 lightning damage. GM resolves the effect.
-stoneheart-tonic,Stoneheart Tonic,alchemy,Potions & Tonics,2,1 thornbriar+1 redroot,Gain 1d4 temporary hit points for 1 hour.
-stormguard-draught,Stormguard Draught,alchemy,Potions & Tonics,2,1 stormthistle+1 sea-salt,Gain resistance to lightning damage for 1 minute.
-swiftclaw-mixture,Swiftclaw Mixture,alchemy,Potions & Tonics,2,1 wolf-fang+1 stormthistle,Gain advantage on one initiative roll or Athletics check within 1 hour.
-swiftstep-elixir,Swiftstep Elixir,alchemy,Potions & Tonics,2,1 stormthistle+1 sunpetal,Increase walking speed by 10 ft for 10 minutes.
-toxinward-draught,Toxinward Draught,alchemy,Potions & Tonics,2,1 bitterroot+1 nightshade,Gain resistance to poison damage for 1 minute.
-basilisk-salve,Basilisk Salve,alchemy,Potions & Tonics,3,1 basilisk-eye+1 kingsfoil,Apply to the skin to grant advantage on your next save against restraint or petrification within 1 hour.
-bloodrush-tonic,Bloodrush Tonic,alchemy,Potions & Tonics,3,1 crimson-sap+1 embercap,Gain advantage on one Athletics check within 10 minutes.
-cleansefire-vial,Cleansefire Vial,alchemy,Potions & Tonics,3,1 emberblossom+1 brimstone,Thrown splash vial that burns corruption; deals 2d6 fire damage to one target and lights unattended flammables.
-dreamwalk-tonic,Dreamwalk Tonic,alchemy,Potions & Tonics,3,1 dreamlily+1 ghost-orchid,For 10 minutes gain advantage on checks to interpret dreams.
-faerie-form-draught,Faerie-Form Draught,alchemy,Potions & Tonics,3,1 faerie-thyme+1 skyblossom,"For 1 hour, your features become graceful and luminous; you weigh less and leave glittering motes in your wake."
-genderflux-elixir,Genderflux Elixir,alchemy,Potions & Tonics,3,1 faerie-thyme+1 moonbloom+1 slime-core,A transformative elixir that can alter the drinker’s sex characteristics until dispelled or reversed by another dose.
-ghost-ink-tonic,Ghost-Ink Tonic,alchemy,Potions & Tonics,3,1 ectoplasm+1 ghost-orchid,"For 10 minutes, you become faintly translucent and gain advantage on checks to move quietly through darkness."
-glider-mixture,Glider Mixture,alchemy,Potions & Tonics,3,1 manticore-spike+1 griffon-feather,"For 10 minutes, long jumps are doubled and you can glide 20 feet horizontally when falling."
-growth-draught,Growth Draught,alchemy,Potions & Tonics,3,1 heartseed+1 troll-blood,"For 8 hours, the drinker grows roughly 6 inches taller and gains an imposing, sturdier frame."
-ironhide-tonic,Ironhide Tonic,alchemy,Potions & Tonics,3,1 ashfern+1 crimson-sap,Gain 2d4 temporary hit points for 1 hour.
-merrows-embrace,Merrow’s Embrace,alchemy,Potions & Tonics,3,1 merrowreed+1 sea-salt+1 kraken-ink,"For 1 hour, breathe underwater and swim 10 feet faster."
-mistveil-phial,Mistveil Phial,alchemy,Potions & Tonics,3,1 mistflower+1 shade-spore,Create a 5-ft cloud of mist for 1 round; GM adjudicates obscurement.
-moon-sight-tonic,Moon-Sight Tonic,alchemy,Potions & Tonics,3,1 moonbloom+1 starflower,Gain advantage on one Investigation check within 1 hour.
-purifying-draught,Purifying Draught,alchemy,Potions & Tonics,3,1 ghost-orchid+1 sea-salt,End one mundane intoxication or minor nonmagical ailment at GM discretion.
-shadow-skin-tonic,Shadow-Skin Tonic,alchemy,Potions & Tonics,3,1 shadow-essence+1 duskshade,"For 1 hour, gain advantage on one Stealth check and darkvision out to 60 feet if you lacked it."
-spider-climb-serum,Spider-Climb Serum,alchemy,Potions & Tonics,3,1 spider-silk+1 venom-sac,"For 1 hour, you can move across vertical surfaces and ceilings without needing free hands."
-stoneform-lacquer,Stoneform Lacquer,alchemy,Potions & Tonics,3,1 basilisk-eye+1 obsidian,"For 1 hour, your skin hardens; GM may grant +1 AC or advantage against forced movement."
-stormsight-elixir,Stormsight Elixir,alchemy,Potions & Tonics,3,1 thunderbloom+1 azurite,Ignore heavily obscuring rain for 1 hour and gain advantage on one Perception check in a storm.
-superior-healing-potion,Superior Healing Potion,alchemy,Potions & Tonics,3,1 ghost-orchid+1 crimson-sap,Restore 8d4 + 8 hit points.
-chimera-might-elixir,Chimera Might Elixir,alchemy,Potions & Tonics,4,1 chimera-horn+1 heartseed,"For 1 hour, gain advantage on one Strength check and your carrying capacity counts as doubled."
-dragonfire-tonic,Dragonfire Tonic,alchemy,Potions & Tonics,4,1 dragon-scale+1 emberblossom,"For 1 hour, gain resistance to fire damage and a harmless ember-breath cosmetic effect."
-dragons-breath-elixir,Dragon’s Breath Elixir,alchemy,Potions & Tonics,4,1 dragon-scale+1 dragonshard,Exhale a 15-foot cone of elemental breath once within 1 minute; GM chooses or rolls the element.
-ichor-philter,Ichor Philter,alchemy,Potions & Tonics,4,1 demon-ichor+1 brimstone,A risky infernal stimulant. Gain 2d4 temporary hit points and advantage on one Intimidation check within 1 hour.
-inkcloud-tonic,Inkcloud Tonic,alchemy,Potions & Tonics,4,1 kraken-ink+1 merrowreed,Release a 10-foot underwater ink cloud or a 5-foot land cloud of obscurement for 1 minute.
-phoenix-renewal,Phoenix Renewal Elixir,alchemy,Potions & Tonics,4,2 phoenix-ash+1 starflower,Restore 6d4 + 6 hit points and end the poisoned condition.
-regeneration-serum,Regeneration Serum,alchemy,Potions & Tonics,4,1 troll-blood+1 kingsfoil+1 phoenix-ash,Restore 4d4 + 4 hit points and close minor wounds over the next minute.
-supreme-healing-potion,Supreme Healing Potion,alchemy,Potions & Tonics,4,2 phoenix-ash+1 ghost-orchid,Restore 10d4 + 20 hit points.
-voidward-philter,Voidward Philter,alchemy,Potions & Tonics,4,1 voidglass+1 ghost-orchid,"For 1 hour, gain advantage on one saving throw against fear or psychic disturbance."
-wyvern-poison,Wyvern Poison,alchemy,Potions & Tonics,4,1 wyvern-stinger+1 venom-sac,Apply to a weapon or ammunition. The next hit deals an extra 3d6 poison damage; GM resolves the application.
+id,name,category,subcategory,tier,ingredients,description,img
+brass-ingot,Brass Ingot,metallurgy,Smelting,1,1 copper-ingot+1 nickel-ingot,Blend bright copper with nickel to cast a resonant brass ingot.,modules/gathering-crafting/icons/v6/craft-brass-ingot.svg
+bronze-buckles,Bronze Buckles,metallurgy,Forging,1,1 bronze-ingot,Durable fastening hardware.,modules/gathering-crafting/icons/v6/craft-bronze-buckles.svg
+bronze-ingot,Bronze Ingot,metallurgy,Smelting,1,2 copper-ingot+1 tin-ingot,Alloy copper and tin.,modules/gathering-crafting/icons/v6/craft-bronze-ingot.svg
+bronze-shield-boss,Bronze Shield Boss,metallurgy,Forging,1,2 bronze-ingot,Metal shield reinforcement.,modules/gathering-crafting/icons/v6/craft-bronze-shield-boss.svg
+copper-bracers,Copper Bracers,metallurgy,Forging,1,2 copper-ingot+1 tin-ingot,Decorative protective bracers; GM may link a game item.,modules/gathering-crafting/icons/v6/craft-copper-bracers.svg
+copper-ingot,Copper Ingot,metallurgy,Smelting,1,3 copper-ore,Smelt copper ore into a clean ingot.,modules/gathering-crafting/icons/v6/craft-copper-ingot.svg
+copper-wire,Copper Wire,metallurgy,Forging,1,1 copper-ingot,Fine wire for metal fittings.,modules/gathering-crafting/icons/v6/craft-copper-wire.svg
+iron-chain,Iron Chain,metallurgy,Forging,1,2 iron-ingot,A sturdy length of iron chain.,modules/gathering-crafting/icons/v6/craft-iron-chain.svg
+iron-dagger,Iron Dagger,metallurgy,Forging,1,2 iron-ingot,A hand-forged dagger blueprint; link a dnd5e weapon for attack rolls.,modules/gathering-crafting/icons/v6/craft-iron-dagger.svg
+iron-ingot,Iron Ingot,metallurgy,Smelting,1,3 iron-ore+1 coal,Smelt iron ore using coal.,modules/gathering-crafting/icons/v6/craft-iron-ingot.svg
+iron-nails,Iron Nails,metallurgy,Forging,1,1 iron-ingot,A bundle of 20 forged nails.,modules/gathering-crafting/icons/v6/craft-iron-nails.svg
+lantern-frame,Lantern Frame,metallurgy,Forging,1,1 copper-ingot+1 brass-ingot,A sturdy brass lantern frame awaiting glass and oil.,modules/gathering-crafting/icons/v6/craft-lantern-frame.svg
+nickel-ingot,Nickel Ingot,metallurgy,Smelting,1,3 nickel-ore+1 coal,"Smelt nickel ore into a hard, corrosion-resistant ingot.",modules/gathering-crafting/icons/v6/craft-nickel-ingot.svg
+tin-ingot,Tin Ingot,metallurgy,Smelting,1,3 tin-ore,Smelt tin ore into a soft ingot.,modules/gathering-crafting/icons/v6/craft-tin-ingot.svg
+tin-solder,Tin Solder,metallurgy,Forging,1,1 tin-ingot,Solder used for precise metal joints.,modules/gathering-crafting/icons/v6/craft-tin-solder.svg
+brass-compass,Brass Compass,metallurgy,Forging,2,1 brass-ingot+1 azurite+1 quartz,A well-crafted travel compass with a polished brass body.,modules/gathering-crafting/icons/v6/craft-brass-compass.svg
+cobalt-ingot,Cobalt Ingot,metallurgy,Smelting,2,3 cobalt-ore+1 quartz,Refine cobalt into a vivid blue ingot suited to rune work.,modules/gathering-crafting/icons/v6/craft-cobalt-ingot.svg
+cobalt-lockbox,Cobalt Lockbox,metallurgy,Forging,2,1 cobalt-ingot+1 steel-ingot,A compact lockbox plated with cobalt for documents or gems.,modules/gathering-crafting/icons/v6/craft-cobalt-lockbox.svg
+electrum-ingot,Electrum Ingot,metallurgy,Smelting,2,1 silver-ingot+1 gold-ingot,Fuse gold and silver into an electrum trade ingot.,modules/gathering-crafting/icons/v6/craft-electrum-ingot.svg
+gold-ingot,Gold Ingot,metallurgy,Smelting,2,3 gold-ore,Refine pure gold.,modules/gathering-crafting/icons/v6/craft-gold-ingot.svg
+golden-seal,Golden Seal,metallurgy,Forging,2,1 gold-ingot+1 copper-ingot,An engraved metal seal.,modules/gathering-crafting/icons/v6/craft-golden-seal.svg
+silver-circlet,Silver Circlet,metallurgy,Forging,2,2 silver-ingot+1 quartz,Finely wrought circlet.,modules/gathering-crafting/icons/v6/craft-silver-circlet.svg
+silver-ingot,Silver Ingot,metallurgy,Smelting,2,3 silver-ore,Refine precious silver.,modules/gathering-crafting/icons/v6/craft-silver-ingot.svg
+silvered-arrowheads,Silvered Arrowheads,metallurgy,Forging,2,1 silver-ingot+1 steel-ingot,Twenty silvered arrowheads useful against supernatural prey.,modules/gathering-crafting/icons/v6/craft-silvered-arrowheads.svg
+silvered-blade,Silvered Blade,metallurgy,Forging,2,2 silver-ingot+1 steel-ingot,Silvered weapon blueprint; GM determines combat properties.,modules/gathering-crafting/icons/v6/craft-silvered-blade.svg
+steel-arrowheads,Steel Arrowheads,metallurgy,Forging,2,1 steel-ingot,A bundle of twenty keen steel arrowheads ready for fletching.,modules/gathering-crafting/icons/v6/craft-steel-arrowheads.svg
+steel-chain-shirt,Steel Chain Shirt,metallurgy,Forging,2,4 steel-ingot+1 beast-hide,Interlocked rings forged into a wearable chain shirt.,modules/gathering-crafting/icons/v6/craft-steel-chain-shirt.svg
+steel-dagger,Steel Dagger,metallurgy,Forging,2,2 steel-ingot,Tempered steel dagger blueprint; link a dnd5e weapon for attack rolls.,modules/gathering-crafting/icons/v6/craft-steel-dagger.svg
+steel-gauntlets,Steel Gauntlets,metallurgy,Forging,2,3 steel-ingot,Protective forged gauntlets; link equipment for armor effects.,modules/gathering-crafting/icons/v6/craft-steel-gauntlets.svg
+steel-greaves,Steel Greaves,metallurgy,Forging,2,2 steel-ingot+1 beast-hide,"Protective greaves for soldiers, mercenaries and caravan guards.",modules/gathering-crafting/icons/v6/craft-steel-greaves.svg
+steel-helm,Steel Helm,metallurgy,Forging,2,3 steel-ingot,Reinforced metal helm; GM-defined armor properties.,modules/gathering-crafting/icons/v6/craft-steel-helm.svg
+steel-ingot,Steel Ingot,metallurgy,Smelting,2,2 iron-ingot+2 coal,Temper iron with carbon.,modules/gathering-crafting/icons/v6/craft-steel-ingot.svg
+steel-rivets,Steel Rivets,metallurgy,Forging,2,1 steel-ingot,A set of reinforced rivets.,modules/gathering-crafting/icons/v6/craft-steel-rivets.svg
+steel-shield,Steel Shield,metallurgy,Forging,2,4 steel-ingot+1 bronze-ingot,Metal shield blueprint; link equipment to gain AC.,modules/gathering-crafting/icons/v6/craft-steel-shield.svg
+steel-spear,Steel Spear,metallurgy,Forging,2,2 steel-ingot+1 iron-ingot,A battlefield-ready steel spear balanced for melee or thrown use.,modules/gathering-crafting/icons/v6/craft-steel-spear.svg
+steel-sword,Steel Sword,metallurgy,Forging,2,4 steel-ingot,Longsword blueprint; link a weapon for attacks.,modules/gathering-crafting/icons/v6/craft-steel-sword.svg
+blacksteel-ingot,Blacksteel Ingot,metallurgy,Smelting,3,2 steel-ingot+1 obsidian,Darken steel with obsidian dust.,modules/gathering-crafting/icons/v6/craft-blacksteel-ingot.svg
+blacksteel-armor-plates,Blacksteel Plates,metallurgy,Forging,3,4 blacksteel-ingot,Dark metal armor plates blueprint.,modules/gathering-crafting/icons/v6/craft-blacksteel-armor-plates.svg
+dusksteel-buckler,Dusksteel Buckler,metallurgy,Forging,3,2 dusksteel-ingot+1 beast-hide,A compact buckler that catches little glare and muffles movement.,modules/gathering-crafting/icons/v6/craft-dusksteel-buckler.svg
+dusksteel-ingot,Dusksteel Ingot,metallurgy,Smelting,3,1 steel-ingot+1 voidglass,Darken tempered steel with voidglass to make dusksteel.,modules/gathering-crafting/icons/v6/craft-dusksteel-ingot.svg
+mithral-blade,Mithral Blade,metallurgy,Forging,3,4 mithral-ingot+1 silver-ingot,Rare lightweight blade blueprint; GM-defined mechanics.,modules/gathering-crafting/icons/v6/craft-mithral-blade.svg
+mithral-chain,Mithral Chain,metallurgy,Forging,3,3 mithral-ingot,Lightweight mithral chain blueprint.,modules/gathering-crafting/icons/v6/craft-mithral-chain.svg
+mithral-ingot,Mithral Ingot,metallurgy,Smelting,3,3 mithral-ore+1 quartz,Refine lightweight mithral.,modules/gathering-crafting/icons/v6/craft-mithral-ingot.svg
+platinum-circlet,Platinum Circlet,metallurgy,Forging,3,1 platinum-ingot+1 moonstone,"A refined platinum circlet fit for nobles, priests or spellcasters.",modules/gathering-crafting/icons/v6/craft-platinum-circlet.svg
+platinum-ingot,Platinum Ingot,metallurgy,Smelting,3,3 platinum-ore+1 coal,Smelt platinum into a noble ingot used in high-end craftwork.,modules/gathering-crafting/icons/v6/craft-platinum-ingot.svg
+runesteel-chisel,Runesteel Chisel,metallurgy,Forging,3,1 runesteel-ingot+1 iron-ingot,A precision chisel built for engraving glyphs into stone or metal.,modules/gathering-crafting/icons/v6/craft-runesteel-chisel.svg
+runesteel-ingot,Runesteel Ingot,metallurgy,Smelting,3,1 steel-ingot+1 cobalt-ingot+1 quartz,Temper steel with cobalt and quartz to produce rune-friendly metal.,modules/gathering-crafting/icons/v6/craft-runesteel-ingot.svg
+adamantine-blade,Adamantine Blade,metallurgy,Forging,4,5 adamantine-ingot+1 coal,Dense metal blade blueprint; GM-defined mechanics.,modules/gathering-crafting/icons/v6/craft-adamantine-blade.svg
+adamantine-ingot,Adamantine Ingot,metallurgy,Smelting,4,3 adamantine-ore+2 coal,Smelt adamantine in a high-temperature furnace.,modules/gathering-crafting/icons/v6/craft-adamantine-ingot.svg
+adamantine-shield,Adamantine Shield,metallurgy,Forging,4,4 adamantine-ingot+1 steel-ingot,Extremely durable shield blueprint; GM-defined properties.,modules/gathering-crafting/icons/v6/craft-adamantine-shield.svg
+dragonsilver-charm,Dragonsilver Charm,metallurgy,Forging,4,1 dragonsilver-ingot+1 sunstone,A gleaming charm often used as a focus or protective keepsake.,modules/gathering-crafting/icons/v6/craft-dragonsilver-charm.svg
+dragonsilver-ingot,Dragonsilver Ingot,metallurgy,Smelting,4,2 silver-ingot+1 dragonshard,Infuse silver with dragonshard dust to create dragonsilver.,modules/gathering-crafting/icons/v6/craft-dragonsilver-ingot.svg
+moonsteel-diadem,Moonsteel Diadem,metallurgy,Forging,4,3 moonsteel-ingot+1 moonstone,Ceremonial diadem of moonsteel.,modules/gathering-crafting/icons/v6/craft-moonsteel-diadem.svg
+moonsteel-ingot,Moonsteel Ingot,metallurgy,Smelting,4,1 mithral-ingot+2 moonstone,Alloy mithral and moonstone.,modules/gathering-crafting/icons/v6/craft-moonsteel-ingot.svg
+starmetal-ingot,Starmetal Ingot,metallurgy,Smelting,4,3 starmetal-ore+1 azurite,Stabilize rare starmetal.,modules/gathering-crafting/icons/v6/craft-starmetal-ingot.svg
+starmetal-spearhead,Starmetal Spearhead,metallurgy,Forging,4,3 starmetal-ingot+2 quartz,Rare spearhead blueprint; GM-defined attack item.,modules/gathering-crafting/icons/v6/craft-starmetal-spearhead.svg
+acid-flask,Acid Flask,alchemy,Potions & Tonics,1,1 marsh-kelp+1 sulfur,Throw up to 20 ft; 1 target makes DC 11 Dex save or takes 2d6 acid damage. GM resolves the effect.,modules/gathering-crafting/icons/v6/craft-acid-flask.svg
+antitoxin,Antitoxin Draught,alchemy,Potions & Tonics,1,1 bitterroot+1 bogmint,Gain advantage on saving throws against poison for 1 hour.,modules/gathering-crafting/icons/v6/craft-antitoxin.svg
+clear-mind-tonic,Clear Mind Tonic,alchemy,Potions & Tonics,1,1 bogmint+1 dawnberry,Gain advantage on your next Intelligence check within 1 hour.,modules/gathering-crafting/icons/v6/craft-clear-mind-tonic.svg
+coolblood-draught,Coolblood Draught,alchemy,Potions & Tonics,1,1 frostleaf+1 bogmint,Ignore mundane heat discomfort for 1 hour (not damage resistance).,modules/gathering-crafting/icons/v6/craft-coolblood-draught.svg
+dew-of-focus,Dew of Focus,alchemy,Potions & Tonics,1,1 silverleaf+1 pure-water,Gain advantage on one Perception check within 1 hour.,modules/gathering-crafting/icons/v6/craft-dew-of-focus.svg
+healing-potion,Healing Potion,alchemy,Potions & Tonics,1,1 redroot+1 sunpetal,Restore 2d4 + 2 hit points.,modules/gathering-crafting/icons/v6/craft-healing-potion.svg
+minor-healing-potion,Minor Healing Potion,alchemy,Potions & Tonics,1,1 redroot+1 silverleaf,Restore 1d4 + 1 hit points.,modules/gathering-crafting/icons/v6/craft-minor-healing-potion.svg
+petrichor-elixir,Petrichor Elixir,alchemy,Potions & Tonics,1,1 kingsfoil+1 pure-water,A refreshing tonic that removes one level of mundane fatigue at GM discretion and steadies the stomach.,modules/gathering-crafting/icons/v6/craft-petrichor-elixir.svg
+shimmerlight-phial,Shimmerlight Phial,alchemy,Potions & Tonics,1,1 glowshroom+1 quartz,Shed dim light in a 10-ft radius for 10 minutes.,modules/gathering-crafting/icons/v6/craft-shimmerlight-phial.svg
+soothing-mixture,Soothing Mixture,alchemy,Potions & Tonics,1,1 moonbloom+1 bogmint,Gain advantage on one check to calm a frightened creature within 1 hour.,modules/gathering-crafting/icons/v6/craft-soothing-mixture.svg
+steady-hand-tonic,Steady Hand Tonic,alchemy,Potions & Tonics,1,1 silverleaf+1 thornbriar,Gain advantage on your next Sleight of Hand check within 1 hour.,modules/gathering-crafting/icons/v6/craft-steady-hand-tonic.svg
+warmblood-draught,Warmblood Draught,alchemy,Potions & Tonics,1,1 embercap+1 dawnberry,Ignore mundane cold discomfort for 1 hour (not damage resistance).,modules/gathering-crafting/icons/v6/craft-warmblood-draught.svg
+mana-restorative,Arcane Clarity Tonic,alchemy,Potions & Tonics,2,1 moonbloom+1 blue-moss,"For 10 minutes, gain advantage on one Arcana check.",modules/gathering-crafting/icons/v6/craft-mana-restorative.svg
+breath-of-tides,Breath of Tides,alchemy,Potions & Tonics,2,1 marsh-kelp+1 blue-moss,Breathe underwater for 10 minutes.,modules/gathering-crafting/icons/v6/craft-breath-of-tides.svg
+cinder-breath,Cinder Breath Phial,alchemy,Potions & Tonics,2,1 embercap+1 ashfern,Exhale cinders in a 10-ft cone; targets make DC 12 Dex save or take 2d6 fire damage. GM resolves the effect.,modules/gathering-crafting/icons/v6/craft-cinder-breath.svg
+courage-tonic,Courage Tonic,alchemy,Potions & Tonics,2,1 sunpetal+1 thornbriar,Gain advantage on your next saving throw against frightened within 1 hour.,modules/gathering-crafting/icons/v6/craft-courage-tonic.svg
+emberguard-draught,Emberguard Draught,alchemy,Potions & Tonics,2,1 frostleaf+1 ashfern,Gain resistance to fire damage for 1 minute.,modules/gathering-crafting/icons/v6/craft-emberguard-draught.svg
+featherfall-philter,Featherfall Philter,alchemy,Potions & Tonics,2,1 griffon-feather+1 skyblossom,"For 1 hour, you descend gently and can ignore the first 60 feet of falling damage you would take.",modules/gathering-crafting/icons/v6/craft-featherfall-philter.svg
+frost-breath,Frost Breath Phial,alchemy,Potions & Tonics,2,1 frostleaf+1 mistflower,Exhale frost in a 10-ft cone; targets make DC 12 Dex save or take 2d6 cold damage. GM resolves the effect.,modules/gathering-crafting/icons/v6/craft-frost-breath.svg
+frostguard-draught,Frostguard Draught,alchemy,Potions & Tonics,2,1 embercap+1 sunpetal,Gain resistance to cold damage for 1 minute.,modules/gathering-crafting/icons/v6/craft-frostguard-draught.svg
+graveward-draught,Graveward Draught,alchemy,Potions & Tonics,2,1 gravebloom+1 ghoul-claw,"For 8 hours, gain advantage on one saving throw against paralysis, disease or undead stench.",modules/gathering-crafting/icons/v6/craft-graveward-draught.svg
+greater-healing-potion,Greater Healing Potion,alchemy,Potions & Tonics,2,1 redroot+1 ghost-orchid,Restore 4d4 + 4 hit points.,modules/gathering-crafting/icons/v6/craft-greater-healing-potion.svg
+hunters-instinct-tonic,Hunter’s Instinct Tonic,alchemy,Potions & Tonics,2,1 beast-hide+1 wolf-fang,Gain advantage on one Survival check to track prey within the next 8 hours.,modules/gathering-crafting/icons/v6/craft-hunters-instinct-tonic.svg
+moonveil-tonic,Moonveil Tonic,alchemy,Potions & Tonics,2,1 moonbloom+1 faerie-thyme,"For 1 hour, your voice softens and illusion magic around you is harder to notice.",modules/gathering-crafting/icons/v6/craft-moonveil-tonic.svg
+night-eye-elixir,Night-Eye Elixir,alchemy,Potions & Tonics,2,1 nightshade+1 glowshroom,Gain 30 ft. darkvision for 1 hour; GM adjudicates existing darkvision.,modules/gathering-crafting/icons/v6/craft-night-eye-elixir.svg
+night-vision-draught,Night-Vision Draught,alchemy,Potions & Tonics,2,1 pearlcap+1 shadow-essence,Gain darkvision out to 60 feet for 1 hour.,modules/gathering-crafting/icons/v6/craft-night-vision-draught.svg
+serpent-antivenom,Serpent Antivenom,alchemy,Potions & Tonics,2,1 serpent-scale+1 wolfsbane,End the poisoned condition or grant advantage on the next save against poison within 1 hour.,modules/gathering-crafting/icons/v6/craft-serpent-antivenom.svg
+shrink-sip,Shrink Sip,alchemy,Potions & Tonics,2,1 duskbell+1 faerie-thyme,"For 8 hours, the drinker becomes a little smaller and lighter, reducing their height by roughly 6 inches.",modules/gathering-crafting/icons/v6/craft-shrink-sip.svg
+silentstep-elixir,Silentstep Elixir,alchemy,Potions & Tonics,2,1 mistflower+1 duskshade,Gain advantage on one Stealth check within 1 hour.,modules/gathering-crafting/icons/v6/craft-silentstep-elixir.svg
+sleep-draught,Sleep Draught,alchemy,Potions & Tonics,2,1 dreamlily+1 duskshade,Unwilling target makes DC 12 Con save or is drowsy for 1 minute; GM adjudicates.,modules/gathering-crafting/icons/v6/craft-sleep-draught.svg
+slime-slick-oil,Slime Slick Oil,alchemy,Potions & Tonics,2,1 slime-core+1 pure-water,A slippery coating that grants advantage on one escape check from a grapple or restraint.,modules/gathering-crafting/icons/v6/craft-slime-slick-oil.svg
+spark-bottle,Spark Bottle,alchemy,Potions & Tonics,2,1 stormthistle+1 glowshroom,Throw up to 20 ft; 1 target makes DC 12 Dex save or takes 2d6 lightning damage. GM resolves the effect.,modules/gathering-crafting/icons/v6/craft-spark-bottle.svg
+stoneheart-tonic,Stoneheart Tonic,alchemy,Potions & Tonics,2,1 thornbriar+1 redroot,Gain 1d4 temporary hit points for 1 hour.,modules/gathering-crafting/icons/v6/craft-stoneheart-tonic.svg
+stormguard-draught,Stormguard Draught,alchemy,Potions & Tonics,2,1 stormthistle+1 sea-salt,Gain resistance to lightning damage for 1 minute.,modules/gathering-crafting/icons/v6/craft-stormguard-draught.svg
+swiftclaw-mixture,Swiftclaw Mixture,alchemy,Potions & Tonics,2,1 wolf-fang+1 stormthistle,Gain advantage on one initiative roll or Athletics check within 1 hour.,modules/gathering-crafting/icons/v6/craft-swiftclaw-mixture.svg
+swiftstep-elixir,Swiftstep Elixir,alchemy,Potions & Tonics,2,1 stormthistle+1 sunpetal,Increase walking speed by 10 ft for 10 minutes.,modules/gathering-crafting/icons/v6/craft-swiftstep-elixir.svg
+toxinward-draught,Toxinward Draught,alchemy,Potions & Tonics,2,1 bitterroot+1 nightshade,Gain resistance to poison damage for 1 minute.,modules/gathering-crafting/icons/v6/craft-toxinward-draught.svg
+basilisk-salve,Basilisk Salve,alchemy,Potions & Tonics,3,1 basilisk-eye+1 kingsfoil,Apply to the skin to grant advantage on your next save against restraint or petrification within 1 hour.,modules/gathering-crafting/icons/v6/craft-basilisk-salve.svg
+bloodrush-tonic,Bloodrush Tonic,alchemy,Potions & Tonics,3,1 crimson-sap+1 embercap,Gain advantage on one Athletics check within 10 minutes.,modules/gathering-crafting/icons/v6/craft-bloodrush-tonic.svg
+cleansefire-vial,Cleansefire Vial,alchemy,Potions & Tonics,3,1 emberblossom+1 brimstone,Thrown splash vial that burns corruption; deals 2d6 fire damage to one target and lights unattended flammables.,modules/gathering-crafting/icons/v6/craft-cleansefire-vial.svg
+dreamwalk-tonic,Dreamwalk Tonic,alchemy,Potions & Tonics,3,1 dreamlily+1 ghost-orchid,For 10 minutes gain advantage on checks to interpret dreams.,modules/gathering-crafting/icons/v6/craft-dreamwalk-tonic.svg
+faerie-form-draught,Faerie-Form Draught,alchemy,Potions & Tonics,3,1 faerie-thyme+1 skyblossom,"For 1 hour, your features become graceful and luminous; you weigh less and leave glittering motes in your wake.",modules/gathering-crafting/icons/v6/craft-faerie-form-draught.svg
+genderflux-elixir,Genderflux Elixir,alchemy,Potions & Tonics,3,1 faerie-thyme+1 moonbloom+1 slime-core,A transformative elixir that can alter the drinker’s sex characteristics until dispelled or reversed by another dose.,modules/gathering-crafting/icons/v6/craft-genderflux-elixir.svg
+ghost-ink-tonic,Ghost-Ink Tonic,alchemy,Potions & Tonics,3,1 ectoplasm+1 ghost-orchid,"For 10 minutes, you become faintly translucent and gain advantage on checks to move quietly through darkness.",modules/gathering-crafting/icons/v6/craft-ghost-ink-tonic.svg
+glider-mixture,Glider Mixture,alchemy,Potions & Tonics,3,1 manticore-spike+1 griffon-feather,"For 10 minutes, long jumps are doubled and you can glide 20 feet horizontally when falling.",modules/gathering-crafting/icons/v6/craft-glider-mixture.svg
+growth-draught,Growth Draught,alchemy,Potions & Tonics,3,1 heartseed+1 troll-blood,"For 8 hours, the drinker grows roughly 6 inches taller and gains an imposing, sturdier frame.",modules/gathering-crafting/icons/v6/craft-growth-draught.svg
+ironhide-tonic,Ironhide Tonic,alchemy,Potions & Tonics,3,1 ashfern+1 crimson-sap,Gain 2d4 temporary hit points for 1 hour.,modules/gathering-crafting/icons/v6/craft-ironhide-tonic.svg
+merrows-embrace,Merrow’s Embrace,alchemy,Potions & Tonics,3,1 merrowreed+1 sea-salt+1 kraken-ink,"For 1 hour, breathe underwater and swim 10 feet faster.",modules/gathering-crafting/icons/v6/craft-merrows-embrace.svg
+mistveil-phial,Mistveil Phial,alchemy,Potions & Tonics,3,1 mistflower+1 shade-spore,Create a 5-ft cloud of mist for 1 round; GM adjudicates obscurement.,modules/gathering-crafting/icons/v6/craft-mistveil-phial.svg
+moon-sight-tonic,Moon-Sight Tonic,alchemy,Potions & Tonics,3,1 moonbloom+1 starflower,Gain advantage on one Investigation check within 1 hour.,modules/gathering-crafting/icons/v6/craft-moon-sight-tonic.svg
+purifying-draught,Purifying Draught,alchemy,Potions & Tonics,3,1 ghost-orchid+1 sea-salt,End one mundane intoxication or minor nonmagical ailment at GM discretion.,modules/gathering-crafting/icons/v6/craft-purifying-draught.svg
+shadow-skin-tonic,Shadow-Skin Tonic,alchemy,Potions & Tonics,3,1 shadow-essence+1 duskshade,"For 1 hour, gain advantage on one Stealth check and darkvision out to 60 feet if you lacked it.",modules/gathering-crafting/icons/v6/craft-shadow-skin-tonic.svg
+spider-climb-serum,Spider-Climb Serum,alchemy,Potions & Tonics,3,1 spider-silk+1 venom-sac,"For 1 hour, you can move across vertical surfaces and ceilings without needing free hands.",modules/gathering-crafting/icons/v6/craft-spider-climb-serum.svg
+stoneform-lacquer,Stoneform Lacquer,alchemy,Potions & Tonics,3,1 basilisk-eye+1 obsidian,"For 1 hour, your skin hardens; GM may grant +1 AC or advantage against forced movement.",modules/gathering-crafting/icons/v6/craft-stoneform-lacquer.svg
+stormsight-elixir,Stormsight Elixir,alchemy,Potions & Tonics,3,1 thunderbloom+1 azurite,Ignore heavily obscuring rain for 1 hour and gain advantage on one Perception check in a storm.,modules/gathering-crafting/icons/v6/craft-stormsight-elixir.svg
+superior-healing-potion,Superior Healing Potion,alchemy,Potions & Tonics,3,1 ghost-orchid+1 crimson-sap,Restore 8d4 + 8 hit points.,modules/gathering-crafting/icons/v6/craft-superior-healing-potion.svg
+chimera-might-elixir,Chimera Might Elixir,alchemy,Potions & Tonics,4,1 chimera-horn+1 heartseed,"For 1 hour, gain advantage on one Strength check and your carrying capacity counts as doubled.",modules/gathering-crafting/icons/v6/craft-chimera-might-elixir.svg
+dragonfire-tonic,Dragonfire Tonic,alchemy,Potions & Tonics,4,1 dragon-scale+1 emberblossom,"For 1 hour, gain resistance to fire damage and a harmless ember-breath cosmetic effect.",modules/gathering-crafting/icons/v6/craft-dragonfire-tonic.svg
+dragons-breath-elixir,Dragon’s Breath Elixir,alchemy,Potions & Tonics,4,1 dragon-scale+1 dragonshard,Exhale a 15-foot cone of elemental breath once within 1 minute; GM chooses or rolls the element.,modules/gathering-crafting/icons/v6/craft-dragons-breath-elixir.svg
+ichor-philter,Ichor Philter,alchemy,Potions & Tonics,4,1 demon-ichor+1 brimstone,A risky infernal stimulant. Gain 2d4 temporary hit points and advantage on one Intimidation check within 1 hour.,modules/gathering-crafting/icons/v6/craft-ichor-philter.svg
+inkcloud-tonic,Inkcloud Tonic,alchemy,Potions & Tonics,4,1 kraken-ink+1 merrowreed,Release a 10-foot underwater ink cloud or a 5-foot land cloud of obscurement for 1 minute.,modules/gathering-crafting/icons/v6/craft-inkcloud-tonic.svg
+phoenix-renewal,Phoenix Renewal Elixir,alchemy,Potions & Tonics,4,2 phoenix-ash+1 starflower,Restore 6d4 + 6 hit points and end the poisoned condition.,modules/gathering-crafting/icons/v6/craft-phoenix-renewal.svg
+regeneration-serum,Regeneration Serum,alchemy,Potions & Tonics,4,1 troll-blood+1 kingsfoil+1 phoenix-ash,Restore 4d4 + 4 hit points and close minor wounds over the next minute.,modules/gathering-crafting/icons/v6/craft-regeneration-serum.svg
+supreme-healing-potion,Supreme Healing Potion,alchemy,Potions & Tonics,4,2 phoenix-ash+1 ghost-orchid,Restore 10d4 + 20 hit points.,modules/gathering-crafting/icons/v6/craft-supreme-healing-potion.svg
+voidward-philter,Voidward Philter,alchemy,Potions & Tonics,4,1 voidglass+1 ghost-orchid,"For 1 hour, gain advantage on one saving throw against fear or psychic disturbance.",modules/gathering-crafting/icons/v6/craft-voidward-philter.svg
+wyvern-poison,Wyvern Poison,alchemy,Potions & Tonics,4,1 wyvern-stinger+1 venom-sac,Apply to a weapon or ammunition. The next hit deals an extra 3d6 poison damage; GM resolves the application.,modules/gathering-crafting/icons/v6/craft-wyvern-poison.svg

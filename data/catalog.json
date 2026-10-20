@@ -11,7 +11,7 @@
       "tier": 1,
       "icon": "fa-mountain",
       "color": "#d9b347",
-      "img": "modules/gathering-crafting/icons/v4/brimstone.svg",
+      "img": "modules/gathering-crafting/icons/v6/brimstone.svg",
       "description": "A sulfurous yellow mineral with a sharp, infernal smell."
     },
     {
@@ -21,7 +21,7 @@
       "tier": 1,
       "icon": "fa-mountain",
       "color": "#9da3ab",
-      "img": "modules/gathering-crafting/icons/v2/coal.svg",
+      "img": "modules/gathering-crafting/icons/v6/coal.svg",
       "description": "Unprocessed coal gathered from mineral deposits."
     },
     {
@@ -31,7 +31,7 @@
       "tier": 1,
       "icon": "fa-mountain",
       "color": "#cd996e",
-      "img": "modules/gathering-crafting/icons/painted/copper-ore.webp",
+      "img": "modules/gathering-crafting/icons/v6/copper-ore.svg",
       "description": "Unprocessed copper ore gathered from mineral deposits."
     },
     {
@@ -41,7 +41,7 @@
       "tier": 1,
       "icon": "fa-mountain",
       "color": "#8e6670",
-      "img": "modules/gathering-crafting/icons/v4/hematite.svg",
+      "img": "modules/gathering-crafting/icons/v6/hematite.svg",
       "description": "Dense red-black ironstone used in pigments and reinforcing smelts."
     },
     {
@@ -51,7 +51,7 @@
       "tier": 1,
       "icon": "fa-mountain",
       "color": "#aab6c7",
-      "img": "modules/gathering-crafting/icons/painted/iron-ore.webp",
+      "img": "modules/gathering-crafting/icons/v6/iron-ore.svg",
       "description": "Unprocessed iron ore gathered from mineral deposits."
     },
     {
@@ -61,7 +61,7 @@
       "tier": 1,
       "icon": "fa-mountain",
       "color": "#8aa2b7",
-      "img": "modules/gathering-crafting/icons/v4/nickel-ore.svg",
+      "img": "modules/gathering-crafting/icons/v6/nickel-ore.svg",
       "description": "A grey-green ore valued for resilient alloys. Blacksmiths prize it for tools that resist rust."
     },
     {
@@ -71,7 +71,7 @@
       "tier": 1,
       "icon": "fa-mountain",
       "color": "#e3dbea",
-      "img": "modules/gathering-crafting/icons/v2/quartz.svg",
+      "img": "modules/gathering-crafting/icons/v6/quartz.svg",
       "description": "Unprocessed quartz gathered from mineral deposits."
     },
     {
@@ -81,7 +81,7 @@
       "tier": 1,
       "icon": "fa-mountain",
       "color": "#d6d2b7",
-      "img": "modules/gathering-crafting/icons/v4/saltpeter.svg",
+      "img": "modules/gathering-crafting/icons/v6/saltpeter.svg",
       "description": "Dry mineral crystals used in blasting charges, fireworks and reactive brews."
     },
     {
@@ -91,7 +91,7 @@
       "tier": 1,
       "icon": "fa-mountain",
       "color": "#dcca60",
-      "img": "modules/gathering-crafting/icons/v2/sulfur.svg",
+      "img": "modules/gathering-crafting/icons/v6/sulfur.svg",
       "description": "Unprocessed sulfur gathered from mineral deposits."
     },
     {
@@ -101,7 +101,7 @@
       "tier": 1,
       "icon": "fa-mountain",
       "color": "#bdccd2",
-      "img": "modules/gathering-crafting/icons/v2/tin-ore.svg",
+      "img": "modules/gathering-crafting/icons/v6/tin-ore.svg",
       "description": "Unprocessed tin ore gathered from mineral deposits."
     },
     {
@@ -111,7 +111,7 @@
       "tier": 2,
       "icon": "fa-mountain",
       "color": "#7d9fe1",
-      "img": "modules/gathering-crafting/icons/v2/azurite.svg",
+      "img": "modules/gathering-crafting/icons/v6/azurite.svg",
       "description": "Unprocessed azurite gathered from mineral deposits."
     },
     {
@@ -121,7 +121,7 @@
       "tier": 2,
       "icon": "fa-mountain",
       "color": "#5b86d6",
-      "img": "modules/gathering-crafting/icons/v4/cobalt-ore.svg",
+      "img": "modules/gathering-crafting/icons/v6/cobalt-ore.svg",
       "description": "A cool blue ore used in arcane alloys and colorfast enamels."
     },
     {
@@ -131,7 +131,7 @@
       "tier": 2,
       "icon": "fa-mountain",
       "color": "#e6bd5f",
-      "img": "modules/gathering-crafting/icons/v2/gold-ore.svg",
+      "img": "modules/gathering-crafting/icons/v6/gold-ore.svg",
       "description": "Unprocessed gold ore gathered from mineral deposits."
     },
     {
@@ -141,7 +141,7 @@
       "tier": 2,
       "icon": "fa-mountain",
       "color": "#4eb38a",
-      "img": "modules/gathering-crafting/icons/v4/jade.svg",
+      "img": "modules/gathering-crafting/icons/v6/jade.svg",
       "description": "A polished green stone often cut into amulets and ceremonial fittings."
     },
     {
@@ -151,7 +151,7 @@
       "tier": 2,
       "icon": "fa-mountain",
       "color": "#ae8cd0",
-      "img": "modules/gathering-crafting/icons/v2/obsidian.svg",
+      "img": "modules/gathering-crafting/icons/v6/obsidian.svg",
       "description": "Unprocessed obsidian gathered from mineral deposits."
     },
     {
@@ -161,7 +161,7 @@
       "tier": 2,
       "icon": "fa-mountain",
       "color": "#dae2ec",
-      "img": "modules/gathering-crafting/icons/v2/silver-ore.svg",
+      "img": "modules/gathering-crafting/icons/v6/silver-ore.svg",
       "description": "Unprocessed silver ore gathered from mineral deposits."
     },
     {
@@ -171,7 +171,7 @@
       "tier": 2,
       "icon": "fa-mountain",
       "color": "#f0a357",
-      "img": "modules/gathering-crafting/icons/v4/sunstone.svg",
+      "img": "modules/gathering-crafting/icons/v6/sunstone.svg",
       "description": "A warm amber crystal that catches and stores a glimmer of light."
     },
     {
@@ -181,7 +181,7 @@
       "tier": 3,
       "icon": "fa-mountain",
       "color": "#9adced",
-      "img": "modules/gathering-crafting/icons/painted/mithral-ore.webp",
+      "img": "modules/gathering-crafting/icons/v6/mithral-ore.svg",
       "description": "Unprocessed mithral ore gathered from mineral deposits."
     },
     {
@@ -191,7 +191,7 @@
       "tier": 3,
       "icon": "fa-mountain",
       "color": "#ccd8fd",
-      "img": "modules/gathering-crafting/icons/v2/moonstone.svg",
+      "img": "modules/gathering-crafting/icons/v6/moonstone.svg",
       "description": "Unprocessed moonstone gathered from mineral deposits."
     },
     {
@@ -201,7 +201,7 @@
       "tier": 3,
       "icon": "fa-mountain",
       "color": "#d3d8e2",
-      "img": "modules/gathering-crafting/icons/v4/platinum-ore.svg",
+      "img": "modules/gathering-crafting/icons/v6/platinum-ore.svg",
       "description": "A pale noble ore used in luxury work and holy regalia."
     },
     {
@@ -211,7 +211,7 @@
       "tier": 4,
       "icon": "fa-mountain",
       "color": "#a397c9",
-      "img": "modules/gathering-crafting/icons/v2/adamantine-ore.svg",
+      "img": "modules/gathering-crafting/icons/v6/adamantine-ore.svg",
       "description": "Unprocessed adamantine ore gathered from mineral deposits."
     },
     {
@@ -221,7 +221,7 @@
       "tier": 4,
       "icon": "fa-mountain",
       "color": "#d16b6b",
-      "img": "modules/gathering-crafting/icons/v4/dragonshard.svg",
+      "img": "modules/gathering-crafting/icons/v6/dragonshard.svg",
       "description": "A volatile crystal saturated with draconic resonance."
     },
     {
@@ -231,7 +231,7 @@
       "tier": 4,
       "icon": "fa-mountain",
       "color": "#89aef4",
-      "img": "modules/gathering-crafting/icons/painted/starmetal-ore.webp",
+      "img": "modules/gathering-crafting/icons/v6/starmetal-ore.svg",
       "description": "Unprocessed starmetal ore gathered from mineral deposits."
     },
     {
@@ -241,7 +241,7 @@
       "tier": 4,
       "icon": "fa-mountain",
       "color": "#7b6bd9",
-      "img": "modules/gathering-crafting/icons/v4/voidglass.svg",
+      "img": "modules/gathering-crafting/icons/v6/voidglass.svg",
       "description": "A dark, star-flecked volcanic glass that seems to drink the light around it."
     },
     {
@@ -251,7 +251,7 @@
       "tier": 1,
       "icon": "fa-layer-group",
       "color": "#d2a85d",
-      "img": "modules/gathering-crafting/icons/v4/brass-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/brass-ingot.svg",
       "description": "A bright alloy of copper and zinc with a resonant, musical ring."
     },
     {
@@ -261,7 +261,7 @@
       "tier": 1,
       "icon": "fa-layer-group",
       "color": "#c9a66a",
-      "img": "modules/gathering-crafting/icons/v2/bronze-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/bronze-ingot.svg",
       "description": "Refined bronze ingot used in advanced metallurgy recipes."
     },
     {
@@ -271,7 +271,7 @@
       "tier": 1,
       "icon": "fa-layer-group",
       "color": "#d5a16a",
-      "img": "modules/gathering-crafting/icons/v2/copper-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/copper-ingot.svg",
       "description": "Refined copper ingot used in advanced metallurgy recipes."
     },
     {
@@ -281,7 +281,7 @@
       "tier": 1,
       "icon": "fa-layer-group",
       "color": "#b0bbc6",
-      "img": "modules/gathering-crafting/icons/painted/iron-ingot.webp",
+      "img": "modules/gathering-crafting/icons/v6/iron-ingot.svg",
       "description": "Refined iron ingot used in advanced metallurgy recipes."
     },
     {
@@ -291,7 +291,7 @@
       "tier": 1,
       "icon": "fa-layer-group",
       "color": "#91a6ba",
-      "img": "modules/gathering-crafting/icons/v4/nickel-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/nickel-ingot.svg",
       "description": "A corrosion-resistant bar of refined nickel."
     },
     {
@@ -301,7 +301,7 @@
       "tier": 1,
       "icon": "fa-layer-group",
       "color": "#b9c9cb",
-      "img": "modules/gathering-crafting/icons/v2/tin-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/tin-ingot.svg",
       "description": "Refined tin ingot used in advanced metallurgy recipes."
     },
     {
@@ -311,7 +311,7 @@
       "tier": 2,
       "icon": "fa-layer-group",
       "color": "#5d8be1",
-      "img": "modules/gathering-crafting/icons/v4/cobalt-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/cobalt-ingot.svg",
       "description": "A vivid blue alloy bar favored in rune-work and precision metalcraft."
     },
     {
@@ -321,7 +321,7 @@
       "tier": 2,
       "icon": "fa-layer-group",
       "color": "#d9c77a",
-      "img": "modules/gathering-crafting/icons/v4/electrum-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/electrum-ingot.svg",
       "description": "A pale gold-silver alloy prized by nobles and old empires."
     },
     {
@@ -331,7 +331,7 @@
       "tier": 2,
       "icon": "fa-layer-group",
       "color": "#ecc46c",
-      "img": "modules/gathering-crafting/icons/v2/gold-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/gold-ingot.svg",
       "description": "Refined gold ingot used in advanced metallurgy recipes."
     },
     {
@@ -341,7 +341,7 @@
       "tier": 2,
       "icon": "fa-layer-group",
       "color": "#dce5f0",
-      "img": "modules/gathering-crafting/icons/v2/silver-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/silver-ingot.svg",
       "description": "Refined silver ingot used in advanced metallurgy recipes."
     },
     {
@@ -351,7 +351,7 @@
       "tier": 2,
       "icon": "fa-layer-group",
       "color": "#c6d0d9",
-      "img": "modules/gathering-crafting/icons/v2/steel-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/steel-ingot.svg",
       "description": "Refined steel ingot used in advanced metallurgy recipes."
     },
     {
@@ -361,7 +361,7 @@
       "tier": 3,
       "icon": "fa-layer-group",
       "color": "#9676b8",
-      "img": "modules/gathering-crafting/icons/v2/blacksteel-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/blacksteel-ingot.svg",
       "description": "Refined blacksteel ingot used in advanced metallurgy recipes."
     },
     {
@@ -371,7 +371,7 @@
       "tier": 3,
       "icon": "fa-layer-group",
       "color": "#707a95",
-      "img": "modules/gathering-crafting/icons/v4/dusksteel-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/dusksteel-ingot.svg",
       "description": "A shadow-dark alloy that absorbs glare and dulls the ring of steel."
     },
     {
@@ -381,7 +381,7 @@
       "tier": 3,
       "icon": "fa-layer-group",
       "color": "#9ee6ee",
-      "img": "modules/gathering-crafting/icons/v2/mithral-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/mithral-ingot.svg",
       "description": "Refined mithral ingot used in advanced metallurgy recipes."
     },
     {
@@ -391,7 +391,7 @@
       "tier": 3,
       "icon": "fa-layer-group",
       "color": "#d7dce6",
-      "img": "modules/gathering-crafting/icons/v4/platinum-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/platinum-ingot.svg",
       "description": "A noble ingot used for reliquaries, circlets and high-value trade goods."
     },
     {
@@ -401,7 +401,7 @@
       "tier": 3,
       "icon": "fa-layer-group",
       "color": "#6f86d8",
-      "img": "modules/gathering-crafting/icons/v4/runesteel-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/runesteel-ingot.svg",
       "description": "A tempered alloy that holds glyphs and enchantment sigils with unusual clarity."
     },
     {
@@ -411,7 +411,7 @@
       "tier": 4,
       "icon": "fa-layer-group",
       "color": "#a995ce",
-      "img": "modules/gathering-crafting/icons/v2/adamantine-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/adamantine-ingot.svg",
       "description": "Refined adamantine ingot used in advanced metallurgy recipes."
     },
     {
@@ -421,7 +421,7 @@
       "tier": 4,
       "icon": "fa-layer-group",
       "color": "#d9a6c1",
-      "img": "modules/gathering-crafting/icons/v4/dragonsilver-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/dragonsilver-ingot.svg",
       "description": "Rare silver infused with dragonshard dust, bright with magical potential."
     },
     {
@@ -431,7 +431,7 @@
       "tier": 4,
       "icon": "fa-layer-group",
       "color": "#ccd5fc",
-      "img": "modules/gathering-crafting/icons/painted/moonsteel-ingot.webp",
+      "img": "modules/gathering-crafting/icons/v6/moonsteel-ingot.svg",
       "description": "Refined moonsteel ingot used in advanced metallurgy recipes."
     },
     {
@@ -441,7 +441,7 @@
       "tier": 4,
       "icon": "fa-layer-group",
       "color": "#86b1f6",
-      "img": "modules/gathering-crafting/icons/v2/starmetal-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/starmetal-ingot.svg",
       "description": "Refined starmetal ingot used in advanced metallurgy recipes."
     },
     {
@@ -451,7 +451,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#ac9578",
-      "img": "modules/gathering-crafting/icons/v2/bitterroot.svg",
+      "img": "modules/gathering-crafting/icons/v6/bitterroot.svg",
       "description": "An alchemical ingredient used in brews and tonics: Bitterroot."
     },
     {
@@ -461,7 +461,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#75b9d4",
-      "img": "modules/gathering-crafting/icons/v2/blue-moss.svg",
+      "img": "modules/gathering-crafting/icons/v6/blue-moss.svg",
       "description": "An alchemical ingredient used in brews and tonics: Blue Moss."
     },
     {
@@ -471,7 +471,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#86c5a5",
-      "img": "modules/gathering-crafting/icons/v2/bogmint.svg",
+      "img": "modules/gathering-crafting/icons/v6/bogmint.svg",
       "description": "An alchemical ingredient used in brews and tonics: Bogmint."
     },
     {
@@ -481,7 +481,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#d7987e",
-      "img": "modules/gathering-crafting/icons/v2/dawnberry.svg",
+      "img": "modules/gathering-crafting/icons/v6/dawnberry.svg",
       "description": "An alchemical ingredient used in brews and tonics: Dawnberry."
     },
     {
@@ -491,7 +491,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#b8d7d8",
-      "img": "modules/gathering-crafting/icons/v4/feather-reed.svg",
+      "img": "modules/gathering-crafting/icons/v6/feather-reed.svg",
       "description": "A light river reed whose downy fibers are used in buoyant and falling draughts."
     },
     {
@@ -501,7 +501,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#7ea65f",
-      "img": "modules/gathering-crafting/icons/v4/kingsfoil.svg",
+      "img": "modules/gathering-crafting/icons/v6/kingsfoil.svg",
       "description": "A broad-leafed healing herb used to steady wounds and purge fatigue."
     },
     {
@@ -511,7 +511,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#88aeb2",
-      "img": "modules/gathering-crafting/icons/v2/marsh-kelp.svg",
+      "img": "modules/gathering-crafting/icons/v6/marsh-kelp.svg",
       "description": "An alchemical ingredient used in brews and tonics: Marsh Kelp."
     },
     {
@@ -521,7 +521,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#d8d8ee",
-      "img": "modules/gathering-crafting/icons/v4/pearlcap.svg",
+      "img": "modules/gathering-crafting/icons/v6/pearlcap.svg",
       "description": "A small silver mushroom with a clean, clarifying taste."
     },
     {
@@ -531,7 +531,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#7bbbd5",
-      "img": "modules/gathering-crafting/icons/v2/pure-water.svg",
+      "img": "modules/gathering-crafting/icons/v6/pure-water.svg",
       "description": "An alchemical ingredient used in brews and tonics: Purified Water."
     },
     {
@@ -541,7 +541,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#c66b70",
-      "img": "modules/gathering-crafting/icons/painted/redroot.webp",
+      "img": "modules/gathering-crafting/icons/v6/redroot.svg",
       "description": "An alchemical ingredient used in brews and tonics: Redroot."
     },
     {
@@ -551,7 +551,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#cbdee5",
-      "img": "modules/gathering-crafting/icons/v2/sea-salt.svg",
+      "img": "modules/gathering-crafting/icons/v6/sea-salt.svg",
       "description": "An alchemical ingredient used in brews and tonics: Sea Salt."
     },
     {
@@ -561,7 +561,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#b7c8bc",
-      "img": "modules/gathering-crafting/icons/v2/silverleaf.svg",
+      "img": "modules/gathering-crafting/icons/v6/silverleaf.svg",
       "description": "An alchemical ingredient used in brews and tonics: Silverleaf."
     },
     {
@@ -571,7 +571,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#e3bb72",
-      "img": "modules/gathering-crafting/icons/painted/sunpetal.webp",
+      "img": "modules/gathering-crafting/icons/v6/sunpetal.svg",
       "description": "An alchemical ingredient used in brews and tonics: Sunpetal."
     },
     {
@@ -581,7 +581,7 @@
       "tier": 1,
       "icon": "fa-leaf",
       "color": "#8fb58d",
-      "img": "modules/gathering-crafting/icons/v2/thornbriar.svg",
+      "img": "modules/gathering-crafting/icons/v6/thornbriar.svg",
       "description": "An alchemical ingredient used in brews and tonics: Thornbriar."
     },
     {
@@ -591,7 +591,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#e5a865",
-      "img": "modules/gathering-crafting/icons/v2/amber-resin.svg",
+      "img": "modules/gathering-crafting/icons/v6/amber-resin.svg",
       "description": "An alchemical ingredient used in brews and tonics: Amber Resin."
     },
     {
@@ -601,7 +601,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#b2a99c",
-      "img": "modules/gathering-crafting/icons/v2/ashfern.svg",
+      "img": "modules/gathering-crafting/icons/v6/ashfern.svg",
       "description": "An alchemical ingredient used in brews and tonics: Ashfern."
     },
     {
@@ -611,7 +611,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#ce9ace",
-      "img": "modules/gathering-crafting/icons/v2/dreamlily.svg",
+      "img": "modules/gathering-crafting/icons/v6/dreamlily.svg",
       "description": "An alchemical ingredient used in brews and tonics: Dreamlily."
     },
     {
@@ -621,7 +621,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#8f78c4",
-      "img": "modules/gathering-crafting/icons/v4/duskbell.svg",
+      "img": "modules/gathering-crafting/icons/v6/duskbell.svg",
       "description": "A purple bellflower used in shrinking, hush and twilight mixtures."
     },
     {
@@ -631,7 +631,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#aa83bf",
-      "img": "modules/gathering-crafting/icons/v2/duskshade.svg",
+      "img": "modules/gathering-crafting/icons/v6/duskshade.svg",
       "description": "An alchemical ingredient used in brews and tonics: Duskshade."
     },
     {
@@ -641,7 +641,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#f08b56",
-      "img": "modules/gathering-crafting/icons/v4/emberblossom.svg",
+      "img": "modules/gathering-crafting/icons/v6/emberblossom.svg",
       "description": "A hot orange bloom favored in fireproofing and draconic brews."
     },
     {
@@ -651,7 +651,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#d9895e",
-      "img": "modules/gathering-crafting/icons/v2/embercap.svg",
+      "img": "modules/gathering-crafting/icons/v6/embercap.svg",
       "description": "An alchemical ingredient used in brews and tonics: Embercap."
     },
     {
@@ -661,7 +661,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#97d6dd",
-      "img": "modules/gathering-crafting/icons/painted/frostleaf.webp",
+      "img": "modules/gathering-crafting/icons/v6/frostleaf.svg",
       "description": "An alchemical ingredient used in brews and tonics: Frostleaf."
     },
     {
@@ -671,7 +671,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#b2d995",
-      "img": "modules/gathering-crafting/icons/painted/glowshroom.webp",
+      "img": "modules/gathering-crafting/icons/v6/glowshroom.svg",
       "description": "An alchemical ingredient used in brews and tonics: Glowshroom."
     },
     {
@@ -681,7 +681,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#a99abb",
-      "img": "modules/gathering-crafting/icons/v4/gravebloom.svg",
+      "img": "modules/gathering-crafting/icons/v6/gravebloom.svg",
       "description": "A pale cemetery flower used in warding tonics and rites against undeath."
     },
     {
@@ -691,7 +691,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#d46b79",
-      "img": "modules/gathering-crafting/icons/v4/heartseed.svg",
+      "img": "modules/gathering-crafting/icons/v6/heartseed.svg",
       "description": "A warm, red seed believed to fortify vigor and size."
     },
     {
@@ -701,7 +701,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#5fb0a5",
-      "img": "modules/gathering-crafting/icons/v4/merrowreed.svg",
+      "img": "modules/gathering-crafting/icons/v6/merrowreed.svg",
       "description": "A sea-marsh reed that stores brackish moisture and supports breathing elixirs."
     },
     {
@@ -711,7 +711,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#a4c5db",
-      "img": "modules/gathering-crafting/icons/v2/mistflower.svg",
+      "img": "modules/gathering-crafting/icons/v6/mistflower.svg",
       "description": "An alchemical ingredient used in brews and tonics: Mistflower."
     },
     {
@@ -721,7 +721,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#bab4e3",
-      "img": "modules/gathering-crafting/icons/painted/moonbloom.webp",
+      "img": "modules/gathering-crafting/icons/v6/moonbloom.svg",
       "description": "An alchemical ingredient used in brews and tonics: Moonbloom."
     },
     {
@@ -731,7 +731,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#8dc2ff",
-      "img": "modules/gathering-crafting/icons/v4/skyblossom.svg",
+      "img": "modules/gathering-crafting/icons/v6/skyblossom.svg",
       "description": "A high-cliff flower with airy pollen used in levity brews."
     },
     {
@@ -741,7 +741,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#8dbbda",
-      "img": "modules/gathering-crafting/icons/v2/stormthistle.svg",
+      "img": "modules/gathering-crafting/icons/v6/stormthistle.svg",
       "description": "An alchemical ingredient used in brews and tonics: Stormthistle."
     },
     {
@@ -751,7 +751,7 @@
       "tier": 2,
       "icon": "fa-leaf",
       "color": "#b7c262",
-      "img": "modules/gathering-crafting/icons/v4/wolfsbane.svg",
+      "img": "modules/gathering-crafting/icons/v6/wolfsbane.svg",
       "description": "A bitter herb used in antivenoms and moonlit hunter brews."
     },
     {
@@ -761,7 +761,7 @@
       "tier": 3,
       "icon": "fa-flask",
       "color": "#ba697e",
-      "img": "modules/gathering-crafting/icons/v2/crimson-sap.svg",
+      "img": "modules/gathering-crafting/icons/v6/crimson-sap.svg",
       "description": "An alchemical ingredient used in brews and tonics: Crimson Sap."
     },
     {
@@ -771,7 +771,7 @@
       "tier": 3,
       "icon": "fa-leaf",
       "color": "#d4a8eb",
-      "img": "modules/gathering-crafting/icons/v4/faerie-thyme.svg",
+      "img": "modules/gathering-crafting/icons/v6/faerie-thyme.svg",
       "description": "A sweet herb tied to glamour, transmutation and playful body-altering brews."
     },
     {
@@ -781,7 +781,7 @@
       "tier": 3,
       "icon": "fa-flask",
       "color": "#cecfea",
-      "img": "modules/gathering-crafting/icons/painted/ghost-orchid.webp",
+      "img": "modules/gathering-crafting/icons/v6/ghost-orchid.svg",
       "description": "An alchemical ingredient used in brews and tonics: Ghost Orchid."
     },
     {
@@ -791,7 +791,7 @@
       "tier": 3,
       "icon": "fa-flask",
       "color": "#9d7caf",
-      "img": "modules/gathering-crafting/icons/v2/nightshade.svg",
+      "img": "modules/gathering-crafting/icons/v6/nightshade.svg",
       "description": "An alchemical ingredient used in brews and tonics: Nightshade."
     },
     {
@@ -801,7 +801,7 @@
       "tier": 3,
       "icon": "fa-flask",
       "color": "#aa93ba",
-      "img": "modules/gathering-crafting/icons/v2/shade-spore.svg",
+      "img": "modules/gathering-crafting/icons/v6/shade-spore.svg",
       "description": "An alchemical ingredient used in brews and tonics: Shade Spore."
     },
     {
@@ -811,7 +811,7 @@
       "tier": 3,
       "icon": "fa-flask",
       "color": "#d9bcf5",
-      "img": "modules/gathering-crafting/icons/v2/starflower.svg",
+      "img": "modules/gathering-crafting/icons/v6/starflower.svg",
       "description": "An alchemical ingredient used in brews and tonics: Starflower."
     },
     {
@@ -821,7 +821,7 @@
       "tier": 3,
       "icon": "fa-leaf",
       "color": "#75a5f0",
-      "img": "modules/gathering-crafting/icons/v4/thunderbloom.svg",
+      "img": "modules/gathering-crafting/icons/v6/thunderbloom.svg",
       "description": "A crackling blue flower whose petals build static and volatile charge."
     },
     {
@@ -831,7 +831,7 @@
       "tier": 3,
       "icon": "fa-flask",
       "color": "#b5c5cf",
-      "img": "modules/gathering-crafting/icons/v2/whisper-seed.svg",
+      "img": "modules/gathering-crafting/icons/v6/whisper-seed.svg",
       "description": "An alchemical ingredient used in brews and tonics: Whisper Seed."
     },
     {
@@ -841,7 +841,7 @@
       "tier": 4,
       "icon": "fa-flask",
       "color": "#e7a26c",
-      "img": "modules/gathering-crafting/icons/v2/phoenix-ash.svg",
+      "img": "modules/gathering-crafting/icons/v6/phoenix-ash.svg",
       "description": "An alchemical ingredient used in brews and tonics: Phoenix Ash."
     },
     {
@@ -851,7 +851,7 @@
       "tier": 1,
       "icon": "fa-skull",
       "color": "#9b7a5b",
-      "img": "modules/gathering-crafting/icons/v4/beast-hide.svg",
+      "img": "modules/gathering-crafting/icons/v6/beast-hide.svg",
       "description": "Tough hide from common beasts, useful in hardy salves and bindings."
     },
     {
@@ -861,7 +861,7 @@
       "tier": 1,
       "icon": "fa-skull",
       "color": "#d6e2e8",
-      "img": "modules/gathering-crafting/icons/v4/spider-silk.svg",
+      "img": "modules/gathering-crafting/icons/v6/spider-silk.svg",
       "description": "Silky strands with impressive tensile strength and alchemical grip."
     },
     {
@@ -871,7 +871,7 @@
       "tier": 1,
       "icon": "fa-skull",
       "color": "#d6d1c8",
-      "img": "modules/gathering-crafting/icons/v4/wolf-fang.svg",
+      "img": "modules/gathering-crafting/icons/v6/wolf-fang.svg",
       "description": "A sharp fang from a hunting wolf, often powdered into pursuit tonics."
     },
     {
@@ -881,7 +881,7 @@
       "tier": 2,
       "icon": "fa-skull",
       "color": "#958585",
-      "img": "modules/gathering-crafting/icons/v4/ghoul-claw.svg",
+      "img": "modules/gathering-crafting/icons/v6/ghoul-claw.svg",
       "description": "A yellowed claw suited for paralytic compounds and graveward tonics."
     },
     {
@@ -891,7 +891,7 @@
       "tier": 2,
       "icon": "fa-skull",
       "color": "#d8c58e",
-      "img": "modules/gathering-crafting/icons/v4/griffon-feather.svg",
+      "img": "modules/gathering-crafting/icons/v6/griffon-feather.svg",
       "description": "A broad flight feather used in brews of falling and glide."
     },
     {
@@ -901,7 +901,7 @@
       "tier": 2,
       "icon": "fa-skull",
       "color": "#66a091",
-      "img": "modules/gathering-crafting/icons/v4/serpent-scale.svg",
+      "img": "modules/gathering-crafting/icons/v6/serpent-scale.svg",
       "description": "Glossy scale flaked from a giant serpent; resilient and venom-shedding."
     },
     {
@@ -911,7 +911,7 @@
       "tier": 2,
       "icon": "fa-skull",
       "color": "#8dcfa3",
-      "img": "modules/gathering-crafting/icons/v4/slime-core.svg",
+      "img": "modules/gathering-crafting/icons/v6/slime-core.svg",
       "description": "A wobbling nucleus of concentrated ooze essence."
     },
     {
@@ -921,7 +921,7 @@
       "tier": 2,
       "icon": "fa-skull",
       "color": "#76bb6b",
-      "img": "modules/gathering-crafting/icons/v4/venom-sac.svg",
+      "img": "modules/gathering-crafting/icons/v6/venom-sac.svg",
       "description": "A delicate poison bladder harvested from venomous creatures."
     },
     {
@@ -931,7 +931,7 @@
       "tier": 3,
       "icon": "fa-skull",
       "color": "#c4b06d",
-      "img": "modules/gathering-crafting/icons/v4/basilisk-eye.svg",
+      "img": "modules/gathering-crafting/icons/v6/basilisk-eye.svg",
       "description": "A preserved reptilian eye still glimmering with petrifying alchemy."
     },
     {
@@ -941,7 +941,7 @@
       "tier": 3,
       "icon": "fa-skull",
       "color": "#b9d8ea",
-      "img": "modules/gathering-crafting/icons/v4/ectoplasm.svg",
+      "img": "modules/gathering-crafting/icons/v6/ectoplasm.svg",
       "description": "Ghostly residue bottled from a fading spirit or haunted chamber."
     },
     {
@@ -951,7 +951,7 @@
       "tier": 3,
       "icon": "fa-skull",
       "color": "#9d836d",
-      "img": "modules/gathering-crafting/icons/v4/manticore-spike.svg",
+      "img": "modules/gathering-crafting/icons/v6/manticore-spike.svg",
       "description": "A barbed tail spike fit for piercing toxins and violent tonics."
     },
     {
@@ -961,7 +961,7 @@
       "tier": 3,
       "icon": "fa-skull",
       "color": "#6b6f93",
-      "img": "modules/gathering-crafting/icons/v4/shadow-essence.svg",
+      "img": "modules/gathering-crafting/icons/v6/shadow-essence.svg",
       "description": "A smoky residue captured from undead shadows and dim crossings."
     },
     {
@@ -971,7 +971,7 @@
       "tier": 3,
       "icon": "fa-skull",
       "color": "#6da56e",
-      "img": "modules/gathering-crafting/icons/v4/troll-blood.svg",
+      "img": "modules/gathering-crafting/icons/v6/troll-blood.svg",
       "description": "Thick regenerative blood that bubbles if left uncorked."
     },
     {
@@ -981,7 +981,7 @@
       "tier": 3,
       "icon": "fa-skull",
       "color": "#b07cb7",
-      "img": "modules/gathering-crafting/icons/v4/wyvern-stinger.svg",
+      "img": "modules/gathering-crafting/icons/v6/wyvern-stinger.svg",
       "description": "A vicious stinger packed with lingering venom."
     },
     {
@@ -991,7 +991,7 @@
       "tier": 4,
       "icon": "fa-skull",
       "color": "#b8a18c",
-      "img": "modules/gathering-crafting/icons/v4/chimera-horn.svg",
+      "img": "modules/gathering-crafting/icons/v6/chimera-horn.svg",
       "description": "A twisted horn heavy with bestial vitality and mutagenic force."
     },
     {
@@ -1001,7 +1001,7 @@
       "tier": 4,
       "icon": "fa-skull",
       "color": "#913232",
-      "img": "modules/gathering-crafting/icons/v4/demon-ichor.svg",
+      "img": "modules/gathering-crafting/icons/v6/demon-ichor.svg",
       "description": "A tar-like infernal fluid used in dangerous but potent concoctions."
     },
     {
@@ -1011,7 +1011,7 @@
       "tier": 4,
       "icon": "fa-skull",
       "color": "#cb7267",
-      "img": "modules/gathering-crafting/icons/v4/dragon-scale.svg",
+      "img": "modules/gathering-crafting/icons/v6/dragon-scale.svg",
       "description": "A dense draconic scale humming with elemental memory."
     },
     {
@@ -1021,7 +1021,7 @@
       "tier": 4,
       "icon": "fa-skull",
       "color": "#4a5a7d",
-      "img": "modules/gathering-crafting/icons/v4/kraken-ink.svg",
+      "img": "modules/gathering-crafting/icons/v6/kraken-ink.svg",
       "description": "A pressurized ink sac containing abyssal pigment and sea magic."
     }
   ],
@@ -2111,7 +2111,7 @@
       ],
       "description": "Blend bright copper with nickel to cast a resonant brass ingot.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-brass-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-brass-ingot.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2132,7 +2132,7 @@
       ],
       "description": "Durable fastening hardware.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-bronze-buckles.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-bronze-buckles.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2157,7 +2157,7 @@
       ],
       "description": "Alloy copper and tin.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/v2/bronze-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-bronze-ingot.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2178,7 +2178,7 @@
       ],
       "description": "Metal shield reinforcement.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-bronze-shield-boss.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-bronze-shield-boss.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2203,7 +2203,7 @@
       ],
       "description": "Decorative protective bracers; GM may link a game item.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-copper-bracers.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-copper-bracers.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2224,7 +2224,7 @@
       ],
       "description": "Smelt copper ore into a clean ingot.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/v2/copper-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-copper-ingot.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2245,7 +2245,7 @@
       ],
       "description": "Fine wire for metal fittings.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/painted/copper-wire.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-copper-wire.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2266,7 +2266,7 @@
       ],
       "description": "A sturdy length of iron chain.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-iron-chain.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-iron-chain.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2287,7 +2287,7 @@
       ],
       "description": "A hand-forged dagger blueprint; link a dnd5e weapon for attack rolls.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/painted/iron-dagger.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-iron-dagger.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2312,7 +2312,7 @@
       ],
       "description": "Smelt iron ore using coal.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/painted/iron-ingot.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-iron-ingot.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2333,7 +2333,7 @@
       ],
       "description": "A bundle of 20 forged nails.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-iron-nails.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-iron-nails.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2358,7 +2358,7 @@
       ],
       "description": "A sturdy brass lantern frame awaiting glass and oil.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-lantern-frame.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-lantern-frame.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2383,7 +2383,7 @@
       ],
       "description": "Smelt nickel ore into a hard, corrosion-resistant ingot.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-nickel-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-nickel-ingot.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2404,7 +2404,7 @@
       ],
       "description": "Smelt tin ore into a soft ingot.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/v2/tin-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-tin-ingot.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2425,7 +2425,7 @@
       ],
       "description": "Solder used for precise metal joints.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-tin-solder.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-tin-solder.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -2454,7 +2454,7 @@
       ],
       "description": "A well-crafted travel compass with a polished brass body.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-brass-compass.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-brass-compass.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2479,7 +2479,7 @@
       ],
       "description": "Refine cobalt into a vivid blue ingot suited to rune work.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-cobalt-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-cobalt-ingot.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2504,7 +2504,7 @@
       ],
       "description": "A compact lockbox plated with cobalt for documents or gems.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-cobalt-lockbox.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-cobalt-lockbox.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2529,7 +2529,7 @@
       ],
       "description": "Fuse gold and silver into an electrum trade ingot.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-electrum-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-electrum-ingot.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2550,7 +2550,7 @@
       ],
       "description": "Refine pure gold.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/v2/gold-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-gold-ingot.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2575,7 +2575,7 @@
       ],
       "description": "An engraved metal seal.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-golden-seal.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-golden-seal.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2600,7 +2600,7 @@
       ],
       "description": "Finely wrought circlet.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-silver-circlet.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-silver-circlet.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2621,7 +2621,7 @@
       ],
       "description": "Refine precious silver.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/v2/silver-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-silver-ingot.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2646,7 +2646,7 @@
       ],
       "description": "Twenty silvered arrowheads useful against supernatural prey.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-silvered-arrowheads.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-silvered-arrowheads.svg",
       "outputQuantity": 20,
       "dc": 14,
       "outputItemUuid": "",
@@ -2671,7 +2671,7 @@
       ],
       "description": "Silvered weapon blueprint; GM determines combat properties.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-silvered-blade.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-silvered-blade.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2692,7 +2692,7 @@
       ],
       "description": "A bundle of twenty keen steel arrowheads ready for fletching.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-steel-arrowheads.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-steel-arrowheads.svg",
       "outputQuantity": 20,
       "dc": 14,
       "outputItemUuid": "",
@@ -2717,7 +2717,7 @@
       ],
       "description": "Interlocked rings forged into a wearable chain shirt.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-steel-chain-shirt.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-steel-chain-shirt.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2738,7 +2738,7 @@
       ],
       "description": "Tempered steel dagger blueprint; link a dnd5e weapon for attack rolls.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/painted/steel-dagger.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-steel-dagger.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2759,7 +2759,7 @@
       ],
       "description": "Protective forged gauntlets; link equipment for armor effects.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-steel-gauntlets.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-steel-gauntlets.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2784,7 +2784,7 @@
       ],
       "description": "Protective greaves for soldiers, mercenaries and caravan guards.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-steel-greaves.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-steel-greaves.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2805,7 +2805,7 @@
       ],
       "description": "Reinforced metal helm; GM-defined armor properties.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/painted/steel-helm.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-steel-helm.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2830,7 +2830,7 @@
       ],
       "description": "Temper iron with carbon.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/v2/steel-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-steel-ingot.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2851,7 +2851,7 @@
       ],
       "description": "A set of reinforced rivets.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-steel-rivets.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-steel-rivets.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2876,7 +2876,7 @@
       ],
       "description": "Metal shield blueprint; link equipment to gain AC.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/painted/steel-shield.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-steel-shield.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2901,7 +2901,7 @@
       ],
       "description": "A battlefield-ready steel spear balanced for melee or thrown use.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-steel-spear.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-steel-spear.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2922,7 +2922,7 @@
       ],
       "description": "Longsword blueprint; link a weapon for attacks.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-steel-sword.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-steel-sword.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -2947,7 +2947,7 @@
       ],
       "description": "Darken steel with obsidian dust.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/v2/blacksteel-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-blacksteel-ingot.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -2968,7 +2968,7 @@
       ],
       "description": "Dark metal armor plates blueprint.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-blacksteel-armor-plates.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-blacksteel-armor-plates.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -2993,7 +2993,7 @@
       ],
       "description": "A compact buckler that catches little glare and muffles movement.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-dusksteel-buckler.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-dusksteel-buckler.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -3018,7 +3018,7 @@
       ],
       "description": "Darken tempered steel with voidglass to make dusksteel.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-dusksteel-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-dusksteel-ingot.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -3043,7 +3043,7 @@
       ],
       "description": "Rare lightweight blade blueprint; GM-defined mechanics.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/painted/mithral-blade.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-mithral-blade.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -3064,7 +3064,7 @@
       ],
       "description": "Lightweight mithral chain blueprint.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-mithral-chain.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-mithral-chain.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -3089,7 +3089,7 @@
       ],
       "description": "Refine lightweight mithral.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/v2/mithral-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-mithral-ingot.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -3114,7 +3114,7 @@
       ],
       "description": "A refined platinum circlet fit for nobles, priests or spellcasters.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-platinum-circlet.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-platinum-circlet.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -3139,7 +3139,7 @@
       ],
       "description": "Smelt platinum into a noble ingot used in high-end craftwork.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-platinum-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-platinum-ingot.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -3164,7 +3164,7 @@
       ],
       "description": "A precision chisel built for engraving glyphs into stone or metal.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-runesteel-chisel.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-runesteel-chisel.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -3193,7 +3193,7 @@
       ],
       "description": "Temper steel with cobalt and quartz to produce rune-friendly metal.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-runesteel-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-runesteel-ingot.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -3218,7 +3218,7 @@
       ],
       "description": "Dense metal blade blueprint; GM-defined mechanics.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-adamantine-blade.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-adamantine-blade.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -3243,7 +3243,7 @@
       ],
       "description": "Smelt adamantine in a high-temperature furnace.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/v2/adamantine-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-adamantine-ingot.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -3268,7 +3268,7 @@
       ],
       "description": "Extremely durable shield blueprint; GM-defined properties.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-adamantine-shield.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-adamantine-shield.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -3293,7 +3293,7 @@
       ],
       "description": "A gleaming charm often used as a focus or protective keepsake.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-dragonsilver-charm.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-dragonsilver-charm.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -3318,7 +3318,7 @@
       ],
       "description": "Infuse silver with dragonshard dust to create dragonsilver.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v4/craft-dragonsilver-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-dragonsilver-ingot.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -3343,7 +3343,7 @@
       ],
       "description": "Ceremonial diadem of moonsteel.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-moonsteel-diadem.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-moonsteel-diadem.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -3368,7 +3368,7 @@
       ],
       "description": "Alloy mithral and moonstone.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/painted/moonsteel-ingot.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-moonsteel-ingot.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -3393,7 +3393,7 @@
       ],
       "description": "Stabilize rare starmetal.",
       "icon": "fa-fire-burner",
-      "img": "modules/gathering-crafting/icons/v2/starmetal-ingot.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-starmetal-ingot.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -3418,7 +3418,7 @@
       ],
       "description": "Rare spearhead blueprint; GM-defined attack item.",
       "icon": "fa-hammer",
-      "img": "modules/gathering-crafting/icons/v2/craft-starmetal-spearhead.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-starmetal-spearhead.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -3443,7 +3443,7 @@
       ],
       "description": "Throw up to 20 ft; 1 target makes DC 11 Dex save or takes 2d6 acid damage. GM resolves the effect.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-acid-flask.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-acid-flask.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3468,7 +3468,7 @@
       ],
       "description": "Gain advantage on saving throws against poison for 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/painted/antitoxin.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-antitoxin.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3493,7 +3493,7 @@
       ],
       "description": "Gain advantage on your next Intelligence check within 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-clear-mind-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-clear-mind-tonic.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3518,7 +3518,7 @@
       ],
       "description": "Ignore mundane heat discomfort for 1 hour (not damage resistance).",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-coolblood-draught.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-coolblood-draught.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3543,7 +3543,7 @@
       ],
       "description": "Gain advantage on one Perception check within 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-dew-of-focus.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-dew-of-focus.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3568,7 +3568,7 @@
       ],
       "description": "Restore 2d4 + 2 hit points.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/painted/healing-potion.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-healing-potion.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3593,7 +3593,7 @@
       ],
       "description": "Restore 1d4 + 1 hit points.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-minor-healing-potion.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-minor-healing-potion.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3618,7 +3618,7 @@
       ],
       "description": "A refreshing tonic that removes one level of mundane fatigue at GM discretion and steadies the stomach.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-petrichor-elixir.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-petrichor-elixir.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3643,7 +3643,7 @@
       ],
       "description": "Shed dim light in a 10-ft radius for 10 minutes.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-shimmerlight-phial.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-shimmerlight-phial.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3668,7 +3668,7 @@
       ],
       "description": "Gain advantage on one check to calm a frightened creature within 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-soothing-mixture.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-soothing-mixture.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3693,7 +3693,7 @@
       ],
       "description": "Gain advantage on your next Sleight of Hand check within 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-steady-hand-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-steady-hand-tonic.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3718,7 +3718,7 @@
       ],
       "description": "Ignore mundane cold discomfort for 1 hour (not damage resistance).",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-warmblood-draught.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-warmblood-draught.svg",
       "outputQuantity": 1,
       "dc": 11,
       "outputItemUuid": "",
@@ -3743,7 +3743,7 @@
       ],
       "description": "For 10 minutes, gain advantage on one Arcana check.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/painted/mana-restorative.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-mana-restorative.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -3768,7 +3768,7 @@
       ],
       "description": "Breathe underwater for 10 minutes.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-breath-of-tides.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-breath-of-tides.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -3793,7 +3793,7 @@
       ],
       "description": "Exhale cinders in a 10-ft cone; targets make DC 12 Dex save or take 2d6 fire damage. GM resolves the effect.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-cinder-breath.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-cinder-breath.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -3818,7 +3818,7 @@
       ],
       "description": "Gain advantage on your next saving throw against frightened within 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-courage-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-courage-tonic.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -3843,7 +3843,7 @@
       ],
       "description": "Gain resistance to fire damage for 1 minute.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/painted/emberguard-draught.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-emberguard-draught.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -3868,7 +3868,7 @@
       ],
       "description": "For 1 hour, you descend gently and can ignore the first 60 feet of falling damage you would take.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-featherfall-philter.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-featherfall-philter.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -3893,7 +3893,7 @@
       ],
       "description": "Exhale frost in a 10-ft cone; targets make DC 12 Dex save or take 2d6 cold damage. GM resolves the effect.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-frost-breath.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-frost-breath.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -3918,7 +3918,7 @@
       ],
       "description": "Gain resistance to cold damage for 1 minute.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/painted/frostguard-draught.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-frostguard-draught.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -3943,7 +3943,7 @@
       ],
       "description": "For 8 hours, gain advantage on one saving throw against paralysis, disease or undead stench.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-graveward-draught.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-graveward-draught.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -3968,7 +3968,7 @@
       ],
       "description": "Restore 4d4 + 4 hit points.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-greater-healing-potion.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-greater-healing-potion.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -3993,7 +3993,7 @@
       ],
       "description": "Gain advantage on one Survival check to track prey within the next 8 hours.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-hunters-instinct-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-hunters-instinct-tonic.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4018,7 +4018,7 @@
       ],
       "description": "For 1 hour, your voice softens and illusion magic around you is harder to notice.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-moonveil-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-moonveil-tonic.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4043,7 +4043,7 @@
       ],
       "description": "Gain 30 ft. darkvision for 1 hour; GM adjudicates existing darkvision.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-night-eye-elixir.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-night-eye-elixir.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4068,7 +4068,7 @@
       ],
       "description": "Gain darkvision out to 60 feet for 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-night-vision-draught.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-night-vision-draught.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4093,7 +4093,7 @@
       ],
       "description": "End the poisoned condition or grant advantage on the next save against poison within 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-serpent-antivenom.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-serpent-antivenom.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4118,7 +4118,7 @@
       ],
       "description": "For 8 hours, the drinker becomes a little smaller and lighter, reducing their height by roughly 6 inches.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-shrink-sip.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-shrink-sip.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4143,7 +4143,7 @@
       ],
       "description": "Gain advantage on one Stealth check within 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-silentstep-elixir.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-silentstep-elixir.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4168,7 +4168,7 @@
       ],
       "description": "Unwilling target makes DC 12 Con save or is drowsy for 1 minute; GM adjudicates.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-sleep-draught.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-sleep-draught.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4193,7 +4193,7 @@
       ],
       "description": "A slippery coating that grants advantage on one escape check from a grapple or restraint.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-slime-slick-oil.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-slime-slick-oil.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4218,7 +4218,7 @@
       ],
       "description": "Throw up to 20 ft; 1 target makes DC 12 Dex save or takes 2d6 lightning damage. GM resolves the effect.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-spark-bottle.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-spark-bottle.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4243,7 +4243,7 @@
       ],
       "description": "Gain 1d4 temporary hit points for 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-stoneheart-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-stoneheart-tonic.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4268,7 +4268,7 @@
       ],
       "description": "Gain resistance to lightning damage for 1 minute.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-stormguard-draught.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-stormguard-draught.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4293,7 +4293,7 @@
       ],
       "description": "Gain advantage on one initiative roll or Athletics check within 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-swiftclaw-mixture.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-swiftclaw-mixture.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4318,7 +4318,7 @@
       ],
       "description": "Increase walking speed by 10 ft for 10 minutes.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-swiftstep-elixir.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-swiftstep-elixir.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4343,7 +4343,7 @@
       ],
       "description": "Gain resistance to poison damage for 1 minute.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-toxinward-draught.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-toxinward-draught.svg",
       "outputQuantity": 1,
       "dc": 14,
       "outputItemUuid": "",
@@ -4368,7 +4368,7 @@
       ],
       "description": "Apply to the skin to grant advantage on your next save against restraint or petrification within 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-basilisk-salve.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-basilisk-salve.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4393,7 +4393,7 @@
       ],
       "description": "Gain advantage on one Athletics check within 10 minutes.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-bloodrush-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-bloodrush-tonic.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4418,7 +4418,7 @@
       ],
       "description": "Thrown splash vial that burns corruption; deals 2d6 fire damage to one target and lights unattended flammables.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-cleansefire-vial.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-cleansefire-vial.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4443,7 +4443,7 @@
       ],
       "description": "For 10 minutes gain advantage on checks to interpret dreams.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/painted/dreamwalk-tonic.webp",
+      "img": "modules/gathering-crafting/icons/v6/craft-dreamwalk-tonic.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4468,7 +4468,7 @@
       ],
       "description": "For 1 hour, your features become graceful and luminous; you weigh less and leave glittering motes in your wake.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-faerie-form-draught.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-faerie-form-draught.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4497,7 +4497,7 @@
       ],
       "description": "A transformative elixir that can alter the drinker\u2019s sex characteristics until dispelled or reversed by another dose.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-genderflux-elixir.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-genderflux-elixir.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4522,7 +4522,7 @@
       ],
       "description": "For 10 minutes, you become faintly translucent and gain advantage on checks to move quietly through darkness.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-ghost-ink-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-ghost-ink-tonic.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4547,7 +4547,7 @@
       ],
       "description": "For 10 minutes, long jumps are doubled and you can glide 20 feet horizontally when falling.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-glider-mixture.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-glider-mixture.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4572,7 +4572,7 @@
       ],
       "description": "For 8 hours, the drinker grows roughly 6 inches taller and gains an imposing, sturdier frame.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-growth-draught.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-growth-draught.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4597,7 +4597,7 @@
       ],
       "description": "Gain 2d4 temporary hit points for 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-ironhide-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-ironhide-tonic.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4626,7 +4626,7 @@
       ],
       "description": "For 1 hour, breathe underwater and swim 10 feet faster.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-merrows-embrace.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-merrows-embrace.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4651,7 +4651,7 @@
       ],
       "description": "Create a 5-ft cloud of mist for 1 round; GM adjudicates obscurement.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-mistveil-phial.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-mistveil-phial.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4676,7 +4676,7 @@
       ],
       "description": "Gain advantage on one Investigation check within 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-moon-sight-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-moon-sight-tonic.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4701,7 +4701,7 @@
       ],
       "description": "End one mundane intoxication or minor nonmagical ailment at GM discretion.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-purifying-draught.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-purifying-draught.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4726,7 +4726,7 @@
       ],
       "description": "For 1 hour, gain advantage on one Stealth check and darkvision out to 60 feet if you lacked it.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-shadow-skin-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-shadow-skin-tonic.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4751,7 +4751,7 @@
       ],
       "description": "For 1 hour, you can move across vertical surfaces and ceilings without needing free hands.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-spider-climb-serum.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-spider-climb-serum.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4776,7 +4776,7 @@
       ],
       "description": "For 1 hour, your skin hardens; GM may grant +1 AC or advantage against forced movement.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-stoneform-lacquer.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-stoneform-lacquer.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4801,7 +4801,7 @@
       ],
       "description": "Ignore heavily obscuring rain for 1 hour and gain advantage on one Perception check in a storm.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-stormsight-elixir.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-stormsight-elixir.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4826,7 +4826,7 @@
       ],
       "description": "Restore 8d4 + 8 hit points.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-superior-healing-potion.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-superior-healing-potion.svg",
       "outputQuantity": 1,
       "dc": 17,
       "outputItemUuid": "",
@@ -4851,7 +4851,7 @@
       ],
       "description": "For 1 hour, gain advantage on one Strength check and your carrying capacity counts as doubled.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-chimera-might-elixir.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-chimera-might-elixir.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -4876,7 +4876,7 @@
       ],
       "description": "For 1 hour, gain resistance to fire damage and a harmless ember-breath cosmetic effect.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-dragonfire-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-dragonfire-tonic.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -4901,7 +4901,7 @@
       ],
       "description": "Exhale a 15-foot cone of elemental breath once within 1 minute; GM chooses or rolls the element.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-dragons-breath-elixir.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-dragons-breath-elixir.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -4926,7 +4926,7 @@
       ],
       "description": "A risky infernal stimulant. Gain 2d4 temporary hit points and advantage on one Intimidation check within 1 hour.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-ichor-philter.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-ichor-philter.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -4951,7 +4951,7 @@
       ],
       "description": "Release a 10-foot underwater ink cloud or a 5-foot land cloud of obscurement for 1 minute.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-inkcloud-tonic.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-inkcloud-tonic.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -4976,7 +4976,7 @@
       ],
       "description": "Restore 6d4 + 6 hit points and end the poisoned condition.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-phoenix-renewal.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-phoenix-renewal.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -5005,7 +5005,7 @@
       ],
       "description": "Restore 4d4 + 4 hit points and close minor wounds over the next minute.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-regeneration-serum.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-regeneration-serum.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -5030,7 +5030,7 @@
       ],
       "description": "Restore 10d4 + 20 hit points.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v2/craft-supreme-healing-potion.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-supreme-healing-potion.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -5055,7 +5055,7 @@
       ],
       "description": "For 1 hour, gain advantage on one saving throw against fear or psychic disturbance.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-voidward-philter.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-voidward-philter.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -5080,7 +5080,7 @@
       ],
       "description": "Apply to a weapon or ammunition. The next hit deals an extra 3d6 poison damage; GM resolves the application.",
       "icon": "fa-flask-vial",
-      "img": "modules/gathering-crafting/icons/v4/craft-wyvern-poison.svg",
+      "img": "modules/gathering-crafting/icons/v6/craft-wyvern-poison.svg",
       "outputQuantity": 1,
       "dc": 20,
       "outputItemUuid": "",
@@ -5088,5 +5088,5 @@
       "outputType": "consumable"
     }
   ],
-  "catalogVersion": 4
+  "catalogVersion": 6
 }

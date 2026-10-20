@@ -1,4 +1,4 @@
-# Gathering & Crafting v0.4.0 — The Averis Workshop
+# Gathering & Crafting v0.5.1 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
