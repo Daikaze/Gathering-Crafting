@@ -77,6 +77,6 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   app.tab='craft';app.category='all';app.page=1;app.search='';
   const preview=app.template().replaceAll('modules/gathering-crafting/','file:///mnt/data/gathering-crafting/');
   const css=fs.readFileSync(path.join(base,'styles/module.css'),'utf8');
-  fs.writeFileSync('/mnt/data/gc-v020-preview.html',`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
+  if(!process.env.CI)fs.writeFileSync('/mnt/data/gc-v020-preview.html',`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
   console.log('PASS: 54 materials / 72 recipes / 42 nodes, all English, World Compendium bootstrap and idempotent sync, imported materials, metal chains, potion creation/consumption/healing, rollback, migration and scene gating.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
