@@ -34,3 +34,36 @@ catalogue/art migration has been reviewed.
 **Current status:** planning and individualized generation briefs only;
 v1.0.0 remains the previously published release. Generating a generic artwork
 sheet is NOT considered progress against the 224 unique artworks.
+
+
+## Safe partial artwork integration (working preview, not a new release)
+
+The first 20 real, standalone 1254x1254 Blacksmithing paintings have been
+visually reviewed from their original individual files in a separate
+downloadable 20-art overlay ZIP. They have **not yet been uploaded to GitHub**.
+Do not mark these 20 entries as approved in production-manifest.json until
+the actual binary WebP files have been imported, audited, and committed.
+
+For an installed Foundry V14 Gathering & Crafting v1.0.0, the overlay includes
+20 high-resolution files at icons/original/recipes/<id>.webp and separately
+optimized 512x512 image previews that use the existing catalogue paths
+icons/illustrated/craft-<id>.webp. The preview technique works without any
+script or catalogue migration and preserves all other item art.
+
+Download the separate overlay ZIP supplied in the ChatGPT conversation, unzip
+it anywhere, and run, from that extracted directory:
+
+    py install_original_art.py --module "D:\Foundry\FoundryVTT\Data\modules\gathering-crafting" --source "gathering-crafting-20-art-overlay.zip" --dry-run
+
+Then repeat without --dry-run to install. Use your actual Foundry Data path.
+The script validates each image checksum, refuses malformed images, backs up
+every replaced icon in artwork-backups/, atomically installs the originals,
+and rolls back writes if an error occurs. It does NOT rename the module or
+publish the release. The Python importer source is also kept in this branch
+at artwork/install_original_art.py.
+
+This preview is only 20/224 artwork files and does not satisfy the --complete
+gate. It must NOT trigger a full v1.1 release. Remaining Canva requests must
+be retrieved as image files, reviewed for correct composition and originality,
+and checked in separately. Canva job submissions without image exports are
+not finished artwork.
