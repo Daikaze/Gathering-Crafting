@@ -3048,6 +3048,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-20",
+        "state": "submitted",
+        "note": "Standalone square image request accepted. Canva image viewer handles completion; not marked as generated until image bytes, QA, and GitHub upload verified."
       }
     },
     {
@@ -3069,6 +3075,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-20",
+        "state": "submitted",
+        "note": "Standalone square image request accepted. Canva image viewer handles completion; not marked as generated until image bytes, QA, and GitHub upload verified."
       }
     },
     {
@@ -3090,6 +3102,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-20",
+        "state": "submitted",
+        "note": "Standalone square image request accepted. Canva image viewer handles completion; not marked as generated until image bytes, QA, and GitHub upload verified."
       }
     },
     {
@@ -3111,6 +3129,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-20",
+        "state": "submitted",
+        "note": "Standalone square image request accepted. Canva image viewer handles completion; not marked as generated until image bytes, QA, and GitHub upload verified."
       }
     },
     {
@@ -3132,6 +3156,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-20",
+        "state": "submitted",
+        "note": "Standalone square image request accepted. Canva image viewer handles completion; not marked as generated until image bytes, QA, and GitHub upload verified."
       }
     },
     {
@@ -3153,6 +3183,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-20",
+        "state": "submitted",
+        "note": "Standalone square image request accepted. Canva image viewer handles completion; not marked as generated until image bytes, QA, and GitHub upload verified."
       }
     },
     {
@@ -3174,6 +3210,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-20",
+        "state": "submitted",
+        "note": "Standalone square image request accepted. Canva image viewer handles completion; not marked as generated until image bytes, QA, and GitHub upload verified."
       }
     },
     {
@@ -3195,6 +3237,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-20",
+        "state": "submitted",
+        "note": "Standalone square image request accepted. Canva image viewer handles completion; not marked as generated until image bytes, QA, and GitHub upload verified."
       }
     },
     {
@@ -3216,6 +3264,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-20",
+        "state": "submitted",
+        "note": "Standalone square image request accepted. Canva image viewer handles completion; not marked as generated until image bytes, QA, and GitHub upload verified."
       }
     },
     {
@@ -3237,6 +3291,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-20",
+        "state": "submitted",
+        "note": "Standalone square image request accepted. Canva image viewer handles completion; not marked as generated until image bytes, QA, and GitHub upload verified."
       }
     },
     {
