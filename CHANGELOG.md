@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.0 — Installed Compendium Artwork Integration
+
+- Auto-detect **Legacy Content** Item Compendiums for **Blacksmithing** and **Potion Crafting & Ingredients** Item Compendiums for **Alchemy**.
+- Match image assets by exact item names and carefully chosen D&D5e base-item aliases. Unmatched items keep bundled art.
+- Expose detected packs, matched item counts, manual source selection, and Rescan Artwork in **GM Studio**.
+- Update module-generated actor items and world Compendiums when the artwork source changes while leaving GM-uploaded images alone.
+- Artwork stays on the installed external Compendium; never redistributes another creator's artwork.
+- Added regression tests for pack detection, source matching, automatic fallback and manual GM art preservation.
+
 ## 0.6.0 — Full Fantasy Art Pass & UX Fixes
 
 - Replaced the bundled item imagery with a stronger **fantasy item art** pass for every bundled material and crafted item.

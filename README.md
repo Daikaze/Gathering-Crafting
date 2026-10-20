@@ -1,4 +1,4 @@
-# Gathering & Crafting v0.6.0 — The Averis Workshop
+# Gathering & Crafting v0.7.0 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -54,3 +54,15 @@ Open the gear in the header → GM Studio. Define new materials, monster drops a
 
 - Full fantasy item art pass for every bundled material and recipe.
 - Fixed the Show more jump-to-top issue in long lists.
+
+
+## Installed Compendium artwork integration (v0.7.0)
+
+When an Item Compendium from **Legacy Content** is installed, Blacksmithing materials and products automatically use its available item images. For **Alchemy**, the module looks for an installed **Potion Crafting & Ingredients** Item Compendium (ingredients, drops, potions). This is a **runtime reference to artwork you already have access to**; no third-party asset is copied into this repository or ZIP.
+
+- Matching is by item name (case-insensitive), with a short list of deliberately curated aliases such as *Steel Sword → Longsword* and *Healing Potion → Potion of Healing*.
+- Items not found in the selected Compendium retain the module's built-in artwork; custom GM image paths are never replaced.
+- In **GM Studio → Compendium Artwork**, see detected packs, match counts, select one manually for either profession, or press **Rescan Artwork** after installing a new Compendium.
+- Real D&D5e crafting mechanics stay as defined by Gathering & Crafting; this imports only artwork paths, not external content records.
+
+The named Compendiums are optional. You must install/license them in your own Foundry world to use their images.

@@ -217,3 +217,9 @@
 .gathering-crafting .gc-material img{object-fit:cover}
 @media (max-width:800px){.gathering-crafting .gc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gathering-crafting .gc-gm-layout{grid-template-columns:1fr}}
 @media (max-width:600px){.gathering-crafting .gc-grid{grid-template-columns:1fr}.gathering-crafting .gc-brand-logo{display:none}.gathering-crafting .gc-energy small{display:none}.gathering-crafting .gc-top{flex-wrap:wrap}.gathering-crafting .gc-material-grid{grid-template-columns:1fr}}
+/* Optional licensed-compendium art sources: GM configuration only. */
+.gathering-crafting .gc-art-sources{margin:16px 0 12px;padding:12px 0 0;border-top:1px solid var(--gc-border);display:flex;flex-direction:column;gap:9px;min-width:0;}
+.gathering-crafting .gc-art-sources>strong{font-size:11px;color:#e5c38b;display:flex;align-items:center;gap:7px;}
+.gathering-crafting .gc-art-sources .gc-help{margin:0 0 4px;}
+.gathering-crafting .gc-art-sources .gc-field select{width:100%;min-width:0;text-overflow:ellipsis;font-size:10px;}
+.gathering-crafting .gc-art-status{display:block;font-size:10px;line-height:1.4;color:#8fc7a2;overflow-wrap:anywhere;}
