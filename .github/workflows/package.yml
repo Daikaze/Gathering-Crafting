@@ -15,13 +15,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Unpack original fantasy item artwork
+        run: |
+          for bundle in icons/illustrated-assets/*.zip; do unzip -q -o "$bundle" -d .; done
       - name: Test module
         run: node tests/smoke.cjs
       - name: Package Foundry module
         run: |
           VERSION="$(node -p "require('./module.json').version")"
           mkdir -p dist staging/gathering-crafting
-          rsync -a --exclude=.git --exclude=.github --exclude=dist --exclude=staging ./ staging/gathering-crafting/
+          rsync -a --exclude=.git --exclude=.github --exclude=dist --exclude=staging --exclude=illustrated-assets ./ staging/gathering-crafting/
           (cd staging && zip -q -r "../dist/gathering-crafting-v${VERSION}.zip" gathering-crafting)
       - name: Publish zip
         run: |

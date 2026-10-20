@@ -3,7 +3,6 @@ const vm=require('node:vm'),fs=require('node:fs'),path=require('node:path'),asse
 const base=path.join(__dirname,'..');
 const catalogJS=fs.readFileSync(path.join(base,'scripts/catalog.js'),'utf8').replace('export const CATALOG','const CATALOG');
 const itemsJS=fs.readFileSync(path.join(base,'scripts/items.js'),'utf8').replaceAll(/^export /gm,'');
-const artsJS=fs.readFileSync(path.join(base,'scripts/art-sources.js'),'utf8').replaceAll(/^export /gm,'');
 const moduleJS=fs.readFileSync(path.join(base,'scripts/main.js'),'utf8').replace(/^import .*;$/gm,'');
 const cat=JSON.parse(fs.readFileSync(path.join(base,'data/catalog.json'),'utf8'));
 assert.equal(cat.materials.length,102);assert.equal(cat.recipes.length,122);assert.equal(cat.nodes.length,71);
@@ -18,22 +17,14 @@ assert.ok(cat.recipes.every(r=>r.description&&r.description.length>10));
 assert.ok(cat.materials.every(m=>m.description&&m.description.length>10));
 assert.ok(cat.recipes.every(r=>r.ingredients.length>0&&r.ingredients.every(i=>cat.materials.some(m=>m.id===i.id))));
 assert.ok(cat.recipes.every(r=>r.category!=='alchemy'||r.ingredients.length>=2));
-assert.ok(cat.recipes.every(r=>r.img.includes('/icons/v7/')));
-assert.ok(cat.materials.every(m=>m.img.includes('/icons/v7/')));
+assert.ok(cat.recipes.every(r=>r.img.includes('/icons/illustrated/')));
+assert.ok(cat.materials.every(m=>m.img.includes('/icons/illustrated/')));
 for(const m of cat.materials)assert.ok(fs.existsSync(path.join(base,m.img.replace('modules/gathering-crafting/',''))),m.img);
 for(const r of cat.recipes)assert.ok(fs.existsSync(path.join(base,r.img.replace('modules/gathering-crafting/',''))),r.img);
 const hooksOnce=new Map(),hooksOn=new Map(),world=new Map(),messages=[],packs=new Map();let roll=19,counter=0,failOutput=false,failChat=false;
 const deep=o=>structuredClone(o);
-const mockLegacy={collection:'legacy-content.items',documentName:'Item',title:'Foundry Compendium Legacy Content',metadata:{label:'Legacy Content',type:'Item'},getIndex:async()=>[
- {name:'Iron Ore',img:'modules/legacy-content/images/iron-ore.webp'},
- {name:'Longsword',img:'modules/legacy-content/images/longsword.webp'},
- {name:'Shield',img:'modules/legacy-content/images/shield.webp'},
- {name:'Ignored',img:'icons/svg/item-bag.svg'}]};
-const mockPotion={collection:'potion-crafting.ingredients',documentName:'Item',title:'Potion Crafting & Ingredients',metadata:{label:'Potion Crafting & Ingredients',type:'Item'},getIndex:async()=>[
- {name:'Purified Water',img:'modules/potion-crafting/images/water.webp'},
- {name:'Potion of Healing',img:'modules/potion-crafting/images/healing.webp'},
- {name:'Redroot',img:'modules/potion-crafting/images/redroot.webp'},
- {name:'Dragon Scale',img:'modules/potion-crafting/images/scale.webp'}]};
+const mockLegacy={collection:'legacy-content.items',getIndex:async()=>{throw Error('Forbidden: external artwork scanned');}};
+const mockPotion={collection:'potion-crafting.items',getIndex:async()=>{throw Error('Forbidden: external artwork scanned');}};
 class ItemDoc{
   constructor(data,parent){this.id=data._id||`item${++counter}`;this.name=data.name;this.img=data.img;this.type=data.type;this.flags=deep(data.flags||{});this.system=deep(data.system||{});this.documentName='Item';this.parent=parent;this.sheet={render(){}};}
   getFlag(ns,k){return this.flags[ns]?.[k];}
@@ -60,59 +51,45 @@ const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clea
   ChatMessage:{getSpeaker:()=>({alias:'Hero'}),create:async msg=>{if(failChat)throw Error('chat is offline');messages.push(msg);}},
   Roll:class{constructor(expr,vars={}){this.total=expr.startsWith('1d20')?roll+Number(vars.bonus||0):7;}async evaluate(){return this;}},
   fromUuid:async()=>null,CONST:{KEYBINDING_PRECEDENCE:{NORMAL:0}}};
-vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${artsJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,scanCompendiumArt,currentArtSources};`,context);
-const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog,adjustMaterialQuantity,adjustCraftedQuantity,artworkFor,scanCompendiumArt,currentArtSources}=context.testAPI;
+vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork};`,context);
+const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog,adjustMaterialQuantity,adjustCraftedQuantity,artworkFor,refreshOwnedArtwork}=context.testAPI;
 (async()=>{
   hooksOnce.get('init')();assert.equal(context.game.settings.get('gathering-crafting','database').recipes.length,122);
   await hooksOnce.get('ready')();assert.equal(packs.size,4);
   assert.equal(packs.get('world.gc-ores-metals').items.length,44);assert.equal(packs.get('world.gc-ingredients').items.length,40);assert.equal(packs.get('world.gc-monster-drops').items.length,18);assert.equal(packs.get('world.gc-ready-items').items.length,122);
   const db=context.game.settings.get('gathering-crafting','database');
-  assert.equal(db.catalogVersion,7);
-  assert.equal(currentArtSources().matched.blacksmithing.collection,mockLegacy.collection);
-  assert.equal(currentArtSources().matched.alchemy.collection,mockPotion.collection);
-  assert.ok(artworkFor(db.materials.find(m=>m.id==='iron-ore')).includes('/legacy-content/images/iron-ore.webp'));
-  assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/legacy-content/images/longsword.webp'));
-  assert.ok(artworkFor(db.materials.find(m=>m.id==='redroot')).includes('/potion-crafting/images/redroot.webp'));
-  assert.ok(artworkFor(db.recipes.find(r=>r.id==='healing-potion')).includes('/potion-crafting/images/healing.webp'));
-  assert.ok(artworkFor(db.materials.find(m=>m.id==='cobalt-ore')).includes('/icons/v7/'), 'unmatched art uses bundled fallback');
-  assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'my-artwork/ore.webp'}),'my-artwork/ore.webp','manual GM art overrides matching');
+  assert.equal(db.catalogVersion,8);
+  assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
+  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img);
+  assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
+  assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
   await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,44,'sync must not duplicate entries');
   const oldIconItem=packs.get('world.gc-ores-metals').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='iron-ore');
-  oldIconItem.img='modules/gathering-crafting/icons/v4/iron-ore.svg';
+  oldIconItem.img='modules/legacy-content/images/iron-ore.webp';
   const customIconItem=packs.get('world.gc-ores-metals').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='silver-ore');
   customIconItem.img='user-uploads/my-custom-silver.webp';
   await syncCompendiums();
-  assert.ok(oldIconItem.img.includes('/legacy-content/images/iron-ore.webp'),'old bundled art should refresh to installed Compendium art');
-  assert.equal(customIconItem.img,'user-uploads/my-custom-silver.webp','custom art must never be overwritten');
-  // Upgrading existing v0.5.1 worlds should preserve names and GM-uploaded art.
+  assert.ok(oldIconItem.img.includes('/icons/illustrated/'),'old external artwork must revert to bundled art');
+  assert.equal(customIconItem.img,'user-uploads/my-custom-silver.webp','GM images should be preserved');
+  // Upgrade existing v0.7 worlds and keep GM edits while resetting bundled icons.
   const oldWorld=structuredClone(db);
-  oldWorld.catalogVersion=6;
-  oldWorld.materials.find(m=>m.id==='iron-ore').img='modules/gathering-crafting/icons/v6/iron-ore.svg';
+  oldWorld.catalogVersion=7;
+  oldWorld.materials.find(m=>m.id==='iron-ore').img='modules/gathering-crafting/icons/v7/iron-ore.svg';
   oldWorld.materials.find(m=>m.id==='silver-ore').img='user-uploads/my-custom-silver.webp';
   oldWorld.materials.find(m=>m.id==='iron-ore').name='Iron Ore, Localized by GM';
   await context.game.settings.set('gathering-crafting','database',oldWorld);
   await hooksOnce.get('ready')();
   const migratedWorld=context.game.settings.get('gathering-crafting','database');
-  assert.equal(migratedWorld.catalogVersion,7);
+  assert.equal(migratedWorld.catalogVersion,8);
   assert.equal(migratedWorld.materials.find(m=>m.id==='iron-ore').name,'Iron Ore, Localized by GM');
-  assert.ok(migratedWorld.materials.find(m=>m.id==='iron-ore').img.includes('/icons/v7/'));
-  assert.equal(currentArtSources().matched.alchemy.collection,mockPotion.collection);
+  assert.ok(migratedWorld.materials.find(m=>m.id==='iron-ore').img.includes('/icons/illustrated/'));
   assert.equal(migratedWorld.materials.find(m=>m.id==='silver-ore').img,'user-uploads/my-custom-silver.webp');
-
-  const savedPacks=context.game.packs.contents;
-  context.game.packs.contents=[];
-  const noSources=await scanCompendiumArt(migratedWorld,{});
-  assert.equal(noSources.matched.blacksmithing,null);
-  assert.ok(artworkFor(migratedWorld.recipes.find(r=>r.id==='steel-sword')).includes('/icons/v7/'));
-  context.game.packs.contents=savedPacks;
-  const manual=await scanCompendiumArt(migratedWorld,{blacksmithing:mockLegacy.collection,alchemy:mockPotion.collection});
-  assert.equal(manual.matched.blacksmithing.collection,mockLegacy.collection);
-  assert.equal(manual.counts.alchemy>=2,true);
-  const noCross=await scanCompendiumArt(migratedWorld,{blacksmithing:mockPotion.collection,alchemy:mockLegacy.collection});
-  assert.ok(noCross.matched.blacksmithing===null||noCross.counts.blacksmithing===0,'wrong profession must not get unrelated art');
-  await scanCompendiumArt(migratedWorld,{});
-
-  assert.equal(context.game.settings.get('gathering-crafting','backup060').catalogVersion,6);
+  assert.equal(context.game.settings.get('gathering-crafting','backup080').catalogVersion,7);
+  const actorOld=new ItemDoc({...packs.get('world.gc-ingredients').items[0].toObject(),img:'modules/potion-crafting/images/old.webp',_id:undefined,system:{quantity:2}},actor);
+  actor.items.push(actorOld);
+  await refreshOwnedArtwork();
+  assert.ok(actorOld.img.includes('/icons/illustrated/'),'actor items imported from external art packs should be corrected');
+  assert.equal(context.game.modules.get('gathering-crafting').api.scanArtwork,undefined,'external scanner API removed');
   // Regression: "Show more" must preserve .gc-content scrollTop after a V14 render.
   const scroll = {scrollTop:385};
   const root = {addEventListener(){}};
@@ -131,7 +108,7 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   assert.ok(app.craftTab(db,actor,'metallurgy').includes('Iron Ingot'));
   app.tab='blacksmithing';app.search='';assert.ok(app.template().includes('Blacksmithing'));
   app.tab='backpack';assert.ok(app.template().includes('Monster Drops'));
-  app.tab='gm';assert.ok(app.template().includes('Compendium Artwork'));assert.ok(app.template().includes('Potion Crafting &amp; Ingredients')||app.template().includes('Potion Crafting & Ingredients'));app.tab='backpack';
+  app.tab='gm';assert.ok(!app.template().includes('Compendium Artwork'));assert.ok(!app.template().includes('Rescan Artwork'));app.tab='backpack';
   assert.ok(!/[А-Яа-я]/.test(app.template()),'UI should contain no Bulgarian text');
   assert.ok(app.recipeCard(db,db.recipes.find(r=>r.id==='genderflux-elixir'),actor).includes('Genderflux Elixir'));
   await app.gather('node-iron-ore');assert.equal(actor.getFlag('gathering-crafting','attempts'),1);assert.ok(count(actor,'iron-ore')>0);
@@ -171,6 +148,6 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   app.tab='blacksmithing';app.page=1;app.search='';
   const preview=app.template().replaceAll('modules/gathering-crafting/',`file://${base}/`);
   const css=fs.readFileSync(path.join(base,'styles/module.css'),'utf8');
-  fs.writeFileSync(path.join(require('node:os').tmpdir(),'gc-v060-preview.html'),`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
-  console.log('PASS: v0.7.0 102 materials / 122 recipes / 71 nodes, external Compendium artwork matching & safe fallback, split professions, GM source controls, inventory, potion use, rollback and migrations.');
+  fs.writeFileSync(path.join(require('node:os').tmpdir(),'gc-v080-preview.html'),`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
+  console.log('PASS: v0.8.0 224 illustrated WebP items, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

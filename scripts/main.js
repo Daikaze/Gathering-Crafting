@@ -1,9 +1,8 @@
-/** Gathering & Crafting v0.7.0 — Foundry V14 / dnd5e 5.3.3. */
+/** Gathering & Crafting v0.8.0 — Foundry V14 / dnd5e 5.3.3. */
 import { CATALOG } from './catalog.js';
 import { makeMaterialData, makeCraftData, outputKind } from './items.js';
-import { artworkFor, withCompendiumArtwork, scanCompendiumArt, currentArtSources, ART_CHANNELS } from './art-sources.js';
 const ID='gathering-crafting';
-const VERSION='0.7.0';
+const VERSION='0.8.0';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -11,6 +10,7 @@ const icon=v=>`<i class="fa-solid ${/^fa-[a-z0-9-]+$/.test(String(v))?v:'fa-cube
 const hue=v=>/^#[0-9a-fA-F]{6}$/.test(String(v))?v:'#a7b9cb';
 const notify=(message,error=false)=>ui.notifications[error?'error':'info'](message);
 const database=()=>game.settings.get(ID,'database');
+const artworkFor=item=>item?.img||'icons/svg/item-bag.svg';
 const material=(db,id)=>db.materials.find(m=>m.id===id);
 const skillLabels={ath:'Athletics',sur:'Survival',prc:'Perception',inv:'Investigation',nat:'Nature',slt:'Sleight of Hand'};
 const skills=Object.entries(skillLabels);
@@ -31,7 +31,7 @@ const skillBonus=(actor,id)=>{
 async function grantMaterial(actor,mat,qty){
   const existing=itemStacks(actor,mat.id)[0];
   if(existing)await existing.update({'system.quantity':quantity(existing)+qty});
-  else await actor.createEmbeddedDocuments('Item',[makeMaterialData(withCompendiumArtwork(mat),qty)]);
+  else await actor.createEmbeddedDocuments('Item',[makeMaterialData(mat,qty)]);
 }
 
 async function adjustMaterialQuantity(actor,matId,delta,db=database()){
@@ -80,7 +80,7 @@ async function consume(actor,ingredients){
 }
 async function refund(actor,ingredients,db){for(const entry of ingredients){const mat=material(db,entry.id);if(mat)await grantMaterial(actor,mat,num(entry.qty));}}
 async function grantProduct(actor,recipe,qty){
-  let data=makeCraftData(withCompendiumArtwork(recipe),qty);
+  let data=makeCraftData(recipe,qty);
   if(recipe.outputItemUuid){
     const source=await fromUuid(recipe.outputItemUuid);
     if(!source||source.documentName!=='Item')throw new Error('The linked output Item no longer exists. Ask your GM to relink it.');
@@ -136,7 +136,8 @@ function mergeCatalog(old){
   }
   return db;
 }
-const bundledArtwork=img=>/^modules\/gathering-crafting\/icons\/(?:painted|v2|v4|v5|v6|v7)\//.test(String(img||''));
+const bundledArtwork=img=>/^modules\/gathering-crafting\/icons\/(?:painted|v2|v4|v5|v6|v7|illustrated)\//.test(String(img||''));
+const replaceableArtwork=img=>bundledArtwork(img)||/^modules\/(?!gathering-crafting\/)/.test(String(img||''))||/^systems\/dnd5e\//.test(String(img||''));
 async function refreshOwnedArtwork(){
   const db=database();
   const knownMaterials=new Map(db.materials.map(m=>[m.id,artworkFor(m)]));
@@ -148,7 +149,7 @@ async function refreshOwnedArtwork(){
       const materialId=item.getFlag?.(ID,'resourceId');
       // Prefer the crafted output image when an ingot has both flags.
       const desired=(id&&knownProducts.get(id))||(materialId&&knownMaterials.get(materialId));
-      if(desired&&item.img!==desired&&bundledArtwork(item.img))updates.push({_id:item.id,img:desired});
+      if(desired&&item.img!==desired&&replaceableArtwork(item.img))updates.push({_id:item.id,img:desired});
     }
     for(let i=0;i<updates.length;i+=25)await actor.updateEmbeddedDocuments('Item',updates.slice(i,i+25));
   }
@@ -166,10 +167,10 @@ async function syncCompendiums(){
   try{
     const db=database();
     const sources=[
-      ['gc-ores-metals','Gathering & Crafting | Ores & Metals',db.materials.filter(m=>['Ore & Mineral','Refined Metal'].includes(m.group)).map(m=>makeMaterialData(withCompendiumArtwork(m))),'resourceId'],
-      ['gc-ingredients','Gathering & Crafting | Alchemy Ingredients',db.materials.filter(m=>m.group==='Alchemical Ingredient').map(m=>makeMaterialData(withCompendiumArtwork(m))),'resourceId'],
-      ['gc-monster-drops','Gathering & Crafting | Monster Drops',db.materials.filter(m=>m.group==='Monster Drop').map(m=>makeMaterialData(withCompendiumArtwork(m))),'resourceId'],
-      ['gc-ready-items','Gathering & Crafting | Ready-to-use Items',db.recipes.map(r=>makeCraftData(withCompendiumArtwork(r))),'recipeId']];
+      ['gc-ores-metals','Gathering & Crafting | Ores & Metals',db.materials.filter(m=>['Ore & Mineral','Refined Metal'].includes(m.group)).map(m=>makeMaterialData(m)),'resourceId'],
+      ['gc-ingredients','Gathering & Crafting | Alchemy Ingredients',db.materials.filter(m=>m.group==='Alchemical Ingredient').map(m=>makeMaterialData(m)),'resourceId'],
+      ['gc-monster-drops','Gathering & Crafting | Monster Drops',db.materials.filter(m=>m.group==='Monster Drop').map(m=>makeMaterialData(m)),'resourceId'],
+      ['gc-ready-items','Gathering & Crafting | Ready-to-use Items',db.recipes.map(r=>makeCraftData(r)),'recipeId']];
     let added=0, refreshed=0;
     for(const [name,label,all,key] of sources){
       const pack=await ensurePack(name,label);
@@ -183,7 +184,7 @@ async function syncCompendiums(){
         // Refresh old module-owned art only. Never replace a custom GM image path.
         for(const item of existing){
           const desired=imageById.get(item.getFlag(ID,key));
-          if(desired&&item.img!==desired&&bundledArtwork(item.img)){
+          if(desired&&item.img!==desired&&replaceableArtwork(item.img)){
             await item.update({img:desired});refreshed++;
           }
         }
@@ -266,7 +267,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
       `<div class="gc-stats"><div>${icon('fa-boxes-stacked')}<b>${owned}</b><small>Units</small></div><div>${icon('fa-gem')}<b>${db.materials.filter(m=>count(actor,m.id)>0).length}</b><small>Materials owned</small></div><div>${icon('fa-flask')}<b>${potions.reduce((n,i)=>n+quantity(i),0)}</b><small>Potions owned</small></div></div>`+
       this.filterBar(materialGroups,this.group,'group')+`<button type="button" class="gc-secondary gc-toggle" data-action="toggleZero">${icon(this.showZero?'fa-eye-slash':'fa-eye')} ${this.showZero?'Owned only':'Show all materials'}</button>`+this.searchBar()+
       `<div class="gc-material-grid">${mats.map(m=>`<div class="gc-material ${count(actor,m.id)?'':'is-zero'}"><span class="gc-inv-icon" style="--gc-mat:${hue(m.color)}"><img src="${esc(artworkFor(m))}" alt=""></span><div class="gc-inv-name"><b>${esc(m.name)}</b><small>${esc(m.group)} · Tier ${num(m.tier,1)}</small><small>${esc(m.description)}</small></div><strong>×${count(actor,m.id)}</strong><div class="gc-stack-adjust"><button class="gc-secondary" type="button" data-action="takeMat" data-id="${esc(m.id)}">${icon('fa-minus')}</button><button class="gc-secondary" type="button" data-action="giveMat" data-id="${esc(m.id)}">${icon('fa-plus')}</button></div></div>`).join('')}</div>`+
-      `<h3 class="gc-inv-title">${icon('fa-flask')} Alchemy Items</h3><div class="gc-potion-list">${potions.map(i=>`<div class="gc-potion"><img class="gc-potion-icon" src="${esc((bundledArtwork(i.img)?artworkFor(db.recipes.find(r=>r.id===i.getFlag(ID,'recipeId'))):null)||i.img)}" alt=""><div><strong>${esc(i.name)} ×${quantity(i)}</strong><small>${esc(db.recipes.find(r=>r.id===i.getFlag(ID,'recipeId'))?.description||'')}</small></div><div class="gc-inline-actions"><button class="gc-secondary" data-action="takeRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-minus')}</button><button class="gc-secondary" data-action="giveRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-plus')}</button><button class="gc-secondary" data-action="drink" data-id="${esc(i.id)}" type="button">${icon('fa-flask-vial')} Use</button></div></div>`).join('')||'<p class="gc-help">Craft a potion to use it here. Non-healing and transmutation effects are announced in chat for GM adjudication.</p>'}</div><h3 class="gc-inv-title">${icon('fa-hammer')} Blacksmithing Items</h3><div class="gc-potion-list">${equipped.map(i=>`<div class="gc-potion"><img class="gc-potion-icon" src="${esc((bundledArtwork(i.img)?artworkFor(db.recipes.find(r=>r.id===i.getFlag(ID,'recipeId'))):null)||i.img)}" alt=""><div><strong>${esc(i.name)}</strong><small>${esc(db.recipes.find(r=>r.id===i.getFlag(ID,'recipeId'))?.description|| (i.type==='weapon'?'Attack-ready weapon':'Equipable armor / shield'))}</small></div><div class="gc-inline-actions"><button class="gc-secondary" data-action="takeRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-minus')}</button><button class="gc-secondary" data-action="giveRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-plus')}</button><button class="gc-secondary" data-action="sheetItem" data-id="${esc(i.id)}" type="button">${icon('fa-up-right-from-square')} Item Sheet</button></div></div>`).join('')||'<p class="gc-help">Craft a weapon, shield or metal good to see it here.</p>'}</div>`;
+      `<h3 class="gc-inv-title">${icon('fa-flask')} Alchemy Items</h3><div class="gc-potion-list">${potions.map(i=>`<div class="gc-potion"><img class="gc-potion-icon" src="${esc((replaceableArtwork(i.img)?artworkFor(db.recipes.find(r=>r.id===i.getFlag(ID,'recipeId'))):null)||i.img)}" alt=""><div><strong>${esc(i.name)} ×${quantity(i)}</strong><small>${esc(db.recipes.find(r=>r.id===i.getFlag(ID,'recipeId'))?.description||'')}</small></div><div class="gc-inline-actions"><button class="gc-secondary" data-action="takeRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-minus')}</button><button class="gc-secondary" data-action="giveRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-plus')}</button><button class="gc-secondary" data-action="drink" data-id="${esc(i.id)}" type="button">${icon('fa-flask-vial')} Use</button></div></div>`).join('')||'<p class="gc-help">Craft a potion to use it here. Non-healing and transmutation effects are announced in chat for GM adjudication.</p>'}</div><h3 class="gc-inv-title">${icon('fa-hammer')} Blacksmithing Items</h3><div class="gc-potion-list">${equipped.map(i=>`<div class="gc-potion"><img class="gc-potion-icon" src="${esc((replaceableArtwork(i.img)?artworkFor(db.recipes.find(r=>r.id===i.getFlag(ID,'recipeId'))):null)||i.img)}" alt=""><div><strong>${esc(i.name)}</strong><small>${esc(db.recipes.find(r=>r.id===i.getFlag(ID,'recipeId'))?.description|| (i.type==='weapon'?'Attack-ready weapon':'Equipable armor / shield'))}</small></div><div class="gc-inline-actions"><button class="gc-secondary" data-action="takeRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-minus')}</button><button class="gc-secondary" data-action="giveRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-plus')}</button><button class="gc-secondary" data-action="sheetItem" data-id="${esc(i.id)}" type="button">${icon('fa-up-right-from-square')} Item Sheet</button></div></div>`).join('')||'<p class="gc-help">Craft a weapon, shield or metal good to see it here.</p>'}</div>`;
   }
   gmTab(db){const kind=this.editor?.kind||'material',key=({material:'materials',node:'nodes',recipe:'recipes'})[kind],entries=db[key];
     return this.heading('fa-gears','GM Studio','Manage the catalogue, map deposits and four world compendiums with real D&D Items.')+
@@ -276,7 +277,6 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
       <label class="gc-checkbox"><input type="checkbox" name="sceneOnly" ${db.settings.sceneOnly?'checked':''}> Scene-only gathering (15 ft from bound tokens)</label>
       <button type="button" class="gc-secondary gc-full" data-action="resetAttempts">${icon('fa-rotate-right')} Reset selected character</button>
       <button type="button" class="gc-secondary gc-full" data-action="sync">${icon('fa-book')} Create / Sync Compendiums</button>
-      <div class="gc-art-sources"><strong>${icon('fa-images')} Compendium Artwork</strong><p class="gc-help">Use pictures directly from installed Item Compendiums. No artwork is copied into the module.</p>${Object.entries(ART_CHANNELS).map(([channel,label])=>{const info=currentArtSources(),selected=game.settings.get(ID,'artSources')?.[channel]||'',source=info.matched[channel];return `<label class="gc-field"><span>${channel==='alchemy'?'Alchemy':'Blacksmithing'} · ${label}</span><select name="artSource-${channel}"><option value="">Auto-detect</option>${info.packs.map(pack=>`<option value="${esc(pack.collection)}" ${selected===pack.collection?'selected':''}>${esc(pack.label)}</option>`).join('')}</select></label><small class="gc-art-status">${source?`${esc(source.label)} · ${info.counts[channel]} items matched`:'No matching Item Compendium detected · using bundled art'}</small>`;}).join('')}<button type="button" class="gc-secondary gc-full" data-action="rescanArt">${icon('fa-arrows-rotate')} Rescan Artwork</button></div>
       <p class="gc-help">World packs: <b>Ores & Metals</b>, <b>Alchemy Ingredients</b>, <b>Monster Drops</b>, and <b>Ready-to-use Items</b>. Sync adds missing items only; edited copies are never overwritten. Drag these items onto actors, chest actors or scene loot inventories.</p></aside>
       <section class="gc-gm-main"><div class="gc-library"><div class="gc-lib-header"><strong>${kind==='material'?'Materials':kind==='node'?'Gathering Nodes':'Recipes'}</strong><button type="button" data-action="new">${icon('fa-plus')} New</button></div><div class="gc-lib-list">${entries.map(x=>`<button class="gc-library-item ${this.editor?.id===x.id?'is-active':''}" type="button" data-action="edit" data-id="${esc(x.id)}">${icon(x.icon)} <span>${esc(x.name)}</span>${icon('fa-chevron-right')}</button>`).join('')}</div></div>
       ${this.editor?.id?this.editorForm(db,kind,entries.find(x=>x.id===this.editor.id)):this.editor?.isNew?this.editorForm(db,kind,{}):'<div class="gc-empty gc-placeholder">Select an entry to edit or press New.</div>'}</section></div>`;
@@ -323,11 +323,9 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     if(a==='resetAttempts')return this.locked(()=>this.resetAttempts());
     if(a==='bindToken')return this.locked(()=>this.bindToken());
     if(a==='sync')return this.locked(()=>syncCompendiums());
-    if(a==='rescanArt')return this.locked(async()=>{await scanCompendiumArt(database(),game.settings.get(ID,'artSources'));await syncCompendiums();await refreshOwnedArtwork();notify('Artwork sources scanned.');});
     if(a==='delete')return this.locked(()=>this.deleteEntry(id));
   }
   change(e){if(e.target.name==='actor'){this.actorId=e.target.value;return this.refresh();}
-    if(e.target.name?.startsWith('artSource-')&&game.user.isGM)return this.locked(async()=>{const channel=e.target.name.slice(10);if(!ART_CHANNELS[channel])throw new Error('Unknown artwork source');const chosen=String(e.target.value||'');const options={...(game.settings.get(ID,'artSources')||{}),[channel]:chosen};await game.settings.set(ID,'artSources',options);await scanCompendiumArt(database(),options);await syncCompendiums();await refreshOwnedArtwork();notify('Compendium artwork source updated.');});
     if(e.target.name==='sceneOnly'&&game.user.isGM)return this.locked(async()=>{const db=clone(database());db.settings.sceneOnly=e.target.checked;await game.settings.set(ID,'database',db);});
   }
   input(e){if(!e.target.matches('[data-search]'))return;this.search=e.target.value;this.page=1;clearTimeout(this.searchTimer);
@@ -412,8 +410,6 @@ function launcher(html,selector,actor){const root=html instanceof HTMLElement?ht
 }
 Hooks.once('init',()=>{
   if(game.system.id!=='dnd5e')return;
-  game.settings.register(ID,'artSources',{name:'External Compendium Artwork Sources',scope:'world',config:false,type:Object,default:{blacksmithing:'',alchemy:''},onChange:options=>{scanCompendiumArt(database(),options).then(()=>{if(windowInstance?.rendered)windowInstance.render({force:true});}).catch(e=>console.warn(`${ID} | Artwork scan failed`,e));}});
-  game.settings.register(ID,'artSourcesSignature',{name:'Last synced Compendium artwork sources',scope:'world',config:false,type:String,default:''});
   game.settings.register(ID,'database',{name:'Gathering & Crafting Catalogue',scope:'world',config:false,type:Object,default:clone(CATALOG),onChange:()=>{if(windowInstance?.rendered)windowInstance.render();}});
   game.settings.register(ID,'backup010',{name:'Legacy Catalogue Backup (v0.1.0)',scope:'world',config:false,type:Object,default:{}});
   game.settings.register(ID,'compendiumBootstrapped',{name:'Legacy compendiums created',scope:'world',config:false,type:Boolean,default:false});
@@ -422,16 +418,15 @@ Hooks.once('init',()=>{
   game.settings.register(ID,'backup040',{name:'Catalogue backup before v0.5.0',scope:'world',config:false,type:Object,default:{}});
   game.settings.register(ID,'backup050',{name:'Catalogue backup before v0.5.1',scope:'world',config:false,type:Object,default:{}});
   game.settings.register(ID,'backup060',{name:'Catalogue backup before v0.6.0',scope:'world',config:false,type:Object,default:{}});
+  game.settings.register(ID,'backup080',{name:'Catalogue backup before v0.8.0',scope:'world',config:false,type:Object,default:{}});
   game.keybindings.register(ID,'open',{name:'Open Gathering & Crafting',hint:'Open gathering and crafting for your selected character.',editable:[{key:'KeyG',modifiers:['ALT']}],onDown:()=>{open();return true;},restricted:false,precedence:CONST.KEYBINDING_PRECEDENCE.NORMAL});
 });
 Hooks.once('ready',async()=>{
   if(game.system.id!=='dnd5e'){if(game.user.isGM)notify('Gathering & Crafting requires the dnd5e system.',true);return;}
-  const mod=game.modules.get(ID);if(mod)mod.api={open,getDatabase:()=>clone(database()),syncCompendiums,scanArtwork:()=>scanCompendiumArt(database(),game.settings.get(ID,'artSources')),getArtworkStatus:currentArtSources,version:VERSION};
-  // Index only the installed Item packs; no external artwork is copied into this module.
-  try{await scanCompendiumArt(database(),game.settings.get(ID,'artSources'));}catch(e){console.warn(`${ID} | Artwork detection unavailable`,e);}
+  const mod=game.modules.get(ID);if(mod)mod.api={open,getDatabase:()=>clone(database()),syncCompendiums,version:VERSION};
   if(!game.user.isGM)return;
   try{
-    let old=database();const needsArtMigration=validDb(old)&&num(old.catalogVersion,0)<7;
+    let old=database();const needsArtMigration=validDb(old)&&num(old.catalogVersion,0)<8;
     if(!validDb(old)||num(old.catalogVersion,0)<2){
       if(validDb(old))await game.settings.set(ID,'backup010',clone(old));
       old=mergeCatalog(old);await game.settings.set(ID,'database',old);
@@ -487,12 +482,22 @@ Hooks.once('ready',async()=>{
       old=upgraded;
       notify('Catalogue upgraded to v0.6.0 with full fantasy item art. Existing recipes, items and GM edits were preserved.');
     }
-    const artStatus=await scanCompendiumArt(database(),game.settings.get(ID,'artSources'));
-    const signature=JSON.stringify({version:VERSION,sources:artStatus.matched,counts:artStatus.counts});
-    const sourcesChanged=signature!==game.settings.get(ID,'artSourcesSignature');
-    if(!game.settings.get(ID,'compendiumBootstrapped030')||needsArtMigration||sourcesChanged)await syncCompendiums();
-    if(needsArtMigration||sourcesChanged)await refreshOwnedArtwork();
-    if(sourcesChanged)await game.settings.set(ID,'artSourcesSignature',signature);
+    if(num(old.catalogVersion,0)<8){
+      await game.settings.set(ID,'backup080',clone(old));
+      const upgraded=mergeCatalog(old);
+      const known=new Map([...CATALOG.materials,...CATALOG.recipes].map(i=>[i.id,i]));
+      for(const entry of [...upgraded.materials,...upgraded.recipes]){
+        const latest=known.get(entry.id);
+        if(latest?.img&&(!entry.img||replaceableArtwork(entry.img)))entry.img=latest.img;
+        if(!entry.description?.trim()&&latest?.description)entry.description=latest.description;
+      }
+      upgraded.catalogVersion=8;
+      await game.settings.set(ID,'database',upgraded);
+      old=upgraded;
+      notify('Illustrated item artwork installed. Recipes, inventories and GM edits preserved.');
+    }
+    if(!game.settings.get(ID,'compendiumBootstrapped030')||needsArtMigration)await syncCompendiums();
+    if(needsArtMigration)await refreshOwnedArtwork();
   }catch(e){console.error(`${ID} | Setup failed`,e);notify('Compendium setup needs GM attention. Open GM Studio and select Create / Sync Compendiums.',true);}
 });
 for(const hook of ['renderActorDirectory','renderActorDirectoryV2'])Hooks.on(hook,(app,html)=>launcher(html,'.directory-header, header.directory-header, .header-actions',null));

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.0 — Self-contained Illustrated Items
+
+- Removed Compendium artwork auto-detection, source selectors, rescan UI, and associated script.
+- Added 224 bundled 256×256 WebP item illustrations for alchemy, blacksmithing, flowers, ores, and monster drops. Each has its own file; paintings are variants adapted from a smaller custom-generated source set, not 224 independent drawings.
+- Added safe v0.8 migration and image refresh for actor Items and owned world compendiums, without overwriting GM-uploaded custom paths.
+- Retained existing recipes, inventory management, Show more scroll fix, and four player tabs.
+
 ## 0.7.0 — Installed Compendium Artwork Integration
 
 - Auto-detect **Legacy Content** Item Compendiums for **Blacksmithing** and **Potion Crafting & Ingredients** Item Compendiums for **Alchemy**.
