@@ -1,55 +1,103 @@
 id,name,group,tier,description
-copper-ore,Copper Ore,Ore & Mineral,1,Unprocessed copper ore gathered from mineral deposits.
-tin-ore,Tin Ore,Ore & Mineral,1,Unprocessed tin ore gathered from mineral deposits.
-iron-ore,Iron Ore,Ore & Mineral,1,Unprocessed iron ore gathered from mineral deposits.
+brimstone,Brimstone,Ore & Mineral,1,"A sulfurous yellow mineral with a sharp, infernal smell."
 coal,Coal,Ore & Mineral,1,Unprocessed coal gathered from mineral deposits.
-silver-ore,Silver Ore,Ore & Mineral,2,Unprocessed silver ore gathered from mineral deposits.
-gold-ore,Gold Ore,Ore & Mineral,2,Unprocessed gold ore gathered from mineral deposits.
+copper-ore,Copper Ore,Ore & Mineral,1,Unprocessed copper ore gathered from mineral deposits.
+hematite,Hematite,Ore & Mineral,1,Dense red-black ironstone used in pigments and reinforcing smelts.
+iron-ore,Iron Ore,Ore & Mineral,1,Unprocessed iron ore gathered from mineral deposits.
+nickel-ore,Nickel Ore,Ore & Mineral,1,A grey-green ore valued for resilient alloys. Blacksmiths prize it for tools that resist rust.
 quartz,Quartz,Ore & Mineral,1,Unprocessed quartz gathered from mineral deposits.
+saltpeter,Saltpeter,Ore & Mineral,1,"Dry mineral crystals used in blasting charges, fireworks and reactive brews."
 sulfur,Sulfur,Ore & Mineral,1,Unprocessed sulfur gathered from mineral deposits.
-mithral-ore,Mithral Ore,Ore & Mineral,3,Unprocessed mithral ore gathered from mineral deposits.
-adamantine-ore,Adamantine Ore,Ore & Mineral,4,Unprocessed adamantine ore gathered from mineral deposits.
-starmetal-ore,Starmetal Ore,Ore & Mineral,4,Unprocessed starmetal ore gathered from mineral deposits.
-obsidian,Obsidian,Ore & Mineral,2,Unprocessed obsidian gathered from mineral deposits.
-moonstone,Moonstone,Ore & Mineral,3,Unprocessed moonstone gathered from mineral deposits.
+tin-ore,Tin Ore,Ore & Mineral,1,Unprocessed tin ore gathered from mineral deposits.
 azurite,Azurite,Ore & Mineral,2,Unprocessed azurite gathered from mineral deposits.
-copper-ingot,Copper Ingot,Refined Metal,1,Refined copper ingot used in advanced metallurgy recipes.
-tin-ingot,Tin Ingot,Refined Metal,1,Refined tin ingot used in advanced metallurgy recipes.
-iron-ingot,Iron Ingot,Refined Metal,1,Refined iron ingot used in advanced metallurgy recipes.
+cobalt-ore,Cobalt Ore,Ore & Mineral,2,A cool blue ore used in arcane alloys and colorfast enamels.
+gold-ore,Gold Ore,Ore & Mineral,2,Unprocessed gold ore gathered from mineral deposits.
+jade,Jade,Ore & Mineral,2,A polished green stone often cut into amulets and ceremonial fittings.
+obsidian,Obsidian,Ore & Mineral,2,Unprocessed obsidian gathered from mineral deposits.
+silver-ore,Silver Ore,Ore & Mineral,2,Unprocessed silver ore gathered from mineral deposits.
+sunstone,Sunstone,Ore & Mineral,2,A warm amber crystal that catches and stores a glimmer of light.
+mithral-ore,Mithral Ore,Ore & Mineral,3,Unprocessed mithral ore gathered from mineral deposits.
+moonstone,Moonstone,Ore & Mineral,3,Unprocessed moonstone gathered from mineral deposits.
+platinum-ore,Platinum Ore,Ore & Mineral,3,A pale noble ore used in luxury work and holy regalia.
+adamantine-ore,Adamantine Ore,Ore & Mineral,4,Unprocessed adamantine ore gathered from mineral deposits.
+dragonshard,Dragonshard,Ore & Mineral,4,A volatile crystal saturated with draconic resonance.
+starmetal-ore,Starmetal Ore,Ore & Mineral,4,Unprocessed starmetal ore gathered from mineral deposits.
+voidglass,Voidglass,Ore & Mineral,4,"A dark, star-flecked volcanic glass that seems to drink the light around it."
+brass-ingot,Brass Ingot,Refined Metal,1,"A bright alloy of copper and zinc with a resonant, musical ring."
 bronze-ingot,Bronze Ingot,Refined Metal,1,Refined bronze ingot used in advanced metallurgy recipes.
-steel-ingot,Steel Ingot,Refined Metal,2,Refined steel ingot used in advanced metallurgy recipes.
-silver-ingot,Silver Ingot,Refined Metal,2,Refined silver ingot used in advanced metallurgy recipes.
+copper-ingot,Copper Ingot,Refined Metal,1,Refined copper ingot used in advanced metallurgy recipes.
+iron-ingot,Iron Ingot,Refined Metal,1,Refined iron ingot used in advanced metallurgy recipes.
+nickel-ingot,Nickel Ingot,Refined Metal,1,A corrosion-resistant bar of refined nickel.
+tin-ingot,Tin Ingot,Refined Metal,1,Refined tin ingot used in advanced metallurgy recipes.
+cobalt-ingot,Cobalt Ingot,Refined Metal,2,A vivid blue alloy bar favored in rune-work and precision metalcraft.
+electrum-ingot,Electrum Ingot,Refined Metal,2,A pale gold-silver alloy prized by nobles and old empires.
 gold-ingot,Gold Ingot,Refined Metal,2,Refined gold ingot used in advanced metallurgy recipes.
-mithral-ingot,Mithral Ingot,Refined Metal,3,Refined mithral ingot used in advanced metallurgy recipes.
-adamantine-ingot,Adamantine Ingot,Refined Metal,4,Refined adamantine ingot used in advanced metallurgy recipes.
-starmetal-ingot,Starmetal Ingot,Refined Metal,4,Refined starmetal ingot used in advanced metallurgy recipes.
-moonsteel-ingot,Moonsteel Ingot,Refined Metal,4,Refined moonsteel ingot used in advanced metallurgy recipes.
+silver-ingot,Silver Ingot,Refined Metal,2,Refined silver ingot used in advanced metallurgy recipes.
+steel-ingot,Steel Ingot,Refined Metal,2,Refined steel ingot used in advanced metallurgy recipes.
 blacksteel-ingot,Blacksteel Ingot,Refined Metal,3,Refined blacksteel ingot used in advanced metallurgy recipes.
-redroot,Redroot,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Redroot.
-silverleaf,Silverleaf,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Silverleaf.
-blue-moss,Blue Moss,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Blue Moss.
-sunpetal,Sunpetal,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Sunpetal.
-moonbloom,Moonbloom,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Moonbloom.
-frostleaf,Frostleaf,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Frostleaf.
-embercap,Embercap,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Embercap.
-duskshade,Duskshade,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Duskshade.
-thornbriar,Thornbriar,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Thornbriar.
-ghost-orchid,Ghost Orchid,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Ghost Orchid.
-starflower,Starflower,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Starflower.
-stormthistle,Stormthistle,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Stormthistle.
-dreamlily,Dreamlily,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Dreamlily.
+dusksteel-ingot,Dusksteel Ingot,Refined Metal,3,A shadow-dark alloy that absorbs glare and dulls the ring of steel.
+mithral-ingot,Mithral Ingot,Refined Metal,3,Refined mithral ingot used in advanced metallurgy recipes.
+platinum-ingot,Platinum Ingot,Refined Metal,3,"A noble ingot used for reliquaries, circlets and high-value trade goods."
+runesteel-ingot,Runesteel Ingot,Refined Metal,3,A tempered alloy that holds glyphs and enchantment sigils with unusual clarity.
+adamantine-ingot,Adamantine Ingot,Refined Metal,4,Refined adamantine ingot used in advanced metallurgy recipes.
+dragonsilver-ingot,Dragonsilver Ingot,Refined Metal,4,"Rare silver infused with dragonshard dust, bright with magical potential."
+moonsteel-ingot,Moonsteel Ingot,Refined Metal,4,Refined moonsteel ingot used in advanced metallurgy recipes.
+starmetal-ingot,Starmetal Ingot,Refined Metal,4,Refined starmetal ingot used in advanced metallurgy recipes.
 bitterroot,Bitterroot,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Bitterroot.
+blue-moss,Blue Moss,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Blue Moss.
 bogmint,Bogmint,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Bogmint.
-nightshade,Nightshade,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Nightshade.
-marsh-kelp,Marsh Kelp,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Marsh Kelp.
-glowshroom,Glowshroom,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Glowshroom.
-ashfern,Ashfern,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Ashfern.
-amber-resin,Amber Resin,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Amber Resin.
-crimson-sap,Crimson Sap,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Crimson Sap.
-mistflower,Mistflower,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Mistflower.
-whisper-seed,Whisper Seed,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Whisper Seed.
 dawnberry,Dawnberry,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Dawnberry.
-shade-spore,Shade Spore,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Shade Spore.
-sea-salt,Sea Salt,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Sea Salt.
+feather-reed,Feather Reed,Alchemical Ingredient,1,A light river reed whose downy fibers are used in buoyant and falling draughts.
+kingsfoil,Kingsfoil,Alchemical Ingredient,1,A broad-leafed healing herb used to steady wounds and purge fatigue.
+marsh-kelp,Marsh Kelp,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Marsh Kelp.
+pearlcap,Pearlcap,Alchemical Ingredient,1,"A small silver mushroom with a clean, clarifying taste."
 pure-water,Purified Water,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Purified Water.
+redroot,Redroot,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Redroot.
+sea-salt,Sea Salt,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Sea Salt.
+silverleaf,Silverleaf,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Silverleaf.
+sunpetal,Sunpetal,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Sunpetal.
+thornbriar,Thornbriar,Alchemical Ingredient,1,An alchemical ingredient used in brews and tonics: Thornbriar.
+amber-resin,Amber Resin,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Amber Resin.
+ashfern,Ashfern,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Ashfern.
+dreamlily,Dreamlily,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Dreamlily.
+duskbell,Duskbell,Alchemical Ingredient,2,"A purple bellflower used in shrinking, hush and twilight mixtures."
+duskshade,Duskshade,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Duskshade.
+emberblossom,Emberblossom,Alchemical Ingredient,2,A hot orange bloom favored in fireproofing and draconic brews.
+embercap,Embercap,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Embercap.
+frostleaf,Frostleaf,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Frostleaf.
+glowshroom,Glowshroom,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Glowshroom.
+gravebloom,Gravebloom,Alchemical Ingredient,2,A pale cemetery flower used in warding tonics and rites against undeath.
+heartseed,Heartseed,Alchemical Ingredient,2,"A warm, red seed believed to fortify vigor and size."
+merrowreed,Merrow Reed,Alchemical Ingredient,2,A sea-marsh reed that stores brackish moisture and supports breathing elixirs.
+mistflower,Mistflower,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Mistflower.
+moonbloom,Moonbloom,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Moonbloom.
+skyblossom,Skyblossom,Alchemical Ingredient,2,A high-cliff flower with airy pollen used in levity brews.
+stormthistle,Stormthistle,Alchemical Ingredient,2,An alchemical ingredient used in brews and tonics: Stormthistle.
+wolfsbane,Wolfsbane,Alchemical Ingredient,2,A bitter herb used in antivenoms and moonlit hunter brews.
+crimson-sap,Crimson Sap,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Crimson Sap.
+faerie-thyme,Faerie Thyme,Alchemical Ingredient,3,"A sweet herb tied to glamour, transmutation and playful body-altering brews."
+ghost-orchid,Ghost Orchid,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Ghost Orchid.
+nightshade,Nightshade,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Nightshade.
+shade-spore,Shade Spore,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Shade Spore.
+starflower,Starflower,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Starflower.
+thunderbloom,Thunderbloom,Alchemical Ingredient,3,A crackling blue flower whose petals build static and volatile charge.
+whisper-seed,Whisper Seed,Alchemical Ingredient,3,An alchemical ingredient used in brews and tonics: Whisper Seed.
 phoenix-ash,Phoenix Ash,Alchemical Ingredient,4,An alchemical ingredient used in brews and tonics: Phoenix Ash.
+beast-hide,Beast Hide,Monster Drop,1,"Tough hide from common beasts, useful in hardy salves and bindings."
+spider-silk,Spider Silk,Monster Drop,1,Silky strands with impressive tensile strength and alchemical grip.
+wolf-fang,Wolf Fang,Monster Drop,1,"A sharp fang from a hunting wolf, often powdered into pursuit tonics."
+ghoul-claw,Ghoul Claw,Monster Drop,2,A yellowed claw suited for paralytic compounds and graveward tonics.
+griffon-feather,Griffon Feather,Monster Drop,2,A broad flight feather used in brews of falling and glide.
+serpent-scale,Serpent Scale,Monster Drop,2,Glossy scale flaked from a giant serpent; resilient and venom-shedding.
+slime-core,Slime Core,Monster Drop,2,A wobbling nucleus of concentrated ooze essence.
+venom-sac,Venom Sac,Monster Drop,2,A delicate poison bladder harvested from venomous creatures.
+basilisk-eye,Basilisk Eye,Monster Drop,3,A preserved reptilian eye still glimmering with petrifying alchemy.
+ectoplasm,Ectoplasm,Monster Drop,3,Ghostly residue bottled from a fading spirit or haunted chamber.
+manticore-spike,Manticore Spike,Monster Drop,3,A barbed tail spike fit for piercing toxins and violent tonics.
+shadow-essence,Shadow Essence,Monster Drop,3,A smoky residue captured from undead shadows and dim crossings.
+troll-blood,Troll Blood,Monster Drop,3,Thick regenerative blood that bubbles if left uncorked.
+wyvern-stinger,Wyvern Stinger,Monster Drop,3,A vicious stinger packed with lingering venom.
+chimera-horn,Chimera Horn,Monster Drop,4,A twisted horn heavy with bestial vitality and mutagenic force.
+demon-ichor,Demon Ichor,Monster Drop,4,A tar-like infernal fluid used in dangerous but potent concoctions.
+dragon-scale,Dragon Scale,Monster Drop,4,A dense draconic scale humming with elemental memory.
+kraken-ink,Kraken Ink,Monster Drop,4,A pressurized ink sac containing abyssal pigment and sea magic.

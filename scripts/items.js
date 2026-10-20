@@ -11,9 +11,10 @@ const weaponSpecs={
  'steel-sword':{base:'longsword',type:'martialM',dice:8,damage:'slashing',properties:['ver'],weight:3,value:20},
  'silvered-blade':{base:'longsword',type:'martialM',dice:8,damage:'slashing',properties:['ver'],weight:3,value:120},
  'mithral-blade':{base:'scimitar',type:'martialM',dice:6,damage:'slashing',properties:['fin','lgt'],weight:2,value:225},
- 'adamantine-blade':{base:'longsword',type:'martialM',dice:8,damage:'slashing',properties:['ver'],weight:3,value:450}
+ 'adamantine-blade':{base:'longsword',type:'martialM',dice:8,damage:'slashing',properties:['ver'],weight:3,value:450},
+ 'steel-spear':{base:'spear',type:'simpleM',dice:6,damage:'piercing',properties:['thr','ver'],weight:3,value:8,range:[20,60]}
 };
-const shields={'steel-shield':{value:2,weight:6,price:15},'adamantine-shield':{value:2,weight:6,price:300}};
+const shields={'steel-shield':{value:2,weight:6,price:15},'adamantine-shield':{value:2,weight:6,price:300},'dusksteel-buckler':{value:1,weight:4,price:85}};
 export function outputKind(recipe){
  if(recipe.category==='alchemy')return 'consumable';
  if(weaponSpecs[recipe.id])return 'weapon';

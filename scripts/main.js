@@ -1,8 +1,8 @@
-/** Gathering & Crafting v0.2.0 — Foundry V14 / dnd5e 5.3.3. */
+/** Gathering & Crafting v0.4.0 — Foundry V14 / dnd5e 5.3.3. */
 import { CATALOG } from './catalog.js';
 import { makeMaterialData, makeCraftData, outputKind } from './items.js';
 const ID='gathering-crafting';
-const VERSION='0.3.0';
+const VERSION='0.4.0';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -14,7 +14,7 @@ const material=(db,id)=>db.materials.find(m=>m.id===id);
 const skillLabels={ath:'Athletics',sur:'Survival',prc:'Perception',inv:'Investigation',nat:'Nature',slt:'Sleight of Hand'};
 const skills=Object.entries(skillLabels);
 const categories=[['all','All Recipes','fa-layer-group'],['metallurgy','Metallurgy','fa-hammer'],['alchemy','Alchemy','fa-flask']];
-const materialGroups=[['all','All','fa-layer-group'],['metallurgy','Ores & Metals','fa-gem'],['alchemy','Potion Ingredients','fa-leaf']];
+const materialGroups=[['all','All Materials','fa-layer-group'],['metallurgy','Ores & Metals','fa-gem'],['alchemy','Alchemy Ingredients','fa-leaf'],['monster','Monster Drops','fa-skull']];
 const validDb=db=>!!(db&&Array.isArray(db.materials)&&Array.isArray(db.nodes)&&Array.isArray(db.recipes));
 const resourceItem=(item,id)=>item.getFlag?.(ID,'resourceId')===id||(CATALOG.materials.some(m=>m.id===id&&m.group==='Refined Metal')&&item.getFlag?.(ID,'recipeId')===id);
 const itemStacks=(actor,id)=>actor.items.filter(i=>resourceItem(i,id));
@@ -32,6 +32,31 @@ async function grantMaterial(actor,mat,qty){
   const existing=itemStacks(actor,mat.id)[0];
   if(existing)await existing.update({'system.quantity':quantity(existing)+qty});
   else await actor.createEmbeddedDocuments('Item',[makeMaterialData(mat,qty)]);
+}
+
+async function adjustMaterialQuantity(actor,matId,delta,db=database()){
+  const mat=material(db,matId); if(!mat)throw new Error('Material not found.');
+  delta=num(delta,0,-999,999); if(!delta)return;
+  if(delta>0)return grantMaterial(actor,mat,delta);
+  const required=Math.abs(delta); if(count(actor,matId)<required)throw new Error(`Not enough ${mat.name}.`);
+  await consume(actor,[{id:matId,qty:required}]);
+}
+async function adjustCraftedQuantity(actor,recipeId,delta,db=database()){
+  const recipe=db.recipes.find(r=>r.id===recipeId); if(!recipe)throw new Error('Item recipe not found.');
+  delta=num(delta,0,-999,999); if(!delta)return;
+  if(delta>0)return grantProduct(actor,recipe,delta);
+  let left=Math.abs(delta);
+  const stacks=actor.items.filter(i=>i.getFlag?.(ID,'recipeId')===recipeId);
+  const total=stacks.reduce((n,i)=>n+quantity(i),0);
+  if(total<left)throw new Error(`Not enough ${recipe.name}.`);
+  const updates=[], removals=[];
+  for(const item of stacks){
+    if(left<=0)break;
+    const q=quantity(item), used=Math.min(left,q); left-=used;
+    if(q-used>0)updates.push({_id:item.id,'system.quantity':q-used}); else removals.push(item.id);
+  }
+  if(updates.length)await actor.updateEmbeddedDocuments('Item',updates);
+  if(removals.length)await actor.deleteEmbeddedDocuments('Item',removals);
 }
 async function consume(actor,ingredients){
   const merged=new Map();
@@ -113,8 +138,9 @@ async function syncCompendiums(){
   try{
     const db=database();
     const sources=[
-      ['gc-ores-metals','Gathering & Crafting | Ores & Metals',db.materials.filter(m=>m.group!=='Alchemical Ingredient').map(m=>makeMaterialData(m)),'resourceId'],
+      ['gc-ores-metals','Gathering & Crafting | Ores & Metals',db.materials.filter(m=>['Ore & Mineral','Refined Metal'].includes(m.group)).map(m=>makeMaterialData(m)),'resourceId'],
       ['gc-ingredients','Gathering & Crafting | Alchemy Ingredients',db.materials.filter(m=>m.group==='Alchemical Ingredient').map(m=>makeMaterialData(m)),'resourceId'],
+      ['gc-monster-drops','Gathering & Crafting | Monster Drops',db.materials.filter(m=>m.group==='Monster Drop').map(m=>makeMaterialData(m)),'resourceId'],
       ['gc-ready-items','Gathering & Crafting | Ready-to-use Items',db.recipes.map(r=>makeCraftData(r)),'recipeId']];
     let added=0;
     for(const [name,label,all,key] of sources){
@@ -157,11 +183,11 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
       <div class="gc-top-right">${gm?`<button class="gc-gm-shortcut" type="button" data-action="tab" data-id="gm" aria-label="GM Workshop" title="GM Workshop">${icon('fa-gear')}</button>`:''}<label class="gc-selectwrap">${icon('fa-user')}<select name="actor" aria-label="Character">${choices}</select></label><div class="gc-energy" title="Remaining gathering actions">${icon('fa-bolt')} <b>${left}</b><small>/ ${cap} gathers</small></div></div></div>
       <nav class="gc-tabs">${this.tabButton('gather','fa-mountain','Gather')}${this.tabButton('craft','fa-hammer','Craft')}${this.tabButton('backpack','fa-box-open','Inventory')}</nav>
       <div class="gc-content">${!actor&&this.tab!=='gm'?'<div class="gc-empty">Select a character with Owner permission to get started.</div>':this.tab==='gather'?this.gatherTab(db,actor):this.tab==='craft'?this.craftTab(db,actor):this.tab==='backpack'?this.inventoryTab(db,actor):gm?this.gmTab(db):''}</div>
-      <footer class="gc-footer"><span>${icon('fa-box')} All materials are real D&D 5e Items that can be moved between inventories and compendiums.</span><span>v${VERSION} · Foundry V14 · dnd5e 5.3.3</span></footer>`;
+      <footer class="gc-footer"><span>${icon('fa-box')} Every resource and crafted product is a real D&D 5e Item with a custom module image.</span><span>v${VERSION} · Foundry V14 · dnd5e 5.3.3</span></footer>`;
   }
   gatherTab(db,actor){const sceneOnly=!!db.settings.sceneOnly;
     const found=db.nodes.filter(n=>n.active&&(!sceneOnly||nodeTokens(n.id).length)&& (this.group==='all'||(n.group||'metallurgy')===this.group) &&(!this.search||`${n.name} ${n.description}`.toLowerCase().includes(this.search.toLowerCase())));
-    return this.heading('fa-mountain','Gather Resources','Choose a resource. One click to gather, with an optional risk for more.')+
+    return this.heading('fa-mountain','Gather Resources','Choose a resource node or monster harvest. One click to gather, with an optional risk for more.')+
       `<div class="gc-toolbar"><div class="gc-mode"><button type="button" data-action="gmode" data-mode="careful" class="${this.gatherMode==='careful'?'is-on':''}">${icon('fa-shield-heart')} Careful <small>DC −2 · standard yield</small></button>
       <button type="button" data-action="gmode" data-mode="bold" class="${this.gatherMode==='bold'?'is-on':''}">${icon('fa-bolt')} Risky <small>DC +3 · double yield</small></button></div>${this.searchBar()}</div>`+
       this.filterBar(materialGroups,this.group,'group')+
@@ -186,32 +212,32 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     const max=can?Math.max(1,Math.min(10,...req.map(i=>Math.floor(i.have/i.qty)))):0;
     return `<article class="gc-tile gc-recipe ${can?'gc-ready':''}"><div class="gc-tile-banner gc-craft-art"><span class="gc-hero-icon"><img class="gc-art-img" src="${esc(r.img||'icons/svg/item-bag.svg')}" alt=""></span><span class="gc-dc">${esc(kindText)} · Tier ${num(r.tier,1)}</span>${can?'<span class="gc-ready-tag">Ready</span>':''}</div><div class="gc-tile-body"><h3>${esc(r.name)}</h3><p>${esc(r.description)}</p><div class="gc-ingredients">${req.map(i=>`<div class="gc-ingredient ${i.have>=i.qty?'gc-have':'gc-miss'}"><span class="gc-mat-icon" style="--gc-mat:${hue(i.mat?.color)}"><img src="${esc(i.mat?.img||'icons/svg/item-bag.svg')}" alt=""></span><span>${esc(i.mat?.name||'Missing material')}</span><b>${i.have}/${i.qty}</b></div>`).join('')}</div><div class="gc-craft-actions"><button class="gc-primary" type="button" data-action="craft" data-id="${esc(r.id)}" ${!can||this.busy?'disabled':''}>${icon(can?'fa-hammer':'fa-lock')} ${can?'Craft':'Missing materials'}</button>${max>1&&this.craftMode==='steady'?`<button type="button" class="gc-secondary gc-craft-max" title="Craft ${max} at once" data-action="craftMax" data-id="${esc(r.id)}">×${max}</button>`:''}</div></div></article>`;
   }
-  inventoryTab(db,actor){const mats=db.materials.filter(m=>this.group==='all'||(this.group==='metallurgy'?m.group!=='Alchemical Ingredient':m.group==='Alchemical Ingredient')).filter(m=>this.showZero||count(actor,m.id)>0).filter(m=>!this.search||m.name.toLowerCase().includes(this.search.toLowerCase()));
+  inventoryTab(db,actor){const mats=db.materials.filter(m=>this.group==='all'||(this.group==='metallurgy'?['Ore & Mineral','Refined Metal'].includes(m.group):this.group==='alchemy'?m.group==='Alchemical Ingredient':m.group==='Monster Drop')).filter(m=>this.showZero||count(actor,m.id)>0).filter(m=>!this.search||`${m.name} ${m.description}`.toLowerCase().includes(this.search.toLowerCase()));
     const owned=db.materials.reduce((n,m)=>n+count(actor,m.id),0);
     const potions=actor.items.filter(i=>!!i.getFlag(ID,'recipeId')&&db.recipes.some(r=>r.id===i.getFlag(ID,'recipeId')&&r.category==='alchemy'));
-    const equipped=actor.items.filter(i=>!!i.getFlag(ID,'recipeId')&&['weapon','equipment'].includes(i.type));
-    return this.heading('fa-box-open','Character Inventory','Materials live on your D&D 5e sheet, not in a hidden module database.')+
+    const equipped=actor.items.filter(i=>!!i.getFlag(ID,'recipeId')&&db.recipes.some(r=>r.id===i.getFlag(ID,'recipeId')&&r.category!=='alchemy'));
+    return this.heading('fa-box-open','Character Inventory','Manage real D&D 5e items here. Use + and − to add or remove quantities without opening the character sheet.')+
       `<div class="gc-stats"><div>${icon('fa-boxes-stacked')}<b>${owned}</b><small>Units</small></div><div>${icon('fa-gem')}<b>${db.materials.filter(m=>count(actor,m.id)>0).length}</b><small>Materials owned</small></div><div>${icon('fa-flask')}<b>${potions.reduce((n,i)=>n+quantity(i),0)}</b><small>Potions owned</small></div></div>`+
       this.filterBar(materialGroups,this.group,'group')+`<button type="button" class="gc-secondary gc-toggle" data-action="toggleZero">${icon(this.showZero?'fa-eye-slash':'fa-eye')} ${this.showZero?'Owned only':'Show all materials'}</button>`+this.searchBar()+
-      `<div class="gc-material-grid">${mats.map(m=>`<div class="gc-material ${count(actor,m.id)?'':'is-zero'}"><span class="gc-inv-icon" style="--gc-mat:${hue(m.color)}"><img src="${esc(m.img)}" alt=""></span><div class="gc-inv-name"><b>${esc(m.name)}</b><small>${esc(m.group)} · Tier ${num(m.tier,1)}</small></div><strong>×${count(actor,m.id)}</strong></div>`).join('')}</div>`+
-      `<h3 class="gc-inv-title">${icon('fa-flask')} Ready-to-use Potions</h3><div class="gc-potion-list">${potions.map(i=>`<div class="gc-potion"><img class="gc-potion-icon" src="${esc(i.img)}" alt=""><div><strong>${esc(i.name)} ×${quantity(i)}</strong><small>${esc(db.recipes.find(r=>r.id===i.getFlag(ID,'recipeId'))?.description||'')}</small></div><button class="gc-secondary" data-action="drink" data-id="${esc(i.id)}" type="button">${icon('fa-flask-vial')} Use</button></div>`).join('')||'<p class="gc-help">Craft a potion to use it here. Non-healing effects are sent to chat for GM adjudication.</p>'}</div><h3 class="gc-inv-title">${icon('fa-shield-halved')} Crafted Equipment</h3><div class="gc-potion-list">${equipped.map(i=>`<div class="gc-potion"><img class="gc-potion-icon" src="${esc(i.img)}" alt=""><div><strong>${esc(i.name)}</strong><small>${esc(i.type==='weapon'?'Attack-ready weapon':'Equipable armor / shield')}</small></div><button class="gc-secondary" data-action="sheetItem" data-id="${esc(i.id)}" type="button">${icon('fa-up-right-from-square')} Item Sheet</button></div>`).join('')||'<p class="gc-help">Craft a weapon or shield to see it here.</p>'}</div>`;
+      `<div class="gc-material-grid">${mats.map(m=>`<div class="gc-material ${count(actor,m.id)?'':'is-zero'}"><span class="gc-inv-icon" style="--gc-mat:${hue(m.color)}"><img src="${esc(m.img)}" alt=""></span><div class="gc-inv-name"><b>${esc(m.name)}</b><small>${esc(m.group)} · Tier ${num(m.tier,1)}</small><small>${esc(m.description)}</small></div><strong>×${count(actor,m.id)}</strong><div class="gc-stack-adjust"><button class="gc-secondary" type="button" data-action="takeMat" data-id="${esc(m.id)}">${icon('fa-minus')}</button><button class="gc-secondary" type="button" data-action="giveMat" data-id="${esc(m.id)}">${icon('fa-plus')}</button></div></div>`).join('')}</div>`+
+      `<h3 class="gc-inv-title">${icon('fa-flask')} Ready-to-use Potions</h3><div class="gc-potion-list">${potions.map(i=>`<div class="gc-potion"><img class="gc-potion-icon" src="${esc(i.img)}" alt=""><div><strong>${esc(i.name)} ×${quantity(i)}</strong><small>${esc(db.recipes.find(r=>r.id===i.getFlag(ID,'recipeId'))?.description||'')}</small></div><div class="gc-inline-actions"><button class="gc-secondary" data-action="takeRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-minus')}</button><button class="gc-secondary" data-action="giveRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-plus')}</button><button class="gc-secondary" data-action="drink" data-id="${esc(i.id)}" type="button">${icon('fa-flask-vial')} Use</button></div></div>`).join('')||'<p class="gc-help">Craft a potion to use it here. Non-healing and transmutation effects are announced in chat for GM adjudication.</p>'}</div><h3 class="gc-inv-title">${icon('fa-shield-halved')} Crafted Equipment & Goods</h3><div class="gc-potion-list">${equipped.map(i=>`<div class="gc-potion"><img class="gc-potion-icon" src="${esc(i.img)}" alt=""><div><strong>${esc(i.name)}</strong><small>${esc(db.recipes.find(r=>r.id===i.getFlag(ID,'recipeId'))?.description|| (i.type==='weapon'?'Attack-ready weapon':'Equipable armor / shield'))}</small></div><div class="gc-inline-actions"><button class="gc-secondary" data-action="takeRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-minus')}</button><button class="gc-secondary" data-action="giveRecipe" data-id="${esc(i.getFlag(ID,'recipeId'))}" type="button">${icon('fa-plus')}</button><button class="gc-secondary" data-action="sheetItem" data-id="${esc(i.id)}" type="button">${icon('fa-up-right-from-square')} Item Sheet</button></div></div>`).join('')||'<p class="gc-help">Craft a weapon, shield or metal good to see it here.</p>'}</div>`;
   }
   gmTab(db){const kind=this.editor?.kind||'material',key=({material:'materials',node:'nodes',recipe:'recipes'})[kind],entries=db[key];
-    return this.heading('fa-gears','GM Studio','Manage the catalogue, map deposits and three world compendiums with real D&D Items.')+
+    return this.heading('fa-gears','GM Studio','Manage the catalogue, map deposits and four world compendiums with real D&D Items.')+
     `<div class="gc-gm-layout"><aside class="gc-gm-side"><div class="gc-gm-title">${icon('fa-sliders')} Library</div>
       ${[['material','Materials','fa-gem',db.materials.length],['node','Gathering Nodes','fa-mountain',db.nodes.length],['recipe','Recipes','fa-scroll',db.recipes.length]].map(([k,name,ic,len])=>`<button class="gc-gm-group ${kind===k?'is-on':''}" type="button" data-action="gmkind" data-id="${k}">${icon(ic)} ${name}<span>${len}</span></button>`).join('')}
       <div class="gc-gm-limit"><label>Gather attempts per character</label><div class="gc-inline"><input type="number" min="1" max="100" name="dailyLimit" value="${num(db.settings.dailyLimit,6,1,100)}"><button type="button" data-action="saveSettings" title="Save">${icon('fa-floppy-disk')}</button></div></div>
       <label class="gc-checkbox"><input type="checkbox" name="sceneOnly" ${db.settings.sceneOnly?'checked':''}> Scene-only gathering (15 ft from bound tokens)</label>
       <button type="button" class="gc-secondary gc-full" data-action="resetAttempts">${icon('fa-rotate-right')} Reset selected character</button>
       <button type="button" class="gc-secondary gc-full" data-action="sync">${icon('fa-book')} Create / Sync Compendiums</button>
-      <p class="gc-help">World packs: <b>Ores & Metals</b>, <b>Alchemy Ingredients</b>, and <b>Ready-to-use Items</b>. Sync adds missing items only; edited copies are never overwritten. Drag these items onto actors, chest actors or scene loot inventories.</p></aside>
+      <p class="gc-help">World packs: <b>Ores & Metals</b>, <b>Alchemy Ingredients</b>, <b>Monster Drops</b>, and <b>Ready-to-use Items</b>. Sync adds missing items only; edited copies are never overwritten. Drag these items onto actors, chest actors or scene loot inventories.</p></aside>
       <section class="gc-gm-main"><div class="gc-library"><div class="gc-lib-header"><strong>${kind==='material'?'Materials':kind==='node'?'Gathering Nodes':'Recipes'}</strong><button type="button" data-action="new">${icon('fa-plus')} New</button></div><div class="gc-lib-list">${entries.map(x=>`<button class="gc-library-item ${this.editor?.id===x.id?'is-active':''}" type="button" data-action="edit" data-id="${esc(x.id)}">${icon(x.icon)} <span>${esc(x.name)}</span>${icon('fa-chevron-right')}</button>`).join('')}</div></div>
       ${this.editor?.id?this.editorForm(db,kind,entries.find(x=>x.id===this.editor.id)):this.editor?.isNew?this.editorForm(db,kind,{}):'<div class="gc-empty gc-placeholder">Select an entry to edit or press New.</div>'}</section></div>`;
   }
   field(k,label,val,type='text',rest=''){return `<label class="gc-field"><span>${esc(label)}</span><input name="${k}" type="${type}" value="${esc(val??'')}" ${rest}></label>`;}
   select(k,label,options,chosen){return `<label class="gc-field"><span>${esc(label)}</span><select name="${k}">${options.map(([id,name])=>`<option value="${esc(id)}" ${id===chosen?'selected':''}>${esc(name)}</option>`).join('')}</select></label>`;}
   ingRow(ing,mats){return `<div class="gc-ing-row"><select name="ing-id">${mats.map(([id,name])=>`<option value="${esc(id)}" ${id===ing.id?'selected':''}>${esc(name)}</option>`).join('')}</select><input name="ing-qty" type="number" min="1" max="99" value="${num(ing.qty,1,1,99)}"><button type="button" data-action="removeIngredient" title="Remove ingredient">${icon('fa-xmark')}</button></div>`;}
-  editorForm(db,kind,entry={}){const isNew=!entry.id,mats=db.materials.map(m=>[m.id,m.name]),groupChoices=[['Ore & Mineral','Ore & Mineral'],['Refined Metal','Refined Metal'],['Alchemical Ingredient','Alchemical Ingredient']];
+  editorForm(db,kind,entry={}){const isNew=!entry.id,mats=db.materials.map(m=>[m.id,m.name]),groupChoices=[['Ore & Mineral','Ore & Mineral'],['Refined Metal','Refined Metal'],['Alchemical Ingredient','Alchemical Ingredient'],['Monster Drop','Monster Drop']];
     let extra='';
     if(kind==='material')extra=this.select('group','Resource group',groupChoices,entry.group||'Ore & Mineral')+this.field('tier','Tier',entry.tier||1,'number','min="1" max="4"')+this.field('color','Accent color',hue(entry.color),'color')+this.field('img','Image path',entry.img||'icons/svg/item-bag.svg');
     if(kind==='node')extra=this.select('materialId','Harvested material',mats,entry.materialId||mats[0]?.[0])+this.select('bonusId','Bonus find',[['','None'],...mats],entry.bonusId||'')+this.field('bonusChance','Bonus chance (%)',entry.bonusChance||0,'number','min="0" max="100"')+this.select('skill','Skill check',skills,entry.skill||'sur')+this.field('dc','DC',entry.dc||12,'number','min="1" max="40"')+this.field('minYield','Min yield',entry.minYield||1,'number','min="1" max="20"')+this.field('maxYield','Max yield',entry.maxYield||2,'number','min="1" max="20"')+`<label class="gc-checkbox"><input type="checkbox" name="active" ${entry.active!==false?'checked':''}> Available to players</label>`+(entry.id?`<button type="button" class="gc-secondary gc-full" data-action="bindToken">${icon('fa-map-pin')} Bind selected map token</button><p class="gc-help">Select a token on the scene as GM, then bind it to this node. Players can harvest within 15 ft when scene-only mode is on.</p>`:'');
@@ -234,6 +260,10 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     if(a==='craft')return this.locked(()=>this.craft(id));
     if(a==='craftMax')return this.locked(()=>this.craft(id,10));
     if(a==='drink')return this.locked(()=>this.drink(id));
+    if(a==='giveMat')return this.locked(()=>adjustMaterialQuantity(this.checkActor(),id,1));
+    if(a==='takeMat')return this.locked(()=>adjustMaterialQuantity(this.checkActor(),id,-1));
+    if(a==='giveRecipe')return this.locked(()=>adjustCraftedQuantity(this.checkActor(),id,1));
+    if(a==='takeRecipe')return this.locked(()=>adjustCraftedQuantity(this.checkActor(),id,-1));
     if(a==='sheetItem'){const item=this.actor?.items?.get?.(id)||this.actor?.items?.find(i=>i.id===id);return item?.sheet?.render(true);}
     if(!game.user.isGM)return;
     if(a==='gmkind'){this.editor={kind:id,id:null};return this.refresh();}
@@ -300,7 +330,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
       if(formula&&healed>0)await actor.update({'system.attributes.hp.value':hpOld+healed});
       if(tempFormula&&tempGained>0)await actor.update({'system.attributes.hp.temp':tempOld+tempGained});
     }catch(error){try{if(formula&&hpOld!=null)await actor.update({'system.attributes.hp.value':hpOld});if(tempFormula&&tempOld!=null)await actor.update({'system.attributes.hp.temp':tempOld});}catch(e){console.error(`${ID} | HP rollback failed`,e);}try{const current=actor.items.get?.(itemId)||actor.items.find(i=>i.id===itemId);if(current)await current.update({'system.quantity':saved.system.quantity});else{delete saved._id;await actor.createEmbeddedDocuments('Item',[saved]);}}catch(e){console.error(`${ID} | potion rollback failed`,e);}throw error;}
-    await announce(actor,`<p><b>${esc(actor.name)}</b> drinks <b>${esc(recipe.name)}</b>.</p><p>${esc(recipe.description)}</p>${formula?`<p>Healing roll: ${roll.total}; HP restored: <b>${healed}</b>.</p>`:tempFormula?`<p>Temporary HP roll: ${roll.total}; new temporary HP: <b>${tempOld+tempGained}</b>.</p>`:'<p><em>Apply the effect according to the item description; the GM adjudicates conditions and durations.</em></p>'}`);
+    await announce(actor,`<p><b>${esc(actor.name)}</b> drinks <b>${esc(recipe.name)}</b>.</p><p>${esc(recipe.description)}</p>${formula?`<p>Healing roll: ${roll.total}; HP restored: <b>${healed}</b>.</p>`:tempFormula?`<p>Temporary HP roll: ${roll.total}; new temporary HP: <b>${tempOld+tempGained}</b>.</p>`:'<p><em>Apply the effect according to the item description. Utility brews such as gender change, height change, featherfall, glide, spider climb and similar transformations are announced here for GM adjudication.</em></p>'}`);
     notify(`Used ${recipe.name}${formula?` (+${healed} HP)`:tempFormula?` (+${tempGained} temporary HP)`:''}.`);
   }
   async saveSettings(){const db=clone(database());db.settings.dailyLimit=num(this.element.querySelector('[name=dailyLimit]')?.value,6,1,100);db.settings.sceneOnly=!!this.element.querySelector('[name=sceneOnly]')?.checked;await game.settings.set(ID,'database',db);notify('Gathering settings saved.');}
@@ -314,8 +344,8 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
   async saveEntry(form){if(!game.user.isGM)return;const db=clone(database()),kind=this.editor.kind,key=({material:'materials',node:'nodes',recipe:'recipes'})[kind],fd=new FormData(form);
     const name=String(fd.get('name')||'').trim().slice(0,90);if(!name)throw new Error('Enter a name.');
     const entry={id:this.editor.id||foundry.utils.randomID(12),name,description:String(fd.get('description')||'').trim().slice(0,350),icon:/^fa-[a-z0-9-]+$/.test(String(fd.get('icon')))?String(fd.get('icon')):'fa-gem'};
-    if(kind==='material'){entry.group=['Ore & Mineral','Refined Metal','Alchemical Ingredient'].includes(fd.get('group'))?fd.get('group'):'Ore & Mineral';entry.tier=num(fd.get('tier'),1,1,4);entry.color=hue(fd.get('color'));entry.img=String(fd.get('img')||'icons/svg/item-bag.svg').slice(0,250);}
-    if(kind==='node'){entry.materialId=String(fd.get('materialId')||'');entry.bonusId=String(fd.get('bonusId')||'');entry.bonusChance=num(fd.get('bonusChance'),0,0,100);entry.skill=skillLabels[fd.get('skill')]?String(fd.get('skill')):'sur';entry.dc=num(fd.get('dc'),12,1,40);entry.minYield=num(fd.get('minYield'),1,1,20);entry.maxYield=Math.max(entry.minYield,num(fd.get('maxYield'),2,1,20));entry.active=fd.get('active')==='on';entry.group=material(db,entry.materialId)?.group==='Alchemical Ingredient'?'alchemy':'metallurgy';if(!material(db,entry.materialId))throw new Error('Choose a valid material.');}
+    if(kind==='material'){entry.group=['Ore & Mineral','Refined Metal','Alchemical Ingredient','Monster Drop'].includes(fd.get('group'))?fd.get('group'):'Ore & Mineral';entry.tier=num(fd.get('tier'),1,1,4);entry.color=hue(fd.get('color'));entry.img=String(fd.get('img')||'icons/svg/item-bag.svg').slice(0,250);}
+    if(kind==='node'){entry.materialId=String(fd.get('materialId')||'');entry.bonusId=String(fd.get('bonusId')||'');entry.bonusChance=num(fd.get('bonusChance'),0,0,100);entry.skill=skillLabels[fd.get('skill')]?String(fd.get('skill')):'sur';entry.dc=num(fd.get('dc'),12,1,40);entry.minYield=num(fd.get('minYield'),1,1,20);entry.maxYield=Math.max(entry.minYield,num(fd.get('maxYield'),2,1,20));entry.active=fd.get('active')==='on';const mg=material(db,entry.materialId)?.group;entry.group=mg==='Alchemical Ingredient'?'alchemy':mg==='Monster Drop'?'monster':'metallurgy';if(!material(db,entry.materialId))throw new Error('Choose a valid material.');}
     if(kind==='recipe'){
       entry.category=fd.get('category')==='alchemy'?'alchemy':'metallurgy';entry.subcategory=String(fd.get('subcategory')||'Custom').slice(0,40);entry.tier=num(fd.get('tier'),1,1,4);entry.outputItemUuid=String(fd.get('outputItemUuid')||'');entry.outputQuantity=num(fd.get('outputQuantity'),1,1,99);entry.dc=num(fd.get('dc'),12,1,40);entry.effect=String(fd.get('effect')||'').slice(0,100);entry.img=String(fd.get('img')||'icons/svg/item-bag.svg').slice(0,250);
       const merged=new Map(),ids=fd.getAll('ing-id').map(String),counts=fd.getAll('ing-qty');ids.forEach((i,idx)=>merged.set(i,(merged.get(i)||0)+num(counts[idx],1,1,99)));
@@ -338,6 +368,8 @@ Hooks.once('init',()=>{
   game.settings.register(ID,'compendiumBootstrapped',{name:'Legacy compendiums created',scope:'world',config:false,type:Boolean,default:false});
   game.settings.register(ID,'compendiumBootstrapped030',{name:'v0.3 native item compendiums created',scope:'world',config:false,type:Boolean,default:false});
   game.settings.register(ID,'backup020',{name:'Catalogue backup before v0.3.0',scope:'world',config:false,type:Object,default:{}});
+  game.settings.register(ID,'backup030',{name:'Catalogue backup before v0.4.0',scope:'world',config:false,type:Object,default:{}});
+  game.settings.register(ID,'compendiumBootstrapped040',{name:'v0.4 compendiums synced',scope:'world',config:false,type:Boolean,default:false});
   game.keybindings.register(ID,'open',{name:'Open Gathering & Crafting',hint:'Open gathering and crafting for your selected character.',editable:[{key:'KeyG',modifiers:['ALT']}],onDown:()=>{open();return true;},restricted:false,precedence:CONST.KEYBINDING_PRECEDENCE.NORMAL});
 });
 Hooks.once('ready',async()=>{
@@ -361,7 +393,26 @@ Hooks.once('ready',async()=>{
       await game.settings.set(ID,'database',upgraded);
       notify('Catalogue upgraded. Previous recipes and customized Items were preserved.');
     }
-    if(!game.settings.get(ID,'compendiumBootstrapped030'))await syncCompendiums();
+    // v0.4 is additive: never replace user-edited v0.3 entries. Add new built-ins by stable ID.
+    const beforeExpansion=database();
+    if(num(beforeExpansion.catalogVersion,0)<4){
+      await game.settings.set(ID,'backup030',clone(beforeExpansion));
+      const extended=clone(beforeExpansion);
+      for(const key of ['materials','nodes','recipes']){
+        const existing=new Set(extended[key].map(entry=>entry.id));
+        for(const entry of CATALOG[key])if(!existing.has(entry.id)){
+          extended[key].push(clone(entry));
+          existing.add(entry.id);
+        }
+      }
+      extended.catalogVersion=4;
+      await game.settings.set(ID,'database',extended);
+      notify('v0.4 catalogue expanded. Your previous custom recipes and inventory remain intact.');
+    }
+    if(!game.settings.get(ID,'compendiumBootstrapped040')){
+      await syncCompendiums();
+      await game.settings.set(ID,'compendiumBootstrapped040',true);
+    }
   }catch(e){console.error(`${ID} | Setup failed`,e);notify('Compendium setup needs GM attention. Open GM Studio and select Create / Sync Compendiums.',true);}
 });
 for(const hook of ['renderActorDirectory','renderActorDirectoryV2'])Hooks.on(hook,(app,html)=>launcher(html,'.directory-header, header.directory-header, .header-actions',null));

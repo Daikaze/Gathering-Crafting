@@ -89,6 +89,9 @@
 .gathering-crafting .gc-inv-name b {font-size:12px;}
 .gathering-crafting .gc-inv-name small {font-size:10px;line-height:1.3;color:var(--gc-muted);}
 .gathering-crafting .gc-material strong {color:var(--gc-gold);font-size:17px;white-space:nowrap;}
+.gathering-crafting .gc-stack-adjust {display:flex;gap:6px;align-items:center;}
+.gathering-crafting .gc-stack-adjust .gc-secondary,.gathering-crafting .gc-inline-actions .gc-secondary {padding:7px 9px!important;min-width:34px;}
+.gathering-crafting .gc-inline-actions {display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
 .gathering-crafting .gc-empty {display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;min-height:120px;color:var(--gc-muted);font-size:12px;text-align:center;padding:20px;border:1px dashed var(--gc-border);border-radius:10px;grid-column:1/-1;}
 .gathering-crafting .gc-empty i {font-size:25px;}
 .gathering-crafting .gc-footer {padding:9px 19px;display:flex;justify-content:space-between;gap:10px;font-size:9px;background:#121f2b;border-top:1px solid rgba(255,255,255,.06);color:#778c9e;}

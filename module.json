@@ -1,8 +1,8 @@
 {
   "id": "gathering-crafting",
   "title": "Gathering & Crafting",
-  "description": "Clean English-only gathering, metallurgy & alchemy with 54 materials, 72 recipes, 3 world compendiums and native dnd5e consumables, weapons and shields.",
-  "version": "0.3.0",
+  "description": "Expanded English-only gathering, monster harvesting, metallurgy & alchemy with 102 materials, 122 recipes, 71 nodes, 4 world compendiums and inventory quantity controls.",
+  "version": "0.4.0",
   "authors": [
     {
       "name": "Averis Workshop"
@@ -34,5 +34,5 @@
   ],
   "url": "https://github.com/Daikaze/Gathering-Crafting",
   "manifest": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/module.json",
-  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v0.3.0.zip"
+  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v0.4.0.zip"
 }
