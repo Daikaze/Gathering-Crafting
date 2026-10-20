@@ -1,4 +1,4 @@
-# Gathering & Crafting v0.8.0 — The Averis Workshop
+# Gathering & Crafting v0.8.1 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -62,3 +62,9 @@ Open the gear in the header → GM Studio. Define new materials, monster drops a
 - Images are rendered from locally stored assets, so the module works without Legacy Content or Potion Crafting & Ingredients.
 - Images are fantasy-painted *variants from a smaller source artwork set*, rather than 224 independently hand-painted commissions. The 5e-inspired visual direction is original, not copied from official Wizards of the Coast artwork.
 - The migration preserves GM-authored image paths outside installed module/system asset directories, while resetting older mod/system image paths to bundled art.
+
+## Original hand-painted item art — Phase A / Batch 01 (v0.8.1)
+
+- **Iron Ore** now uses its own independently generated fantasy painting, bundled under `icons/handpainted/iron-ore.webp`.
+- All other items retain the previous illustrative art for now; no claim is made that the 224 existing cropped/variant images are individually painted.
+- New art loads without any external Compendium packs. The migration preserves GM-set custom images and original item data.

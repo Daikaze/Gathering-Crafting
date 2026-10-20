@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.1 — First Original Painted Item
+
+- Added an independently generated, hand-painted D&D-style **Iron Ore** illustration as a standalone bundled WebP (not a crop from an art sheet).
+- Updated the Iron Ore catalog image and migration without replacing other artwork or GM custom images.
+- This release is only Phase A Batch 01; the remaining items are not yet independently illustrated.
+
 ## 0.8.0 — Self-contained Illustrated Items
 
 - Removed Compendium artwork auto-detection, source selectors, rescan UI, and associated script.

@@ -51,7 +51,7 @@
       "tier": 1,
       "icon": "fa-mountain",
       "color": "#aab6c7",
-      "img": "modules/gathering-crafting/icons/illustrated/iron-ore.webp",
+      "img": "modules/gathering-crafting/icons/handpainted/iron-ore.webp",
       "description": "Unprocessed iron ore gathered from mineral deposits."
     },
     {
@@ -3977,7 +3977,7 @@
     },
     {
       "id": "hunters-instinct-tonic",
-      "name": "Hunter\u2019s Instinct Tonic",
+      "name": "Hunter’s Instinct Tonic",
       "category": "alchemy",
       "subcategory": "Potions & Tonics",
       "tier": 2,
@@ -4495,7 +4495,7 @@
           "qty": 1
         }
       ],
-      "description": "A transformative elixir that can alter the drinker\u2019s sex characteristics until dispelled or reversed by another dose.",
+      "description": "A transformative elixir that can alter the drinker’s sex characteristics until dispelled or reversed by another dose.",
       "icon": "fa-flask-vial",
       "img": "modules/gathering-crafting/icons/illustrated/craft-genderflux-elixir.webp",
       "outputQuantity": 1,
@@ -4606,7 +4606,7 @@
     },
     {
       "id": "merrows-embrace",
-      "name": "Merrow\u2019s Embrace",
+      "name": "Merrow’s Embrace",
       "category": "alchemy",
       "subcategory": "Potions & Tonics",
       "tier": 3,
@@ -4885,7 +4885,7 @@
     },
     {
       "id": "dragons-breath-elixir",
-      "name": "Dragon\u2019s Breath Elixir",
+      "name": "Dragon’s Breath Elixir",
       "category": "alchemy",
       "subcategory": "Potions & Tonics",
       "tier": 4,
@@ -5088,5 +5088,5 @@
       "outputType": "consumable"
     }
   ],
-  "catalogVersion": 8
+  "catalogVersion": 9
 }

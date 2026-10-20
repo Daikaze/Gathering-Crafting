@@ -1,8 +1,8 @@
-/** Gathering & Crafting v0.8.0 — Foundry V14 / dnd5e 5.3.3. */
+/** Gathering & Crafting v0.8.1 — Foundry V14 / dnd5e 5.3.3. */
 import { CATALOG } from './catalog.js';
 import { makeMaterialData, makeCraftData, outputKind } from './items.js';
 const ID='gathering-crafting';
-const VERSION='0.8.0';
+const VERSION='0.8.1';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -136,7 +136,7 @@ function mergeCatalog(old){
   }
   return db;
 }
-const bundledArtwork=img=>/^modules\/gathering-crafting\/icons\/(?:painted|v2|v4|v5|v6|v7|illustrated)\//.test(String(img||''));
+const bundledArtwork=img=>/^modules\/gathering-crafting\/icons\/(?:painted|v2|v4|v5|v6|v7|illustrated|handpainted)\//.test(String(img||''));
 const replaceableArtwork=img=>bundledArtwork(img)||/^modules\/(?!gathering-crafting\/)/.test(String(img||''))||/^systems\/dnd5e\//.test(String(img||''));
 async function refreshOwnedArtwork(){
   const db=database();
@@ -418,6 +418,7 @@ Hooks.once('init',()=>{
   game.settings.register(ID,'backup040',{name:'Catalogue backup before v0.5.0',scope:'world',config:false,type:Object,default:{}});
   game.settings.register(ID,'backup050',{name:'Catalogue backup before v0.5.1',scope:'world',config:false,type:Object,default:{}});
   game.settings.register(ID,'backup060',{name:'Catalogue backup before v0.6.0',scope:'world',config:false,type:Object,default:{}});
+  game.settings.register(ID,'backup081',{name:'Catalogue backup before v0.8.1',scope:'world',config:false,type:Object,default:{}});
   game.settings.register(ID,'backup080',{name:'Catalogue backup before v0.8.0',scope:'world',config:false,type:Object,default:{}});
   game.keybindings.register(ID,'open',{name:'Open Gathering & Crafting',hint:'Open gathering and crafting for your selected character.',editable:[{key:'KeyG',modifiers:['ALT']}],onDown:()=>{open();return true;},restricted:false,precedence:CONST.KEYBINDING_PRECEDENCE.NORMAL});
 });
@@ -426,7 +427,7 @@ Hooks.once('ready',async()=>{
   const mod=game.modules.get(ID);if(mod)mod.api={open,getDatabase:()=>clone(database()),syncCompendiums,version:VERSION};
   if(!game.user.isGM)return;
   try{
-    let old=database();const needsArtMigration=validDb(old)&&num(old.catalogVersion,0)<8;
+    let old=database();const needsArtMigration=validDb(old)&&num(old.catalogVersion,0)<9;
     if(!validDb(old)||num(old.catalogVersion,0)<2){
       if(validDb(old))await game.settings.set(ID,'backup010',clone(old));
       old=mergeCatalog(old);await game.settings.set(ID,'database',old);
@@ -495,6 +496,17 @@ Hooks.once('ready',async()=>{
       await game.settings.set(ID,'database',upgraded);
       old=upgraded;
       notify('Illustrated item artwork installed. Recipes, inventories and GM edits preserved.');
+    }
+    if(num(old.catalogVersion,0)<9){
+      await game.settings.set(ID,'backup081',clone(old));
+      const upgraded=mergeCatalog(old);
+      const painted=CATALOG.materials.find(m=>m.id==='iron-ore')?.img;
+      const entry=upgraded.materials.find(m=>m.id==='iron-ore');
+      if(entry&&painted&&(!entry.img||replaceableArtwork(entry.img)))entry.img=painted;
+      upgraded.catalogVersion=9;
+      await game.settings.set(ID,'database',upgraded);
+      old=upgraded;
+      notify('Original painted Iron Ore artwork installed; other items and GM edits preserved.');
     }
     if(!game.settings.get(ID,'compendiumBootstrapped030')||needsArtMigration)await syncCompendiums();
     if(needsArtMigration)await refreshOwnedArtwork();

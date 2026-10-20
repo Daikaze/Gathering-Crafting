@@ -18,7 +18,7 @@ assert.ok(cat.materials.every(m=>m.description&&m.description.length>10));
 assert.ok(cat.recipes.every(r=>r.ingredients.length>0&&r.ingredients.every(i=>cat.materials.some(m=>m.id===i.id))));
 assert.ok(cat.recipes.every(r=>r.category!=='alchemy'||r.ingredients.length>=2));
 assert.ok(cat.recipes.every(r=>r.img.includes('/icons/illustrated/')));
-assert.ok(cat.materials.every(m=>m.img.includes('/icons/illustrated/')));
+assert.ok(cat.materials.every(m=>m.img.includes('/icons/illustrated/')||(m.id==='iron-ore'&&m.img.includes('/icons/handpainted/'))));
 for(const m of cat.materials)assert.ok(fs.existsSync(path.join(base,m.img.replace('modules/gathering-crafting/',''))),m.img);
 for(const r of cat.recipes)assert.ok(fs.existsSync(path.join(base,r.img.replace('modules/gathering-crafting/',''))),r.img);
 const hooksOnce=new Map(),hooksOn=new Map(),world=new Map(),messages=[],packs=new Map();let roll=19,counter=0,failOutput=false,failChat=false;
@@ -58,9 +58,10 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   await hooksOnce.get('ready')();assert.equal(packs.size,4);
   assert.equal(packs.get('world.gc-ores-metals').items.length,44);assert.equal(packs.get('world.gc-ingredients').items.length,40);assert.equal(packs.get('world.gc-monster-drops').items.length,18);assert.equal(packs.get('world.gc-ready-items').items.length,122);
   const db=context.game.settings.get('gathering-crafting','database');
-  assert.equal(db.catalogVersion,8);
+  assert.equal(db.catalogVersion,9);
   assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
   assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img);
+  assert.ok(db.materials.find(m=>m.id==='iron-ore').img.endsWith('/icons/handpainted/iron-ore.webp'));
   assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
   assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
   await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,44,'sync must not duplicate entries');
@@ -69,7 +70,7 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const customIconItem=packs.get('world.gc-ores-metals').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='silver-ore');
   customIconItem.img='user-uploads/my-custom-silver.webp';
   await syncCompendiums();
-  assert.ok(oldIconItem.img.includes('/icons/illustrated/'),'old external artwork must revert to bundled art');
+  assert.ok(oldIconItem.img.includes('/icons/handpainted/'),'old external artwork must revert to bundled art');
   assert.equal(customIconItem.img,'user-uploads/my-custom-silver.webp','GM images should be preserved');
   // Upgrade existing v0.7 worlds and keep GM edits while resetting bundled icons.
   const oldWorld=structuredClone(db);
@@ -80,9 +81,9 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   await context.game.settings.set('gathering-crafting','database',oldWorld);
   await hooksOnce.get('ready')();
   const migratedWorld=context.game.settings.get('gathering-crafting','database');
-  assert.equal(migratedWorld.catalogVersion,8);
+  assert.equal(migratedWorld.catalogVersion,9);
   assert.equal(migratedWorld.materials.find(m=>m.id==='iron-ore').name,'Iron Ore, Localized by GM');
-  assert.ok(migratedWorld.materials.find(m=>m.id==='iron-ore').img.includes('/icons/illustrated/'));
+  assert.ok(migratedWorld.materials.find(m=>m.id==='iron-ore').img.includes('/icons/handpainted/'));
   assert.equal(migratedWorld.materials.find(m=>m.id==='silver-ore').img,'user-uploads/my-custom-silver.webp');
   assert.equal(context.game.settings.get('gathering-crafting','backup080').catalogVersion,7);
   const actorOld=new ItemDoc({...packs.get('world.gc-ingredients').items[0].toObject(),img:'modules/potion-crafting/images/old.webp',_id:undefined,system:{quantity:2}},actor);
@@ -149,5 +150,5 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const preview=app.template().replaceAll('modules/gathering-crafting/',`file://${base}/`);
   const css=fs.readFileSync(path.join(base,'styles/module.css'),'utf8');
   fs.writeFileSync(path.join(require('node:os').tmpdir(),'gc-v080-preview.html'),`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
-  console.log('PASS: v0.8.0 224 illustrated WebP items, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
+  console.log('PASS: v0.8.1 first individually painted Iron Ore art and remaining illustrated WebP items, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

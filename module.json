@@ -1,8 +1,8 @@
 {
   "id": "gathering-crafting",
   "title": "Gathering & Crafting",
-  "description": "Gathering & Crafting: self-contained illustrated artwork for 224 materials and recipes, no external artwork packs, four clean player tabs and inventory controls.",
-  "version": "0.8.0",
+  "description": "Gathering & Crafting: self-contained illustrated artwork, Phase A individually painted Iron Ore art, no external art packs, four player tabs and inventory controls.",
+  "version": "0.8.1",
   "authors": [
     {
       "name": "Averis Workshop"
@@ -34,5 +34,5 @@
   ],
   "url": "https://github.com/Daikaze/Gathering-Crafting",
   "manifest": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/module.json",
-  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v0.8.0.zip"
+  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v0.8.1.zip"
 }
