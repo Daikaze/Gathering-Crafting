@@ -1,13 +1,17 @@
 # Changelog
 
-## 0.3.0 — Player-first workshop
-- Reduced the visible player navigation to Gather, Craft and Inventory; moved GM Studio to the top-right gear.
-- Added available-first sorting, craftable-only filtering and Craft ×N (maximum 10).
-- Added six attack-ready weapons and two equipable shields as real D&D5e Items.
-- Added healing activities to healing potions; existing module potion-use remains available for reliable one-dose consumption.
-- Switched to three new v0.3 World Item Compendiums to preserve player-customized legacy packs.
-- Kept 54 materials, 42 harvest nodes, 72 unique recipes and 114 individually illustrated SVG images.
-- Added safe v0.2 world catalogue backup and retained older settings and player inventory Items.
+## 0.3.0 — Player-first Workshop
 
-## 0.2.0 — Metallurgy & Alchemy
-- 54 materials, 72 recipes, 42 nodes, world compendiums, GM editor and scene harvesting.
+- Simplified player navigation: **Gather, Craft, Inventory**; moved **GM Studio** to a compact gear button.
+- Recipe Book groups Metallurgy and Alchemy with a one-click **Craftable only** filter and available-first sorting.
+- Added **Craft ×N** (up to 10) in reliable mode, respecting real available ingredient counts and rollback safety.
+- Added 24 painted fantasy artwork thumbnails over the existing 114 per-item SVG icon collection; each material and recipe has its own image.
+- Introduced native D&D5e weapon and shield output Items; healing consumables get a healing activity, and temporary-HP tonics update the actor directly from Inventory.
+- Switched to three new world compendiums to avoid modifying legacy v0.2 pack content: Ores & Metals, Alchemy Ingredients, Ready-to-use Items.
+- On upgrade, backs up v0.2 settings and preserves GM-customized databases; changes only built-in art references where safe.
+- Added item-factory structural validations and refreshed smoke tests.
+
+## 0.2.0 — Metallurgy + Alchemy
+
+- Added 54 real inventory resources, 42 nodes, 72 craft recipes and two legacy world compendiums, all English.
+- Added safe item transactions, bulk content, chapter filters, map-node binding and GM editor.

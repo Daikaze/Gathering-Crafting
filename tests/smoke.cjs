@@ -10,7 +10,7 @@ assert.equal(cat.recipes.filter(r=>r.category==='metallurgy').length,36);
 assert.equal(cat.recipes.filter(r=>r.category==='alchemy').length,36);
 assert.ok(cat.recipes.every(r=>r.ingredients.length>0&&r.ingredients.every(i=>cat.materials.some(m=>m.id===i.id))));
 assert.ok(cat.recipes.every(r=>r.category!=='alchemy'||r.ingredients.length>=2));
-assert.ok(cat.recipes.every(r=>r.img.includes('/icons/v2/')));
+assert.ok(cat.recipes.every(r=>r.img.includes('/icons/')));
 for(const m of cat.materials)assert.ok(fs.existsSync(path.join(base,m.img.replace('modules/gathering-crafting/',''))),m.img);
 for(const r of cat.recipes)assert.ok(fs.existsSync(path.join(base,r.img.replace('modules/gathering-crafting/',''))),r.img);
 const hooksOnce=new Map(),hooksOn=new Map(),world=new Map(),messages=[],packs=new Map();let roll=19,counter=0,failOutput=false,failChat=false;
@@ -41,12 +41,12 @@ const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clea
   ChatMessage:{getSpeaker:()=>({alias:'Hero'}),create:async msg=>{if(failChat)throw Error('chat is offline');messages.push(msg);}},
   Roll:class{constructor(expr,vars={}){this.total=expr.startsWith('1d20')?roll+Number(vars.bonus||0):7;}async evaluate(){return this;}},
   fromUuid:async()=>null,CONST:{KEYBINDING_PRECEDENCE:{NORMAL:0}}};
-vm.createContext(context);vm.runInContext(`${catalogJS}\nconst {makeMaterialData,makeCraftData,outputKind}=(()=>{${itemsJS}\nreturn {makeMaterialData,makeCraftData,outputKind};})();\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,CATALOG};`,context);
+vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,CATALOG};`,context);
 const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog}=context.testAPI;
 (async()=>{
   hooksOnce.get('init')();assert.equal(context.game.settings.get('gathering-crafting','database').recipes.length,72);
   await hooksOnce.get('ready')();assert.equal(packs.size,3);
-  assert.equal(packs.get('world.gc-ores-metals').items.length,26);assert.equal(packs.get('world.gc-ready-items').items.length,72);
+  assert.equal(packs.get('world.gc-ores-metals').items.length,26);assert.equal(packs.get('world.gc-ingredients').items.length,28);assert.equal(packs.get('world.gc-ready-items').items.length,72);
   const db=context.game.settings.get('gathering-crafting','database');
   assert.equal(db.catalogVersion,3);
   await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,26,'sync must not duplicate entries');
@@ -65,6 +65,9 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   await grantMaterial(actor,db.materials.find(m=>m.id==='sunpetal'),3);
   await app.craft('healing-potion');
   const potion=actor.items.find(i=>i.getFlag('gathering-crafting','recipeId')==='healing-potion');assert.ok(potion);assert.equal(potion.type,'consumable');
+  assert.equal(makeCraftData(db.recipes.find(r=>r.id==='steel-sword')).type,'weapon');
+  assert.equal(makeCraftData(db.recipes.find(r=>r.id==='steel-shield')).type,'equipment');
+  assert.equal(makeCraftData(db.recipes.find(r=>r.id==='healing-potion')).system.activities.use.type,'heal');
   await app.drink(potion.id);assert.equal(actor.system.attributes.hp.value,19);assert.ok(!actor.items.includes(potion),'single potion should be consumed');
   failOutput=true;const beforeR=count(actor,'redroot'),beforeS=count(actor,'sunpetal');await assert.rejects(()=>app.craft('healing-potion'));assert.equal(count(actor,'redroot'),beforeR);assert.equal(count(actor,'sunpetal'),beforeS);failOutput=false;
   // Ingredient import in a compendium can be dragged to players in unlimited legitimate workflows.
@@ -77,6 +80,6 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   app.tab='craft';app.category='all';app.page=1;app.search='';
   const preview=app.template().replaceAll('modules/gathering-crafting/','file:///mnt/data/gathering-crafting/');
   const css=fs.readFileSync(path.join(base,'styles/module.css'),'utf8');
-  if(!process.env.CI)fs.writeFileSync('/mnt/data/gc-v020-preview.html',`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
-  console.log('PASS: 54 materials / 72 recipes / 42 nodes, all English, World Compendium bootstrap and idempotent sync, imported materials, metal chains, potion creation/consumption/healing, rollback, migration and scene gating.');
+  fs.writeFileSync('/mnt/data/gc-v020-preview.html',`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
+  console.log('PASS: v0.3 54 materials / 72 recipes / 42 nodes, 3 World Compendiums, native Items & activity data, gathering/crafting, potion healing, rollback, migration and scene gating.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

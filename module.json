@@ -1,7 +1,7 @@
 {
   "id": "gathering-crafting",
   "title": "Gathering & Crafting",
-  "description": "Clean English gathering and metallurgy/alchemy: 54 materials, 72 recipes, three world compendiums and native dnd5e items.",
+  "description": "Clean English-only gathering, metallurgy & alchemy with 54 materials, 72 recipes, 3 world compendiums and native dnd5e consumables, weapons and shields.",
   "version": "0.3.0",
   "authors": [
     {
