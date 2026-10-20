@@ -37,16 +37,7 @@ jobs:
           VERSION="$(node -p "require('./module.json').version")"
           ARCHIVE="dist/gathering-crafting-v${VERSION}.zip"
           unzip -t "$ARCHIVE" >/dev/null
-          ACTUAL="$(unzip -Z -1 "$ARCHIVE" | grep -E '^gathering-crafting/icons/(illustrated|handpainted)/.*\\.webp        run: |
-          VERSION="$(node -p "require('./module.json').version")"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "dist/gathering-crafting-v${VERSION}.zip"
-          if ! git diff --cached --quiet; then
-            git commit -m "build: package Gathering & Crafting v${VERSION}"
-            git push
-          fi
- | wc -l | tr -d ' ')"
+          ACTUAL="$(unzip -Z -1 "$ARCHIVE" | grep -E '^gathering-crafting/icons/(illustrated|handpainted)/.*[.]webp$' | wc -l | tr -d ' ')"
           test "$ACTUAL" -eq 224 || { echo "Expected 224 bundled item WebP artworks, found $ACTUAL"; exit 1; }
           echo "Validated 224 art assets inside $ARCHIVE"
       - name: Publish zip
