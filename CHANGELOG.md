@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0 — Artwork-integrity and installable release
+
+- Published the complete 224-item bundled illustration set across 56 Blacksmithing recipes, 66 Alchemy recipes and 102 materials; all asset paths verified against archive contents.
+- Added independent WebP file validation, item-path/name audits, duplicate-byte detection and catalogue-data consistency tests.
+- Added pull-request checks and an installable ZIP content audit to the GitHub Actions packaging workflow.
+- Kept all existing recipes, in-world Compendiums, character inventory transactions, v0.8.2 artwork and safe catalogue migration logic; no data reset is required.
+- Art disclosure: 11 individually generated paintings; the remaining 213 are per-item illustrated variants, **not** newly commissioned individual illustrations. Complete individual art coverage and in-Foundry live-world acceptance testing remain outstanding.
+
 ## 0.8.2 — Hand-painted Alchemy Batch 01
 
 - Integrated ten individually generated, name-matched hand-painted Alchemy images, including ingredients, one Monster Drop and seven potions.

@@ -1,8 +1,8 @@
 {
   "id": "gathering-crafting",
   "title": "Gathering & Crafting",
-  "description": "Gathering & Crafting for Foundry V14: 10 individually generated painted Alchemy item artworks, separate Alchemy and Blacksmithing tabs, 102 materials, 122 recipes, safe inventory and catalog migration.",
-  "version": "0.8.2",
+  "description": "Gathering & Crafting v1.0 for Foundry V14 / dnd5e 5.3.3: 56 Blacksmithing and 66 Alchemy recipes, 102 materials, 71 gathering nodes, and 224 locally bundled WebP item images (11 independently painted; 213 illustrated variants).",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Averis Workshop"
@@ -34,5 +34,5 @@
   ],
   "url": "https://github.com/Daikaze/Gathering-Crafting",
   "manifest": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/module.json",
-  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v0.8.2.zip"
+  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v1.0.0.zip"
 }
