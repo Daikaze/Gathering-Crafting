@@ -1,0 +1,51 @@
+name: Build Foundry v1.1 Preview
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image validation dependency
+        run: python -m pip install --disable-pip-version-check Pillow
+      - name: Validate 224-icon overlay binary is present
+        run: |
+          test -f artwork/input/gathering-crafting-v11-all-224-preview-icons.zip || {
+            echo "::error::224-icon overlay ZIP has not been committed to artwork/input/; cannot package binary update."
+            exit 1
+          }
+      - name: Test preview builder
+        run: python -m unittest artwork.tests.test_preview_update -v
+      - name: Build installable Foundry V14 preview archive
+        run: |
+          python artwork/build_preview_update.py \
+            --module . \
+            --icons artwork/input/gathering-crafting-v11-all-224-preview-icons.zip \
+            --output gathering-crafting-v1.1.0-preview.1.zip
+      - name: Verify ZIP integrity and module metadata
+        run: |
+          unzip -t gathering-crafting-v1.1.0-preview.1.zip >/dev/null
+          python - <<'PY'
+          import json, zipfile
+          with zipfile.ZipFile('gathering-crafting-v1.1.0-preview.1.zip') as archive:
+              cfg = json.loads(archive.read('gathering-crafting/module.json'))
+              assert cfg['id'] == 'gathering-crafting'
+              assert cfg['version'] == '1.1.0-preview.1'
+              paths = [x for x in archive.namelist() if x.startswith('gathering-crafting/icons/') and x.endswith('.webp')]
+              assert len(paths) >= 224
+          print('Verified manually installable preview archive')
+          PY
+      - name: Upload preview archive as GitHub Actions artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gathering-crafting-v1.1.0-preview.1
+          path: gathering-crafting-v1.1.0-preview.1.zip
+          retention-days: 30
