@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.2 — Repair mismatched artwork in distributable ZIP
+
+- Stopped extracting older illustrated-assets archives over the 224 reviewed item icons during CI packaging (the v1.1.1 regression).
+- Audit every approved WebP with SHA-256 before packaging, then extract the final ZIP and audit all 224 WebP bytes again before publication.
+- Cache-bust module-owned artwork image URLs in Gathering / Alchemy / Blacksmithing / Inventory views without changing GM-selected custom art paths or existing world records.
+- Keep Foundry V14/dnd5e 5.3.3 compatibility and all existing gathering, crafting and inventory rules.
+
 ## 1.1.1 — Unlimited gathering and tool-gated crafting
 
 - Enabled unlimited gathering.
