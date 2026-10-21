@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Test safe artwork backup and importer
+        run: python3 -m unittest discover -s artwork/tests -p 'test_*.py' -v
       - name: Run artwork pipeline regression tests
         run: node --test artwork/tests/*.test.cjs
       - name: Verify production manifest and existing artwork
