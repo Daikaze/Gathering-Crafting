@@ -5,7 +5,7 @@ import { TOOL_SPECS, PROF_OPTIONS, requiredForNode, requiredForRecipe, toolGate,
 import {enchantingHtml, beginEnchantment, finishEnchantment, beginLesson, finishLesson, useEnchantment, recoverEnchantmentUses} from './enchanting-ui.mjs';
 import {enchantById} from './enchanting.mjs';
 const ID='gathering-crafting';
-const VERSION='1.3.5';
+const VERSION='1.3.6';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -26,7 +26,7 @@ const artworkFor=item=>{
   const src=item?.img||'icons/svg/item-bag.svg';
   const clean=src.split('?')[0];
   return clean.startsWith('modules/gathering-crafting/icons/') && clean.endsWith('.webp')
-    ? clean+'?gc-art=v1.3.5' : src;
+    ? clean+'?gc-art=v1.3.6' : src;
 };
 const material=(db,id)=>db.materials.find(m=>m.id===id);
 const skillLabels={ath:'Athletics',sur:'Survival',prc:'Perception',inv:'Investigation',nat:'Nature',slt:'Sleight of Hand'};
@@ -129,6 +129,7 @@ function nearestNodeToken(actor,id){const token=canvas?.tokens?.placeables?.find
   return nodeTokens(id).map(t=>({token:t,feet:Math.hypot(t.center.x-token.center.x,t.center.y-token.center.y)/(canvas?.grid?.size||100)*Number(canvas?.scene?.grid?.distance||5)}))
     .sort((a,b)=>a.feet-b.feet)[0]||null;
 }
+const BLACKSMITH_LEGACY_COPY=Object.freeze({"brass-ingot":"Blend bright copper with nickel to cast a resonant brass ingot.","bronze-buckles":"Durable fastening hardware.","bronze-ingot":"Alloy copper and tin.","bronze-shield-boss":"Metal shield reinforcement.","copper-bracers":"Decorative protective bracers; GM may link a game item.","copper-ingot":"Smelt copper ore into a clean ingot.","copper-wire":"Fine wire for metal fittings.","iron-chain":"A sturdy length of iron chain.","iron-dagger":"A hand-forged dagger blueprint; link a dnd5e weapon for attack rolls.","iron-ingot":"Smelt iron ore using coal.","iron-nails":"A bundle of 20 forged nails.","lantern-frame":"A sturdy brass lantern frame awaiting glass and oil.","nickel-ingot":"Smelt nickel ore into a hard, corrosion-resistant ingot.","tin-ingot":"Smelt tin ore into a soft ingot.","tin-solder":"Solder used for precise metal joints.","brass-compass":"A well-crafted travel compass with a polished brass body.","cobalt-ingot":"Refine cobalt into a vivid blue ingot suited to rune work.","cobalt-lockbox":"A compact lockbox plated with cobalt for documents or gems.","electrum-ingot":"Fuse gold and silver into an electrum trade ingot.","gold-ingot":"Refine pure gold.","golden-seal":"An engraved metal seal.","silver-circlet":"Finely wrought circlet.","silver-ingot":"Refine precious silver.","silvered-arrowheads":"Twenty silvered arrowheads useful against supernatural prey.","silvered-blade":"Silvered weapon blueprint; GM determines combat properties.","steel-arrowheads":"A bundle of twenty keen steel arrowheads ready for fletching.","steel-chain-shirt":"Interlocked rings forged into a wearable chain shirt.","steel-dagger":"Tempered steel dagger blueprint; link a dnd5e weapon for attack rolls.","steel-gauntlets":"Protective forged gauntlets; link equipment for armor effects.","steel-greaves":"Protective greaves for soldiers, mercenaries and caravan guards.","steel-helm":"Reinforced metal helm; GM-defined armor properties.","steel-ingot":"Temper iron with carbon.","steel-rivets":"A set of reinforced rivets.","steel-shield":"Metal shield blueprint; link equipment to gain AC.","steel-spear":"A battlefield-ready steel spear balanced for melee or thrown use.","steel-sword":"Longsword blueprint; link a weapon for attacks.","blacksteel-ingot":"Darken steel with obsidian dust.","blacksteel-armor-plates":"Dark metal armor plates blueprint.","dusksteel-buckler":"A compact buckler that catches little glare and muffles movement.","dusksteel-ingot":"Darken tempered steel with voidglass to make dusksteel.","mithral-blade":"Rare lightweight blade blueprint; GM-defined mechanics.","mithral-chain":"Lightweight mithral chain blueprint.","mithral-ingot":"Refine lightweight mithral.","platinum-circlet":"A refined platinum circlet fit for nobles, priests or spellcasters.","platinum-ingot":"Smelt platinum into a noble ingot used in high-end craftwork.","runesteel-chisel":"A precision chisel built for engraving glyphs into stone or metal.","runesteel-ingot":"Temper steel with cobalt and quartz to produce rune-friendly metal.","adamantine-blade":"Dense metal blade blueprint; GM-defined mechanics.","adamantine-ingot":"Smelt adamantine in a high-temperature furnace.","adamantine-shield":"Extremely durable shield blueprint; GM-defined properties.","dragonsilver-charm":"A gleaming charm often used as a focus or protective keepsake.","dragonsilver-ingot":"Infuse silver with dragonshard dust to create dragonsilver.","moonsteel-diadem":"Ceremonial diadem of moonsteel.","moonsteel-ingot":"Alloy mithral and moonstone.","starmetal-ingot":"Stabilize rare starmetal.","starmetal-spearhead":"Rare spearhead blueprint; GM-defined attack item."});
 function mergeCatalog(old){
   const db=clone(CATALOG);
   if(!validDb(old))return db;
@@ -576,6 +577,7 @@ Hooks.once('init',()=>{
   game.settings.register(ID,'backup081',{name:'Catalogue backup before v0.8.1',scope:'world',config:false,type:Object,default:{}});
   game.settings.register(ID,'backup082',{name:'Catalogue backup before v0.8.2 Alchemy art',scope:'world',config:false,type:Object,default:{}});
   game.settings.register(ID,'backup080',{name:'Catalogue backup before v0.8.0',scope:'world',config:false,type:Object,default:{}});
+  game.settings.register(ID,'backupBlacksmith110',{name:'Backup before Blacksmith v1.3.6 copy migration',scope:'world',config:false,type:Object,default:{}});
   game.keybindings.register(ID,'open',{name:'Open Gathering & Crafting',hint:'Open gathering and crafting for your selected character.',editable:[{key:'KeyG',modifiers:['ALT']}],onDown:()=>{open();return true;},restricted:false,precedence:CONST.KEYBINDING_PRECEDENCE.NORMAL});
 });
 Hooks.once('ready',async()=>{
@@ -681,6 +683,39 @@ Hooks.once('ready',async()=>{
       await game.settings.set(ID,'database',upgraded);
       old=upgraded;
       notify('New individually painted Alchemy artwork installed; custom images and all recipes preserved.');
+    }
+    if(num(old.catalogVersion,0)<11){
+      await game.settings.set(ID,'backupBlacksmith110',clone(old));
+      const upgraded=mergeCatalog(old),sources=new Map(CATALOG.recipes.map(r=>[r.id,r]));
+      const prior=new Map((old.recipes||[]).map(r=>[r.id,r]));
+      let updated=0,custom=0;
+      for(const recipe of upgraded.recipes){
+        const standard=BLACKSMITH_LEGACY_COPY[recipe.id];
+        if(standard===undefined)continue;
+        const previous=String(prior.get(recipe.id)?.description||'').trim();
+        if(!previous||previous===standard){recipe.description=sources.get(recipe.id)?.description||recipe.description;updated++;}
+        else custom++;
+      }
+      upgraded.catalogVersion=11;
+      await game.settings.set(ID,'database',upgraded);old=upgraded;
+      let updatedItems=0;
+      for(const actor of game.actors?.contents||[]){
+        const updates=[];
+        for(const item of actor.items||[]){
+          const recipeId=item.getFlag?.(ID,'recipeId');
+          const original=BLACKSMITH_LEGACY_COPY[recipeId];
+          const replacement=sources.get(recipeId)?.description;
+          if(!original||!replacement)continue;
+          const first='<p>'+esc(original)+'</p>';
+          const current=String(item.system?.description?.value||'');
+          if(current.startsWith(first))updates.push({
+            _id:item.id,'system.description.value':'<p>'+esc(replacement)+'</p>'+current.slice(first.length)
+          });
+        }
+        for(let i=0;i<updates.length;i+=25)await actor.updateEmbeddedDocuments('Item',updates.slice(i,i+25));
+        updatedItems+=updates.length;
+      }
+      notify('Updated '+updated+' Blacksmith recipe descriptions and '+updatedItems+' crafted item descriptions; '+custom+' GM edits preserved.');
     }
     if(!game.settings.get(ID,'compendiumBootstrapped030')||needsArtMigration)await syncCompendiums();
     if(needsArtMigration)await refreshOwnedArtwork();
