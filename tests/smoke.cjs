@@ -405,5 +405,5 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   fallbackHeader.className='sheet-header';fallbackRoot.append(fallbackHeader);
   launcher(fallbackRoot,'.sheet-header',actor);
   assert.ok(fallbackHeader.querySelector('.gc-launcher'),'NPC sheets without Affinity retain a header launcher');
-  console.log('PASS: v1.3.3 item-type restrictions, robe and shield tests, scroll and legacy job checks;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
+  console.log('PASS: v1.3.5 tool-only access, optional proficiency Advantage, item restrictions and legacy checks;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
