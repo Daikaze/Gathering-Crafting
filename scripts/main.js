@@ -5,7 +5,7 @@ import { TOOL_SPECS, PROF_OPTIONS, requiredForNode, requiredForRecipe, toolGate,
 import {enchantingHtml, beginEnchantment, finishEnchantment, beginLesson, finishLesson, useEnchantment, recoverEnchantmentUses} from './enchanting-ui.mjs';
 import {enchantById} from './enchanting.mjs';
 const ID='gathering-crafting';
-const VERSION='1.3.0';
+const VERSION='1.3.1';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -19,7 +19,7 @@ const artworkFor=item=>{
   const src=item?.img||'icons/svg/item-bag.svg';
   const clean=src.split('?')[0];
   return clean.startsWith('modules/gathering-crafting/icons/') && clean.endsWith('.webp')
-    ? clean+'?gc-art=v1.3.0' : src;
+    ? clean+'?gc-art=v1.3.1' : src;
 };
 const material=(db,id)=>db.materials.find(m=>m.id===id);
 const skillLabels={ath:'Athletics',sur:'Survival',prc:'Perception',inv:'Investigation',nat:'Nature',slt:'Sleight of Hand'};
@@ -108,6 +108,14 @@ function currentActor(id){const list=ownedActors();if(id)return list.find(a=>a.i
 }
 function requirements(actor,recipe,db,bonus=false){return recipe.ingredients.map((ing,i)=>({id:ing.id,qty:num(ing.qty,1)+(bonus&&i===0?1:0),mat:material(db,ing.id),have:count(actor,ing.id)}));}
 async function announce(actor,html){try{await ChatMessage.create({speaker:ChatMessage.getSpeaker({actor}),content:`<section class="gc-chat"><h3>Gathering & Crafting</h3>${html}</section>`});}catch(e){console.warn(`${ID} | Chat notice failed`,e);}}
+async function announceGM(actor,html){
+  // Never send DCs in public chat. Only the GM recipients receive the check details.
+  const recipients=(game.users?.filter?.(user=>user.isGM)||[]).map(user=>user.id).filter(Boolean);
+  if(!recipients.length)return;
+  try{await ChatMessage.create({speaker:ChatMessage.getSpeaker({actor}),
+    whisper:recipients,content:`<section class="gc-chat"><h3>GM Check Details</h3>${html}</section>`});}
+  catch(e){console.warn(`${ID} | GM whisper failed`,e);}
+}
 const nodeTokens=(id)=>canvas?.tokens?.placeables?.filter(t=>t.document?.getFlag?.(ID,'nodeId')===id&&t.visible!==false)||[];
 function nearestNodeToken(actor,id){const token=canvas?.tokens?.placeables?.find(t=>t.actor?.id===actor.id);
   if(!token)return null;
@@ -239,14 +247,14 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
   gatherTab(db,actor){const sceneOnly=!!db.settings.sceneOnly;
     const found=db.nodes.filter(n=>n.active&&(!sceneOnly||nodeTokens(n.id).length)&& (this.group==='all'||(n.group||'metallurgy')===this.group) &&(!this.search||`${n.name} ${n.description}`.toLowerCase().includes(this.search.toLowerCase())));
     return this.heading('fa-mountain','Gather Resources','Choose a resource node or monster harvest. One click to gather, with an optional risk for more.')+
-      `<div class="gc-toolbar"><div class="gc-mode"><button type="button" data-action="gmode" data-mode="careful" class="${this.gatherMode==='careful'?'is-on':''}">${icon('fa-shield-heart')} Careful <small>DC −2 · standard yield</small></button>
-      <button type="button" data-action="gmode" data-mode="bold" class="${this.gatherMode==='bold'?'is-on':''}">${icon('fa-bolt')} Risky <small>DC +3 · double yield</small></button></div>${this.searchBar()}</div>`+
+      `<div class="gc-toolbar"><div class="gc-mode"><button type="button" data-action="gmode" data-mode="careful" class="${this.gatherMode==='careful'?'is-on':''}">${icon('fa-shield-heart')} Careful <small>${game.user.isGM?'DC −2':'Easier check'} · standard yield</small></button>
+      <button type="button" data-action="gmode" data-mode="bold" class="${this.gatherMode==='bold'?'is-on':''}">${icon('fa-bolt')} Risky <small>${game.user.isGM?'DC +3':'Harder check'} · double yield</small></button></div>${this.searchBar()}</div>`+
       this.filterBar(materialGroups,this.group,'group')+
       `<div class="gc-notice">${icon('fa-circle-info')} ${sceneOnly?'Scene gathering: only visible bound map tokens can be harvested (within 15 ft).':'Free gathering: available nodes can be used anywhere. GM can switch to Scene-only in GM Studio.'} Unlimited gathering attempts. Tools and tool proficiency required.</div>`+
       this.renderCards(found,n=>this.nodeCard(db,n,actor));
   }
   nodeCard(db,n,actor){const mat=material(db,n.materialId),rare=material(db,n.bonusId),toolKey=requiredForNode(n,mat),spec=TOOL_SPECS[toolKey],gate=toolGate(actor,toolKey,n.toolProficiency),dc=num(n.dc,12)+(this.gatherMode==='bold'?3:-2);
-    return `<article class="gc-tile gc-node"><div class="gc-tile-banner"><span class="gc-hero-icon"><img class="gc-art-img" src="${esc(artworkFor(mat))}" alt=""></span><span class="gc-dc">Tier ${mat?.tier||1} · ${esc(skillLabels[n.skill]||n.skill)} DC ${dc}</span></div><div class="gc-tile-body"><h3>${esc(n.name)}</h3><p>${esc(n.description)}</p><div class="gc-loot"><span class="gc-mat-icon" style="--gc-mat:${hue(mat?.color)}"><img src="${esc(artworkFor(mat))}" alt=""></span><div><b>${esc(mat?.name||'Missing item')}</b><small>Yield: ${num(n.minYield,1)}–${num(n.maxYield,2)}${this.gatherMode==='bold'?' ×2':''}</small><small>${esc(spec.label)} + ${esc(PROF_OPTIONS[n.toolProficiency||spec.proficiency]||spec.proficiency)}</small>${!gate.ok?`<small class="gc-missing-tool">${icon('fa-lock')} ${esc(gate.error)}</small>`:''}</div>${rare?`<span class="gc-rare">${icon('fa-gem')} ${num(n.bonusChance,0,0,100)}%</span>`:''}</div><button class="gc-primary" type="button" data-action="gather" data-id="${esc(n.id)}" ${!gate.ok||!mat||this.busy?'disabled':''}>${icon('fa-hand-sparkles')} Gather</button></div></article>`;
+    return `<article class="gc-tile gc-node"><div class="gc-tile-banner"><span class="gc-hero-icon"><img class="gc-art-img" src="${esc(artworkFor(mat))}" alt=""></span><span class="gc-dc">Tier ${mat?.tier||1} · ${esc(skillLabels[n.skill]||n.skill)}${game.user.isGM?' · DC '+dc:''}</span></div><div class="gc-tile-body"><h3>${esc(n.name)}</h3><p>${esc(n.description)}</p><div class="gc-loot"><span class="gc-mat-icon" style="--gc-mat:${hue(mat?.color)}"><img src="${esc(artworkFor(mat))}" alt=""></span><div><b>${esc(mat?.name||'Missing item')}</b><small>Yield: ${num(n.minYield,1)}–${num(n.maxYield,2)}${this.gatherMode==='bold'?' ×2':''}</small><small>${esc(spec.label)} + ${esc(PROF_OPTIONS[n.toolProficiency||spec.proficiency]||spec.proficiency)}</small>${!gate.ok?`<small class="gc-missing-tool">${icon('fa-lock')} ${esc(gate.error)}</small>`:''}</div>${rare?`<span class="gc-rare">${icon('fa-gem')} ${num(n.bonusChance,0,0,100)}%</span>`:''}</div><button class="gc-primary" type="button" data-action="gather" data-id="${esc(n.id)}" ${!gate.ok||!mat||this.busy?'disabled':''}>${icon('fa-hand-sparkles')} Gather</button></div></article>`;
   }
   craftTab(db,actor,craftCategory='alchemy'){
     const isAlchemy=craftCategory==='alchemy';
@@ -259,7 +267,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     const desc=isAlchemy?`${possible} brews ready · ${all.length} formulas available. Potions, tonics and utility brews in one clean list.`:`${possible} crafts ready · ${all.length} blueprints available. Ingots, gear and metalwork in one clean list.`;
     const emptyText=isAlchemy?'Gather herbs, flowers or monster reagents to start brewing.':'Gather ore, metals or monster materials to start forging.';
     return this.heading(headIcon,title,desc)+
-    `<div class="gc-toolbar gc-compact-toolbar"><div class="gc-mode"><button class="${this.craftMode==='steady'?'is-on':''}" data-action="cmode" data-mode="steady">${icon('fa-check')} Standard <small>DC as listed · roll to succeed</small></button><button class="${this.craftMode==='inspired'?'is-on':''}" data-action="cmode" data-mode="inspired">${icon('fa-star')} Inspired <small>+1 ingredient · DC +3 · double output</small></button></div>${this.searchBar()}</div>`+
+    `<div class="gc-toolbar gc-compact-toolbar"><div class="gc-mode"><button class="${this.craftMode==='steady'?'is-on':''}" data-action="cmode" data-mode="steady">${icon('fa-check')} Standard <small>${game.user.isGM?'DC as listed':'Skill check'} · roll to succeed</small></button><button class="${this.craftMode==='inspired'?'is-on':''}" data-action="cmode" data-mode="inspired">${icon('fa-star')} Inspired <small>+1 ingredient · ${game.user.isGM?'DC +3':'Harder check'} · double output</small></button></div>${this.searchBar()}</div>`+
     `<div class="gc-browser-row"><div class="gc-profession-label">${icon(headIcon)} <strong>${title}</strong><span>${isAlchemy?'Only alchemy recipes are shown here.':'Only blacksmithing recipes are shown here.'}</span></div><button class="gc-ready-toggle ${this.readyOnly?'is-on':''}" type="button" data-action="readyOnly">${icon('fa-check-circle')} Craftable only (${possible})</button></div>`+
     (this.readyOnly&&!found.length?`<div class="gc-empty gc-easy-empty">${icon('fa-box-open')}<strong>No ${isAlchemy?'alchemy':'blacksmithing'} recipes ready yet</strong><span>${emptyText}</span><button type="button" class="gc-secondary" data-action="readyOnly">Show all recipes</button></div>`:this.renderCards(found,r=>this.recipeCard(db,r,actor)));
   }
@@ -267,7 +275,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
   recipeCard(db,r,actor){const req=requirements(actor,r,db,this.craftMode==='inspired'),toolKey=requiredForRecipe(r),spec=TOOL_SPECS[toolKey],gate=toolGate(actor,toolKey,r.toolProficiency),can=gate.ok&&req.length&&req.every(i=>i.mat&&i.have>=i.qty);
     const kind=outputKind(r),kindText={weapon:'Weapon',equipment:'Armor',consumable:'Potion',loot:r.subcategory==='Smelting'?'Metal':'Crafting Good'}[kind]||'Item';
     const max=can?Math.max(1,Math.min(10,...req.map(i=>Math.floor(i.have/i.qty)))):0;const check=gate.ok?craftCheck(actor,r,toolKey,r.toolProficiency,gate.tool):null;const dc=num(r.dc,12)+(this.craftMode==='inspired'?3:0);
-    return `<article class="gc-tile gc-recipe ${can?'gc-ready':''}"><div class="gc-tile-banner gc-craft-art"><span class="gc-hero-icon"><img class="gc-art-img" src="${esc(artworkFor(r))}" alt=""></span><span class="gc-dc">${esc(kindText)} · Tier ${num(r.tier,1)}</span>${can?'<span class="gc-ready-tag">Ready</span>':''}</div><div class="gc-tile-body"><h3>${esc(r.name)}</h3><p>${esc(r.description)}</p><div class="gc-ingredients">${req.map(i=>`<div class="gc-ingredient ${i.have>=i.qty?'gc-have':'gc-miss'}"><span class="gc-mat-icon" style="--gc-mat:${hue(i.mat?.color)}"><img src="${esc(artworkFor(i.mat))}" alt=""></span><span>${esc(i.mat?.name||'Missing material')}</span><b>${i.have}/${i.qty}</b></div>`).join('')}</div><p class="gc-tool-requirement">${icon('fa-screwdriver-wrench')} ${esc(spec.label)} · ${esc(PROF_OPTIONS[r.toolProficiency||spec.proficiency]||spec.proficiency)} · DC ${dc}${check?` · d20 ${check.total>=0?'+':''}${check.total}`:''}</p>${!gate.ok?`<p class="gc-missing-tool">${icon('fa-lock')} ${esc(gate.error)}</p>`:'' }<div class="gc-craft-actions"><button class="gc-primary" type="button" data-action="craft" data-id="${esc(r.id)}" ${!can||this.busy?'disabled':''}>${icon(can?'fa-hammer':'fa-lock')} ${can?'Craft':gate.ok?'Missing materials':'Needs tool + proficiency'}</button>${max>1&&this.craftMode==='steady'?`<button type="button" class="gc-secondary gc-craft-max" title="Craft ${max} at once" data-action="craftMax" data-id="${esc(r.id)}">×${max}</button>`:''}</div></div></article>`;
+    return `<article class="gc-tile gc-recipe ${can?'gc-ready':''}"><div class="gc-tile-banner gc-craft-art"><span class="gc-hero-icon"><img class="gc-art-img" src="${esc(artworkFor(r))}" alt=""></span><span class="gc-dc">${esc(kindText)} · Tier ${num(r.tier,1)}</span>${can?'<span class="gc-ready-tag">Ready</span>':''}</div><div class="gc-tile-body"><h3>${esc(r.name)}</h3><p>${esc(r.description)}</p><div class="gc-ingredients">${req.map(i=>`<div class="gc-ingredient ${i.have>=i.qty?'gc-have':'gc-miss'}"><span class="gc-mat-icon" style="--gc-mat:${hue(i.mat?.color)}"><img src="${esc(artworkFor(i.mat))}" alt=""></span><span>${esc(i.mat?.name||'Missing material')}</span><b>${i.have}/${i.qty}</b></div>`).join('')}</div><p class="gc-tool-requirement">${icon('fa-screwdriver-wrench')} ${esc(spec.label)} · ${esc(PROF_OPTIONS[r.toolProficiency||spec.proficiency]||spec.proficiency)}${game.user.isGM?' · DC '+dc:''}${check?` · d20 ${check.total>=0?'+':''}${check.total}`:''}</p>${!gate.ok?`<p class="gc-missing-tool">${icon('fa-lock')} ${esc(gate.error)}</p>`:'' }<div class="gc-craft-actions"><button class="gc-primary" type="button" data-action="craft" data-id="${esc(r.id)}" ${!can||this.busy?'disabled':''}>${icon(can?'fa-hammer':'fa-lock')} ${can?'Craft':gate.ok?'Missing materials':'Needs tool + proficiency'}</button>${max>1&&this.craftMode==='steady'?`<button type="button" class="gc-secondary gc-craft-max" title="Craft ${max} at once" data-action="craftMax" data-id="${esc(r.id)}">×${max}</button>`:''}</div></div></article>`;
   }
   inventoryTab(db,actor){const mats=db.materials.filter(m=>this.group==='all'||(this.group==='metallurgy'?['Ore & Mineral','Refined Metal'].includes(m.group):this.group==='alchemy'?m.group==='Alchemical Ingredient':m.group==='Monster Drop')).filter(m=>this.showZero||count(actor,m.id)>0).filter(m=>!this.search||`${m.name} ${m.description}`.toLowerCase().includes(this.search.toLowerCase()));
     const owned=db.materials.reduce((n,m)=>n+count(actor,m.id),0);
@@ -316,7 +324,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     if(a==='craft')return this.locked(()=>this.craft(id));
     if(a==='craftMax')return this.locked(()=>this.craft(id,10));
     if(a==='trainRank')return this.locked(()=>beginLesson(this.checkActor(),'rank',null,notify));
-    if(a==='finishLesson')return this.locked(()=>finishLesson(this.checkActor(),notify,announce));
+    if(a==='finishLesson')return this.locked(()=>finishLesson(this.checkActor(),notify,announce,announceGM));
     if(a==='learnEnchant')return this.locked(()=>beginLesson(this.checkActor(),'enchant',id,notify));
     if(a==='useEnchant')return this.locked(()=>useEnchantment(this.checkActor(),id,button.dataset.enchant,notify,announce));
     if(a==='startEnchant')return this.locked(()=>beginEnchantment(this,id,{actor:this.checkActor(),announce,notify}));
@@ -376,7 +384,8 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     if(success){const minimum=num(node.minYield,1,1,20),maximum=Math.max(minimum,num(node.maxYield,2,1,20));obtained=(minimum+Math.floor(Math.random()*(maximum-minimum+1)))*(risky?2:1);await grantMaterial(actor,mat,obtained);
       const rare=material(db,node.bonusId);if(rare&&Math.random()*100<num(node.bonusChance,0,0,100)){await grantMaterial(actor,rare,1);bonusText=`<p>Rare find: <strong>${esc(rare.name)} ×1</strong></p>`;}
     }
-    await announce(actor,`<p><b>${esc(actor.name)}</b> ${success?'harvested':'failed to harvest'} <b>${esc(node.name)}</b>.</p><p>${esc(skillLabels[node.skill]||node.skill)} + ${esc(TOOL_SPECS[toolKey].label)} ${roll.total} vs DC ${dc} (${risky?'Risky':'Careful'}).</p>${success?`<p>${esc(mat.name)} ×${obtained}</p>${bonusText}`:'<p>No materials gained. You can try gathering again.</p>'}`);
+    await announce(actor,`<p><b>${esc(actor.name)}</b> ${success?'harvested':'failed to harvest'} <b>${esc(node.name)}</b>.</p><p>${esc(skillLabels[node.skill]||node.skill)} + ${esc(TOOL_SPECS[toolKey].label)} roll: ${roll.total} (${risky?'Risky':'Careful'}).</p>${success?`<p>${esc(mat.name)} ×${obtained}</p>${bonusText}`:'<p>No materials gained. You can try gathering again.</p>'}`);
+    await announceGM(actor,`<p>Gathering: ${esc(node.name)} — ${esc(skillLabels[node.skill]||node.skill)} ${roll.total} vs DC ${dc} (${success?'success':'failure'}).</p>`);
     notify(success?`Harvested ${mat.name} ×${obtained}.`:'Gathering failed.');
   }
   async craft(id,maxBatch=1){const actor=this.checkActor(),db=database(),recipe=db.recipes.find(r=>r.id===id);if(!recipe)throw new Error('Recipe not found.');
@@ -394,8 +403,9 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
       await consume(actor,consumed);paid=true;
       if(success)await grantProduct(actor,recipe,amount);
     }catch(e){if(paid&&success){try{await refund(actor,consumed,db);}catch(err){notify('Item creation failed and refund failed. Contact the GM.',true);console.error(err);}}throw e;}
-    await announce(actor,`<p><strong>${esc(actor.name)}</strong> ${success?'crafted':'failed to craft'} <strong>${esc(recipe.name)}</strong>.</p><p>${esc(TOOL_SPECS[toolKey].label)} check: d20 + ability ${check.modifier} + PB ${check.pb} × ${check.multiplier} + level ${check.levelBonus} + item ${check.itemBonus} = <strong>${roll.total}</strong> vs DC ${dc}. ${inspired?'Inspired attempt.':'Standard attempt.'}</p><p>${success?`Produced ×${amount}.`:'Materials were consumed; no item produced.'}</p>`);
-    notify(success?`Crafted ${recipe.name} ×${amount}.`:`Crafting failed: ${recipe.name} (roll ${roll.total} / DC ${dc}).`);
+    await announce(actor,`<p><strong>${esc(actor.name)}</strong> ${success?'crafted':'failed to craft'} <strong>${esc(recipe.name)}</strong>.</p><p>${esc(TOOL_SPECS[toolKey].label)} check total: <strong>${roll.total}</strong>. ${inspired?'Inspired attempt.':'Standard attempt.'}</p><p>${success?`Produced ×${amount}.`:'Materials were consumed; no item produced.'}</p>`);
+    await announceGM(actor,`<p>Crafting ${esc(recipe.name)}: d20 + ability ${check.modifier} + PB ${check.pb} × ${check.multiplier} + level ${check.levelBonus} + item ${check.itemBonus} = ${roll.total} vs DC ${dc} (${success?'success':'failure'}).</p>`);
+    notify(success?`Crafted ${recipe.name} ×${amount}.`:`Crafting failed: ${recipe.name} (roll ${roll.total}).`);
   }
   async drink(itemId){const actor=this.checkActor(),item=actor.items.get?.(itemId)||actor.items.find(i=>i.id===itemId);
     if(!item||quantity(item)<1)throw new Error('Potion is no longer in this inventory.');
