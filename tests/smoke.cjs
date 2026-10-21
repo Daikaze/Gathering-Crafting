@@ -317,5 +317,5 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   assert.ok(fresh.some(x=>!x.whisper&&!x.content.includes(' vs DC ')),'public messages hide target DC');
   assert.ok(fresh.some(x=>x.whisper?.includes('gm-actor')&&x.content.includes(' vs DC ')),'GM whisper contains target DC');
   context.game.user.isGM=true;
-  console.log('PASS: v1.3.1 DC visibility, free enchanting, reduced days;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
+  console.log('PASS: v1.3.3 item-type restrictions, robe and shield tests, scroll and legacy job checks;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
