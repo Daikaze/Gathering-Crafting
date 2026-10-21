@@ -34,7 +34,7 @@ test('weapon vs armor eligibility, no repeated or conflicting enhancements',()=>
  assert.equal(canApplyEnchant(pending,enchantById('weapon-spell-channel'),[]),false);
 });
 test('exact GP payment and world-day completion',()=>{
- assert.equal(afterGoldPayment({pp:15,gp:3,ep:0,sp:0,cp:0},1000).pp,5);
+ assert.equal(afterGoldPayment({pp:150,gp:3,ep:0,sp:0,cp:0},1000).pp,50);
  assert.equal(afterGoldPayment({gp:350},350).gp,0);
  assert.equal(afterGoldPayment({gp:124,sp:9},125),null);
  assert.equal(afterGoldPayment({gp:1000},1500),null);
