@@ -44,6 +44,7 @@ export function enchantingHtml(app,actor,helpers){
  if(!selected)return output+'<div class="gc-empty">Add a single weapon, armor, or shield to the character. Stacked equipment is not eligible.</div>';
  const spent=usedSlots(complete);
  output+='<div class="gc-enchant-selected"><img src="'+escapeHtml(artworkFor(selected))+'" alt=""><div><strong>'+escapeHtml(selected.name)+'</strong><small>'+escapeHtml(itemTags(selected).join(', '))+' · '+spent+'/'+capacity(selected)+' enchantment slots used · '+escapeHtml(selected.system?.rarity||'Common')+' rarity</small></div><button type="button" class="gc-secondary" data-action="sheetItem" data-id="'+escapeHtml(selected.id)+'">'+ico('up-right-from-square')+' Item Sheet</button></div>';
+ if(game.user?.isGM)output+='<div class="gc-enchant-gm-slots"><label>GM item capacity (0–6) <input type="number" name="enchantSlots" min="0" max="6" step="1" value="'+capacity(selected)+'"></label><button class="gc-secondary" data-action="saveEnchantSlots" data-id="'+escapeHtml(selected.id)+'">Set item slots</button></div>';
  if(complete.length){
   output+='<div class="gc-enchant-applied">'+complete.map(e=>{
    const def=enchantById(e.id),power=def?.power,spent=getFlags(selected,'enchantmentUses')?.[e.id]||0;
@@ -153,7 +154,7 @@ export async function beginEnchantment(app,id,helpers){
  if(!yes)return;
  if(learningGate(actor,enchant)||explainCompatibility(item,enchant,getFlags(item,'enchantments')||[]))throw new Error('Requirements changed during confirmation.');
  const refund=await charge(actor,enchant.cost);
- const job={id:enchant.id,element,startedAt:stamp,finishAt:completionAt(stamp,enchant.days),days:enchant.days,cost:enchant.cost};
+ const job={id:enchant.id,element,startedAt:stamp,finishAt:completionAt(stamp,enchant.days),days:enchant.days,cost:enchant.cost,slots:enchant.slots};
  try{await item.update({['flags.'+ENCHANT_NS+'.enchantmentPending']:job});}
  catch(err){try{await refund();}catch(e){console.error('Enchant gold rollback failed',e);}throw err;}
  await announce(actor,'<p>Started '+escapeHtml(enchant.name)+' on '+escapeHtml(item.name)+'. Paid '+enchant.cost+' gp; requires '+enchant.days+' world days.</p>');
@@ -173,7 +174,9 @@ export async function finishEnchantment(app,itemId,helpers){
  const completed=safeClone(getFlags(item,'enchantments')||[]);
  // A pre-existing v1.2 job is allowed to finish, but slot/compatibility rules still apply.
  const why=explainCompatibility({type:item.type,name:item.name,system:item.system,getFlag:(ns,k)=>k==='enchantmentPending'?null:item.getFlag(ns,k)},enchant,completed);
- if(why)throw new Error('Cannot finish enchantment: '+why);
+ // In-flight v1.2.0 enchantments must remain finishable after the new rules ship.
+ if(why&&job.slots!=null)throw new Error('Cannot finish enchantment: '+why);
+ if(completed.some(e=>e.id===enchant.id))throw new Error('Already applied.');
  const effect=displayEnchantEffect(enchant,job.element);
  const block='<section class="gc-item-enchantment" data-gc-enchant="'+escapeHtml(enchant.id)+'"><p><strong>'+escapeHtml(enchant.name)+' (Gathering & Crafting):</strong> '+escapeHtml(effect)+'</p></section>';
  const updates={['flags.'+ENCHANT_NS+'.enchantments']:[...completed,{id:enchant.id,element:job.element||null,completedAt:stamp}],['flags.'+ENCHANT_NS+'.enchantmentPending']:null,
