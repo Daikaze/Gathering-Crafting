@@ -19,25 +19,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Protect bundled v1.1 artwork
-        run: |
-          VERSION="$(node -p "require('./module.json').version")"
-          if [ "$VERSION" = "1.1.0" ]; then
-            node artwork/check_preview_payload.cjs
-          else
-            for bundle in icons/illustrated-assets/*.zip; do
-              [ -f "$bundle" ] || continue
-              unzip -q -o "$bundle" -d .
-            done
-          fi
+      - name: Verify reviewed item artwork before packaging
+        run: node artwork/check_preview_payload.cjs
       - name: Audit all item artwork and module regression tests
         run: |
           node tests/artwork.cjs
           node tests/smoke.cjs
           node --test tests/tool-rules.test.mjs
-          if [ "$(node -p "require('./module.json').version")" = "1.1.0" ]; then
-            node artwork/check_preview_payload.cjs
-          fi
+          node artwork/check_preview_payload.cjs
       - name: Package Foundry module
         run: |
           VERSION="$(node -p "require('./module.json').version")"
@@ -51,8 +40,13 @@ jobs:
           unzip -t "$ARCHIVE" >/dev/null
           ACTUAL="$(unzip -Z -1 "$ARCHIVE" | grep -E '^gathering-crafting/icons/(illustrated|handpainted)/.*[.]webp$' | wc -l | tr -d ' ')"
           test "$ACTUAL" -ge 224 || { echo "Expected at least 224 bundled item WebP artworks, found $ACTUAL"; exit 1; }
-          node staging/gathering-crafting/tests/artwork.cjs
-          echo "Validated $ACTUAL bundled WebP assets; all 224 catalogue references resolve in the packaged module"
+          # Check extracted ZIP *bytes*, not just source paths or file counts.
+          TEMP_DIR="$(mktemp -d)"
+          trap 'rm -rf "$TEMP_DIR"' EXIT
+          unzip -q "$ARCHIVE" -d "$TEMP_DIR"
+          node artwork/check_preview_payload.cjs "$TEMP_DIR/gathering-crafting"
+          node "$TEMP_DIR/gathering-crafting/tests/artwork.cjs"
+          echo "Validated all 224 reviewed WebP SHA-256 digests in the installable archive"
       - name: Publish zip
         if: github.event_name == 'push'
         run: |
