@@ -17,7 +17,7 @@ export const reducedDays=days=>Math.max(1,Math.ceil(Number(days)*0.7));
 const baseRank=cost=>cost<=250?1:cost<=500?2:cost<=800?3:cost<=1200?4:5;
 const weapon=(id,name,cost,days,description,extra={})=>({id:'weapon-'+id,name,kind:'weapon',cost,days:reducedDays(days),description,rank:baseRank(cost),allowed:['weapon'],slots:1,...extra});
 const armor=(id,name,cost,days,description,extra={})=>({id:'armor-'+id,name,kind:'armor',cost,days:reducedDays(days),description,rank:baseRank(cost),allowed:['armor','shield'],slots:1,...extra});
-const BASE_ENCHANTMENTS=[
+const SOURCE_ENCHANTMENTS=[
   weapon('spell-channel','Spell Channel',125,2,'The weapon can be used as a spellcasting focus.'),
   weapon('arcane-infusion','Arcane Infusion',250,5,'The weapon becomes magical and gains a +1 bonus to attack and damage rolls.',{magicalBonus:1,exclusive:'arcane-infusion'}),
   weapon('greater-arcane-infusion','Greater Arcane Infusion',1000,10,'The weapon becomes magical and gains a +2 bonus to attack and damage rolls.',{magicalBonus:2,exclusive:'arcane-infusion',rank:4,slots:2}),
@@ -104,10 +104,447 @@ const BASE_ENCHANTMENTS=[
   armor('glacial-reprisal','Glacial Reprisal',1300,13,'Once per Long Rest, deal 2d6 cold damage when struck.',{allowed:['medium','heavy'],power:{name:'Glacial Reprisal',uses:1}}),
   armor('sunward','Sunward',1550,13,'Once per Long Rest, emit daylight for 10 minutes.',{allowed:['armor','shield'],rank:5,slots:2,power:{spell:'Daylight',uses:1}}),
   armor('aegis-of-life','Aegis of Life',2100,16,'Once per Long Rest, cast Aid at 3rd level.',{allowed:['armor'],rank:5,slots:2,power:{spell:'Aid (3rd level)',uses:1}}),
-  armor('warden-rune','Warden Rune',600,7,'Gain +1 on Insight checks while equipped.',{allowed:['armor','shield'],passive:{skill:'ins',bonus:1}})
+  armor('warden-rune','Warden Rune',600,7,'Gain +1 on Insight checks while equipped.',{allowed:['armor','shield'],passive:{skill:'ins',bonus:1}}),
+  // Enchantments dedicated to wearable equipment, robes and accessories.
+  armor('mystic-stitching','Mystic Stitching',180,3,'While wearing this robe, gain +1 on Arcana checks.',{passive:{skill:'arc',bonus:1}}),
+  armor('spellweave-lining','Spellweave Lining',600,7,'Once per Long Rest, gain advantage on a concentration saving throw.',{power:{name:'Spellweave Lining',uses:1}}),
+  armor('astral-embroidery','Astral Embroidery',1400,11,'Once per Long Rest, cast Misty Step while wearing the robe.',{rank:5,slots:2,power:{spell:'Misty Step',uses:1}}),
+  armor('mana-mantle','Mana Mantle',550,6,'While wearing this garment, gain +1 on Arcana checks.',{passive:{skill:'arc',bonus:1}}),
+  armor('fleetfoot-rune','Fleetfoot Rune',420,5,'Once per Long Rest, gain +10 ft movement for 1 minute.',{power:{name:'Fleetfoot Rune',uses:1}}),
+  armor('silent-tread','Silent Tread',340,4,'While wearing these boots, gain +1 to Stealth checks.',{passive:{skill:'ste',bonus:1}}),
+  armor('veil-of-shadows','Veil of Shadows',750,8,'Once per Long Rest, conceal your silhouette for one minute.',{power:{name:'Veil of Shadows',uses:1}}),
+  armor('windward-cloak','Windward Cloak',390,5,'Once per Long Rest, reduce damage from a ranged attack by 1d6.',{power:{name:'Windward Cloak',uses:1}}),
+  armor('runic-grip','Runic Grip',300,4,'While wearing these gloves, gain +1 to Athletics checks.',{passive:{skill:'ath',bonus:1}}),
+  armor('spellthread-gloves','Spellthread Gloves',720,8,'Once per Long Rest, gain +1 on a spell attack roll.',{power:{name:'Spellthread Gloves',uses:1}}),
+  armor('mindguard-crest','Mindguard Crest',680,8,'Once per Long Rest, gain advantage on a Wisdom saving throw.',{power:{name:'Mindguard Crest',uses:1}}),
+  armor('echo-ring','Echo Ring',900,9,'Once per Long Rest, repeat the sound of your voice or a sound you heard.',{power:{name:'Echo Ring',uses:1}}),
+  armor('guardian-pendant','Guardian Pendant',720,8,'Once per Long Rest, gain +2 on one saving throw.',{power:{name:'Guardian Pendant',uses:1}}),
+  armor('titans-cord',"Titan's Cord",480,6,'While wearing this belt, gain +1 on Athletics checks.',{passive:{skill:'ath',bonus:1}})
+
 ];
 // Retain the original generic elemental formulas for old Items, pending jobs and
 // already learned formula flags. They are no longer offered as selectable cards.
+// Explicit and exhaustive compatibility: there is no implicit 'all equipment' fallback.
+const ENCHANT_TARGETS=Object.freeze({
+  "weapon-spell-channel": [
+    "staff",
+    "sword",
+    "dagger"
+  ],
+  "weapon-arcane-infusion": [
+    "melee",
+    "ranged"
+  ],
+  "weapon-greater-arcane-infusion": [
+    "melee",
+    "ranged"
+  ],
+  "weapon-elemental-binding": [
+    "melee",
+    "ranged"
+  ],
+  "weapon-greater-elemental-binding": [
+    "melee",
+    "ranged"
+  ],
+  "weapon-soul-binding": [
+    "melee"
+  ],
+  "weapon-blessed-weapon": [
+    "melee"
+  ],
+  "weapon-dawnstrike": [
+    "melee"
+  ],
+  "weapon-sundering-strike": [
+    "melee"
+  ],
+  "weapon-defender-rune": [
+    "melee"
+  ],
+  "weapon-voidlash": [
+    "melee"
+  ],
+  "weapon-flameburst": [
+    "melee"
+  ],
+  "weapon-shadow-binding": [
+    "sword",
+    "dagger",
+    "bow",
+    "crossbow"
+  ],
+  "weapon-arcane-reservoir": [
+    "staff"
+  ],
+  "weapon-arcane-repeater": [
+    "staff"
+  ],
+  "weapon-warding-staff": [
+    "staff"
+  ],
+  "weapon-hunters-marking": [
+    "bow",
+    "crossbow"
+  ],
+  "weapon-storm-arrow": [
+    "bow",
+    "crossbow"
+  ],
+  "weapon-fey-blessing": [
+    "staff",
+    "sword",
+    "dagger"
+  ],
+  "weapon-keen-edge": [
+    "blade"
+  ],
+  "weapon-frostbite-edge": [
+    "blade"
+  ],
+  "weapon-vampiric-edge": [
+    "blade"
+  ],
+  "weapon-astral-sever": [
+    "blade"
+  ],
+  "weapon-moonfang": [
+    "blade"
+  ],
+  "weapon-bloodletter": [
+    "blade"
+  ],
+  "weapon-venom-channel": [
+    "dagger",
+    "sword",
+    "spear",
+    "bow",
+    "crossbow"
+  ],
+  "weapon-thunderclap": [
+    "hammer",
+    "mace"
+  ],
+  "weapon-echoing-blow": [
+    "hammer",
+    "mace"
+  ],
+  "weapon-gravity-hammer": [
+    "hammer",
+    "mace"
+  ],
+  "weapon-rapid-reload": [
+    "crossbow"
+  ],
+  "weapon-steady-aim": [
+    "bow",
+    "crossbow"
+  ],
+  "weapon-seeking-shot": [
+    "bow",
+    "crossbow"
+  ],
+  "weapon-piercing-winds": [
+    "bow",
+    "crossbow"
+  ],
+  "weapon-hunters-sight": [
+    "bow",
+    "crossbow"
+  ],
+  "weapon-sniper-rune": [
+    "bow",
+    "crossbow"
+  ],
+  "weapon-hawkflight": [
+    "bow"
+  ],
+  "weapon-lightweave-string": [
+    "bow"
+  ],
+  "weapon-spellstrike": [
+    "staff",
+    "sword",
+    "dagger"
+  ],
+  "weapon-magepiercer": [
+    "staff",
+    "sword",
+    "dagger"
+  ],
+  "weapon-sunlance": [
+    "spear",
+    "polearm"
+  ],
+  "weapon-giants-grip": [
+    "axe",
+    "hammer",
+    "sword"
+  ],
+  "armor-magewoven-interior": [
+    "robe",
+    "light"
+  ],
+  "armor-arcane-mesh": [
+    "robe",
+    "light"
+  ],
+  "armor-mindshell": [
+    "robe",
+    "light"
+  ],
+  "armor-sigil-of-clarity": [
+    "robe",
+    "light"
+  ],
+  "armor-shadow-binding": [
+    "light",
+    "robe",
+    "cloak"
+  ],
+  "armor-shadowweave": [
+    "light",
+    "robe",
+    "cloak"
+  ],
+  "armor-silent-stitch": [
+    "light",
+    "robe",
+    "cloak"
+  ],
+  "armor-nightmantle": [
+    "light",
+    "robe",
+    "cloak"
+  ],
+  "armor-moonshadow": [
+    "light",
+    "robe",
+    "cloak"
+  ],
+  "armor-stone-binding": [
+    "medium",
+    "heavy",
+    "shield"
+  ],
+  "armor-stonehide": [
+    "medium",
+    "heavy",
+    "shield"
+  ],
+  "armor-wind-binding": [
+    "boots"
+  ],
+  "armor-quickstep-weave": [
+    "boots"
+  ],
+  "armor-frost-ward": [
+    "light",
+    "medium",
+    "heavy",
+    "robe",
+    "shield"
+  ],
+  "armor-flame-ward": [
+    "light",
+    "medium",
+    "heavy",
+    "robe",
+    "shield"
+  ],
+  "armor-storm-ward": [
+    "light",
+    "medium",
+    "heavy",
+    "robe",
+    "shield"
+  ],
+  "armor-venom-guard": [
+    "light",
+    "medium",
+    "heavy",
+    "robe",
+    "shield"
+  ],
+  "armor-acid-ward": [
+    "light",
+    "medium",
+    "heavy",
+    "robe",
+    "shield"
+  ],
+  "armor-necrotic-ward": [
+    "light",
+    "medium",
+    "heavy",
+    "robe",
+    "shield"
+  ],
+  "armor-radiant-ward": [
+    "light",
+    "medium",
+    "heavy",
+    "robe",
+    "shield"
+  ],
+  "armor-fey-blessing": [
+    "robe",
+    "cloak",
+    "light",
+    "medium"
+  ],
+  "armor-phoenix-binding": [
+    "heavy",
+    "medium"
+  ],
+  "armor-thornmail": [
+    "heavy",
+    "medium"
+  ],
+  "armor-bastion-weave": [
+    "heavy",
+    "medium"
+  ],
+  "armor-glacial-reprisal": [
+    "heavy",
+    "medium"
+  ],
+  "armor-celestial-blessing": [
+    "robe",
+    "light",
+    "medium"
+  ],
+  "armor-arcane-reservoir": [
+    "robe",
+    "light",
+    "medium"
+  ],
+  "armor-guardian-aura": [
+    "shield",
+    "heavy",
+    "medium"
+  ],
+  "armor-soul-binding": [
+    "light",
+    "medium",
+    "heavy",
+    "shield",
+    "robe",
+    "cloak"
+  ],
+  "armor-guardians-crest": [
+    "shield"
+  ],
+  "armor-spellbreaker-shield": [
+    "shield"
+  ],
+  "armor-radiant-bulwark": [
+    "shield"
+  ],
+  "armor-reflecting-sigil": [
+    "shield"
+  ],
+  "armor-iron-sentinel": [
+    "heavy"
+  ],
+  "armor-unyielding-plate": [
+    "heavy"
+  ],
+  "armor-adamant-ward": [
+    "heavy"
+  ],
+  "armor-thunder-plate": [
+    "heavy"
+  ],
+  "armor-titan-ward": [
+    "heavy"
+  ],
+  "armor-featherweight": [
+    "light",
+    "medium",
+    "heavy"
+  ],
+  "armor-enduring-rune": [
+    "light",
+    "medium",
+    "heavy"
+  ],
+  "armor-ironwill": [
+    "medium",
+    "heavy"
+  ],
+  "armor-sunward": [
+    "robe",
+    "light",
+    "medium",
+    "heavy",
+    "shield",
+    "cloak",
+    "helm"
+  ],
+  "armor-aegis-of-life": [
+    "robe",
+    "light",
+    "medium",
+    "heavy"
+  ],
+  "armor-warden-rune": [
+    "robe",
+    "light",
+    "medium",
+    "heavy",
+    "shield",
+    "helm"
+  ],
+  "armor-mystic-stitching": [
+    "robe"
+  ],
+  "armor-spellweave-lining": [
+    "robe"
+  ],
+  "armor-astral-embroidery": [
+    "robe"
+  ],
+  "armor-mana-mantle": [
+    "robe",
+    "cloak"
+  ],
+  "armor-fleetfoot-rune": [
+    "boots"
+  ],
+  "armor-silent-tread": [
+    "boots"
+  ],
+  "armor-veil-of-shadows": [
+    "cloak"
+  ],
+  "armor-windward-cloak": [
+    "cloak"
+  ],
+  "armor-runic-grip": [
+    "gloves"
+  ],
+  "armor-spellthread-gloves": [
+    "gloves"
+  ],
+  "armor-mindguard-crest": [
+    "helm"
+  ],
+  "armor-echo-ring": [
+    "ring"
+  ],
+  "armor-guardian-pendant": [
+    "amulet"
+  ],
+  "armor-titans-cord": [
+    "belt"
+  ]
+});
+const BASE_ENCHANTMENTS=Object.freeze(SOURCE_ENCHANTMENTS.map(entry=>{
+ const allowed=ENCHANT_TARGETS[entry.id];
+ if(!allowed?.length)throw new Error('Missing compatible equipment mapping: '+entry.id);
+ return Object.freeze({...entry,allowed:Object.freeze(allowed)});
+}));
 const LEGACY_ELEMENTAL=Object.freeze(BASE_ENCHANTMENTS.filter(e=>
  e.id==='weapon-elemental-binding'||e.id==='weapon-greater-elemental-binding'
 ));
