@@ -109,7 +109,9 @@ def main():
         print("Dry run: no files changed")
         return
     timestamp = dt.datetime.now().strftime("%Y%m%d-%H%M%S")
-    backup = root / "artwork-backups" / f"original-art-install-{timestamp}"
+    backup_root = root / "artwork-backups"
+    backup_root.mkdir(parents=True, exist_ok=True)
+    backup = Path(tempfile.mkdtemp(prefix=f"original-art-install-{timestamp}-", dir=backup_root))
     existing = {}
     for rel in files:
         target = (root / rel).resolve()
