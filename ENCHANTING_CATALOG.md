@@ -1,20 +1,17 @@
-# Enchanting Reference — Gathering & Crafting v1.3.3
+# Enchanting Reference — Gathering & Crafting v1.3.5
 
-All 107 Enchantments are available by learning their formulas. **Gold is an estimated market price / service value**, not a crafting material. Using the Enchanting tab never deducts coins from the maker, charges training tuition, or automatically transfers GP to a merchant. The game master may roleplay customer payments separately.
+All 107 Enchantments are available with the required physical tools, a suitable Item, and sufficient Item enchantment slots. **Gold is an estimated market price / service value**, not a crafting material. Using the Enchanting tab never deducts coins from the maker, charges training tuition, or automatically transfers GP to a merchant. The game master may roleplay customer payments separately.
 
-## Learn Enchanting (without tuition)
+## Tool-only crafting (v1.3.5)
 
-Players start Untrained and need a physical **Jeweler's Tools** or **Enchanter's Tools** item. The ranks are trained sequentially. After the listed world days, make an Arcana check. A failed check delays another attempt by one day. Only the GM sees the target DC in the interface; chat sends target-DC details privately to the GM.
+The only skill/tool prerequisite is a **physical Jeweler's Tools or Enchanter's Tools Item** in the character inventory. The tool may be identified by its name, baseItem/identifier, or a Gathering & Crafting toolKey flag.
 
-| Rank | Title | Training days | Arcana DC (GM only) |
-|---:|---|---:|---:|
-| 1 | Novice | 2 | 10 |
-| 2 | Apprentice | 4 | 12 |
-| 3 | Adept | 5 | 14 |
-| 4 | Expert | 7 | 16 |
-| 5 | Master | 10 | 18 |
-
-Each Enchantment formula must be studied separately; it takes **1–4 world days**, depending on the required proficiency rank, and another Arcana check, but **no gold**. The formula study time is Rank 1: 2 day(s), Rank 2: 2 day(s), Rank 3: 3 day(s), Rank 4: 4 day(s), Rank 5: 4 day(s).
+- Physical tool present, without proficiency: normal Arcana check.
+- Physical tool present, with matching tool proficiency: **Advantage** (roll 2d20, keep highest).
+- No physical tool: Enchanting cannot start.
+- No Enchanting rank training or separately learned formula is required. The Novice–Master tiers in this list are **item difficulty tiers**, used with rarity/slot limits, not mandatory character skill ranks.
+- For new jobs, completion requires Arcana against a GM-only DC of 10 + 2 × formula tier. Failed check: another world day of work before retry. Jobs begun on older versions retain old completion rules.
+- Market value is the price of the enchantment for customers; no gold is automatically deducted.
 
 ## Item limits
 
@@ -26,7 +23,7 @@ Each Enchantment formula must be studied separately; it takes **1–4 world days
 - GM may override item capacity to 0–6 slots from the Enchanting tab.
 - Selected elite formulas require 2 slots. Duplicates, mutual exclusions, and another pending job on the same item remain blocked.
 - Weapons: melee, ranged, blade, bow, crossbow, staff, polearm, bludgeoning and piercing tags. Armor: light, medium, heavy and shields.
-- A pending enchantment created before this version retains its original `finishAt` world timestamp; shortened durations apply to **new** jobs. Earlier spending is not retroactively refunded.
+- A pending enchantment created before v1.3.5 retains its original completion date and rules. Earlier spending is not retroactively refunded.
 
 ## Item type restrictions (v1.3.3)
 
