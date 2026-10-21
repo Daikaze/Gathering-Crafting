@@ -672,14 +672,14 @@ export function professionOf(actor){
 // campaigns, but do not block new enchanting: the item + tools are enough.
 export function learningGate(actor,enchant){return '';}
 export function enchantingTool(actor){
-  for(const key of ['jeweler','enchanter']){
+  const available=['jeweler','enchanter'].map(key=>{
     const item=itemForTool(actor,key);
-    if(item){
-      const prof=proficiencyLevel(actor,key);
-      return {item,key,proficient:prof>0,advantage:prof>0,proficiencyLevel:prof};
-    }
-  }
-  return null;
+    if(!item)return null;
+    const prof=proficiencyLevel(actor,key);
+    return {item,key,proficient:prof>0,advantage:prof>0,proficiencyLevel:prof};
+  }).filter(Boolean);
+  // Prefer a held tool the actor is proficient with, when carrying both.
+  return available.find(entry=>entry.advantage)||available[0]||null;
 }
 export const hasTrainingTools=actor=>!!enchantingTool(actor);
 export function arcanaBonus(actor){
