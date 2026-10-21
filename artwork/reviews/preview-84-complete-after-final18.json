@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "date": "2026-10-21",
+  "scope": "Previously 84 atlas-only missing items; 66 earlier preview picks plus 18 new processed images. The older 20 standalone Blacksmith originals are excluded by user instruction.",
+  "sourceArchive": "gathering-crafting-v11-all-84-preview-icons.zip",
+  "sourceArchiveLocation": "ChatGPT conversation artifact only — binary archive not committed to GitHub",
+  "statuses": {
+    "temporaryPreviewFilesReady": 84,
+    "previouslySelected": 66,
+    "newIndividuallyRenderedFullSize": 10,
+    "newContactsheetsCrops": 8,
+    "unmappedWithinPreviouslyMissing84": 0,
+    "strictlyApproved1024x1024OriginalsFromThisPass": 0
+  },
+  "validation": [
+    "84 exact official item IDs",
+    "84 distinct WebP byte hashes",
+    "all 256x256",
+    "zip integrity confirmed",
+    "backup-first local installer dry-run and apply tested",
+    "tampered PNG/WebP rejected before install",
+    "two separate install backups retained"
+  ],
+  "remainingEighteen": [
+    {
+      "id": "recipe:lantern-frame",
+      "name": "Lantern Frame",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "individual_1254px_render"
+    },
+    {
+      "id": "recipe:tin-solder",
+      "name": "Tin Solder",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "individual_1254px_render"
+    },
+    {
+      "id": "recipe:brass-compass",
+      "name": "Brass Compass",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "individual_1254px_render"
+    },
+    {
+      "id": "recipe:cobalt-lockbox",
+      "name": "Cobalt Lockbox",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "individual_1254px_render"
+    },
+    {
+      "id": "recipe:silver-circlet",
+      "name": "Silver Circlet",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "individual_1254px_render"
+    },
+    {
+      "id": "recipe:steel-rivets",
+      "name": "Steel Rivets",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "individual_1254px_render"
+    },
+    {
+      "id": "recipe:platinum-circlet",
+      "name": "Platinum Circlet",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "individual_1254px_render"
+    },
+    {
+      "id": "recipe:runesteel-chisel",
+      "name": "Runesteel Chisel",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "individual_1254px_render"
+    },
+    {
+      "id": "recipe:moonsteel-diadem",
+      "name": "Moonsteel Diadem",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "individual_1254px_render"
+    },
+    {
+      "id": "material:iron-ingot",
+      "name": "Iron Ingot",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "individual_1254px_render"
+    },
+    {
+      "id": "material:nickel-ingot",
+      "name": "Nickel Ingot",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "contact_sheet_crop_for_256px_preview"
+    },
+    {
+      "id": "material:tin-ingot",
+      "name": "Tin Ingot",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "contact_sheet_crop_for_256px_preview"
+    },
+    {
+      "id": "material:blacksteel-ingot",
+      "name": "Blacksteel Ingot",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "contact_sheet_crop_for_256px_preview"
+    },
+    {
+      "id": "material:platinum-ingot",
+      "name": "Platinum Ingot",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "contact_sheet_crop_for_256px_preview"
+    },
+    {
+      "id": "material:adamantine-ingot",
+      "name": "Adamantine Ingot",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "contact_sheet_crop_for_256px_preview"
+    },
+    {
+      "id": "material:dragonsilver-ingot",
+      "name": "Dragonsilver Ingot",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "contact_sheet_crop_for_256px_preview"
+    },
+    {
+      "id": "material:moonsteel-ingot",
+      "name": "Moonsteel Ingot",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "contact_sheet_crop_for_256px_preview"
+    },
+    {
+      "id": "material:starmetal-ingot",
+      "name": "Starmetal Ingot",
+      "status": "preview-ready-awaiting-GM-approval",
+      "origin": "contact_sheet_crop_for_256px_preview"
+    }
+  ],
+  "releasePolicy": "Only temporary 256px icon preview ready. Original hand-painted 1024px per item acceptance gate for v1.1 is not satisfied. Do not merge or publish v1.1 based on this record."
+}
