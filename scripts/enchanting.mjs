@@ -2,6 +2,7 @@
  * Item-specific compatibility, five learnable proficiency ranks, known enchantments,
  * slot limits, and coin math. Pure functions make the rules independently testable.
  */
+import {itemForTool,proficiencyLevel} from './tool-rules.mjs';
 export const ELEMENTS=Object.freeze(['Fire','Cold','Lightning','Acid','Thunder']);
 export const DAY_SECONDS=86400;
 export const RANKS=Object.freeze([
@@ -667,10 +668,22 @@ export function professionOf(actor){
  const data=actor?.getFlag?.('gathering-crafting','enchanter')||{};
  return {rank:Math.min(5,Math.max(0,Number(data.rank)||0)),known:Array.isArray(data.known)?data.known:[],training:data.training||null};
 }
-export function learningGate(actor,enchant){const prof=professionOf(actor);return prof.rank<enchant.rank?'Requires '+RANKS[enchant.rank].name:!knowsEnchant(prof.known,enchant)?'Learn this enchantment first':'';}
-export function hasTrainingTools(actor){
- return !!(actor?.items||[]).find(i=>Number(i.system?.quantity??1)>0&&/^(jeweler'?s tools|jeweller'?s tools|enchanter'?s tools|enchanting kit)$/i.test(String(i.name||'').replace(/[’‘]/g,"'")));
+// Enchanting rank and previously studied formulas remain recorded for old
+// campaigns, but do not block new enchanting: the item + tools are enough.
+export function learningGate(actor,enchant){return '';}
+export function enchantingTool(actor){
+  for(const key of ['jeweler','enchanter']){
+    const item=itemForTool(actor,key);
+    if(item){
+      const prof=key==='jeweler'
+        ?Math.max(proficiencyLevel(actor,'jeweler'),proficiencyLevel(actor,'enchanter'))
+        :Math.max(proficiencyLevel(actor,'enchanter'),proficiencyLevel(actor,'jeweler'));
+      return {item,key,proficient:prof>0,advantage:prof>0,proficiencyLevel:prof};
+    }
+  }
+  return null;
 }
+export const hasTrainingTools=actor=>!!enchantingTool(actor);
 export function arcanaBonus(actor){
  const s=actor?.system||{};
  const skill=s.skills?.arc||{};
