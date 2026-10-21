@@ -3,6 +3,7 @@ import { CATALOG } from './catalog.js';
 import { makeMaterialData, makeCraftData, outputKind } from './items.js';
 import { TOOL_SPECS, PROF_OPTIONS, requiredForNode, requiredForRecipe, toolGate, proficiencyLevel, toolItemBonus, craftCheck, proficiencyBonus } from './tool-rules.mjs';
 import {enchantingHtml, beginEnchantment, finishEnchantment, beginLesson, finishLesson, useEnchantment, recoverEnchantmentUses} from './enchanting-ui.mjs';
+import {enchantById} from './enchanting.mjs';
 const ID='gathering-crafting';
 const VERSION='1.3.0';
 const clone=value=>foundry.utils.deepClone(value);
@@ -442,7 +443,34 @@ let windowInstance;
 function open(actor){if(!windowInstance)windowInstance=new GatheringCrafting();if(actor&&(game.user.isGM||actor.isOwner))windowInstance.actorId=actor.id;windowInstance.render({force:true});return windowInstance;}
 function launcher(html,selector,actor){const root=html instanceof HTMLElement?html:html?.[0],parent=root?.querySelector(selector);if(!parent||parent.querySelector('.gc-launcher'))return;
   const button=document.createElement('button');button.type='button';button.className='gc-launcher';button.title='Gathering & Crafting';button.innerHTML=`${icon('fa-hammer')} <span>Gathering & Crafting</span>`;button.addEventListener('click',e=>{e.preventDefault();open(actor);});parent.append(button);
+  // Optional compact power controls inside D&D5e character-sheet headers.
+  if(actor&&!parent.querySelector('.gc-sheet-powers')){
+    const powers=(actor.items||[]).flatMap(item=>(item.getFlag?.(ID,'enchantments')||[]).flatMap(applied=>{
+      const enchant=enchantById(applied.id);
+      return enchant?.power?[{item,enchant,spent:Number(item.getFlag?.(ID,'enchantmentUses')?.[applied.id]||0)}]:[];
+    }));
+    if(powers.length){
+      const details=document.createElement('details');details.className='gc-sheet-powers';
+      const summary=document.createElement('summary');summary.textContent='Enchantment Powers ('+powers.length+')';details.append(summary);
+      const list=document.createElement('div');list.className='gc-sheet-power-buttons';
+      for(const {item,enchant,spent} of powers){
+        const action=document.createElement('button');action.type='button';
+        const available=Math.max(0,enchant.power.uses-spent);
+        action.textContent=enchant.name+' · '+item.name+' ('+available+'/'+enchant.power.uses+')';
+        action.disabled=available===0||item.system?.equipped!==true;
+        action.title=available===0?'Recharge after a Long Rest':item.system?.equipped!==true?'Equip this Item to use its power':enchant.description;
+        action.addEventListener('click',async event=>{
+          event.preventDefault();event.stopPropagation();
+          try{await useEnchantment(actor,item.id,enchant.id,notify,announce);sheetPowerRefresh(actor);}
+          catch(error){console.error('gathering-crafting | Enchantment power',error);notify(error.message||'Power could not be used.',true);}
+        });
+        list.append(action);
+      }
+      details.append(list);parent.append(details);
+    }
+  }
 }
+function sheetPowerRefresh(actor){for(const app of Object.values(actor.apps||{}))if(app?.rendered)app.render({force:true});}
 Hooks.once('init',()=>{
   if(game.system.id!=='dnd5e')return;
   game.settings.register(ID,'database',{name:'Gathering & Crafting Catalogue',scope:'world',config:false,type:Object,default:clone(CATALOG),onChange:()=>{if(windowInstance?.rendered)windowInstance.render();}});
