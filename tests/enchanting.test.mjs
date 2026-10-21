@@ -38,8 +38,8 @@ test('exact GP payment and world-day completion',()=>{
  assert.equal(afterGoldPayment({gp:350},350).gp,0);
  assert.equal(afterGoldPayment({gp:124,sp:9},125),null);
  assert.equal(afterGoldPayment({gp:1000},1500),null);
- assert.equal(afterGoldPayment({pp:5,gp:50},550).gp,0);
- assert.equal(afterGoldPayment({gp:-1},1),null);
+ assert.equal(afterGoldPayment({pp:50,gp:50},550).gp,0);
+ assert.throws(()=>afterGoldPayment({gp:-1},1));
  assert.throws(()=>afterGoldPayment({gp:1.2},1));
  assert.equal(completionAt(100,2),100+DAY_SECONDS*2);
  assert.equal(completionAt(100,14),100+DAY_SECONDS*14);
