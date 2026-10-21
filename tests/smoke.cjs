@@ -83,12 +83,12 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const db=context.game.settings.get('gathering-crafting','database');
   assert.equal(db.catalogVersion,10);
   assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
-  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.0');
+  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.1');
   assert.ok(db.materials.find(m=>m.id==='iron-ore').img.endsWith('/icons/handpainted/iron-ore.webp'));
   assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
   assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
   assert.equal(artworkFor(db.recipes.find(r=>r.id==='supreme-healing-potion')),
-    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.0');
+    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.1');
   await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,44,'sync must not duplicate entries');
   const oldIconItem=packs.get('world.gc-ores-metals').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='iron-ore');
   oldIconItem.img='modules/legacy-content/images/iron-ore.webp';
@@ -190,13 +190,15 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   actor.items.push(enchantedWeapon);app.enchantItemId=enchantedWeapon.id;
   assert.ok(app.template().includes('Enchanting'));
   assert.ok(app.template().includes('Spell Channel'));
-  const oldGold=context.game.user.character.system.currency.pp*10+context.game.user.character.system.currency.gp;
+  // The crafter pays no gold: the GP shown in Enchanting is only a market/service value.
+  actor.system.currency={pp:0,gp:0,ep:0,sp:0,cp:0};
+  const oldGold=JSON.stringify(actor.system.currency);
   await beginEnchantment(app,'weapon-arcane-infusion',{actor,announce:async()=>{},notify:()=>{}});
   assert.equal(enchantedWeapon.getFlag('gathering-crafting','enchantmentPending')?.id,'weapon-arcane-infusion');
-  assert.equal(context.game.user.character.system.currency.pp*10+context.game.user.character.system.currency.gp,oldGold-250);
+  assert.equal(JSON.stringify(actor.system.currency),oldGold,'Enchanting must not deduct money or require available gold');
   assert.ok(app.template().includes('in progress'));
   await assert.rejects(()=>finishEnchantment(app,enchantedWeapon.id,{actor,announce:async()=>{},notify:()=>{}}));
-  context.game.time.worldTime=5*86400;
+  context.game.time.worldTime=4*86400;
   await finishEnchantment(app,enchantedWeapon.id,{actor,announce:async()=>{},notify:()=>{}});
   assert.equal(enchantedWeapon.getFlag('gathering-crafting','enchantmentPending'),null);
   assert.equal(enchantedWeapon.getFlag('gathering-crafting','enchantments').length,1);
@@ -204,18 +206,19 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   assert.ok(enchantedWeapon.system.properties.includes('mgc'));
   assert.ok(enchantedWeapon.system.description.value.includes('Existing description'));
   assert.ok(enchantedWeapon.system.description.value.includes('Arcane Infusion'));
-  // Profession training must consume world time, gold and Arcana success.
+  // Profession training must consume world time and Arcana success, but never gold.
   actor.flags['gathering-crafting'].enchanter={rank:0,known:[],training:null};
   await beginLesson(actor,'rank',null,()=>{});
   assert.equal(actor.getFlag('gathering-crafting','enchanter').rank,0);
   await assert.rejects(()=>finishLesson(actor,()=>{},async()=>{}));
-  context.game.time.worldTime+=3*86400;
+  context.game.time.worldTime+=2*86400;
   await finishLesson(actor,()=>{},async()=>{});
   assert.equal(actor.getFlag('gathering-crafting','enchanter').rank,1);
   await beginLesson(actor,'enchant','weapon-spell-channel',()=>{});
   context.game.time.worldTime+=2*86400;
   await finishLesson(actor,()=>{},async()=>{});
   assert.ok(actor.getFlag('gathering-crafting','enchanter').known.includes('weapon-spell-channel'));
+  assert.equal(JSON.stringify(actor.system.currency),oldGold,'Training and formula study must not deduct gold');
   // Power use is equipment-bound, once per Long Rest, and restores on native long rest.
   enchantedWeapon.system.equipped=true;
   enchantedWeapon.flags['gathering-crafting'].enchantments.push({id:'weapon-hunters-marking'});
@@ -224,5 +227,26 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   await assert.rejects(()=>useEnchantment(actor,enchantedWeapon.id,'weapon-hunters-marking',()=>{},async()=>{}));
   await recoverEnchantmentUses(actor,{longRest:true},{type:'long'});
   assert.equal(Object.keys(enchantedWeapon.getFlag('gathering-crafting','enchantmentUses')).length,0);
-  console.log('PASS: v1.1.0 224 selected, separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
+  // Player rendering does not show target DCs on any player-facing tab.
+  context.game.user.isGM=false;
+  actor.flags['gathering-crafting'].enchanter={rank:1,known:[],training:null};
+  app.tab='enchanting';app.search='';
+  let playerHTML=app.template();
+  assert.ok(!/\bDC\s*[+−-]?\s*\d+/i.test(playerHTML),'player Enchanting must not display DCs');
+  assert.ok(playerHTML.includes('Market value: 250 gp'),'prices remain visible as market values');
+  assert.ok(!playerHTML.includes('Not enough gold'),'zero gold never locks enchantments');
+  app.tab='gather';playerHTML=app.template();
+  assert.ok(!/\bDC\s*[+−-]?\s*\d+/i.test(playerHTML),'player Gathering must not display DCs');
+  app.tab='alchemy';playerHTML=app.template();
+  assert.ok(!/\bDC\s*[+−-]?\s*\d+/i.test(playerHTML),'player Crafting must not display DCs');
+  context.game.users=[{id:'gm-actor',isGM:true},{id:'player-actor',isGM:false}];
+  const scenes=structuredClone(context.game.settings.get('gathering-crafting','database'));scenes.settings.sceneOnly=false;
+  await context.game.settings.set('gathering-crafting','database',scenes);
+  const startingMessages=messages.length;
+  await app.gather('node-iron-ore');
+  const fresh=messages.slice(startingMessages);
+  assert.ok(fresh.some(x=>!x.whisper&&!x.content.includes(' vs DC ')),'public messages hide target DC');
+  assert.ok(fresh.some(x=>x.whisper?.includes('gm-actor')&&x.content.includes(' vs DC ')),'GM whisper contains target DC');
+  context.game.user.isGM=true;
+  console.log('PASS: v1.3.1 DC visibility, free enchanting, reduced days;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
