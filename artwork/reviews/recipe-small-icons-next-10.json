@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "date": "2026-10-21",
+  "purpose": "Ten original standalone compact fantasy icons, requested independently; outputs not yet verified or exported",
+  "selected": [
+    {
+      "id": "recipe:silver-circlet",
+      "name": "Silver Circlet",
+      "source": "Canva single-image generation",
+      "status": "submitted-unverified",
+      "imageOnGitHub": false,
+      "approved": false
+    },
+    {
+      "id": "recipe:silver-ingot",
+      "name": "Silver Ingot",
+      "source": "Canva single-image generation",
+      "status": "submitted-unverified",
+      "imageOnGitHub": false,
+      "approved": false
+    },
+    {
+      "id": "recipe:steel-ingot",
+      "name": "Steel Ingot",
+      "source": "Canva single-image generation",
+      "status": "submitted-unverified",
+      "imageOnGitHub": false,
+      "approved": false
+    },
+    {
+      "id": "recipe:steel-rivets",
+      "name": "Steel Rivets",
+      "source": "Canva single-image generation",
+      "status": "submitted-unverified",
+      "imageOnGitHub": false,
+      "approved": false
+    },
+    {
+      "id": "recipe:blacksteel-ingot",
+      "name": "Blacksteel Ingot",
+      "source": "Canva single-image generation",
+      "status": "submitted-unverified",
+      "imageOnGitHub": false,
+      "approved": false
+    },
+    {
+      "id": "recipe:dusksteel-ingot",
+      "name": "Dusksteel Ingot",
+      "source": "Canva single-image generation",
+      "status": "submitted-unverified",
+      "imageOnGitHub": false,
+      "approved": false
+    },
+    {
+      "id": "recipe:mithral-ingot",
+      "name": "Mithral Ingot",
+      "source": "Canva single-image generation",
+      "status": "submitted-unverified",
+      "imageOnGitHub": false,
+      "approved": false
+    },
+    {
+      "id": "recipe:platinum-circlet",
+      "name": "Platinum Circlet",
+      "source": "Canva single-image generation",
+      "status": "submitted-unverified",
+      "imageOnGitHub": false,
+      "approved": false
+    },
+    {
+      "id": "recipe:platinum-ingot",
+      "name": "Platinum Ingot",
+      "source": "Canva single-image generation",
+      "status": "submitted-unverified",
+      "imageOnGitHub": false,
+      "approved": false
+    },
+    {
+      "id": "recipe:runesteel-chisel",
+      "name": "Runesteel Chisel",
+      "source": "Canva single-image generation",
+      "status": "submitted-unverified",
+      "imageOnGitHub": false,
+      "approved": false
+    }
+  ],
+  "rejectedOutputs": [
+    "Three new 1536x1024 collage sheets were generated instead of standalone art; rejected as original item files."
+  ],
+  "releaseReady": false
+}
