@@ -2,8 +2,9 @@
 import { CATALOG } from './catalog.js';
 import { makeMaterialData, makeCraftData, outputKind } from './items.js';
 import { TOOL_SPECS, PROF_OPTIONS, requiredForNode, requiredForRecipe, toolGate, proficiencyLevel, toolItemBonus, craftCheck, proficiencyBonus } from './tool-rules.mjs';
+import {enchantingHtml, beginEnchantment, finishEnchantment} from './enchanting-ui.mjs';
 const ID='gathering-crafting';
-const VERSION='1.1.2';
+const VERSION='1.2.0';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -17,7 +18,7 @@ const artworkFor=item=>{
   const src=item?.img||'icons/svg/item-bag.svg';
   const clean=src.split('?')[0];
   return clean.startsWith('modules/gathering-crafting/icons/') && clean.endsWith('.webp')
-    ? clean+'?gc-art=v1.1.2' : src;
+    ? clean+'?gc-art=v1.2.0' : src;
 };
 const material=(db,id)=>db.materials.find(m=>m.id===id);
 const skillLabels={ath:'Athletics',sur:'Survival',prc:'Perception',inv:'Investigation',nat:'Nature',slt:'Sleight of Hand'};
@@ -205,7 +206,7 @@ async function syncCompendiums(){
 }
 class GatheringCrafting extends foundry.applications.api.ApplicationV2{
   static DEFAULT_OPTIONS={id:'gc-main-window',classes:['gathering-crafting'],window:{title:'Gathering & Crafting',icon:'fa-solid fa-hammer',resizable:true},position:{width:970,height:740}};
-  constructor(opts={}){super(opts);this.actorId=currentActor()?.id||null;this.tab='gather';this.gatherMode='careful';this.craftMode='steady';this.category='all';this.group='all';this.search='';this.page=1;this.showZero=false;this.readyOnly=false;this.editor={kind:'material',id:null};this.busy=false;this.searchTimer=null;this.pendingScrollTop=null;}
+  constructor(opts={}){super(opts);this.actorId=currentActor()?.id||null;this.tab='gather';this.gatherMode='careful';this.craftMode='steady';this.category='all';this.group='all';this.search='';this.page=1;this.showZero=false;this.readyOnly=false;this.editor={kind:'material',id:null};this.busy=false;this.searchTimer=null;this.pendingScrollTop=null;this.enchantItemId=null;this.enchantElement='Fire';}
   get actor(){return currentActor(this.actorId);}
   async _renderHTML(){const root=document.createElement('div');root.className='gc-root';root.innerHTML=this.template();return root;}
   _replaceHTML(result,content){content.replaceChildren(result);}
@@ -230,8 +231,8 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     const choices=ownedActors().map(a=>`<option value="${esc(a.id)}" ${actor?.id===a.id?'selected':''}>${esc(a.name)} (${a.type==='character'?'PC':'NPC'})</option>`).join('');
     return `<div class="gc-top"><div class="gc-brand"><span class="gc-brand-logo">${icon('fa-hammer')}</span><div><span class="gc-subtitle">THE AVERIS WORKSHOP · v${VERSION}</span><div class="gc-brand-title">Gathering <span>&</span> Crafting</div></div></div>
       <div class="gc-top-right">${gm?`<button class="gc-gm-shortcut" type="button" data-action="tab" data-id="gm" aria-label="GM Workshop" title="GM Workshop">${icon('fa-gear')}</button>`:''}<label class="gc-selectwrap">${icon('fa-user')}<select name="actor" aria-label="Character">${choices}</select></label><div class="gc-energy" title="No daily gathering limit">${icon('fa-infinity')} <b>Unlimited</b><small>gather attempts</small></div></div></div>
-      <nav class="gc-tabs">${this.tabButton('gather','fa-mountain','Gather')}${this.tabButton('alchemy','fa-flask','Alchemy')}${this.tabButton('blacksmithing','fa-hammer','Blacksmithing')}${this.tabButton('backpack','fa-box-open','Inventory')}</nav>
-      <div class="gc-content">${!actor&&this.tab!=='gm'?'<div class="gc-empty">Select a character with Owner permission to get started.</div>':this.tab==='gather'?this.gatherTab(db,actor):this.tab==='alchemy'?this.craftTab(db,actor,'alchemy'):this.tab==='blacksmithing'||this.tab==='craft'?this.craftTab(db,actor,'metallurgy'):this.tab==='backpack'?this.inventoryTab(db,actor):gm?this.gmTab(db):''}</div>
+      <nav class="gc-tabs">${this.tabButton('gather','fa-mountain','Gather')}${this.tabButton('alchemy','fa-flask','Alchemy')}${this.tabButton('blacksmithing','fa-hammer','Blacksmithing')}${this.tabButton('enchanting','fa-wand-magic-sparkles','Enchanting')}${this.tabButton('backpack','fa-box-open','Inventory')}</nav>
+      <div class="gc-content">${!actor&&this.tab!=='gm'?'<div class="gc-empty">Select a character with Owner permission to get started.</div>':this.tab==='gather'?this.gatherTab(db,actor):this.tab==='alchemy'?this.craftTab(db,actor,'alchemy'):this.tab==='blacksmithing'||this.tab==='craft'?this.craftTab(db,actor,'metallurgy'):this.tab==='enchanting'?this.enchantTab(actor):this.tab==='backpack'?this.inventoryTab(db,actor):gm?this.gmTab(db):''}</div>
       <footer class="gc-footer"><span>${icon('fa-box')} Every resource and crafted product is a real D&D 5e Item with bundled fantasy artwork.</span><span>v${VERSION} · Foundry V14 · dnd5e 5.3.3</span></footer>`;
   }
   gatherTab(db,actor){const sceneOnly=!!db.settings.sceneOnly;
@@ -261,6 +262,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     `<div class="gc-browser-row"><div class="gc-profession-label">${icon(headIcon)} <strong>${title}</strong><span>${isAlchemy?'Only alchemy recipes are shown here.':'Only blacksmithing recipes are shown here.'}</span></div><button class="gc-ready-toggle ${this.readyOnly?'is-on':''}" type="button" data-action="readyOnly">${icon('fa-check-circle')} Craftable only (${possible})</button></div>`+
     (this.readyOnly&&!found.length?`<div class="gc-empty gc-easy-empty">${icon('fa-box-open')}<strong>No ${isAlchemy?'alchemy':'blacksmithing'} recipes ready yet</strong><span>${emptyText}</span><button type="button" class="gc-secondary" data-action="readyOnly">Show all recipes</button></div>`:this.renderCards(found,r=>this.recipeCard(db,r,actor)));
   }
+  enchantTab(actor){return enchantingHtml(this,actor,{heading:this.heading.bind(this),renderCards:this.renderCards.bind(this),searchBar:this.searchBar.bind(this),artworkFor});}
   recipeCard(db,r,actor){const req=requirements(actor,r,db,this.craftMode==='inspired'),toolKey=requiredForRecipe(r),spec=TOOL_SPECS[toolKey],gate=toolGate(actor,toolKey,r.toolProficiency),can=gate.ok&&req.length&&req.every(i=>i.mat&&i.have>=i.qty);
     const kind=outputKind(r),kindText={weapon:'Weapon',equipment:'Armor',consumable:'Potion',loot:r.subcategory==='Smelting'?'Metal':'Crafting Good'}[kind]||'Item';
     const max=can?Math.max(1,Math.min(10,...req.map(i=>Math.floor(i.have/i.qty)))):0;const check=gate.ok?craftCheck(actor,r,toolKey,r.toolProficiency,gate.tool):null;const dc=num(r.dc,12)+(this.craftMode==='inspired'?3:0);
@@ -312,6 +314,8 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     if(a==='gather')return this.locked(()=>this.gather(id));
     if(a==='craft')return this.locked(()=>this.craft(id));
     if(a==='craftMax')return this.locked(()=>this.craft(id,10));
+    if(a==='startEnchant')return this.locked(()=>beginEnchantment(this,id,{actor:this.checkActor(),announce,notify}));
+    if(a==='finishEnchant')return this.locked(()=>finishEnchantment(this,id,{actor:this.checkActor(),announce,notify}));
     if(a==='drink')return this.locked(()=>this.drink(id));
     if(a==='giveMat')return this.locked(()=>adjustMaterialQuantity(this.checkActor(),id,1));
     if(a==='takeMat')return this.locked(()=>adjustMaterialQuantity(this.checkActor(),id,-1));
@@ -330,7 +334,9 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     if(a==='sync')return this.locked(()=>syncCompendiums());
     if(a==='delete')return this.locked(()=>this.deleteEntry(id));
   }
-  change(e){if(e.target.name==='actor'){this.actorId=e.target.value;return this.refresh();}
+  change(e){if(e.target.name==='actor'){this.actorId=e.target.value;this.enchantItemId=null;return this.refresh();}
+    if(e.target.name==='enchantItem'){this.enchantItemId=e.target.value;this.page=1;return this.refresh();}
+    if(e.target.name==='enchantElement'){this.enchantElement=e.target.value;return this.refresh();}
     if(e.target.name==='sceneOnly'&&game.user.isGM)return this.locked(async()=>{const db=clone(database());db.settings.sceneOnly=e.target.checked;await game.settings.set(ID,'database',db);});
   }
   input(e){if(!e.target.matches('[data-search]'))return;this.search=e.target.value;this.page=1;clearTimeout(this.searchTimer);
