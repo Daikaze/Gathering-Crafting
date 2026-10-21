@@ -6,7 +6,7 @@
 - Added learnable five-rank Enchanter proficiency, Jeweler's Tools / Enchanter's Tools requirements, paid in-world lessons, Arcana check gates, delayed retry on failure and individual formula research.
 - Added weapon-type, armor-type, item-rarity and enchantment-slot restrictions, duplicate/conflict checks and GM-only per-Item capacity override.
 - Added item power Use buttons in Enchanting and directly on character sheets; uses reset via the dnd5e Long Rest hook.
-- Preserved native +1/+2 bonuses, added elemental base-damage formulas and passive ActiveEffect metadata where item effects are supported. Special spell actions and conditional combat effects remain GM-adjudicated.
+- Preserved native +1/+2 bonuses, added elemental base-damage formulas, passive bonus Active Effects and resistance Active Effects where Item effects are supported. Complex spell resolution, targets and conditional combat effects remain GM-adjudicated.
 - Preserved existing v1.2 pending enchantment jobs, world records and crafting recipes. Added regression tests for ranks, learning, eligibility and Long Rest power recovery.
 
 ## 1.2.0 — Enchanting profession tab
