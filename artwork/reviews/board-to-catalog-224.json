@@ -4,7 +4,7 @@
   "sourceBoard": "user supplied 1536x1024 atlas and cropped_board named ZIP",
   "repository": "Daikaze/Gathering-Crafting",
   "branch": "artwork/v1.1-individual-artwork",
-  "warning": "Atlas crops are ~60x70 px and do not meet the v1.1 original 1024px standalone-art acceptance gate. These are candidate mappings, not approved assets. Alchemy bottle mapping is deliberately ordinal/unverified.",
+  "warning": "Atlas crops are ~60x70 px and do not meet the v1.1 original 1024px standalone-art acceptance gate. These are candidate mappings, not approved assets. Alchemy bottle mapping is deliberately ordinal/unverified. The 20 existing full-size individual originals are tracked separately; the same crop must NEVER be assigned to both material and recipe IDs. Do not treat visually similar ingot icons as proof of independent originals.",
   "stats": {
     "catalogTotal": 224,
     "boardCellsTotal": 242,
@@ -20,7 +20,52 @@
     },
     "previewsOnly": 66,
     "notMatched": 107,
-    "approvedAsReleaseArt": 0
+    "approvedAsReleaseArt": 0,
+    "verifiedExternalIndividualOriginals": 20,
+    "atlasStrongOrProbable": 23,
+    "officialItemsWithExternalOriginalOrStrongProbableBoardMatch": 41,
+    "officialItemsWithExternalOriginalOrAnyVisuallyJustifiedBoardProposal": 68,
+    "officialItemsWithoutExternalOriginalOrBoardProposal": 90,
+    "officialItemsWithoutExternalOriginalOrVisuallyJustifiedBoardProposal": 156,
+    "literalAssetsReadyForV11InGithub": 0,
+    "categories": {
+      "Blacksmithing": {
+        "total": 56,
+        "strongOrProbable": 8,
+        "noAtlasMatch": 42,
+        "existingExternal": 20
+      },
+      "Alchemy": {
+        "total": 66,
+        "strongOrProbable": 0,
+        "noAtlasMatch": 0,
+        "existingExternal": 0
+      },
+      "Ore & Mineral": {
+        "total": 24,
+        "strongOrProbable": 4,
+        "noAtlasMatch": 14,
+        "existingExternal": 0
+      },
+      "Refined Metal": {
+        "total": 20,
+        "strongOrProbable": 5,
+        "noAtlasMatch": 13,
+        "existingExternal": 0
+      },
+      "Alchemical Ingredient": {
+        "total": 40,
+        "strongOrProbable": 5,
+        "noAtlasMatch": 22,
+        "existingExternal": 0
+      },
+      "Monster Drop": {
+        "total": 18,
+        "strongOrProbable": 1,
+        "noAtlasMatch": 16,
+        "existingExternal": 0
+      }
+    }
   },
   "entries": [
     {
@@ -33,7 +78,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/brass-ingot.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 2,
@@ -45,7 +93,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B4_09.png",
-      "noteBG": "Колан с катарама, а рецептата изисква отделни катарами"
+      "noteBG": "Колан с катарама, а рецептата изисква отделни катарами",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/bronze-buckles.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 3,
@@ -57,7 +108,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/bronze-ingot.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 4,
@@ -69,7 +123,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/bronze-shield-boss.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 5,
@@ -81,7 +138,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B4_06.png",
-      "noteBG": "Медни предпазители за предмишници"
+      "noteBG": "Медни предпазители за предмишници",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/copper-bracers.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 6,
@@ -93,7 +153,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/copper-ingot.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 7,
@@ -105,7 +168,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/copper-wire.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 8,
@@ -117,7 +183,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/iron-chain.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 9,
@@ -129,7 +198,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B1_05.png",
-      "noteBG": "Кама; металът не може да се потвърди"
+      "noteBG": "Кама; металът не може да се потвърди",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/iron-dagger.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 10,
@@ -141,7 +213,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/iron-ingot.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 11,
@@ -153,7 +228,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 12,
@@ -165,7 +243,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/lantern-frame.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 13,
@@ -177,7 +258,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/nickel-ingot.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 14,
@@ -189,7 +273,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/tin-ingot.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 15,
@@ -201,7 +288,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/tin-solder.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 16,
@@ -213,7 +303,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/brass-compass.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 17,
@@ -225,7 +318,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/cobalt-ingot.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 18,
@@ -237,7 +333,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/cobalt-lockbox.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 19,
@@ -249,7 +348,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/electrum-ingot.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 20,
@@ -261,7 +363,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/gold-ingot.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 21,
@@ -273,7 +378,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "external_ZIP_verified_not_committed",
+      "separateOriginalFile": "icons/original/recipes/golden-seal.webp",
+      "preferredSource": "external_standalone_original_1254px"
     },
     {
       "number": 22,
@@ -285,7 +393,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 23,
@@ -297,7 +408,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 24,
@@ -309,7 +423,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 25,
@@ -321,7 +438,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B1_16.png",
-      "noteBG": "Сребристо острие; покритието е непотвърдено"
+      "noteBG": "Сребристо острие; покритието е непотвърдено",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 26,
@@ -333,7 +453,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 27,
@@ -345,7 +468,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B3_14.png",
-      "noteBG": "Ризница, но плетката не е ясна"
+      "noteBG": "Ризница, но плетката не е ясна",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 28,
@@ -357,7 +483,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B1_06.png",
-      "noteBG": "Единична къса кама"
+      "noteBG": "Единична къса кама",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 29,
@@ -369,7 +498,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B4_03.png",
-      "noteBG": "Бронирана ръкавица"
+      "noteBG": "Бронирана ръкавица",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_visual_fallback_candidate"
     },
     {
       "number": 30,
@@ -381,7 +513,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B3_21.png",
-      "noteBG": "Метални ботуши вместо самостоятелни наголенници"
+      "noteBG": "Метални ботуши вместо самостоятелни наголенници",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 31,
@@ -393,7 +528,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B2_15.png",
-      "noteBG": "Затворен стоманен шлем"
+      "noteBG": "Затворен стоманен шлем",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_visual_fallback_candidate"
     },
     {
       "number": 32,
@@ -405,7 +543,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 33,
@@ -417,7 +558,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 34,
@@ -429,7 +573,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B2_14.png",
-      "noteBG": "Метален щит, видът на сплавта е неизвестен"
+      "noteBG": "Метален щит, видът на сплавта е неизвестен",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 35,
@@ -441,7 +588,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B2_01.png",
-      "noteBG": "Единично копие"
+      "noteBG": "Единично копие",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_visual_fallback_candidate"
     },
     {
       "number": 36,
@@ -453,7 +603,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B1_01.png",
-      "noteBG": "Прав меч"
+      "noteBG": "Прав меч",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_visual_fallback_candidate"
     },
     {
       "number": 37,
@@ -465,7 +618,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 38,
@@ -477,7 +633,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 39,
@@ -489,7 +648,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B2_10.png",
-      "noteBG": "Кръгъл щит, не прилича особено на dusksteel"
+      "noteBG": "Кръгъл щит, не прилича особено на dusksteel",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 40,
@@ -501,7 +663,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 41,
@@ -513,7 +678,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B1_04.png",
-      "noteBG": "Изящен меч, металът е неизвестен"
+      "noteBG": "Изящен меч, металът е неизвестен",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 42,
@@ -525,7 +693,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 43,
@@ -537,7 +708,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 44,
@@ -549,7 +723,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 45,
@@ -561,7 +738,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 46,
@@ -573,7 +753,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 47,
@@ -585,7 +768,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 48,
@@ -597,7 +783,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 49,
@@ -609,7 +798,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 50,
@@ -621,7 +813,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 51,
@@ -633,7 +828,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 52,
@@ -645,7 +843,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 53,
@@ -657,7 +858,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 54,
@@ -669,7 +873,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 55,
@@ -681,7 +888,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 56,
@@ -693,7 +903,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 57,
@@ -705,7 +918,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_01.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 58,
@@ -717,7 +933,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_02.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 59,
@@ -729,7 +948,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_03.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 60,
@@ -741,7 +963,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_04.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 61,
@@ -753,7 +978,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_05.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 62,
@@ -765,7 +993,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_06.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 63,
@@ -777,7 +1008,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_07.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 64,
@@ -789,7 +1023,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_08.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 65,
@@ -801,7 +1038,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_09.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 66,
@@ -813,7 +1053,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_10.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 67,
@@ -825,7 +1068,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_11.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 68,
@@ -837,7 +1083,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_12.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 69,
@@ -849,7 +1098,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_13.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 70,
@@ -861,7 +1113,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_14.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 71,
@@ -873,7 +1128,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_15.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 72,
@@ -885,7 +1143,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_16.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 73,
@@ -897,7 +1158,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_17.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 74,
@@ -909,7 +1173,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_18.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 75,
@@ -921,7 +1188,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_19.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 76,
@@ -933,7 +1203,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_20.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 77,
@@ -945,7 +1218,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_21.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 78,
@@ -957,7 +1233,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A1_22.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 79,
@@ -969,7 +1248,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_01.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 80,
@@ -981,7 +1263,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_02.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 81,
@@ -993,7 +1278,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_03.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 82,
@@ -1005,7 +1293,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_04.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 83,
@@ -1017,7 +1308,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_05.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 84,
@@ -1029,7 +1323,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_06.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 85,
@@ -1041,7 +1338,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_07.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 86,
@@ -1053,7 +1353,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_08.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 87,
@@ -1065,7 +1368,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_09.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 88,
@@ -1077,7 +1383,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_10.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 89,
@@ -1089,7 +1398,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_11.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 90,
@@ -1101,7 +1413,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_12.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 91,
@@ -1113,7 +1428,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_13.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 92,
@@ -1125,7 +1443,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_14.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 93,
@@ -1137,7 +1458,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_15.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 94,
@@ -1149,7 +1473,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_16.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 95,
@@ -1161,7 +1488,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_17.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 96,
@@ -1173,7 +1503,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_18.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 97,
@@ -1185,7 +1518,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_19.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 98,
@@ -1197,7 +1533,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_20.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 99,
@@ -1209,7 +1548,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_21.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 100,
@@ -1221,7 +1563,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A2_22.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 101,
@@ -1233,7 +1578,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_01.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 102,
@@ -1245,7 +1593,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_02.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 103,
@@ -1257,7 +1608,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_03.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 104,
@@ -1269,7 +1623,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_04.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 105,
@@ -1281,7 +1638,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_05.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 106,
@@ -1293,7 +1653,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_06.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 107,
@@ -1305,7 +1668,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_07.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 108,
@@ -1317,7 +1683,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_08.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 109,
@@ -1329,7 +1698,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_09.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 110,
@@ -1341,7 +1713,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_10.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 111,
@@ -1353,7 +1728,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_11.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 112,
@@ -1365,7 +1743,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_12.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 113,
@@ -1377,7 +1758,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_13.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 114,
@@ -1389,7 +1773,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_14.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 115,
@@ -1401,7 +1788,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_15.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 116,
@@ -1413,7 +1803,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_16.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 117,
@@ -1425,7 +1818,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_17.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 118,
@@ -1437,7 +1833,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_18.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 119,
@@ -1449,7 +1848,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_19.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 120,
@@ -1461,7 +1863,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_20.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 121,
@@ -1473,7 +1878,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_21.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 122,
@@ -1485,7 +1893,10 @@
       "method": "ordinal_placeholder",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A6_22.png",
-      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед."
+      "noteBG": "Само поредна връзка 66 флакона → 66 рецепти. Цветът не доказва коя отвара е; изисква ръчен преглед.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_ordinal_only_unverified"
     },
     {
       "number": 123,
@@ -1497,7 +1908,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A5_09.png",
-      "noteBG": "Оранжев минерален прах"
+      "noteBG": "Оранжев минерален прах",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 124,
@@ -1509,7 +1923,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_05.png",
-      "noteBG": "Черен минерален къс"
+      "noteBG": "Черен минерален къс",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 125,
@@ -1521,7 +1938,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_02.png",
-      "noteBG": "Червеникава сурова руда"
+      "noteBG": "Червеникава сурова руда",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 126,
@@ -1533,7 +1953,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 127,
@@ -1545,7 +1968,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_01.png",
-      "noteBG": "Тъмносив железен минерал"
+      "noteBG": "Тъмносив железен минерал",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 128,
@@ -1557,7 +1983,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 129,
@@ -1569,7 +1998,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_06.png",
-      "noteBG": "Светъл минерал, без ясни кварцови върхове"
+      "noteBG": "Светъл минерал, без ясни кварцови върхове",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 130,
@@ -1581,7 +2013,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 131,
@@ -1593,7 +2028,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A5_05.png",
-      "noteBG": "Жълта смляна минерална съставка"
+      "noteBG": "Жълта смляна минерална съставка",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 132,
@@ -1605,7 +2043,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 133,
@@ -1617,7 +2058,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A5_15.png",
-      "noteBG": "Син кристален минерал"
+      "noteBG": "Син кристален минерал",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 134,
@@ -1629,7 +2073,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 135,
@@ -1641,7 +2088,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_04.png",
-      "noteBG": "Златиста руда"
+      "noteBG": "Златиста руда",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 136,
@@ -1653,7 +2103,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 137,
@@ -1665,7 +2118,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 138,
@@ -1677,7 +2133,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_03.png",
-      "noteBG": "Бледолилава руда, металът не може да се докаже"
+      "noteBG": "Бледолилава руда, металът не може да се докаже",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 139,
@@ -1689,7 +2148,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 140,
@@ -1701,7 +2163,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 141,
@@ -1713,7 +2178,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 142,
@@ -1725,7 +2193,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 143,
@@ -1737,7 +2208,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 144,
@@ -1749,7 +2223,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 145,
@@ -1761,7 +2238,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 146,
@@ -1773,7 +2253,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A5_19.png",
-      "noteBG": "Лилав кристал, а истинският voidglass е тъмен"
+      "noteBG": "Лилав кристал, а истинският voidglass е тъмен",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 147,
@@ -1785,7 +2268,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 148,
@@ -1797,7 +2283,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_08.png",
-      "noteBG": "Кафяво бронзово кюлче"
+      "noteBG": "Кафяво бронзово кюлче",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 149,
@@ -1809,7 +2298,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_07.png",
-      "noteBG": "Медно кюлче"
+      "noteBG": "Медно кюлче",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_visual_fallback_candidate"
     },
     {
       "number": 150,
@@ -1821,7 +2313,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 151,
@@ -1833,7 +2328,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 152,
@@ -1845,7 +2343,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 153,
@@ -1857,7 +2358,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_13.png",
-      "noteBG": "Син слитък, материалът е неизвестен"
+      "noteBG": "Син слитък, материалът е неизвестен",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 154,
@@ -1869,7 +2373,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 155,
@@ -1881,7 +2388,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_10.png",
-      "noteBG": "Златно кюлче"
+      "noteBG": "Златно кюлче",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_visual_fallback_candidate"
     },
     {
       "number": 156,
@@ -1893,7 +2403,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_09.png",
-      "noteBG": "Сребристо метално кюлче"
+      "noteBG": "Сребристо метално кюлче",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 157,
@@ -1905,7 +2418,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_11.png",
-      "noteBG": "Тъмносиво кюлче"
+      "noteBG": "Тъмносиво кюлче",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 158,
@@ -1917,7 +2433,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 159,
@@ -1929,7 +2448,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 160,
@@ -1941,7 +2463,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_12.png",
-      "noteBG": "Син кристален слитък, материалът е неизвестен"
+      "noteBG": "Син кристален слитък, материалът е неизвестен",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 161,
@@ -1953,7 +2478,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 162,
@@ -1965,7 +2493,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 163,
@@ -1977,7 +2508,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 164,
@@ -1989,7 +2523,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 165,
@@ -2001,7 +2538,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 166,
@@ -2013,7 +2553,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 167,
@@ -2025,7 +2568,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A4_04.png",
-      "noteBG": "Разклонен лечебен корен"
+      "noteBG": "Разклонен лечебен корен",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 168,
@@ -2037,7 +2583,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A4_12.png",
-      "noteBG": "Мъхесто кълбо, но е зелено вместо синьо"
+      "noteBG": "Мъхесто кълбо, но е зелено вместо синьо",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 169,
@@ -2049,7 +2598,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A3_02.png",
-      "noteBG": "Зелена билка, която би могла да е мента"
+      "noteBG": "Зелена билка, която би могла да е мента",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 170,
@@ -2061,7 +2613,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A3_12.png",
-      "noteBG": "Розово-червени плодчета"
+      "noteBG": "Розово-червени плодчета",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 171,
@@ -2073,7 +2628,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A4_22.png",
-      "noteBG": "Сноп суха тръстика вместо един стрък"
+      "noteBG": "Сноп суха тръстика вместо един стрък",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 172,
@@ -2085,7 +2643,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A3_07.png",
-      "noteBG": "Широколистна лечебна билка"
+      "noteBG": "Широколистна лечебна билка",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 173,
@@ -2097,7 +2658,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 174,
@@ -2109,7 +2673,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 175,
@@ -2121,7 +2688,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 176,
@@ -2133,7 +2703,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A4_17.png",
-      "noteBG": "Оранжево-червени корени"
+      "noteBG": "Оранжево-червени корени",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 177,
@@ -2145,7 +2718,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A5_06.png",
-      "noteBG": "Бели гранули или прах"
+      "noteBG": "Бели гранули или прах",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 178,
@@ -2157,7 +2733,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 179,
@@ -2169,7 +2748,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A3_04.png",
-      "noteBG": "Слънчево жълто цвете"
+      "noteBG": "Слънчево жълто цвете",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 180,
@@ -2181,7 +2763,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 181,
@@ -2193,7 +2778,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A5_21.png",
-      "noteBG": "Кехлибарена полупрозрачна форма"
+      "noteBG": "Кехлибарена полупрозрачна форма",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 182,
@@ -2205,7 +2793,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 183,
@@ -2217,7 +2808,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 184,
@@ -2229,7 +2823,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A3_05.png",
-      "noteBG": "Лилави цветове, но не ясно камбановидни"
+      "noteBG": "Лилави цветове, но не ясно камбановидни",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 185,
@@ -2241,7 +2838,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 186,
@@ -2253,7 +2853,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 187,
@@ -2265,7 +2868,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A3_17.png",
-      "noteBG": "Червена гъба"
+      "noteBG": "Червена гъба",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 188,
@@ -2277,7 +2883,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 189,
@@ -2289,7 +2898,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A3_08.png",
-      "noteBG": "Сини светлеещи гъби"
+      "noteBG": "Сини светлеещи гъби",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_review_candidate"
     },
     {
       "number": 190,
@@ -2301,7 +2913,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 191,
@@ -2313,7 +2928,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A4_09.png",
-      "noteBG": "Червена семенна шушулка"
+      "noteBG": "Червена семенна шушулка",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 192,
@@ -2325,7 +2943,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 193,
@@ -2337,7 +2958,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A3_20.png",
-      "noteBG": "Малки сини цветчета"
+      "noteBG": "Малки сини цветчета",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 194,
@@ -2349,7 +2973,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 195,
@@ -2361,7 +2988,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A3_06.png",
-      "noteBG": "Сини цветове"
+      "noteBG": "Сини цветове",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 196,
@@ -2373,7 +3003,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 197,
@@ -2385,7 +3018,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 198,
@@ -2397,7 +3033,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 199,
@@ -2409,7 +3048,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A3_21.png",
-      "noteBG": "Ситни розови цветове"
+      "noteBG": "Ситни розови цветове",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 200,
@@ -2421,7 +3063,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 201,
@@ -2433,7 +3078,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 202,
@@ -2445,7 +3093,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 203,
@@ -2457,7 +3108,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A3_19.png",
-      "noteBG": "Лилаво звездовидно цвете"
+      "noteBG": "Лилаво звездовидно цвете",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 204,
@@ -2469,7 +3123,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 205,
@@ -2481,7 +3138,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 206,
@@ -2493,7 +3153,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 207,
@@ -2505,7 +3168,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/blacksmith_B5_15.png",
-      "noteBG": "Обработена кожа"
+      "noteBG": "Обработена кожа",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_visual_fallback_candidate"
     },
     {
       "number": 208,
@@ -2517,7 +3183,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 209,
@@ -2529,7 +3198,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 210,
@@ -2541,7 +3213,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 211,
@@ -2553,7 +3228,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 212,
@@ -2565,7 +3243,10 @@
       "method": "visual_candidate",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "raw_cells/alchemist_A4_13.png",
-      "noteBG": "Плоска люспеста форма с неясен материал"
+      "noteBG": "Плоска люспеста форма с неясен материал",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "atlas_low_confidence_proposal"
     },
     {
       "number": 213,
@@ -2577,7 +3258,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 214,
@@ -2589,7 +3273,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 215,
@@ -2601,7 +3288,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 216,
@@ -2613,7 +3303,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 217,
@@ -2625,7 +3318,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 218,
@@ -2637,7 +3333,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 219,
@@ -2649,7 +3348,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 220,
@@ -2661,7 +3363,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 221,
@@ -2673,7 +3378,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 222,
@@ -2685,7 +3393,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 223,
@@ -2697,7 +3408,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     },
     {
       "number": 224,
@@ -2709,7 +3423,10 @@
       "method": "no_matching_image",
       "reviewStatus": "NEEDS_VISUAL_APPROVAL",
       "sourceCrop": "",
-      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал."
+      "noteBG": "Няма разпознаваем надежден арт от борда. Нужен е нов или друг оригинал.",
+      "separateOriginalAlreadyAvailable": "",
+      "separateOriginalFile": "",
+      "preferredSource": "missing"
     }
   ],
   "unallocatedBoardCodes": [
