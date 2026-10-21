@@ -83,12 +83,12 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const db=context.game.settings.get('gathering-crafting','database');
   assert.equal(db.catalogVersion,10);
   assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
-  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.3');
+  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.4');
   assert.ok(db.materials.find(m=>m.id==='iron-ore').img.endsWith('/icons/handpainted/iron-ore.webp'));
   assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
   assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
   assert.equal(artworkFor(db.recipes.find(r=>r.id==='supreme-healing-potion')),
-    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.3');
+    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.4');
   await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,44,'sync must not duplicate entries');
   const oldIconItem=packs.get('world.gc-ores-metals').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='iron-ore');
   oldIconItem.img='modules/legacy-content/images/iron-ore.webp';
