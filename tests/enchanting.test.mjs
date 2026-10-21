@@ -1,13 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,reducedDays,lessonDays,enchantById,targetKind,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost} from '../scripts/enchanting.mjs';
+import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,reducedDays,lessonDays,enchantById,targetKind,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost,sortEnchantments,knowsEnchant} from '../scripts/enchanting.mjs';
 import {effectChanges} from '../scripts/enchanting-ui.mjs';
 
 test('exact weapon and armor enchantment catalog',()=>{
- assert.equal(ENCHANTMENTS.length,85);
- assert.equal(ENCHANTMENTS.filter(e=>e.kind==='weapon').length,41);
+ assert.equal(ENCHANTMENTS.length,93);
+ assert.equal(ENCHANTMENTS.filter(e=>e.kind==='weapon').length,49);
  assert.equal(ENCHANTMENTS.filter(e=>e.kind==='armor').length,44);
- assert.equal(new Set(ENCHANTMENTS.map(e=>e.id)).size,85);
+ assert.equal(new Set(ENCHANTMENTS.map(e=>e.id)).size,93);
  assert.equal(ENCHANTMENTS.find(e=>e.id==='weapon-spell-channel').cost,125);
  assert.deepEqual([enchantById('weapon-arcane-infusion').cost,enchantById('weapon-arcane-infusion').days],[250,4]);
  assert.deepEqual([enchantById('weapon-greater-arcane-infusion').cost,enchantById('weapon-greater-arcane-infusion').days],[1000,7]);
@@ -102,4 +102,37 @@ test('shorter crafting and research schedules leave market values unchanged',()=
   assert.equal(lessonDays(enchantById('weapon-arcane-infusion')),2);
   assert.equal(enchantById('weapon-arcane-infusion').cost,250);
   assert.equal(enchantById('weapon-greater-arcane-infusion').cost,1000);
+});
+
+test('fixed elemental formulas replace global picker and sort by rank',()=>{
+ const fixed=ENCHANTMENTS.filter(e=>!!e.fixedElement);
+ assert.equal(fixed.length,10);
+ assert.equal(fixed.filter(e=>e.elementDice==='1d4').length,5);
+ assert.equal(fixed.filter(e=>e.elementDice==='1d6').length,5);
+ assert.equal(ENCHANTMENTS.some(e=>e.id==='weapon-elemental-binding'),false);
+ assert.equal(ENCHANTMENTS.some(e=>e.id==='weapon-greater-elemental-binding'),false);
+ assert.equal(new Set(fixed.map(e=>e.id)).size,10);
+ for(const e of fixed){
+  assert.ok(['Fire','Cold','Lightning','Acid','Thunder'].includes(e.fixedElement));
+  assert.ok(e.name.includes(e.fixedElement));
+  assert.equal(displayEnchantEffect(e),'Adds '+e.elementDice+' '+e.fixedElement+' damage on weapon hits.');
+  assert.equal(displayEnchantEffect(e,'Fire'),'Adds '+e.elementDice+' '+e.fixedElement+' damage on weapon hits.');
+ }
+ const sorted=sortEnchantments(ENCHANTMENTS);
+ assert.ok(sorted.every((e,i)=>i===0||sorted[i-1].rank<=e.rank));
+ assert.deepEqual(sortEnchantments([enchantById('weapon-astral-sever'),enchantById('weapon-spell-channel')]).map(x=>x.rank),[1,5]);
+});
+test('legacy learned formulas and existing item enchantments survive upgrade',()=>{
+ const legacy=enchantById('weapon-elemental-binding');
+ const legacyGreater=enchantById('weapon-greater-elemental-binding');
+ assert.ok(legacy);assert.ok(legacyGreater);
+ assert.equal(displayEnchantEffect(legacy,'Cold'),'Adds 1d4 Cold damage on weapon hits.');
+ assert.equal(displayEnchantEffect(legacyGreater,'Thunder'),'Adds 1d6 Thunder damage on weapon hits.');
+ const veteran={getFlag:()=>({rank:5,known:['weapon-elemental-binding','weapon-greater-elemental-binding']})};
+ for(const e of ENCHANTMENTS.filter(x=>x.fixedElement))assert.equal(learningGate(veteran,e),'');
+ assert.equal(knowsEnchant(['weapon-elemental-binding'],enchantById('weapon-elemental-binding-acid')),true);
+ assert.equal(knowsEnchant([],enchantById('weapon-elemental-binding-acid')),false);
+ assert.equal(usedSlots([{id:'weapon-elemental-binding',element:'Cold'}]),1);
+ const longsword={type:'weapon',name:'Longsword',system:{type:{value:'martialM',baseItem:'longsword'},rarity:'very rare'},getFlag:()=>null};
+ assert.equal(canApplyEnchant(longsword,enchantById('weapon-elemental-binding-fire'),[{id:'weapon-elemental-binding',element:'Cold'}]),false);
 });
