@@ -445,7 +445,7 @@ function launcher(html,selector,actor){const root=html instanceof HTMLElement?ht
   const button=document.createElement('button');button.type='button';button.className='gc-launcher';button.title='Gathering & Crafting';button.innerHTML=`${icon('fa-hammer')} <span>Gathering & Crafting</span>`;button.addEventListener('click',e=>{e.preventDefault();open(actor);});parent.append(button);
   // Optional compact power controls inside D&D5e character-sheet headers.
   if(actor&&!parent.querySelector('.gc-sheet-powers')){
-    const powers=(actor.items||[]).flatMap(item=>(item.getFlag?.(ID,'enchantments')||[]).flatMap(applied=>{
+    const powers=Array.from(actor.items?.contents||actor.items||[]).flatMap(item=>(item.getFlag?.(ID,'enchantments')||[]).flatMap(applied=>{
       const enchant=enchantById(applied.id);
       return enchant?.power?[{item,enchant,spent:Number(item.getFlag?.(ID,'enchantmentUses')?.[applied.id]||0)}]:[];
     }));
