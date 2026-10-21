@@ -6,7 +6,7 @@ Prepared on 2026-10-21 for **Foundry VTT 14 / dnd5e 5.3.3**, based on the publis
 
 The complete archive `gathering-crafting-v1.1.0-preview-update.zip` was delivered in the ChatGPT conversation. Its precise SHA-256 is:
 
-`65d3f29c0592fd579d006cf9ecd1cfb235323338ca4a4f33f5d47976d7c8c8a2`
+`0097186da260265076b448ebd78198ed3dcaf30eb4e75ce928acc6de1da1cefc`
 
 The archive itself is **not hosted on GitHub**, because this connector cannot transfer local binary WebP files; do not invent a public download link or change module.json's published download URL.
 
@@ -19,7 +19,7 @@ The archive itself is **not hosted on GitHub**, because this connector cannot tr
 
 ## Installation
 
-Close Foundry, back up the full Foundry Data folder, extract the ZIP to a separate directory and run in PowerShell:
+Close Foundry, back up the full Foundry Data folder and extract the ZIP to a separate directory. **On Windows, you can run `INSTALL-WINDOWS.cmd`** (requires Python 3), which performs dry-run validation and asks before applying. Alternatively, run in PowerShell:
 
 ```powershell
 py apply-update.py --module "D:\Foundry\FoundryVTT\Data\modules\gathering-crafting"
