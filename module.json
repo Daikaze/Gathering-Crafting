@@ -1,8 +1,8 @@
 {
   "id": "gathering-crafting",
   "title": "Gathering & Crafting",
-  "description": "Gathering & Crafting v1.3.1 for Foundry V14 / dnd5e 5.3.3: GM-only check DCs, shorter Enchanting time, gold as market price only, 85 learnable enchantments, item compatibility, Alchemy, Blacksmithing, Gathering, and 224 bundled item icons.",
-  "version": "1.3.1",
+  "description": "Gathering & Crafting v1.3.2 for Foundry V14 / dnd5e 5.3.3: 93 rank-sorted enchantments with separate elemental types, scroll-preserving Enchanting filters, GM-only DCs, shortened crafting times and price-only market values, Alchemy, Blacksmithing, Gathering and 224 bundled icons.",
+  "version": "1.3.2",
   "authors": [
     {
       "name": "Averis Workshop"
@@ -34,5 +34,5 @@
   ],
   "url": "https://github.com/Daikaze/Gathering-Crafting",
   "manifest": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/module.json",
-  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v1.3.1.zip"
+  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v1.3.2.zip"
 }
