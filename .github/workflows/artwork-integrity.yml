@@ -1,0 +1,38 @@
+name: Individual artwork integrity
+
+on:
+  push:
+    branches:
+      - 'artwork/**'
+  pull_request:
+    paths:
+      - 'artwork/**'
+      - 'icons/original/**'
+      - 'data/catalog.json'
+      - 'scripts/catalog.js'
+      - '.github/workflows/artwork-integrity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  artwork-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Verify production manifest and existing artwork
+        run: node artwork/verify.cjs
+      - name: Dry-run catalogue migration (must not change sources)
+        run: node artwork/sync-catalog-art.cjs --dry-run
+      - name: Check no unintended modifications
+        run: |
+          if ! git diff --quiet -- data/catalog.json scripts/catalog.js module.json; then
+            echo "::error::Art-only checks modified a release file"
+            exit 1
+          fi
+      - name: Report readiness without publishing
+        run: |
+          echo "This workflow does not publish an incomplete release."
+          echo "To publish, first pass: node artwork/verify.cjs --complete"
