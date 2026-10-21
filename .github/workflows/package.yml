@@ -25,7 +25,7 @@ jobs:
         run: |
           node tests/artwork.cjs
           node tests/smoke.cjs
-          node --test tests/tool-rules.test.mjs
+          node --test tests/tool-rules.test.mjs tests/enchanting.test.mjs
           node artwork/check_preview_payload.cjs
       - name: Package Foundry module
         run: |
