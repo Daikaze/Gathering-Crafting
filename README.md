@@ -1,4 +1,4 @@
-# Gathering & Crafting v1.3.4 — The Averis Workshop
+# Gathering & Crafting v1.3.5 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -34,6 +34,15 @@ For players there are five straightforward tabs: **Gather / Alchemy / Blacksmith
 - **Ingots, armor components, jewelry and crafting hardware** are real `loot` Items, not fake weapons or incomplete armor pieces with misleading combat bonuses.
 
 This release passes automated asset/inventory regression checks, but is **not** an assertion that every advanced Active Effect has been validated in a live dnd5e 5.3.3 server. The mock tests exercise the inventory and data path; a live-world test is still recommended.
+
+## v1.3.5 — Physical tools only; proficiency gives Advantage
+
+- **A physical tool item is the only skill/tool prerequisite** for Gathering, Alchemy, Blacksmithing, and Enchanting. Characters without tool proficiency can work normally; the matching **tool proficiency grants Advantage (2d20kh)** rather than unlocking access. D&D5e proficiency bonuses in existing roll calculations are preserved where applicable.
+- **Foundry V14 inventory detection fixed:** item names, normal and curly apostrophes, +1 variants, `system.type.baseItem`, custom `system.identifier`, quantity, and `gathering-crafting.toolKey` flags are recognized for stock and custom items. A listed proficiency alone does not count as owning a tool.
+- **Enchanting no longer requires enchanter rank training or separately learning formula recipes.** Enchantment tiers still determine item rarity eligibility, equipment category restrictions, and available slots; existing learned ranks/formulas are retained as saved data but no longer block making enchantments.
+- Enchanting requires physical **Jeweler's Tools** or **Enchanter's Tools**. New Enchanting jobs make an Arcana check at completion: normal roll without matching tool proficiency; Advantage when proficient. On failure, the job is delayed one world day and can be retried without losing the Item. Existing unfinished jobs from prior versions retain their former completion rules.
+- The actual target **DC remains GM-only** (public chat shows roll totals and outcomes; GMs get private DC checks). No automatic gold deduction; displayed gp remains market/service value.
+- Updated interface shows detected tool and whether the character has Advantage, instead of the old mandatory study and rank training controls.
 
 ## v1.3.4 — Crafting button beside Affinity
 
