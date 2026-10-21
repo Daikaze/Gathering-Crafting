@@ -15,16 +15,23 @@ export const TOOL_SPECS=Object.freeze({
   alchemist:{label:"Alchemist's Supplies",proficiency:"alchemist",proficiencyLabel:"Alchemist's Supplies",ability:"int",
     aliases:["alchemist's supplies","alchemists supplies","alchemy kit","алхимични инструменти"]},
   woodcarver:{label:"Woodcarver's Tools",proficiency:"woodcarver",proficiencyLabel:"Woodcarver's Tools",ability:"wis",
-    aliases:["woodcarver's tools","woodcarvers tools","carving tools","дърводелски инструменти"]}
+    aliases:["woodcarver's tools","woodcarvers tools","carving tools","дърводелски инструменти"]},
+  jeweler:{label:"Jeweler's Tools",proficiency:"jeweler",proficiencyLabel:"Jeweler's Tools",ability:"int",
+    aliases:["jeweler's tools","jewelers tools","jeweller's tools","jewellers tools","jewelry tools","jewellery tools","jeweler tools","jeweller tools","jeweler","jeweller","jewel","jewelry kit","artisan's tools (jeweler)","бижутерски инструменти"]},
+  enchanter:{label:"Enchanter's Tools",proficiency:"enchanter",proficiencyLabel:"Enchanter's Tools",ability:"int",
+    aliases:["enchanter's tools","enchanters tools","enchanter tools","enchanting tools","enchanting kit","enchanter kit","enchanter","enchanting","инструменти за енчантване"]}
 });
 export const PROF_OPTIONS=Object.freeze({
  mason:"Mason's Tools",herb:"Herbalism Kit",leatherworker:"Leatherworker's Tools",
  smith:"Smith's Tools",alchemist:"Alchemist's Supplies",woodcarver:"Woodcarver's Tools",
- jeweler:"Jeweler's Tools",tinker:"Tinker's Tools",pois:"Poisoner's Kit",
+ jeweler:"Jeweler's Tools",enchanter:"Enchanter's Tools",tinker:"Tinker's Tools",pois:"Poisoner's Kit",
  carpenter:"Carpenter's Tools",glassblower:"Glassblower's Tools",thief:"Thieves' Tools"
 });
-const norm=value=>String(value??"").normalize("NFKC").toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
+const norm=value=>String(value??"").normalize("NFKC").toLowerCase()
+ .replace(/[’‘‛´]/g,"'").replace(/\s+/g," ").trim();
 const toNumber=value=>Number.isFinite(Number(value))?Number(value):0;
+const cleanName=value=>norm(value).replace(/^[\s\[\(]*(?:tools?|toolkit|tool set)\s*:\s*/,'')
+ .replace(/\s*(?:\(\+?\d+\)|\+\d+|[-–]\s*(?:fine|masterwork|magical))\s*$/i,'').trim();
 export function requiredForNode(node={},mat={}){
   if(TOOL_SPECS[node.requiredTool])return node.requiredTool;
   if(node.group==="monster"||mat.group==="Monster Drop")return "skinning";
@@ -39,21 +46,40 @@ export function requiredForRecipe(recipe={}){
 export function itemForTool(actor,toolKey){
   const spec=TOOL_SPECS[toolKey];
   if(!spec)return null;
-  return Array.from(actor?.items??[]).find(item=>{
-    const qty=Number(item.system?.quantity??1);
-    if(!Number.isFinite(qty)||qty<=0)return false;
+  const match=new Set([toolKey,spec.proficiency,...spec.aliases].map(cleanName));
+  return Array.from(actor?.items?.contents||actor?.items||[]).find(item=>{
+    const quantity=Number(item.system?.quantity??1);
+    if(!Number.isFinite(quantity)||quantity<=0)return false;
     const flag=item.getFlag?.("gathering-crafting","toolKey")??item.flags?.["gathering-crafting"]?.toolKey;
-    if(flag===toolKey)return true;
-    const base=norm(item.system?.type?.baseItem);
-    if(spec.aliases.some(alias=>base===norm(alias)))return true;
-    const name=norm(item.name);
-    return spec.aliases.some(alias=>name===norm(alias));
+    if(cleanName(flag)===toolKey)return true;
+    const candidates=[
+      item.name,item.system?.type?.baseItem,item.system?.identifier,
+      item.system?.type?.subtype,item.system?.toolType,
+      item.system?.type?.value
+    ].map(cleanName).filter(Boolean);
+    return candidates.some(value=>match.has(value))||
+     candidates.some(value=>spec.aliases.some(alias=>{
+       const short=cleanName(alias);
+       // Accept named tool variants (+1, Masterwork) but not partial
+       // ingredient names such as "Iron Pickaxe Head".
+       return short.length>7&&
+         (value===('masterwork '+short)||value===('fine '+short)||
+          value===('artisan tools ('+short.replace(/'?s tools$/,'')+')'));
+     }));
   })??null;
 }
 export function proficiencyLevel(actor,proficiencyId){
-  const entry=actor?.system?.tools?.[proficiencyId];
-  const val=typeof entry==="object"?entry?.value:entry;
-  return Math.max(0,Math.min(2,toNumber(val)));
+  const id=norm(proficiencyId),alternatives=({
+    jeweler:['jeweler','jewel','jeweller','jewelry'],
+    enchanter:['enchanter','enchanting'],
+    alchemist:['alchemist','alch'],herb:['herb','herbalism'],
+    mason:['mason','masonry'],leatherworker:['leatherworker','leather'],
+    smith:['smith','smithing','blacksmith']
+  })[id]||[id];
+  const tools=actor?.system?.tools||{};
+  const entry=alternatives.map(key=>tools[key]).find(v=>v!==undefined&&v!==null);
+  const value=typeof entry==="object"?entry?.value??entry?.proficient??entry?.proficiency:entry;
+  return Math.max(0,Math.min(2,toNumber(value)));
 }
 export function actorLevel(actor){
   const details=actor?.system?.details??{};
@@ -70,14 +96,14 @@ export function proficiencyBonus(actor){
 }
 export function toolGate(actor,toolKey,proficiencyId=null){
   const spec=TOOL_SPECS[toolKey];
-  if(!spec)return {ok:false,tool:null,error:"Unsupported tool requirement."};
+  if(!spec)return {ok:false,tool:null,error:"Unsupported tool requirement.",advantage:false};
   const tool=itemForTool(actor,toolKey);
-  if(!tool)return {ok:false,tool:null,error:"Requires "+spec.label+" in the character's inventory."};
+  if(!tool)return {ok:false,tool:null,error:"Requires "+spec.label+" in the character's inventory.",advantage:false};
   const prof=proficiencyId||spec.proficiency;
-  if(proficiencyLevel(actor,prof)<1)
-    return {ok:false,tool,error:"Requires proficiency in "+(PROF_OPTIONS[prof]||prof)+" (set it on the D&D5e character sheet)."};
-  return {ok:true,tool,error:"",proficiency:prof};
+  const level=proficiencyLevel(actor,prof);
+  return {ok:true,tool,error:"",proficiency:prof,level,advantage:level>=1};
 }
+export function rollFormula(advantage=false){return advantage?'2d20kh + @bonus':'1d20 + @bonus';}
 export function toolItemBonus(item){
   // An explicit fixed tool/item bonus; no arbitrary formula evaluation.
   const a=toNumber(item?.system?.magicalBonus??item?.system?.bonus??0);
