@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Safe installer for original Gathering & Crafting recipe artwork.
-Usage: python artwork/install_original_art.py --module . --source path/to/overlay.zip
+Usage: python install_original_art.py --module PATH [--source path/to/overlay.zip]
 Only replaces recipe illustrations in a known overlay ZIP; makes backups first.
 """
 import argparse
@@ -52,9 +52,14 @@ def atomic_write(path, data):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--module", required=True, type=Path)
-    ap.add_argument("--source", required=True, type=Path)
+    ap.add_argument("--source", type=Path, default=None)
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
+    if args.source is None:
+        sibling = Path(__file__).resolve().parent / "gathering-crafting-20-art-overlay.zip"
+        args.source = sibling if sibling.is_file() else Path(__file__).resolve().parent
+    if not args.source.exists():
+        ap.error("Overlay source is missing: " + str(args.source))
     root = args.module.resolve()
     try:
         info = json.loads((root / "module.json").read_text(encoding="utf-8-sig"))
@@ -63,7 +68,19 @@ def main():
     if info.get("id") != "gathering-crafting":
         ap.error("Not the Gathering & Crafting module")
     files, shas = {}, set()
-    with zipfile.ZipFile(args.source) as z:
+    class ExtractedBundle:
+        def __init__(self, directory):
+            self.directory = directory.resolve()
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            return False
+        def read(self, filename):
+            target = (self.directory / filename).resolve()
+            if not target.is_relative_to(self.directory):
+                raise ValueError("Unsafe source filename")
+            return target.read_bytes()
+    with (zipfile.ZipFile(args.source) if args.source.is_file() else ExtractedBundle(args.source)) as z:
         plan = json.loads(z.read("art-overlay-manifest.json"))
         if plan.get("type") != "gathering-crafting-partial-original-art":
             raise ValueError("Unrecognized overlay ZIP")
