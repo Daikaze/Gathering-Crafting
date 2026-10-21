@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,enchantById,targetKind,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost} from '../scripts/enchanting.mjs';
+import {effectChanges} from '../scripts/enchanting-ui.mjs';
 
 test('exact weapon and armor enchantment catalog',()=>{
  assert.equal(ENCHANTMENTS.length,85);
@@ -78,4 +79,15 @@ test('learnable five-rank enchanting progression and physical tools gating',()=>
  assert.equal(professionOf(actor).rank,2);
  assert.ok(lessonCost(enchantById('weapon-keen-edge'))>0);
  assert.equal(hasTrainingTools({...actor,items:[]}),false);
+});
+
+test('equipped item passive Active Effects use supported D&D5e change paths',()=>{
+ const ward=effectChanges(enchantById('armor-flame-ward'));
+ assert.deepEqual(ward,[{key:'system.traits.dr.value',mode:2,value:'fire',priority:20}]);
+ const stealth=effectChanges(enchantById('armor-shadow-binding'));
+ assert.deepEqual(stealth,[{key:'system.skills.ste.roll.bonus',mode:2,value:'2',priority:20}]);
+ const concentration=effectChanges(enchantById('armor-magewoven-interior'));
+ assert.equal(concentration[0].key,'system.attributes.concentration.roll.bonus');
+ const plain=effectChanges(enchantById('weapon-soul-binding'));
+ assert.equal(plain.length,0);
 });
