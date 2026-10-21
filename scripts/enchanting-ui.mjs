@@ -161,10 +161,12 @@ export async function beginEnchantment(app,id,helpers){
  notify(enchant.name+' started.');
 }
 const effectChanges=enchant=>{
- if(enchant.passive?.skill)return [{key:'system.skills.'+enchant.passive.skill+'.roll.bonus',mode:2,value:String(enchant.passive.bonus),priority:20}];
- if(enchant.passive?.concentration)return [{key:'system.attributes.concentration.roll.bonus',mode:2,value:String(enchant.passive.concentration),priority:20}];
- if(enchant.passive?.save)return [{key:'system.abilities.'+enchant.passive.save+'.save.roll.bonus',mode:2,value:String(enchant.passive.bonus),priority:20}];
- return [];
+ const changes=[];
+ if(enchant.passive?.skill)changes.push({key:'system.skills.'+enchant.passive.skill+'.roll.bonus',mode:2,value:String(enchant.passive.bonus),priority:20});
+ if(enchant.passive?.concentration)changes.push({key:'system.attributes.concentration.roll.bonus',mode:2,value:String(enchant.passive.concentration),priority:20});
+ if(enchant.passive?.save)changes.push({key:'system.abilities.'+enchant.passive.save+'.save.roll.bonus',mode:2,value:String(enchant.passive.bonus),priority:20});
+ if(enchant.resistance)changes.push({key:'system.traits.dr.value',mode:2,value:enchant.resistance,priority:20});
+ return changes;
 };
 export async function finishEnchantment(app,itemId,helpers){
  const {actor,announce,notify}=helpers,item=actor.items.get?.(itemId)||actor.items.find(i=>i.id===itemId);
