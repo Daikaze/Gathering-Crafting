@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Run artwork pipeline regression tests
+        run: node --test artwork/tests/*.test.cjs
       - name: Verify production manifest and existing artwork
         run: node artwork/verify.cjs
       - name: Dry-run catalogue migration (must not change sources)
