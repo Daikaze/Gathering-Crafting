@@ -323,10 +323,10 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   assert.ok(noProfTest);
   actor.system.tools.mason={value:0};
   rollHistory.length=0;
-  await app.gather('old-mine');
+  await app.gather('node-iron-ore');
   assert.equal(rollHistory.at(-1),'1d20 + @bonus');
   actor.system.tools.mason={value:1};
-  await app.gather('old-mine');
+  await app.gather('node-iron-ore');
   assert.equal(rollHistory.at(-1),'2d20kh + @bonus');
   // Player rendering does not show target DCs on any player-facing tab.
   context.game.user.isGM=false;
