@@ -748,6 +748,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-21",
+        "state": "submitted-unverified",
+        "note": "One standalone small RPG-style image job requested. Contact-sheet outputs from other attempts rejected. Not approved or added as a binary WebP. Requires export of individual result and visual QA."
       }
     },
     {
@@ -769,6 +775,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-21",
+        "state": "submitted-unverified",
+        "note": "One standalone small RPG-style image job requested. Contact-sheet outputs from other attempts rejected. Not approved or added as a binary WebP. Requires export of individual result and visual QA."
       }
     },
     {
@@ -958,6 +970,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-21",
+        "state": "submitted-unverified",
+        "note": "One standalone small RPG-style image job requested. Contact-sheet outputs from other attempts rejected. Not approved or added as a binary WebP. Requires export of individual result and visual QA."
       }
     },
     {
@@ -979,6 +997,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-21",
+        "state": "submitted-unverified",
+        "note": "One standalone small RPG-style image job requested. Contact-sheet outputs from other attempts rejected. Not approved or added as a binary WebP. Requires export of individual result and visual QA."
       }
     },
     {
@@ -1063,6 +1087,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-21",
+        "state": "submitted-unverified",
+        "note": "One standalone small RPG-style image job requested. Contact-sheet outputs from other attempts rejected. Not approved or added as a binary WebP. Requires export of individual result and visual QA."
       }
     },
     {
@@ -1126,6 +1156,12 @@
         "visuallyDistinct": false,
         "correctItem": false,
         "approved": false
+      },
+      "generationRequest": {
+        "provider": "Canva",
+        "date": "2026-10-21",
+        "state": "submitted-unverified",
+        "note": "One standalone small RPG-style image job requested. Contact-sheet outputs from other attempts rejected. Not approved or added as a binary WebP. Requires export of individual result and visual QA."
       }
     },
     {
@@ -1198,9 +1234,9 @@
       },
       "generationRequest": {
         "provider": "Canva",
-        "date": "2026-10-20",
-        "state": "submitted",
-        "note": "Generated image must still be reviewed, downloaded and committed before changing status from not-generated."
+        "date": "2026-10-21",
+        "state": "submitted-unverified",
+        "note": "One standalone small RPG-style image job requested. Contact-sheet outputs from other attempts rejected. Not approved or added as a binary WebP. Requires export of individual result and visual QA."
       }
     },
     {
@@ -1225,9 +1261,9 @@
       },
       "generationRequest": {
         "provider": "Canva",
-        "date": "2026-10-20",
-        "state": "submitted",
-        "note": "Generated image must still be reviewed, downloaded and committed before changing status from not-generated."
+        "date": "2026-10-21",
+        "state": "submitted-unverified",
+        "note": "One standalone small RPG-style image job requested. Contact-sheet outputs from other attempts rejected. Not approved or added as a binary WebP. Requires export of individual result and visual QA."
       }
     },
     {
@@ -1252,9 +1288,9 @@
       },
       "generationRequest": {
         "provider": "Canva",
-        "date": "2026-10-20",
-        "state": "submitted",
-        "note": "Generated image must still be reviewed, downloaded and committed before changing status from not-generated."
+        "date": "2026-10-21",
+        "state": "submitted-unverified",
+        "note": "One standalone small RPG-style image job requested. Contact-sheet outputs from other attempts rejected. Not approved or added as a binary WebP. Requires export of individual result and visual QA."
       }
     },
     {
@@ -1279,9 +1315,9 @@
       },
       "generationRequest": {
         "provider": "Canva",
-        "date": "2026-10-20",
-        "state": "submitted",
-        "note": "Generated image must still be reviewed, downloaded and committed before changing status from not-generated."
+        "date": "2026-10-21",
+        "state": "submitted-unverified",
+        "note": "One standalone small RPG-style image job requested. Contact-sheet outputs from other attempts rejected. Not approved or added as a binary WebP. Requires export of individual result and visual QA."
       }
     },
     {
