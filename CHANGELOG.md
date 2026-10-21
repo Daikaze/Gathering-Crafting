@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.5 — Inventory tools required; proficiency optional with Advantage
+
+- Removed mandatory tool-proficiency gates from Gathering, Alchemy, Blacksmithing and Enchanting.
+- Matching tool proficiency confers Advantage on checks; an actual physical tool item remains required.
+- Fixed dnd5e tool detection for names, curly apostrophes, +1 variants, baseItem, identifier and custom toolKey flags.
+- Removed compulsory Enchanting rank training and individual formula research; retained tiers for item rarity and slot restrictions.
+- New Enchanting jobs make a completion Arcana check, using Advantage when proficient; a failed check extends work by one world day. Older pending jobs retain their completion rules.
+- Updated tool display and expanded regression tests. GM-only DCs and reference-only market prices are unchanged.
+
 ## 1.3.4 — Character-sheet Crafting launcher after Affinity
 
 - Moved the character-sheet Gathering & Crafting action from the full-width sheet header into the primary navigation row directly after **Affinity**, displaying the shorter label **Crafting**.
