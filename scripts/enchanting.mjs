@@ -569,30 +569,77 @@ export const knowsEnchant=(known,enchant)=>Array.isArray(known)&&(
  (enchant.fixedElement&&known.includes(enchant.id.replace(/-(fire|cold|lightning|acid|thunder)$/,'')))
 );
 const normal=s=>String(s||'').toLowerCase();
+/** Visible names are intentionally the same tags used by the server-side checks. */
+export const EQUIPMENT_LABELS=Object.freeze({
+ melee:'Melee Weapons',ranged:'Ranged Weapons',
+ sword:'Swords',dagger:'Daggers',axe:'Axes',hammer:'Hammers',mace:'Maces',
+ spear:'Spears',polearm:'Polearms',bow:'Bows',crossbow:'Crossbows',
+ staff:'Staves',blade:'Bladed Weapons',piercing:'Piercing Weapons',
+ bludgeoning:'Bludgeoning Weapons','heavy-weapon':'Heavy Weapons',
+ light:'Light Armor',medium:'Medium Armor',heavy:'Heavy Armor',
+ robe:'Robes',shield:'Shields',boots:'Boots',cloak:'Cloaks',
+ gloves:'Gloves',helm:'Helmets / Headwear',ring:'Rings',
+ amulet:'Amulets / Necklaces',belt:'Belts'
+});
+export const enchantTargetLabels=enchant=>(enchant?.allowed||[]).map(tag=>EQUIPMENT_LABELS[tag]||tag);
 export function itemTags(item){
  if(!item)return [];
- const s=item.system||{},type=normal(s.type?.value||s.type),base=normal(s.type?.baseItem||s.identifier||item.name),damage=normal((s.damage?.base?.types||[]).join?.(' ')||'');
+ const system=item.system||{},type=normal(system.type?.value||system.type),
+  subtype=normal(system.type?.subtype||''),
+  base=normal([system.type?.baseItem,system.identifier,item.name].filter(Boolean).join(' ')),
+  damageTypes=system.damage?.base?.types;
+ const damage=normal(Array.isArray(damageTypes)?damageTypes.join(' '):damageTypes||'');
  const tags=[];
  if(item.type==='weapon'){
   tags.push('weapon');
-  const ranged=/martialr|simpler|ranged/.test(type)||/\b(bow|crossbow|sling|blowgun|dart)\b/.test(base);
+  const ranged=/^(martialr|simpler|ranged|firearm)$/.test(type)||
+    /\b(longbow|shortbow|crossbow|sling|blowgun|dart|firearm|musket|pistol)\b/.test(base);
   tags.push(ranged?'ranged':'melee');
-  if(/\b(longbow|shortbow|bow)\b/.test(base))tags.push('bow');
-  if(/crossbow/.test(base))tags.push('crossbow');
-  if(/\b(staff|quarterstaff|rod|wand)\b/.test(base))tags.push('staff');
-  if(/\b(sword|dagger|scimitar|rapier|saber|blade|knife|greatsword|shortsword|longsword)\b/.test(base))tags.push('blade');
-  if(/\b(spear|trident|pike|halberd|glaive|lance)\b/.test(base))tags.push('polearm');
-  if(/\b(hammer|mace|club|flail|maul|staff|morningstar)\b/.test(base)||damage.includes('bludgeoning'))tags.push('bludgeoning');
-  if(damage.includes('piercing')||/\b(spear|rapier|dagger|arrow|bow)\b/.test(base))tags.push('piercing');
-  const props=s.properties instanceof Set?[...s.properties]:Array.isArray(s.properties)?s.properties:Object.entries(s.properties||{}).filter(([,v])=>v).map(([k])=>k);
+  if(/\b(longbow|shortbow|bows?)\b/.test(base)&&!/\bcrossbow\b/.test(base))tags.push('bow');
+  if(/\bcrossbows?\b/.test(base))tags.push('crossbow');
+  if(/\b(quarterstaff|staff|staves|rod|wand)\b/.test(base))tags.push('staff');
+  if(/\b(longsword|shortsword|greatsword|sword|scimitar|rapier|saber|sabre|falchion|katana)\b/.test(base))tags.push('sword','blade');
+  if(/\b(dagger|knife|stiletto|kukri)\b/.test(base))tags.push('dagger','blade');
+  if(/\b(battleaxe|handaxe|greataxe|hatchet|axe)\b/.test(base))tags.push('axe','blade');
+  if(/\b(warhammer|light hammer|hammer|maul)\b/.test(base))tags.push('hammer','bludgeoning');
+  if(/\b(mace|morningstar|club|flail)\b/.test(base))tags.push('mace','bludgeoning');
+  if(/\b(spear|javelin|trident|pike|lance)\b/.test(base))tags.push('spear','polearm');
+  if(/\b(halberd|glaive|polearm)\b/.test(base))tags.push('polearm');
+  if(damage.includes('bludgeoning'))tags.push('bludgeoning');
+  if(damage.includes('piercing')||tags.includes('dagger')||tags.includes('spear')||tags.includes('bow')||tags.includes('crossbow'))tags.push('piercing');
+  const prop=system.properties;
+  const props=prop instanceof Set?[...prop]:Array.isArray(prop)?prop:Object.entries(prop||{}).filter(([,v])=>v).map(([k])=>k);
   if(props.includes('hvy'))tags.push('heavy-weapon');
  }else if(item.type==='equipment'){
-  if(type==='shield'||normal(s.armor?.type)==='shield')tags.push('shield');
-  else if(['light','medium','heavy'].includes(type)||['light','medium','heavy'].includes(normal(s.armor?.type)))tags.push('armor',type||normal(s.armor?.type));
+  // dnd5e 5.3 stores the armor category in system.type.value;
+  // clothing/wondrous Items often have no meaningful subcategory.
+  if(type==='shield'||normal(system.armor?.type)==='shield')tags.push('shield');
+  else if(['light','medium','heavy'].includes(type))tags.push('armor',type);
+  else if(['light','medium','heavy'].includes(normal(system.armor?.type)))tags.push('armor',normal(system.armor.type));
+  else {
+   // Do not treat a non-equipment loot/consumable called "Robe" as enchantable.
+   // A genuine equipment Item may advertise its slot through subtype or name.
+   const descriptor=base+' '+subtype;
+   if(/\b(robes?|vestments?|tunic)\b/.test(descriptor))tags.push('robe');
+   else if(/\b(boots?|shoes?|slippers?|greaves)\b/.test(descriptor))tags.push('boots');
+   else if(/\b(cloak|cape|mantle)\b/.test(descriptor))tags.push('cloak');
+   else if(/\b(gloves?|gauntlets?|handwraps?)\b/.test(descriptor))tags.push('gloves');
+   else if(/\b(helmet|helm|headband|circlet|hood|hat)\b/.test(descriptor))tags.push('helm');
+   else if(/\b(rings?|bands?)\b/.test(descriptor))tags.push('ring');
+   else if(/\b(amulet|necklace|pendant|medallion|talisman)\b/.test(descriptor))tags.push('amulet');
+   else if(/\b(belt|girdle|sash)\b/.test(descriptor))tags.push('belt');
+  }
  }
  return [...new Set(tags)];
 }
-export function targetKind(item){const tags=itemTags(item);return tags.includes('weapon')?'weapon':tags.includes('armor')||tags.includes('shield')?'armor':null;}
+export function targetKind(item){
+ const tags=itemTags(item);
+ return tags.includes('weapon')?'weapon':tags.length?'armor':null;
+}
+export const itemClassification=item=>itemTags(item)
+ .filter(t=>t!=='weapon'&&t!=='armor'&&t!=='melee'&&t!=='ranged')
+ .map(t=>EQUIPMENT_LABELS[t]||t)
+ .join(' / ')||'Unknown Equipment';
 export function capacity(item){
  const explicit=item?.getFlag?.('gathering-crafting','enchantSlots');
  if(Number.isInteger(explicit)&&explicit>=0&&explicit<=6)return explicit;
@@ -606,7 +653,7 @@ export function maxRarityRank(item){
 export function explainCompatibility(item,enchant,completed=[]){
  if(!enchant||targetKind(item)!==enchant.kind)return 'Wrong item type';
  const tags=itemTags(item);
- if(!enchant.allowed.some(t=>tags.includes(t)))return 'Requires: '+enchant.allowed.join(' / ');
+ if(!enchant.allowed.some(t=>tags.includes(t)))return 'Only for: '+enchantTargetLabels(enchant).join(' / ');
  if(item?.getFlag?.('gathering-crafting','enchantmentPending'))return 'Already enchanting';
  const existing=(completed||[]).map(v=>enchantById(v.id)).filter(Boolean);
  if(existing.some(e=>e.id===enchant.id))return 'Already applied';
