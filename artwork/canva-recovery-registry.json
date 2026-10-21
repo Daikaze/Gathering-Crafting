@@ -1,0 +1,212 @@
+{
+  "schema": 1,
+  "date": "2026-10-21",
+  "source": "Canva root-folder image inventory via installed account connector",
+  "warning": "These are 11 full-resolution Canva media records, NOT 11 exported files. No image is assigned or approved without inspection and downloading original image bytes.",
+  "counts": {
+    "originalFilesInRepository": 0,
+    "verifiedSeparateExternalPaintings": 20,
+    "canvaMediaCandidates": 11,
+    "approvedInRepository": 0,
+    "required": 224
+  },
+  "assets": [
+    {
+      "mediaId": "MAHYnK0zxUk",
+      "createdAt": 1792558209,
+      "width": 1264,
+      "height": 1264,
+      "smartTags": [
+        "steel",
+        "metal",
+        "rusty",
+        "screw",
+        "construction"
+      ],
+      "probableItemId": "recipe:iron-nails",
+      "identification": "tentative-from-prompt-and-tags",
+      "status": "needs-original-export-and-visual-review",
+      "originalExportPath": null
+    },
+    {
+      "mediaId": "MAHYldRVH3c",
+      "createdAt": 1792532319,
+      "width": 1264,
+      "height": 1264,
+      "smartTags": [
+        "food"
+      ],
+      "probableItemId": null,
+      "identification": "unidentified",
+      "status": "needs-original-export-and-visual-review",
+      "originalExportPath": null
+    },
+    {
+      "mediaId": "MAHYlZVVxgc",
+      "createdAt": 1792531012,
+      "width": 1264,
+      "height": 1264,
+      "smartTags": [
+        "horn",
+        "smoke",
+        "dark"
+      ],
+      "probableItemId": null,
+      "identification": "unidentified",
+      "status": "needs-original-export-and-visual-review",
+      "originalExportPath": null
+    },
+    {
+      "mediaId": "MAHYlcWnHFk",
+      "createdAt": 1792530998,
+      "width": 1264,
+      "height": 1264,
+      "smartTags": [
+        "fruit",
+        "leaf",
+        "green",
+        "fresh",
+        "spinach",
+        "food",
+        "health",
+        "vegetable",
+        "isolated",
+        "nature"
+      ],
+      "probableItemId": null,
+      "identification": "unidentified",
+      "status": "needs-original-export-and-visual-review",
+      "originalExportPath": null
+    },
+    {
+      "mediaId": "MAHYlewAE7w",
+      "createdAt": 1792530998,
+      "width": 1264,
+      "height": 1264,
+      "smartTags": [
+        "green",
+        "food"
+      ],
+      "probableItemId": null,
+      "identification": "unidentified",
+      "status": "needs-original-export-and-visual-review",
+      "originalExportPath": null
+    },
+    {
+      "mediaId": "MAHYlfuImA4",
+      "createdAt": 1792530947,
+      "width": 1264,
+      "height": 1264,
+      "smartTags": [
+        "watercolor",
+        "drawing"
+      ],
+      "probableItemId": null,
+      "identification": "unidentified",
+      "status": "needs-original-export-and-visual-review",
+      "originalExportPath": null
+    },
+    {
+      "mediaId": "MAHYlefuayU",
+      "createdAt": 1792530577,
+      "width": 1264,
+      "height": 1264,
+      "smartTags": [
+        "plant",
+        "leaf",
+        "nature",
+        "floral",
+        "food",
+        "fruit"
+      ],
+      "probableItemId": null,
+      "identification": "unidentified",
+      "status": "needs-original-export-and-visual-review",
+      "originalExportPath": null
+    },
+    {
+      "mediaId": "MAHYk3nBI4k",
+      "createdAt": 1792525415,
+      "width": 1264,
+      "height": 1264,
+      "smartTags": [
+        "bottle",
+        "glass",
+        "scent",
+        "fragrance",
+        "eye",
+        "alchemy"
+      ],
+      "probableItemId": null,
+      "identification": "unidentified",
+      "status": "needs-original-export-and-visual-review",
+      "originalExportPath": null
+    },
+    {
+      "mediaId": "MAHYk6VP4gE",
+      "createdAt": 1792525032,
+      "width": 1264,
+      "height": 1264,
+      "smartTags": [
+        "glass",
+        "lamp",
+        "crystal",
+        "bulb",
+        "design"
+      ],
+      "probableItemId": null,
+      "identification": "unidentified",
+      "status": "needs-original-export-and-visual-review",
+      "originalExportPath": null
+    },
+    {
+      "mediaId": "MAHYk7lv8OQ",
+      "createdAt": 1792523567,
+      "width": 1264,
+      "height": 1264,
+      "smartTags": [
+        "sword",
+        "medieval",
+        "blade",
+        "knight",
+        "steel",
+        "metal",
+        "antique",
+        "ancient",
+        "sharp",
+        "battle",
+        "war",
+        "historic",
+        "armor",
+        "fight",
+        "retro"
+      ],
+      "probableItemId": null,
+      "identification": "unidentified",
+      "status": "needs-original-export-and-visual-review",
+      "originalExportPath": null
+    },
+    {
+      "mediaId": "MAHYjzX70yQ",
+      "createdAt": 1792510610,
+      "width": 1264,
+      "height": 1264,
+      "smartTags": [
+        "crystal",
+        "stone",
+        "gem",
+        "rock",
+        "mushroom",
+        "mineral",
+        "bottle",
+        "jewel",
+        "jewelry",
+        "potion"
+      ],
+      "probableItemId": null,
+      "identification": "unidentified",
+      "status": "needs-original-export-and-visual-review",
+      "originalExportPath": null
+    }
+  ]
+}
