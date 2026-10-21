@@ -3,7 +3,7 @@ import { CATALOG } from './catalog.js';
 import { makeMaterialData, makeCraftData, outputKind } from './items.js';
 import { TOOL_SPECS, PROF_OPTIONS, requiredForNode, requiredForRecipe, toolGate, proficiencyLevel, toolItemBonus, craftCheck, proficiencyBonus } from './tool-rules.mjs';
 const ID='gathering-crafting';
-const VERSION='1.1.1';
+const VERSION='1.1.2';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -11,7 +11,13 @@ const icon=v=>`<i class="fa-solid ${/^fa-[a-z0-9-]+$/.test(String(v))?v:'fa-cube
 const hue=v=>/^#[0-9a-fA-F]{6}$/.test(String(v))?v:'#a7b9cb';
 const notify=(message,error=false)=>ui.notifications[error?'error':'info'](message);
 const database=()=>game.settings.get(ID,'database');
-const artworkFor=item=>item?.img||'icons/svg/item-bag.svg';
+// Cache-bust module-owned icons after the v1.1.1 archive could ship stale WebPs.
+// Never modify custom GM URLs or persist query strings into existing world data.
+const artworkFor=item=>{
+  const src=item?.img||'icons/svg/item-bag.svg';
+  return /^modules\\/gathering-crafting\\/icons\\/.+\\.webp(?:\\?.*)?$/.test(src)
+    ? src.split('?')[0]+'?gc-art=v1.1.2' : src;
+};
 const material=(db,id)=>db.materials.find(m=>m.id===id);
 const skillLabels={ath:'Athletics',sur:'Survival',prc:'Perception',inv:'Investigation',nat:'Nature',slt:'Sleight of Hand'};
 const skills=Object.entries(skillLabels);
