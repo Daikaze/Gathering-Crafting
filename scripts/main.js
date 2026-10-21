@@ -5,7 +5,7 @@ import { TOOL_SPECS, PROF_OPTIONS, requiredForNode, requiredForRecipe, toolGate,
 import {enchantingHtml, beginEnchantment, finishEnchantment, beginLesson, finishLesson, useEnchantment, recoverEnchantmentUses} from './enchanting-ui.mjs';
 import {enchantById} from './enchanting.mjs';
 const ID='gathering-crafting';
-const VERSION='1.3.3';
+const VERSION='1.3.4';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -26,7 +26,7 @@ const artworkFor=item=>{
   const src=item?.img||'icons/svg/item-bag.svg';
   const clean=src.split('?')[0];
   return clean.startsWith('modules/gathering-crafting/icons/') && clean.endsWith('.webp')
-    ? clean+'?gc-art=v1.3.3' : src;
+    ? clean+'?gc-art=v1.3.4' : src;
 };
 const material=(db,id)=>db.materials.find(m=>m.id===id);
 const skillLabels={ath:'Athletics',sur:'Survival',prc:'Perception',inv:'Investigation',nat:'Nature',slt:'Sleight of Hand'};
@@ -463,8 +463,77 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
 }
 let windowInstance;
 function open(actor){if(!windowInstance)windowInstance=new GatheringCrafting();if(actor&&(game.user.isGM||actor.isOwner))windowInstance.actorId=actor.id;windowInstance.render({force:true});return windowInstance;}
-function launcher(html,selector,actor){const root=html instanceof HTMLElement?html:html?.[0],parent=root?.querySelector(selector);if(!parent||parent.querySelector('.gc-launcher'))return;
-  const button=document.createElement('button');button.type='button';button.className='gc-launcher';button.title='Gathering & Crafting';button.innerHTML=`${icon('fa-hammer')} <span>Gathering & Crafting</span>`;button.addEventListener('click',e=>{e.preventDefault();open(actor);});parent.append(button);
+function makeLauncherButton(actor,inTabs=false){
+  const button=document.createElement('button');
+  button.type='button';
+  button.className=inTabs?'item gc-launcher gc-sheet-tab':'gc-launcher';
+  button.title='Gathering & Crafting';
+  button.setAttribute('aria-label','Open Gathering & Crafting');
+  // A short label fits next to Affinity even on narrower sheets.
+  button.innerHTML=icon('fa-hammer')+' <span>'+(inTabs?'Crafting':'Gathering & Crafting')+'</span>';
+  button.addEventListener('click',event=>{
+    event.preventDefault();
+    event.stopPropagation(); // Clicking the launcher must never switch the sheet tab.
+    open(actor);
+  });
+  return button;
+}
+function affinityTab(root){
+  if(!root?.querySelectorAll)return null;
+  const selectors=[
+    'nav [data-tab]', '.sheet-tabs [data-tab]', '.tabs [data-tab]',
+    '[role="tablist"] [data-tab]', 'nav a', 'nav button',
+    '.sheet-tabs a', '.sheet-tabs button', '.tabs .item', '[role="tab"]'
+  ];
+  const candidates=new Set(selectors.flatMap(selector=>[...root.querySelectorAll(selector)]));
+  return [...candidates].find(el=>{
+    if(el.classList?.contains('gc-launcher'))return false;
+    const id=String(el.dataset?.tab||el.getAttribute?.('data-tab')||'').trim().toLowerCase();
+    const label=String(el.textContent||'').replace(/\s+/g,' ').trim().toLowerCase();
+    const title=String(el.getAttribute?.('aria-label')||el.getAttribute?.('title')||'').trim().toLowerCase();
+    return id==='affinity'||label==='affinity'||title==='affinity';
+  })||null;
+}
+function placeSheetLauncher(root,actor){
+  const affinity=affinityTab(root);
+  if(!affinity)return false;
+  // Keep the same list structure when a third-party sheet renders nav as <li>.
+  const anchor=affinity.parentElement?.tagName==='LI'?affinity.parentElement:affinity;
+  const wrapper=root.querySelector('.gc-sheet-tab-holder');
+  const existing=wrapper?.querySelector('.gc-sheet-tab')||root.querySelector('.gc-sheet-tab');
+  const button=existing||makeLauncherButton(actor,true);
+  const entry=anchor.tagName==='LI'?(wrapper||document.createElement('li')):button;
+  if(entry!==button){
+    entry.classList.add('gc-sheet-tab-holder');
+    if(!entry.contains(button))entry.append(button);
+  }else if(wrapper)wrapper.remove();
+  // Remove the old full-width header launcher if the nav is now available.
+  for(const old of root.querySelectorAll('.gc-launcher:not(.gc-sheet-tab)'))old.remove();
+  if(anchor.nextElementSibling!==entry)anchor.after(entry);
+  return true;
+}
+function launcher(html,selector,actor){
+  const root=html instanceof HTMLElement?html:html?.[0];
+  const parent=root?.querySelector(selector);
+  if(!parent)return;
+  if(actor){
+    if(!placeSheetLauncher(root,actor)){
+      // Fallback for NPC and third-party sheets without an Affinity tab.
+      if(!parent.querySelector('.gc-launcher'))parent.append(makeLauncherButton(actor));
+      // Other modules can inject their own tabs after this render hook.
+      if(typeof MutationObserver==='function'&&!root._gcSheetTabObserver){
+        const observer=new MutationObserver(()=>{
+          if(placeSheetLauncher(root,actor)){observer.disconnect();root._gcSheetTabObserver=null;}
+          else if(!root.isConnected){observer.disconnect();root._gcSheetTabObserver=null;}
+        });
+        root._gcSheetTabObserver=observer;
+        observer.observe(root,{childList:true,subtree:true});
+        setTimeout(()=>{if(root._gcSheetTabObserver===observer){observer.disconnect();root._gcSheetTabObserver=null;}},2500);
+      }
+    }
+  }else if(!parent.querySelector('.gc-launcher')){
+    parent.append(makeLauncherButton(null));
+  }
   // Optional compact power controls inside D&D5e character-sheet headers.
   if(actor&&!parent.querySelector('.gc-sheet-powers')){
     const powers=Array.from(actor.items?.contents||actor.items||[]).flatMap(item=>(item.getFlag?.(ID,'enchantments')||[]).flatMap(applied=>{
