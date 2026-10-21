@@ -24,7 +24,7 @@ export const PROF_OPTIONS=Object.freeze({
  carpenter:"Carpenter's Tools",glassblower:"Glassblower's Tools",thief:"Thieves' Tools"
 });
 const norm=value=>String(value??"").normalize("NFKC").toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
-const num=value=>Number.isFinite(Number(value))?Number(value):0;
+const toNumber=value=>Number.isFinite(Number(value))?Number(value):0;
 export function requiredForNode(node={},mat={}){
   if(TOOL_SPECS[node.requiredTool])return node.requiredTool;
   if(node.group==="monster"||mat.group==="Monster Drop")return "skinning";
@@ -53,18 +53,18 @@ export function itemForTool(actor,toolKey){
 export function proficiencyLevel(actor,proficiencyId){
   const entry=actor?.system?.tools?.[proficiencyId];
   const val=typeof entry==="object"?entry?.value:entry;
-  return Math.max(0,Math.min(2,num(val)));
+  return Math.max(0,Math.min(2,toNumber(val)));
 }
 export function actorLevel(actor){
   const details=actor?.system?.details??{};
-  const explicit=num(details.level);
+  const explicit=toNumber(details.level);
   if(explicit>0)return Math.max(1,Math.floor(explicit));
   const classes=Array.from(actor?.items??[]).filter(i=>i.type==="class");
-  const summed=classes.reduce((n,c)=>n+Math.max(0,num(c.system?.levels)),0);
+  const summed=classes.reduce((n,c)=>n+Math.max(0,toNumber(c.system?.levels)),0);
   return Math.max(1,Math.floor(summed||1));
 }
 export function proficiencyBonus(actor){
-  const provided=num(actor?.system?.attributes?.prof);
+  const provided=toNumber(actor?.system?.attributes?.prof);
   if(provided>0)return provided;
   return Math.min(6,2+Math.floor((actorLevel(actor)-1)/4));
 }
@@ -80,14 +80,14 @@ export function toolGate(actor,toolKey,proficiencyId=null){
 }
 export function toolItemBonus(item){
   // An explicit fixed tool/item bonus; no arbitrary formula evaluation.
-  const a=num(item?.system?.magicalBonus??item?.system?.bonus??0);
+  const a=toNumber(item?.system?.magicalBonus??item?.system?.bonus??0);
   return Math.max(-10,Math.min(10,a));
 }
 export function craftCheck(actor,recipe,toolKey,proficiencyId,tool){
   const spec=TOOL_SPECS[toolKey];
   const proficiency=proficiencyId||spec?.proficiency;
   const pb=proficiencyBonus(actor);
-  const modifier=num(actor?.system?.abilities?.[spec?.ability||"int"]?.mod);
+  const modifier=toNumber(actor?.system?.abilities?.[spec?.ability||"int"]?.mod);
   const multiplier=proficiencyLevel(actor,proficiency);
   const level=actorLevel(actor);
   const levelBonus=Math.min(5,Math.floor((level-1)/4));
