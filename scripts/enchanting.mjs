@@ -1,76 +1,199 @@
-/** Gathering & Crafting — stable Enchanting catalogue and pure economy/time rules.
- * Prices are GP; durations are world-calendar days (24 hours per day).
- * Enchant identifiers are scoped to item type to avoid weapon/armor collisions.
+/** Gathering & Crafting — Enchanting v1.3.
+ * Item-specific compatibility, five learnable proficiency ranks, known enchantments,
+ * slot limits, and coin math. Pure functions make the rules independently testable.
  */
-export const ELEMENTS = Object.freeze(['Fire','Cold','Lightning','Acid','Thunder']);
-const weapon = (id,name,cost,days,description,extra={})=>({id:'weapon-'+id,name,kind:'weapon',cost,days,description,...extra});
-const armor = (id,name,cost,days,description)=>({id:'armor-'+id,name,kind:'armor',cost,days,description});
-export const ENCHANTMENTS = Object.freeze([
+export const ELEMENTS=Object.freeze(['Fire','Cold','Lightning','Acid','Thunder']);
+export const DAY_SECONDS=86400;
+export const RANKS=Object.freeze([
+ {name:'Untrained',days:0,cost:0,dc:0},
+ {name:'Novice',days:3,cost:50,dc:10},
+ {name:'Apprentice',days:5,cost:150,dc:12},
+ {name:'Adept',days:7,cost:400,dc:14},
+ {name:'Expert',days:10,cost:900,dc:16},
+ {name:'Master',days:14,cost:2000,dc:18}
+]);
+const baseRank=cost=>cost<=250?1:cost<=500?2:cost<=800?3:cost<=1200?4:5;
+const weapon=(id,name,cost,days,description,extra={})=>({id:'weapon-'+id,name,kind:'weapon',cost,days,description,rank:baseRank(cost),allowed:['weapon'],slots:1,...extra});
+const armor=(id,name,cost,days,description,extra={})=>({id:'armor-'+id,name,kind:'armor',cost,days,description,rank:baseRank(cost),allowed:['armor','shield'],slots:1,...extra});
+export const ENCHANTMENTS=Object.freeze([
   weapon('spell-channel','Spell Channel',125,2,'The weapon can be used as a spellcasting focus.'),
   weapon('arcane-infusion','Arcane Infusion',250,5,'The weapon becomes magical and gains a +1 bonus to attack and damage rolls.',{magicalBonus:1,exclusive:'arcane-infusion'}),
-  weapon('greater-arcane-infusion','Greater Arcane Infusion',1000,10,'The weapon becomes magical and gains a +2 bonus to attack and damage rolls.',{magicalBonus:2,exclusive:'arcane-infusion'}),
+  weapon('greater-arcane-infusion','Greater Arcane Infusion',1000,10,'The weapon becomes magical and gains a +2 bonus to attack and damage rolls.',{magicalBonus:2,exclusive:'arcane-infusion',rank:4,slots:2}),
   weapon('elemental-binding','Elemental Binding',300,4,'Adds 1d4 damage of the selected type (Fire, Cold, Lightning, Acid or Thunder).',{elementDice:'1d4',exclusive:'elemental-binding'}),
-  weapon('greater-elemental-binding','Greater Elemental Binding',800,10,'Adds 1d6 damage of the selected elemental type.',{elementDice:'1d6',exclusive:'elemental-binding'}),
+  weapon('greater-elemental-binding','Greater Elemental Binding',800,10,'Adds 1d6 damage of the selected elemental type.',{elementDice:'1d6',exclusive:'elemental-binding',rank:4,slots:2}),
   weapon('soul-binding','Soul Binding',500,4,'The weapon returns to its owner after 1 minute.'),
   weapon('blessed-weapon','Blessed Weapon',350,2,'The item counts as a holy weapon.'),
-  weapon('shadow-binding','Shadow Binding',350,3,'Grants +2 to Stealth while the weapon is equipped.'),
+  weapon('shadow-binding','Shadow Binding',350,3,'Grants +2 to Stealth while the weapon is equipped.',{passive:{skill:'ste',bonus:2}}),
   weapon('arcane-reservoir','Arcane Reservoir',500,2,'Stores one spell of up to 3rd level.'),
-  weapon('hunters-marking',"Hunter's Marking",600,4,"Cast Hunter's Mark once per Long Rest."),
-  weapon('fey-blessing','Fey Blessing',750,5,'Cast Misty Step once per Long Rest.'),
-  armor('magewoven-interior','Magewoven Interior',120,5,'Gain +1 on Constitution saving throws to maintain concentration.'),
-  armor('arcane-mesh','Arcane Mesh',150,6,'Gain +2 on Arcana checks.'),
-  armor('shadow-binding','Shadow Binding',350,5,'Gain +2 on Stealth checks while the armor is equipped.'),
-  armor('stone-binding','Stone Binding',750,10,'Gain advantage against being knocked Prone and against forced movement.'),
-  armor('wind-binding','Wind Binding',750,10,'Bonus Action: gain +10 ft movement for 1 minute, once per Long Rest.'),
-  armor('frost-ward','Frost Ward',750,10,'Gain resistance to Cold damage.'),
-  armor('flame-ward','Flame Ward',750,10,'Gain resistance to Fire damage.'),
-  armor('storm-ward','Storm Ward',750,10,'Gain resistance to Lightning damage.'),
-  armor('fey-blessing','Fey Blessing',750,10,'Cast Misty Step once per Long Rest.'),
-  armor('phoenix-binding','Phoenix Binding',1500,14,'Once per Long Rest, remain at 1 HP instead of dropping to 0 HP.'),
-  armor('celestial-blessing','Celestial Blessing',1000,10,'Cast Cure Wounds at 2nd level once per Long Rest.'),
+  weapon('hunters-marking',"Hunter's Marking",600,4,"Cast Hunter's Mark once per Long Rest.",{power:{spell:"Hunter's Mark",uses:1}}),
+  weapon('fey-blessing','Fey Blessing',750,5,'Cast Misty Step once per Long Rest.',{power:{spell:'Misty Step',uses:1}}),
+  armor('magewoven-interior','Magewoven Interior',120,5,'Gain +1 on Constitution saving throws to maintain concentration.',{allowed:['armor'],passive:{concentration:1}}),
+  armor('arcane-mesh','Arcane Mesh',150,6,'Gain +2 on Arcana checks.',{passive:{skill:'arc',bonus:2}}),
+  armor('shadow-binding','Shadow Binding',350,5,'Gain +2 on Stealth checks while the armor is equipped.',{allowed:['armor'],passive:{skill:'ste',bonus:2}}),
+  armor('stone-binding','Stone Binding',750,10,'Gain advantage against being knocked Prone and against forced movement.',{allowed:['armor']}),
+  armor('wind-binding','Wind Binding',750,10,'Bonus Action: gain +10 ft movement for 1 minute, once per Long Rest.',{allowed:['boots','light','medium'],power:{name:'Wind Binding',uses:1}}),
+  armor('frost-ward','Frost Ward',750,10,'Gain resistance to Cold damage.',{resistance:'cold'}),
+  armor('flame-ward','Flame Ward',750,10,'Gain resistance to Fire damage.',{resistance:'fire'}),
+  armor('storm-ward','Storm Ward',750,10,'Gain resistance to Lightning damage.',{resistance:'lightning'}),
+  armor('fey-blessing','Fey Blessing',750,10,'Cast Misty Step once per Long Rest.',{power:{spell:'Misty Step',uses:1}}),
+  armor('phoenix-binding','Phoenix Binding',1500,14,'Once per Long Rest, remain at 1 HP instead of dropping to 0 HP.',{rank:5,slots:2,power:{name:'Phoenix Binding',uses:1}}),
+  armor('celestial-blessing','Celestial Blessing',1000,10,'Cast Cure Wounds at 2nd level once per Long Rest.',{power:{spell:'Cure Wounds (2nd level)',uses:1}}),
   armor('arcane-reservoir','Arcane Reservoir',500,7,'Stores one spell of up to 3rd level.'),
-  armor('guardian-aura','Guardian Aura',1200,12,'Allies within 5 ft gain +1 against Fear effects.'),
-  armor('soul-binding','Soul Binding',500,7,'The armor is magically bound to its owner and cannot be used by another person.')
+  armor('guardian-aura','Guardian Aura',1200,12,'Allies within 5 ft gain +1 against Fear effects.',{allowed:['shield','heavy','medium']}),
+  armor('soul-binding','Soul Binding',500,7,'The armor is magically bound to its owner and cannot be used by another person.'),
+  // Additional weapon enchantments: melee, blades, bows, crossbows, staves and ranged weapons.
+  weapon('keen-edge','Keen Edge',300,4,'This blade ignores nonmagical slashing resistance at the GM’s discretion.',{allowed:['blade']}),
+  weapon('sundering-strike','Sundering Strike',450,6,'Once per Long Rest, deal +2d6 force damage to a construct or object.',{allowed:['melee'],power:{name:'Sundering Strike',uses:1}}),
+  weapon('frostbite-edge','Frostbite Edge',500,6,'Once per Long Rest, slow a struck foe by 10 ft until your next turn.',{allowed:['blade'],power:{name:'Frostbite Edge',uses:1}}),
+  weapon('venom-channel','Venom Channel',300,5,'Once per Long Rest, add 1d6 poison damage to one weapon hit.',{allowed:['piercing','blade'],power:{name:'Venom Channel',uses:1}}),
+  weapon('thunderclap','Thunderclap',650,7,'Once per Long Rest, your hit can emit a thunderous shockwave.',{allowed:['bludgeoning','melee'],power:{name:'Thunderclap',uses:1}}),
+  weapon('vampiric-edge','Vampiric Edge',950,11,'Once per Long Rest, regain HP equal to 1d6 necrotic damage dealt.',{allowed:['blade'],power:{name:'Vampiric Edge',uses:1}}),
+  weapon('dawnstrike','Dawnstrike',1100,12,'Once per Long Rest, deal +2d8 radiant damage on one hit.',{allowed:['melee'],power:{name:'Dawnstrike',uses:1}}),
+  weapon('astral-sever','Astral Sever',1800,15,'Once per Long Rest, empower a strike with 3d8 force damage.',{allowed:['blade'],rank:5,slots:2,power:{name:'Astral Sever',uses:1}}),
+  weapon('moonfang','Moonfang',650,8,'Against shapechangers the weapon counts as silvered and magical.',{allowed:['blade']}),
+  weapon('bloodletter','Bloodletter',450,6,'Once per Long Rest, cause 1d4 bleeding damage at the GM’s discretion.',{allowed:['blade'],power:{name:'Bloodletter',uses:1}}),
+  weapon('flameburst','Flameburst',750,8,'Once per Long Rest, erupt in a burst of fire when you hit.',{allowed:['melee'],power:{name:'Flameburst',uses:1}}),
+  weapon('echoing-blow','Echoing Blow',1100,12,'Once per Long Rest, echo the impact for +2d6 thunder damage.',{allowed:['bludgeoning'],power:{name:'Echoing Blow',uses:1}}),
+  weapon('gravity-hammer','Gravity Hammer',1500,14,'Once per Long Rest, push a creature you strike up to 10 ft (GM adjudicated).',{allowed:['bludgeoning'],rank:5,slots:2,power:{name:'Gravity Hammer',uses:1}}),
+  weapon('rapid-reload','Rapid Reload',300,4,'Ignore the loading property once on each of your turns (GM adjudicated).',{allowed:['crossbow']}),
+  weapon('steady-aim','Steady Aim',300,4,'Once per Long Rest gain +2 on a ranged weapon attack roll.',{allowed:['ranged'],power:{name:'Steady Aim',uses:1}}),
+  weapon('seeking-shot','Seeking Shot',750,9,'Once per Long Rest gain advantage on a ranged attack.',{allowed:['ranged'],power:{name:'Seeking Shot',uses:1}}),
+  weapon('storm-arrow','Storm Arrow',850,10,'Once per Long Rest, deal +2d6 lightning damage with a ranged hit.',{allowed:['bow','crossbow'],power:{name:'Storm Arrow',uses:1}}),
+  weapon('piercing-winds','Piercing Winds',600,7,'Ignore half cover with this ranged weapon.',{allowed:['ranged']}),
+  weapon('hunters-sight','Hunter’s Sight',425,6,'While holding this ranged weapon, gain +1 to Perception checks.',{allowed:['ranged'],passive:{skill:'prc',bonus:1}}),
+  weapon('hawkflight','Hawkflight',1600,15,'Once per Long Rest, extend a ranged shot’s effective reach dramatically.',{allowed:['bow'],rank:5,slots:2,power:{name:'Hawkflight',uses:1}}),
+  weapon('sniper-rune','Sniper Rune',1150,11,'Once per Long Rest, one ranged attack ignores three-quarters cover.',{allowed:['ranged'],power:{name:'Sniper Rune',uses:1}}),
+  weapon('lightweave-string','Lightweave String',350,4,'This bowstring glows softly and forms luminous ammunition.',{allowed:['bow']}),
+  weapon('spellstrike','Spellstrike',1000,10,'Once per Long Rest, channel a cantrip through a melee weapon hit.',{allowed:['staff','melee'],power:{name:'Spellstrike',uses:1}}),
+  weapon('arcane-repeater','Arcane Repeater',950,9,'Once per Long Rest, reuse a prepared cantrip as a bonus action.',{allowed:['staff'],power:{name:'Arcane Repeater',uses:1}}),
+  weapon('warding-staff','Warding Staff',450,5,'While holding the staff, gain +1 on Arcana checks.',{allowed:['staff'],passive:{skill:'arc',bonus:1}}),
+  weapon('magepiercer','Magepiercer',1250,12,'Once per Long Rest, disrupt a spellcasting creature you hit.',{allowed:['staff','blade'],power:{name:'Magepiercer',uses:1}}),
+  weapon('sunlance','Sunlance',1350,13,'Once per Long Rest, deal +2d8 radiant damage with a spear or polearm.',{allowed:['polearm'],rank:5,slots:2,power:{name:'Sunlance',uses:1}}),
+  weapon('defender-rune','Defender Rune',500,7,'Once per Long Rest, gain +2 AC until the start of your next turn after a melee attack.',{allowed:['melee'],power:{name:'Defender Rune',uses:1}}),
+  weapon('giants-grip','Giant’s Grip',850,9,'While wielding this heavy melee weapon, gain +1 on Athletics checks.',{allowed:['heavy-weapon'],passive:{skill:'ath',bonus:1}}),
+  weapon('voidlash','Voidlash',1800,15,'Once per Long Rest, deal +3d6 necrotic damage on a melee hit.',{allowed:['melee'],rank:5,slots:2,power:{name:'Voidlash',uses:1}}),
+  // Additional armor and shield enchantments.
+  armor('guardians-crest','Guardian’s Crest',350,5,'Once per Long Rest, grant an ally within 5 ft +1 AC for one round.',{allowed:['shield'],power:{name:'Guardian’s Crest',uses:1}}),
+  armor('spellbreaker-shield','Spellbreaker Shield',1100,12,'Once per Long Rest, gain advantage on a save against one spell.',{allowed:['shield'],power:{name:'Spellbreaker Shield',uses:1}}),
+  armor('radiant-bulwark','Radiant Bulwark',1600,14,'Once per Long Rest, grant temporary HP equal to your proficiency bonus + 5.',{allowed:['shield'],rank:5,slots:2,power:{name:'Radiant Bulwark',uses:1}}),
+  armor('reflecting-sigil','Reflecting Sigil',2000,16,'Once per Long Rest, reflect a magical beam as ruled by the GM.',{allowed:['shield'],rank:5,slots:2,power:{name:'Reflecting Sigil',uses:1}}),
+  armor('iron-sentinel','Iron Sentinel',500,6,'Gain +1 on Athletics checks while wearing heavy armor.',{allowed:['heavy'],passive:{skill:'ath',bonus:1}}),
+  armor('bastion-weave','Bastion Weave',1050,11,'Once per Long Rest, reduce damage from one attack by 1d8.',{allowed:['heavy','medium'],power:{name:'Bastion Weave',uses:1}}),
+  armor('unyielding-plate','Unyielding Plate',1650,14,'Once per Long Rest, resist being knocked prone for one minute.',{allowed:['heavy'],rank:5,slots:2,power:{name:'Unyielding Plate',uses:1}}),
+  armor('adamant-ward','Adamant Ward',1800,14,'Once per Long Rest, reduce incoming damage by 2d8.',{allowed:['heavy'],rank:5,slots:2,power:{name:'Adamant Ward',uses:1}}),
+  armor('stonehide','Stonehide',450,7,'Gain +1 on checks to resist being shoved.',{allowed:['medium','heavy']}),
+  armor('thornmail','Thornmail',650,8,'Once per Long Rest, deal 1d6 piercing damage to a creature that hits you in melee.',{allowed:['medium','heavy'],power:{name:'Thornmail',uses:1}}),
+  armor('thunder-plate','Thunder Plate',900,10,'Once per Long Rest, emit thunder when struck for 1d6 thunder damage.',{allowed:['heavy'],power:{name:'Thunder Plate',uses:1}}),
+  armor('venom-guard','Venom Guard',750,8,'Gain resistance to poison damage.',{allowed:['medium','heavy','light'],resistance:'poison'}),
+  armor('acid-ward','Acid Ward',750,9,'Gain resistance to acid damage.',{allowed:['medium','heavy','light'],resistance:'acid'}),
+  armor('necrotic-ward','Necrotic Ward',1100,12,'Gain resistance to necrotic damage.',{allowed:['armor'],resistance:'necrotic'}),
+  armor('radiant-ward','Radiant Ward',1200,12,'Gain resistance to radiant damage.',{allowed:['armor'],resistance:'radiant'}),
+  armor('shadowweave','Shadowweave',400,6,'Gain +1 to Stealth checks while wearing light armor.',{allowed:['light'],passive:{skill:'ste',bonus:1}}),
+  armor('silent-stitch','Silent Stitch',550,7,'Suppress the clinking of equipment and grant +2 to Stealth checks.',{allowed:['light'],passive:{skill:'ste',bonus:2}}),
+  armor('nightmantle','Nightmantle',1000,11,'Once per Long Rest, dim your form for one minute.',{allowed:['light'],power:{name:'Nightmantle',uses:1}}),
+  armor('quickstep-weave','Quickstep Weave',550,7,'Once per Long Rest, gain +10 ft of movement for one minute.',{allowed:['light'],power:{name:'Quickstep Weave',uses:1}}),
+  armor('moonshadow','Moonshadow',1500,14,'Once per Long Rest, cast Invisibility on yourself.',{allowed:['light'],rank:5,slots:2,power:{spell:'Invisibility',uses:1}}),
+  armor('mindshell','Mindshell',950,11,'Once per Long Rest, gain advantage on one Wisdom saving throw.',{allowed:['armor'],power:{name:'Mindshell',uses:1}}),
+  armor('featherweight','Featherweight',300,5,'Reduce the armor’s carried weight by half (GM adjudicated).',{allowed:['armor']}),
+  armor('enduring-rune','Enduring Rune',350,6,'While equipped, gain +1 on Constitution saving throws.',{allowed:['armor'],passive:{save:'con',bonus:1}}),
+  armor('sigil-of-clarity','Sigil of Clarity',500,7,'While equipped, gain +1 on Arcana checks.',{allowed:['armor'],passive:{skill:'arc',bonus:1}}),
+  armor('titan-ward','Titan Ward',1250,13,'Once per Long Rest, gain +2 to a Strength saving throw.',{allowed:['heavy'],power:{name:'Titan Ward',uses:1}}),
+  armor('ironwill','Ironwill',700,8,'While equipped, gain +1 on Wisdom saving throws.',{allowed:['heavy','medium'],passive:{save:'wis',bonus:1}}),
+  armor('glacial-reprisal','Glacial Reprisal',1300,13,'Once per Long Rest, deal 2d6 cold damage when struck.',{allowed:['medium','heavy'],power:{name:'Glacial Reprisal',uses:1}}),
+  armor('sunward','Sunward',1550,13,'Once per Long Rest, emit daylight for 10 minutes.',{allowed:['armor','shield'],rank:5,slots:2,power:{spell:'Daylight',uses:1}}),
+  armor('aegis-of-life','Aegis of Life',2100,16,'Once per Long Rest, cast Aid at 3rd level.',{allowed:['armor'],rank:5,slots:2,power:{spell:'Aid (3rd level)',uses:1}}),
+  armor('warden-rune','Warden Rune',600,7,'Gain +1 on Insight checks while equipped.',{allowed:['armor','shield'],passive:{skill:'ins',bonus:1}})
 ]);
 export const enchantById=id=>ENCHANTMENTS.find(e=>e.id===id)||null;
-export const DAY_SECONDS = 86400;
-export function targetKind(item) {
-  if (!item) return null;
-  if (item.type==='weapon') return 'weapon';
-  if (item.type!=='equipment') return null;
-  const values=[item.system?.type?.value,item.system?.type,item.system?.armor?.type,item.system?.armor?.value?.type];
-  return values.some(v=>['light','medium','heavy','shield','natural'].includes(String(v).toLowerCase()))?'armor':null;
+const normal=s=>String(s||'').toLowerCase();
+export function itemTags(item){
+ if(!item)return [];
+ const s=item.system||{},type=normal(s.type?.value||s.type),base=normal(s.type?.baseItem||s.identifier||item.name),damage=normal((s.damage?.base?.types||[]).join?.(' ')||'');
+ const tags=[];
+ if(item.type==='weapon'){
+  tags.push('weapon');
+  const ranged=/martialr|simpler|ranged/.test(type)||/\b(bow|crossbow|sling|blowgun|dart)\b/.test(base);
+  tags.push(ranged?'ranged':'melee');
+  if(/\b(longbow|shortbow|bow)\b/.test(base))tags.push('bow');
+  if(/crossbow/.test(base))tags.push('crossbow');
+  if(/\b(staff|quarterstaff|rod|wand)\b/.test(base))tags.push('staff');
+  if(/\b(sword|dagger|scimitar|rapier|saber|blade|knife|greatsword|shortsword|longsword)\b/.test(base))tags.push('blade');
+  if(/\b(spear|trident|pike|halberd|glaive|lance)\b/.test(base))tags.push('polearm');
+  if(/\b(hammer|mace|club|flail|maul|staff|morningstar)\b/.test(base)||damage.includes('bludgeoning'))tags.push('bludgeoning');
+  if(damage.includes('piercing')||/\b(spear|rapier|dagger|arrow|bow)\b/.test(base))tags.push('piercing');
+  const props=s.properties instanceof Set?[...s.properties]:Array.isArray(s.properties)?s.properties:Object.entries(s.properties||{}).filter(([,v])=>v).map(([k])=>k);
+  if(props.includes('hvy'))tags.push('heavy-weapon');
+ }else if(item.type==='equipment'){
+  if(type==='shield'||normal(s.armor?.type)==='shield')tags.push('shield');
+  else if(['light','medium','heavy'].includes(type)||['light','medium','heavy'].includes(normal(s.armor?.type)))tags.push('armor',type||normal(s.armor?.type));
+ }
+ return [...new Set(tags)];
 }
-export function canApplyEnchant(item, enchant, completed=[]) {
-  if (!enchant||targetKind(item)!==enchant.kind) return false;
-  if (item.getFlag?.('gathering-crafting','enchantmentPending')) return false;
-  const known=completed.map(e=>enchantById(e.id)).filter(Boolean);
-  return !known.some(e=>e.id===enchant.id||(enchant.exclusive&&e.exclusive===enchant.exclusive));
+export function targetKind(item){const tags=itemTags(item);return tags.includes('weapon')?'weapon':tags.includes('armor')||tags.includes('shield')?'armor':null;}
+export function capacity(item){
+ const explicit=item?.getFlag?.('gathering-crafting','enchantSlots');
+ if(Number.isInteger(explicit)&&explicit>=0&&explicit<=6)return explicit;
+ const rarity=normal(item?.system?.rarity||'common');
+ return ({common:1,uncommon:2,rare:3,'very rare':4,veryrare:4,legendary:5,artifact:5})[rarity]??1;
 }
-export function costInCopper(currency) {
-  const rate={pp:1000,gp:100,ep:50,sp:10,cp:1};
-  return Object.entries(rate).reduce((sum,[denom,unit])=>{
-    const qty=Number(currency?.[denom]??0);
-    if(!Number.isSafeInteger(qty)||qty<0)throw new Error('Invalid character currency.');
-    return sum+qty*unit;
-  },0);
+export function usedSlots(entries){return(entries||[]).reduce((n,e)=>n+(enchantById(e.id)?.slots||1),0);}
+export function maxRarityRank(item){
+ return ({common:2,uncommon:3,rare:4,'very rare':5,veryrare:5,legendary:5,artifact:5})[normal(item?.system?.rarity||'common')]||2;
 }
-export function afterGoldPayment(currency,gp) {
-  if(!Number.isSafeInteger(gp)||gp<0)throw new Error('Invalid enchantment cost.');
-  let remaining=costInCopper(currency)-gp*100;
-  if(remaining<0)return null;
-  const next={};for(const [key,cp] of [['pp',1000],['gp',100],['ep',50],['sp',10],['cp',1]]){
-    next[key]=Math.floor(remaining/cp);remaining%=cp;
-  }
-  return next;
+export function explainCompatibility(item,enchant,completed=[]){
+ if(!enchant||targetKind(item)!==enchant.kind)return 'Wrong item type';
+ const tags=itemTags(item);
+ if(!enchant.allowed.some(t=>tags.includes(t)))return 'Requires: '+enchant.allowed.join(' / ');
+ if(item?.getFlag?.('gathering-crafting','enchantmentPending'))return 'Already enchanting';
+ const existing=(completed||[]).map(v=>enchantById(v.id)).filter(Boolean);
+ if(existing.some(e=>e.id===enchant.id))return 'Already applied';
+ if(existing.some(e=>enchant.exclusive&&e.exclusive===enchant.exclusive))return 'Conflicting enchantment';
+ if(usedSlots(completed)+enchant.slots>capacity(item))return 'Insufficient enchantment slots';
+ if(enchant.rank>maxRarityRank(item))return 'Requires a rarer item';
+ return '';
 }
-export function completionAt(start,days) {
-  if(!Number.isFinite(start)||!Number.isSafeInteger(days)||days<1)throw new Error('Invalid enchantment time.');
-  return start+days*DAY_SECONDS;
+export function canApplyEnchant(item,enchant,completed=[]){return !explainCompatibility(item,enchant,completed);}
+export function professionOf(actor){
+ const data=actor?.getFlag?.('gathering-crafting','enchanter')||{};
+ return {rank:Math.min(5,Math.max(0,Number(data.rank)||0)),known:Array.isArray(data.known)?data.known:[],training:data.training||null};
 }
-export function displayEnchantEffect(enchant, element) {
-  if (!enchant) return '';
-  if (!enchant.elementDice) return enchant.description;
-  if(!ELEMENTS.includes(element))throw new Error('Choose a valid elemental damage type.');
-  return 'Adds '+enchant.elementDice+' '+element+' damage on weapon hits.';
+export function learningGate(actor,enchant){const prof=professionOf(actor);return prof.rank<enchant.rank?'Requires '+RANKS[enchant.rank].name:!prof.known.includes(enchant.id)?'Learn this enchantment first':'';}
+export function hasTrainingTools(actor){
+ return !!(actor?.items||[]).find(i=>Number(i.system?.quantity??1)>0&&/^(jeweler'?s tools|jeweller'?s tools|enchanter'?s tools|enchanting kit)$/i.test(String(i.name||'').replace(/[’‘]/g,"'")));
 }
+export function arcanaBonus(actor){
+ const s=actor?.system||{};
+ const skill=s.skills?.arc||{};
+ if(Number.isFinite(Number(skill.total)))return Number(skill.total);
+ const int=Number(s.abilities?.int?.mod||0);
+ const trained=Number(skill.value||0),pb=Number(s.attributes?.prof||2);
+ return int+trained*pb;
+}
+export function costInCopper(currency){
+ const rate={pp:1000,gp:100,ep:50,sp:10,cp:1};
+ return Object.entries(rate).reduce((sum,[name,scale])=>{
+  const value=Number(currency?.[name]??0);
+  if(!Number.isSafeInteger(value)||value<0)throw new Error('Invalid character currency.');
+  return sum+value*scale;
+ },0);
+}
+export function afterGoldPayment(currency,gp){
+ if(!Number.isSafeInteger(gp)||gp<0)throw new Error('Invalid enchantment cost.');
+ let remaining=costInCopper(currency)-gp*100;if(remaining<0)return null;
+ const result={};for(const [key,rate] of [['pp',1000],['gp',100],['ep',50],['sp',10],['cp',1]]){
+  result[key]=Math.floor(remaining/rate);remaining%=rate;
+ }
+ return result;
+}
+export function completionAt(start,days){
+ if(!Number.isFinite(start)||!Number.isSafeInteger(days)||days<1)throw new Error('Invalid enchantment time.');
+ return start+days*DAY_SECONDS;
+}
+export function displayEnchantEffect(enchant,element){
+ if(!enchant)return '';
+ if(!enchant.elementDice)return enchant.description;
+ if(!ELEMENTS.includes(element))throw new Error('Choose a valid elemental damage type.');
+ return 'Adds '+enchant.elementDice+' '+element+' damage on weapon hits.';
+}
+export const lessonCost=e=>Math.max(20,Math.round(e.cost*0.15/5)*5);
+export const lessonDays=e=>Math.max(1,Math.min(7,e.rank+1));
