@@ -275,3 +275,15 @@
 .gathering-crafting .gc-enchant-element{flex-wrap:wrap;gap:12px}
 .gathering-crafting .gc-enchant-card .gc-enchant-meta:first-of-type{color:#d9c99e}
 @media(max-width:750px){.gathering-crafting .gc-enchant-progression{grid-template-columns:1fr}.gathering-crafting .gc-enchant-actions{grid-template-columns:1fr}}
+
+
+/* Enchanted-item ability controls in Foundry actor sheet header. */
+.gc-sheet-powers{display:inline-block;position:relative;vertical-align:middle;z-index:8;font-size:12px}
+.gc-sheet-powers>summary{list-style:none;cursor:pointer;border:1px solid #826b49;border-radius:7px;background:#192b37;color:#e4d2b0;padding:6px 9px;white-space:nowrap}
+.gc-sheet-powers>summary::-webkit-details-marker{display:none}
+.gc-sheet-powers[open] .gc-sheet-power-buttons{position:absolute;top:100%;right:0;min-width:225px;max-height:230px;overflow-y:auto;display:grid;gap:6px;padding:10px;background:#182632;border:1px solid #7a6a50;border-radius:8px;box-shadow:0 6px 26px #0009}
+.gc-sheet-power-buttons>button{font-size:11px!important;white-space:normal;text-align:left;padding:8px!important;line-height:1.3!important;background:#243847!important;color:#eee!important;border-radius:7px!important;border:1px solid #425362!important}
+.gc-sheet-power-buttons>button:disabled{opacity:.5}
+.gathering-crafting .gc-enchant-gm-slots{display:flex;justify-content:flex-end;gap:10px;align-items:center;padding:6px 10px 12px;color:#b3c3d0;font-size:11px}
+.gathering-crafting .gc-enchant-gm-slots label{display:flex;align-items:center;gap:6px}
+.gathering-crafting .gc-enchant-gm-slots input{width:58px;border:1px solid #526479;border-radius:6px;background:#172732;color:white;padding:6px}
