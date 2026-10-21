@@ -41,7 +41,7 @@ assert.equal(paintedHashes.size,10,'Every special-path Alchemy item should have 
 assert.ok(cat.materials.every(m=>m.img.includes('/icons/illustrated/')||((m.id==='iron-ore'||paintedAlchemyMaterials.has(m.id))&&m.img.includes('/icons/handpainted/'))));
 for(const m of cat.materials)assert.ok(fs.existsSync(path.join(base,m.img.replace('modules/gathering-crafting/',''))),m.img);
 for(const r of cat.recipes)assert.ok(fs.existsSync(path.join(base,r.img.replace('modules/gathering-crafting/',''))),r.img);
-const hooksOnce=new Map(),hooksOn=new Map(),world=new Map(),messages=[],packs=new Map();let roll=19,counter=0,failOutput=false,failChat=false;
+const hooksOnce=new Map(),hooksOn=new Map(),world=new Map(),messages=[],packs=new Map(),rollHistory=[];let roll=19,counter=0,failOutput=false,failChat=false;
 const deep=o=>structuredClone(o);
 const mockLegacy={collection:'legacy-content.items',getIndex:async()=>{throw Error('Forbidden: external artwork scanned');}};
 const mockPotion={collection:'potion-crafting.items',getIndex:async()=>{throw Error('Forbidden: external artwork scanned');}};
@@ -72,7 +72,7 @@ const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clea
   canvas:{tokens:{placeables:[],controlled:[]},grid:{size:100},scene:{grid:{distance:5}}},
   ui:{notifications:{info:()=>{},error:x=>{console.log('mock notification',x)}}},
   ChatMessage:{getSpeaker:()=>({alias:'Hero'}),create:async msg=>{if(failChat)throw Error('chat is offline');messages.push(msg);}},
-  Roll:class{constructor(expr,vars={}){this.total=expr.startsWith('1d20')?roll+Number(vars.bonus||0):7;}async evaluate(){return this;}},
+  Roll:class{constructor(expr,vars={}){rollHistory.push(expr);this.total=(expr.startsWith('1d20')||expr.startsWith('2d20kh'))?roll+Number(vars.bonus||0):7;}async evaluate(){return this;}},
   fromUuid:async()=>null,CONST:{KEYBINDING_PRECEDENCE:{NORMAL:0}}};
 vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${toolsJS}\n${enchRulesJS}\n${enchUIJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment,beginLesson,finishLesson,useEnchantment,recoverEnchantmentUses,launcher,affinityTab,placeSheetLauncher};`,context);
 const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog,adjustMaterialQuantity,adjustCraftedQuantity,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment,beginLesson,finishLesson,useEnchantment,recoverEnchantmentUses}=context.testAPI;
@@ -83,12 +83,12 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const db=context.game.settings.get('gathering-crafting','database');
   assert.equal(db.catalogVersion,10);
   assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
-  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.4');
+  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.5');
   assert.ok(db.materials.find(m=>m.id==='iron-ore').img.endsWith('/icons/handpainted/iron-ore.webp'));
   assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
   assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
   assert.equal(artworkFor(db.recipes.find(r=>r.id==='supreme-healing-potion')),
-    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.4');
+    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.5');
   await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,44,'sync must not duplicate entries');
   const oldIconItem=packs.get('world.gc-ores-metals').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='iron-ore');
   oldIconItem.img='modules/legacy-content/images/iron-ore.webp';
@@ -217,6 +217,16 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   // The crafter pays no gold: the GP shown in Enchanting is only a market/service value.
   actor.system.currency={pp:0,gp:0,ep:0,sp:0,cp:0};
   const oldGold=JSON.stringify(actor.system.currency);
+  // In v1.3.5 only the physical tool is required. Existing rank/known flags
+  // and tool proficiencies no longer gate the actual enchantment.
+  actor.flags['gathering-crafting'].enchanter={rank:0,known:[],training:null};
+  actor.system.tools.jeweler={value:0};
+  const jewel=actor.items.find(x=>x.name==="Jeweler's Tools");
+  jewel.name="Jeweler’s Tools +1";
+  jewel.system.type={baseItem:'jewel'};
+  assert.ok(app.template().includes('Jeweler’s Tools +1'),'display the real held tool');
+  assert.ok(!app.template().includes('Study formula ·'),'formula learning is optional');
+
   await beginEnchantment(app,'weapon-arcane-infusion',{actor,announce:async()=>{},notify:()=>{}});
   assert.equal(enchantedWeapon.getFlag('gathering-crafting','enchantmentPending')?.id,'weapon-arcane-infusion');
   assert.equal(JSON.stringify(actor.system.currency),oldGold,'Enchanting must not deduct money or require available gold');
@@ -230,6 +240,19 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   assert.ok(enchantedWeapon.system.properties.includes('mgc'));
   assert.ok(enchantedWeapon.system.description.value.includes('Existing description'));
   assert.ok(enchantedWeapon.system.description.value.includes('Arcane Infusion'));
+  assert.ok(rollHistory.includes('1d20 + @bonus'),'without proficiency the Enchanting completion check is normal');
+  // Proficiency should only change the roll to advantage, never eligibility.
+  const advantagedSword=new ItemDoc({name:'Advantaged Sword',type:'weapon',
+    system:{quantity:1,rarity:'uncommon',type:{value:'martialM',baseItem:'longsword'},
+    description:{value:'Sword'},properties:[],magicalBonus:0}},actor);
+  actor.items.push(advantagedSword);
+  app.enchantItemId=advantagedSword.id;actor.system.tools.jewel={value:1};
+  await beginEnchantment(app,'weapon-arcane-infusion',{actor,announce:async()=>{},notify:()=>{}});
+  context.game.time.worldTime+=4*86400;
+  await finishEnchantment(app,advantagedSword.id,{actor,announce:async()=>{},notify:()=>{}});
+  assert.equal(rollHistory.at(-1),'2d20kh + @bonus','tool proficiency must grant Advantage on completion');
+  assert.equal(advantagedSword.system.magicalBonus,1);
+
   // Profession training must consume world time and Arcana success, but never gold.
   actor.flags['gathering-crafting'].enchanter={rank:0,known:[],training:null};
   await beginLesson(actor,'rank',null,()=>{});
@@ -295,6 +318,16 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   await assert.rejects(()=>useEnchantment(actor,enchantedWeapon.id,'weapon-hunters-marking',()=>{},async()=>{}));
   await recoverEnchantmentUses(actor,{longRest:true},{type:'long'});
   assert.equal(Object.keys(enchantedWeapon.getFlag('gathering-crafting','enchantmentUses')).length,0);
+  // Regular gathering and crafting work with tools alone and get Advantage when proficient.
+  const noProfTest=actor.items.find(x=>x.name==="Pickaxe");
+  assert.ok(noProfTest);
+  actor.system.tools.mason={value:0};
+  rollHistory.length=0;
+  await app.gather('old-mine');
+  assert.equal(rollHistory.at(-1),'1d20 + @bonus');
+  actor.system.tools.mason={value:1};
+  await app.gather('old-mine');
+  assert.equal(rollHistory.at(-1),'2d20kh + @bonus');
   // Player rendering does not show target DCs on any player-facing tab.
   context.game.user.isGM=false;
   actor.flags['gathering-crafting'].enchanter={rank:1,known:[],training:null};
