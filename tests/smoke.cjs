@@ -58,7 +58,7 @@ class Actor{
   async createEmbeddedDocuments(kind,items){if(failOutput&&items.some(i=>i.flags?.['gathering-crafting']?.recipeId))throw Error('forced output failure');const docs=items.map(i=>new ItemDoc(i,this));this.items.push(...docs);return docs;}
   async updateEmbeddedDocuments(kind,changes){for(const c of changes){const item=this.items.find(i=>i.id===c._id);assert.ok(item);await item.update(c);}}
   async deleteEmbeddedDocuments(kind,ids){this.items=this.items.filter(i=>!ids.includes(i.id));}
-  async update(change){for(const[k,v]of Object.entries(change)){if(k==='system.attributes.hp.value')this.system.attributes.hp.value=v; if(k==='system.attributes.hp.temp')this.system.attributes.hp.temp=v; if(k==='system.currency')this.system.currency=deep(v);}}
+  async update(change){for(const[k,v]of Object.entries(change)){if(k==='system.attributes.hp.value')this.system.attributes.hp.value=v; if(k==='system.attributes.hp.temp')this.system.attributes.hp.temp=v; if(k==='system.currency')this.system.currency=deep(v); if(k.startsWith('flags.')){const keys=k.split('.');let p=this;for(let j=0;j<keys.length-1;j++)p=p[keys[j]]??={};p[keys.at(-1)]=deep(v);}}}
 }
 const actor=new Actor();actor.system.currency={pp:20,gp:500,ep:0,sp:0,cp:0};actor.flags['gathering-crafting']={enchanter:{rank:1,known:['weapon-arcane-infusion'],training:null}};
 actor.system.details={level:5};actor.system.abilities.int={mod:2};actor.system.abilities.wis={mod:1};actor.system.abilities.dex={mod:2};actor.system.attributes.prof=3;
