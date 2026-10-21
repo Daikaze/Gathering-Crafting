@@ -5,7 +5,7 @@ import { TOOL_SPECS, PROF_OPTIONS, requiredForNode, requiredForRecipe, toolGate,
 import {enchantingHtml, beginEnchantment, finishEnchantment, beginLesson, finishLesson, useEnchantment, recoverEnchantmentUses} from './enchanting-ui.mjs';
 import {enchantById} from './enchanting.mjs';
 const ID='gathering-crafting';
-const VERSION='1.3.1';
+const VERSION='1.3.2';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -26,7 +26,7 @@ const artworkFor=item=>{
   const src=item?.img||'icons/svg/item-bag.svg';
   const clean=src.split('?')[0];
   return clean.startsWith('modules/gathering-crafting/icons/') && clean.endsWith('.webp')
-    ? clean+'?gc-art=v1.3.1' : src;
+    ? clean+'?gc-art=v1.3.2' : src;
 };
 const material=(db,id)=>db.materials.find(m=>m.id===id);
 const skillLabels={ath:'Athletics',sur:'Survival',prc:'Perception',inv:'Investigation',nat:'Nature',slt:'Sleight of Hand'};
@@ -222,7 +222,7 @@ async function syncCompendiums(){
 }
 class GatheringCrafting extends foundry.applications.api.ApplicationV2{
   static DEFAULT_OPTIONS={id:'gc-main-window',classes:['gathering-crafting'],window:{title:'Gathering & Crafting',icon:'fa-solid fa-hammer',resizable:true},position:{width:970,height:740}};
-  constructor(opts={}){super(opts);this.actorId=currentActor()?.id||null;this.tab='gather';this.gatherMode='careful';this.craftMode='steady';this.category='all';this.group='all';this.search='';this.page=1;this.showZero=false;this.readyOnly=false;this.editor={kind:'material',id:null};this.busy=false;this.searchTimer=null;this.pendingScrollTop=null;this.enchantItemId=null;this.enchantElement='Fire';this.enchantFilter='all';}
+  constructor(opts={}){super(opts);this.actorId=currentActor()?.id||null;this.tab='gather';this.gatherMode='careful';this.craftMode='steady';this.category='all';this.group='all';this.search='';this.page=1;this.showZero=false;this.readyOnly=false;this.editor={kind:'material',id:null};this.busy=false;this.searchTimer=null;this.pendingScrollTop=null;this.enchantItemId=null;this.enchantFilter='all';}
   get actor(){return currentActor(this.actorId);}
   async _renderHTML(){const root=document.createElement('div');root.className='gc-root';root.innerHTML=this.template();return root;}
   _replaceHTML(result,content){content.replaceChildren(result);}
@@ -233,7 +233,13 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     if(scrollHost&&Number.isFinite(this.pendingScrollTop))scrollHost.scrollTop=this.pendingScrollTop;
     this.pendingScrollTop=null;}
   rememberScroll(){const scrollHost=this.element?.querySelector('.gc-content');this.pendingScrollTop=scrollHost?.scrollTop??null;}
-  refresh(){return this.render({force:true});}
+  refresh({resetScroll=false}={}){
+    // ApplicationV2 replaces the entire inner HTML on render. Save the
+    // scroll location BEFORE replacing it, including for select/change events.
+    if(resetScroll)this.pendingScrollTop=0;
+    else this.rememberScroll();
+    return this.render({force:true});
+  }
   heading(ic,title,description){return `<header class="gc-section-head"><div><h2>${icon(ic)} ${esc(title)}</h2><p>${esc(description)}</p></div></header>`;}
   tabButton(id,ic,title){return `<button type="button" class="gc-nav ${this.tab===id?'is-active':''}" data-action="tab" data-id="${id}">${icon(ic)} <span>${title}</span></button>`;}
   filterBar(choices,selected,action){return `<div class="gc-category">${choices.map(([id,label,ic])=>`<button type="button" class="${selected===id?'is-on':''}" data-action="${action}" data-id="${id}">${icon(ic)} ${esc(label)}</button>`).join('')}</div>`;}
@@ -319,7 +325,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     return `<form class="gc-gm-form" data-editor-form="1"><h3>${isNew?'New':'Edit'} ${esc(kind)}</h3><div class="gc-fields">${this.field('name','Name',entry.name||'')}${this.field('description','Description',entry.description||'')}${this.field('icon','Font Awesome icon',entry.icon||'fa-gem')}${extra}</div><div class="gc-form-actions"><button class="gc-primary" type="submit">${icon('fa-floppy-disk')} Save</button>${isNew?'':`<button class="gc-danger" type="button" data-action="delete" data-id="${esc(entry.id)}">${icon('fa-trash')} Delete</button>`}<button class="gc-secondary" type="button" data-action="cancel">Cancel</button></div></form>`;
   }
   async click(e){const button=e.target.closest('button[data-action]');if(!button||this.busy)return;const a=button.dataset.action,id=button.dataset.id;
-    if(a==='tab'){this.tab=id;this.search='';this.group='all';this.page=1;this.readyOnly=false;return this.refresh();}
+    if(a==='tab'){this.tab=id;this.search='';this.group='all';this.page=1;this.readyOnly=false;return this.refresh({resetScroll:true});}
     if(a==='more'){this.rememberScroll();this.page++;return this.refresh();}
     if(a==='readyOnly'){this.readyOnly=!this.readyOnly;this.page=1;return this.refresh();}
     if(a==='toggleZero'){this.showZero=!this.showZero;return this.refresh();}
@@ -365,12 +371,11 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
   }
   change(e){if(e.target.name==='actor'){this.actorId=e.target.value;this.enchantItemId=null;return this.refresh();}
     if(e.target.name==='enchantItem'){this.enchantItemId=e.target.value;this.page=1;return this.refresh();}
-    if(e.target.name==='enchantElement'){this.enchantElement=e.target.value;return this.refresh();}
     if(e.target.name==='enchantFilter'){this.enchantFilter=e.target.value;this.page=1;return this.refresh();}
     if(e.target.name==='sceneOnly'&&game.user.isGM)return this.locked(async()=>{const db=clone(database());db.settings.sceneOnly=e.target.checked;await game.settings.set(ID,'database',db);});
   }
   input(e){if(!e.target.matches('[data-search]'))return;this.search=e.target.value;this.page=1;clearTimeout(this.searchTimer);
-    this.searchTimer=setTimeout(async()=>{await this.refresh();const field=this.element?.querySelector('[data-search]');if(field){field.focus();field.setSelectionRange?.(field.value.length,field.value.length);}},230);
+    this.searchTimer=setTimeout(async()=>{await this.refresh();const field=this.element?.querySelector('[data-search]');if(field){field.focus({preventScroll:true});field.setSelectionRange?.(field.value.length,field.value.length);}},230);
   }
   submit(e){if(!e.target.matches('[data-editor-form]'))return;e.preventDefault();if(game.user.isGM&&!this.busy)return this.locked(()=>this.saveEntry(e.target));}
   async locked(fn){if(this.busy)return;this.busy=true;try{await fn();}catch(err){console.error(`${ID} | Action failed`,err);notify(err.message||'Unexpected error',true);}finally{this.busy=false;await this.refresh();}}
