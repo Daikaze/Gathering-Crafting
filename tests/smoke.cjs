@@ -83,12 +83,12 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const db=context.game.settings.get('gathering-crafting','database');
   assert.equal(db.catalogVersion,10);
   assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
-  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.1');
+  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.2');
   assert.ok(db.materials.find(m=>m.id==='iron-ore').img.endsWith('/icons/handpainted/iron-ore.webp'));
   assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
   assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
   assert.equal(artworkFor(db.recipes.find(r=>r.id==='supreme-healing-potion')),
-    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.1');
+    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.2');
   await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,44,'sync must not duplicate entries');
   const oldIconItem=packs.get('world.gc-ores-metals').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='iron-ore');
   oldIconItem.img='modules/legacy-content/images/iron-ore.webp';
@@ -190,6 +190,30 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   actor.items.push(enchantedWeapon);app.enchantItemId=enchantedWeapon.id;
   assert.ok(app.template().includes('Enchanting'));
   assert.ok(app.template().includes('Spell Channel'));
+  // The elemental picker is removed. Every damage type has its own sorted card.
+  app.page=100;let allEnchantHtml=app.template();
+  assert.ok(!allEnchantHtml.includes('name="enchantElement"'));
+  assert.ok(allEnchantHtml.includes('Elemental Binding — Cold'));
+  assert.ok(allEnchantHtml.includes('Greater Elemental Binding — Thunder'));
+  assert.ok(allEnchantHtml.indexOf('Spell Channel</strong>')<allEnchantHtml.indexOf('Astral Sever</strong>'),'Novice enchantments must appear before Master enchantments');
+  app.page=1;
+  // Dropdown and search rerenders must retain the current .gc-content scrollTop.
+  const scrollHost={scrollTop:460};
+  const root={addEventListener(){}};
+  app.element={querySelector(sel){return sel==='.gc-content'?scrollHost:sel==='.gc-root'?root:null;}};
+  await app.change({target:{name:'enchantFilter',value:'learned'}});
+  assert.equal(app.pendingScrollTop,460,'dropdown changes preserve scroll position before render');
+  await app._onRender({},{});
+  assert.equal(scrollHost.scrollTop,460,'dropdown preserves viewport after render');
+  scrollHost.scrollTop=380;
+  app.search='binding';await app.refresh();
+  assert.equal(app.pendingScrollTop,380,'search rerender remembers scroll position');
+  await app._onRender({},{});
+  assert.equal(scrollHost.scrollTop,380);
+  app.enchantFilter='all';app.search='';
+  await app.refresh({resetScroll:true});await app._onRender({},{});
+  assert.equal(scrollHost.scrollTop,0,'switching tabs is allowed to reset scroll');
+  delete app.element;
   // The crafter pays no gold: the GP shown in Enchanting is only a market/service value.
   actor.system.currency={pp:0,gp:0,ep:0,sp:0,cp:0};
   const oldGold=JSON.stringify(actor.system.currency);
@@ -218,6 +242,26 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   context.game.time.worldTime+=2*86400;
   await finishLesson(actor,()=>{},async()=>{});
   assert.ok(actor.getFlag('gathering-crafting','enchanter').known.includes('weapon-spell-channel'));
+  // Fixed-element crafting stores Cold without any global element picker.
+  actor.flags['gathering-crafting'].enchanter={rank:2,known:['weapon-elemental-binding-cold'],training:null};
+  const frostSword=new ItemDoc({name:'Frost Sword',type:'weapon',system:{quantity:1,rarity:'uncommon',
+    type:{value:'martialM',baseItem:'longsword'},description:{value:'A sword.'},
+    damage:{base:{bonus:'',types:['slashing']}},properties:[]}},actor);
+  actor.items.push(frostSword);app.enchantItemId=frostSword.id;
+  await beginEnchantment(app,'weapon-elemental-binding-cold',{actor,announce:async()=>{},notify:()=>{}});
+  assert.equal(frostSword.getFlag('gathering-crafting','enchantmentPending').element,'Cold');
+  context.game.time.worldTime+=3*86400;
+  await finishEnchantment(app,frostSword.id,{actor,announce:async()=>{},notify:()=>{}});
+  assert.ok(frostSword.system.damage.base.bonus.includes('1d4[cold]'));
+  // Already existing v1.3.1 jobs also complete using their saved selected type.
+  const oldJob=new ItemDoc({name:'Legacy Thunder Sword',type:'weapon',system:{quantity:1,
+    rarity:'rare',type:{value:'martialM',baseItem:'longsword'},
+    description:{value:''},damage:{base:{bonus:'',types:['slashing']}},properties:[]},
+    flags:{'gathering-crafting':{enchantmentPending:{id:'weapon-elemental-binding',
+      element:'Thunder',finishAt:context.game.time.worldTime-1,startedAt:0,days:4,cost:300}}}},actor);
+  actor.items.push(oldJob);
+  await finishEnchantment(app,oldJob.id,{actor,announce:async()=>{},notify:()=>{}});
+  assert.ok(oldJob.system.damage.base.bonus.includes('1d4[thunder]'));
   assert.equal(JSON.stringify(actor.system.currency),oldGold,'Training and formula study must not deduct gold');
   // Power use is equipment-bound, once per Long Rest, and restores on native long rest.
   enchantedWeapon.system.equipped=true;
