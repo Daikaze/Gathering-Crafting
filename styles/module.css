@@ -287,3 +287,12 @@
 .gathering-crafting .gc-enchant-gm-slots{display:flex;justify-content:flex-end;gap:10px;align-items:center;padding:6px 10px 12px;color:#b3c3d0;font-size:11px}
 .gathering-crafting .gc-enchant-gm-slots label{display:flex;align-items:center;gap:6px}
 .gathering-crafting .gc-enchant-gm-slots input{width:58px;border:1px solid #526479;border-radius:6px;background:#172732;color:white;padding:6px}
+
+
+/* v1.3.3 — Every enchantment explains its exact equipment whitelist. */
+.gathering-crafting .gc-enchant-targets{display:flex;align-items:flex-start;gap:7px;flex-wrap:wrap;padding:10px 11px;background:#152e3a;border:1px solid #426378;border-radius:8px;font-size:11px;line-height:1.6;color:#cad8e6}
+.gathering-crafting .gc-enchant-targets strong{white-space:nowrap;color:#e7d49a}
+.gathering-crafting .gc-enchant-targets span{flex:1;min-width:120px}
+.gathering-crafting .gc-enchant-incompatible{display:flex;align-items:center;gap:6px;color:#e7b6aa;font-size:11px}
+.gathering-crafting .gc-enchant-compatible{display:flex;align-items:center;gap:6px;color:#a4dab9;font-size:11px}
+.gathering-crafting .gc-enchant-actions button:disabled{opacity:.58}
