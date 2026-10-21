@@ -17,7 +17,7 @@ test('all 56 Blacksmith recipes have meaningful English descriptions and coheren
   assert.ok(r.description.length>=75,r.name+' description too short');
   assert.ok(/[.!]$/.test(r.description),r.name+' punctuation');
   const d=created(r.id);
-  assert.ok(d.system.description.value.includes(r.description.replaceAll('&','&amp;')),r.name);
+  assert.ok(d.system.description.value.includes(r.description.replaceAll('&','&amp;').replaceAll("'",'&#39;').replaceAll('"','&quot;')),r.name);
   assert.equal(d.flags['gathering-crafting'].recipeId,r.id);
  }
 });
@@ -53,6 +53,7 @@ test('8 wearable items are Equipment, not Loot; no invented AC',()=>{
  const bracers=created('copper-bracers');
  assert.ok(canApplyEnchant({...bracers,getFlag:()=>null},enchantById('armor-arcane-mesh'),[]));
  const charm=created('dragonsilver-charm');
+ assert.equal(charm.system.rarity,'veryRare');
  assert.ok(canApplyEnchant({...charm,getFlag:()=>null},enchantById('armor-guardian-pendant'),[]));
 });
 test('unassembled metal parts stay crafting components (loot)',()=>{
