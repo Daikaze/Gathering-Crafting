@@ -1,4 +1,4 @@
-# Enchanting Reference — Gathering & Crafting v1.3.5
+# Enchanting Reference — Gathering & Crafting v1.3.6
 
 All 107 Enchantments are available with the required physical tools, a suitable Item, and sufficient Item enchantment slots. **Gold is an estimated market price / service value**, not a crafting material. Using the Enchanting tab never deducts coins from the maker, charges training tuition, or automatically transfers GP to a merchant. The game master may roleplay customer payments separately.
 
@@ -12,6 +12,10 @@ The only skill/tool prerequisite is a **physical Jeweler's Tools or Enchanter's 
 - No Enchanting rank training or separately learned formula is required. The Novice–Master tiers in this list are **item difficulty tiers**, used with rarity/slot limits, not mandatory character skill ranks.
 - For new jobs, completion requires Arcana against a GM-only DC of 10 + 2 × formula tier. Failed check: another world day of work before retry. Jobs begun on older versions retain old completion rules.
 - Market value is the price of the enchantment for customers; no gold is automatically deducted.
+
+## Finished Blacksmith gear (v1.3.6)
+
+Steel Chain Shirt is native Medium Armor (AC 13 + Dexterity, maximum +2). Copper Bracers, Steel Gauntlets, Steel Greaves, Steel Helm, Silver Circlet, Platinum Circlet, Moonsteel Diadem and Dragonsilver Charm are now equipable D&D5e Equipment items, with distinct Bracers, Gloves, Boots, Headwear and Amulet tags. The wearable objects grant no automatic bonus by themselves. Blacksmith crafting tier sets their nonmagical rarity quality and available enchantment slots.
 
 ## Item limits
 
