@@ -675,9 +675,7 @@ export function enchantingTool(actor){
   for(const key of ['jeweler','enchanter']){
     const item=itemForTool(actor,key);
     if(item){
-      const prof=key==='jeweler'
-        ?Math.max(proficiencyLevel(actor,'jeweler'),proficiencyLevel(actor,'enchanter'))
-        :Math.max(proficiencyLevel(actor,'enchanter'),proficiencyLevel(actor,'jeweler'));
+      const prof=proficiencyLevel(actor,key);
       return {item,key,proficient:prof>0,advantage:prof>0,proficiencyLevel:prof};
     }
   }
