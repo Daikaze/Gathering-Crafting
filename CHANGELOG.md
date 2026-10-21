@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.0 — Enchanting profession tab
+
+- Added 25 English-only weapon and armor enchantments (11 weapon / 14 armor) with GM-supplied gold costs, crafting days, and effects.
+- Added owned weapon/armor selector and selectable elemental damage type.
+- On confirmation, deduct gold; store the pending job directly on the Item, persist across sessions, and unlock completion after elapsed Foundry world time.
+- Complete enchantment to add Item flags and descriptive effects; Arcane Infusion +1/+2 uses native dnd5e magical bonus field. Non-native effects remain GM-adjudicated rather than unreliable automatic effects.
+- Prevent repeating/conflicting enchantments and simultaneous jobs on the same item. No cancellation/refund tool yet.
+- Added pure catalogue/economy/time unit tests, Foundry V14 smoke coverage and responsive UI styles. Existing crafting, artwork and inventory remain unchanged.
+
 ## 1.1.2 — Repair mismatched artwork in distributable ZIP
 
 - Stopped extracting older illustrated-assets archives over the 224 reviewed item icons during CI packaging (the v1.1.1 regression).
