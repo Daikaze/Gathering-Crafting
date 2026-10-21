@@ -5,6 +5,7 @@
 const NS='gathering-crafting';
 const escapeHTML=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const positive=(n,fall=1)=>Number.isFinite(+n)&&+n>0?Math.min(999,Math.trunc(+n)):fall;
+const blacksmithRarity=tier=>({1:'common',2:'uncommon',3:'rare',4:'veryRare'})[positive(tier)]||'common';
 const weaponSpecs={
  'iron-dagger':{base:'dagger',type:'simpleM',dice:4,damage:'piercing',properties:['fin','lgt','thr'],weight:1,value:2,range:[20,60]},
  'steel-dagger':{base:'dagger',type:'simpleM',dice:4,damage:'piercing',properties:['fin','lgt','thr'],weight:1,value:4,range:[20,60]},
@@ -70,15 +71,19 @@ export function makeCraftData(recipe,qty=1){
  const kind=outputKind(recipe),spec=weaponSpecs[recipe.id],shield=shields[recipe.id],armor=armorSpecs[recipe.id],wearable=wearableSpecs[recipe.id],system={quantity:positive(qty),
   description:{value:`<p>${escapeHTML(recipe.description||'A handmade item.')}</p><p><strong>Trade:</strong> ${escapeHTML(recipe.subcategory||recipe.category||'Crafting')} · Tier ${positive(recipe.tier)}</p>${kind==='consumable'?'<p>Use with the potion action or the Gathering & Crafting Inventory.</p>':''}`}};
  if(spec){
+  // Crafting tier sets the quality/slot ceiling, not inherent magical powers.
+  system.rarity=blacksmithRarity(recipe.tier);
   Object.assign(system,{type:{value:spec.type,baseItem:spec.base},weight:spec.weight,price:{value:spec.value,denomination:'gp'},
    equipped:false,properties:spec.properties,
    damage:{base:damage(1,spec.dice,[spec.damage])},
    activities:{attack:physicalActivity(spec)}});
   if(spec.range)system.range={value:spec.range[0],long:spec.range[1],units:'ft'};
  }else if(shield){
+  system.rarity=blacksmithRarity(recipe.tier);
   Object.assign(system,{type:{value:'shield',baseItem:'shield'},weight:shield.weight,price:{value:shield.price,denomination:'gp'},equipped:false,
    armor:{type:'shield',value:shield.value,dex:null},properties:[],activities:{}});
  }else if(armor){
+  system.rarity=blacksmithRarity(recipe.tier);
   // Steel Chain Shirt: base AC 13 + Dexterity (maximum 2), not a +13 AC bonus.
   Object.assign(system,{type:{value:armor.type,baseItem:armor.base},
    weight:armor.weight,price:{value:armor.price,denomination:'gp'},
@@ -86,6 +91,7 @@ export function makeCraftData(recipe,qty=1){
    armor:{type:armor.type,value:armor.armor,dex:armor.dex},
    properties:[],activities:{}});
  }else if(wearable){
+  system.rarity=blacksmithRarity(recipe.tier);
   // Headwear, bracers and garments need equip state and a suitable subtype
   // so that equipment-specific Enchanting restrictions can work.
   Object.assign(system,{type:{value:wearable.type,baseItem:wearable.base,
