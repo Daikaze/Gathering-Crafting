@@ -74,8 +74,8 @@ const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clea
   ChatMessage:{getSpeaker:()=>({alias:'Hero'}),create:async msg=>{if(failChat)throw Error('chat is offline');messages.push(msg);}},
   Roll:class{constructor(expr,vars={}){this.total=expr.startsWith('1d20')?roll+Number(vars.bonus||0):7;}async evaluate(){return this;}},
   fromUuid:async()=>null,CONST:{KEYBINDING_PRECEDENCE:{NORMAL:0}}};
-vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${toolsJS}\n${enchRulesJS}\n${enchUIJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment,beginLesson,finishLesson};`,context);
-const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog,adjustMaterialQuantity,adjustCraftedQuantity,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment,beginLesson,finishLesson}=context.testAPI;
+vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${toolsJS}\n${enchRulesJS}\n${enchUIJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment,beginLesson,finishLesson,useEnchantment,recoverEnchantmentUses};`,context);
+const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog,adjustMaterialQuantity,adjustCraftedQuantity,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment,beginLesson,finishLesson,useEnchantment,recoverEnchantmentUses}=context.testAPI;
 (async()=>{
   hooksOnce.get('init')();assert.equal(context.game.settings.get('gathering-crafting','database').recipes.length,122);
   await hooksOnce.get('ready')();assert.equal(packs.size,4);
@@ -216,5 +216,13 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   context.game.time.worldTime+=2*86400;
   await finishLesson(actor,()=>{},async()=>{});
   assert.ok(actor.getFlag('gathering-crafting','enchanter').known.includes('weapon-spell-channel'));
+  // Power use is equipment-bound, once per Long Rest, and restores on native long rest.
+  enchantedWeapon.system.equipped=true;
+  enchantedWeapon.flags['gathering-crafting'].enchantments.push({id:'weapon-hunters-marking'});
+  await useEnchantment(actor,enchantedWeapon.id,'weapon-hunters-marking',()=>{},async()=>{});
+  assert.equal(enchantedWeapon.getFlag('gathering-crafting','enchantmentUses')['weapon-hunters-marking'],1);
+  await assert.rejects(()=>useEnchantment(actor,enchantedWeapon.id,'weapon-hunters-marking',()=>{},async()=>{}));
+  await recoverEnchantmentUses(actor,{longRest:true},{type:'long'});
+  assert.equal(Object.keys(enchantedWeapon.getFlag('gathering-crafting','enchantmentUses')).length,0);
   console.log('PASS: v1.1.0 224 selected, separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
