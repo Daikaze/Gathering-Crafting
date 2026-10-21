@@ -1,6 +1,20 @@
-# Gathering & Crafting v1.3.5 — The Averis Workshop
+# Gathering & Crafting v1.3.6 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
+
+## v1.3.6 — Complete Blacksmith item descriptions and real wearable Items
+
+All **56 Blacksmith recipes** now have full, English, player-facing descriptions explaining what each result actually does. Recipe descriptions appear in the Blacksmithing tab, newly produced Item sheets and new compendium items.
+
+- **Steel Chain Shirt** now produces native dnd5e **Equipment**: Medium Armor, **AC 13 + Dexterity (maximum +2)**.
+- **Copper Bracers, Steel Gauntlets, Steel Greaves, Steel Helm, Silver Circlet, Platinum Circlet, Moonsteel Diadem and Dragonsilver Charm** now produce equipable native Equipment Items, compatible with the appropriate Enchanting equipment types.
+- These eight pieces of wearable gear have **no invented AC bonus or spell effect**. Only compatible applied enchantments can provide further properties.
+- Already functioning weapons (7 types) and shields (3 types) retain their attack/defense stats. Unassembled parts (Blacksteel Plates, Mithral Chain, Starmetal Spearhead, arrowheads, etc.) remain crafting goods, not finished wearable equipment.
+- Finished weapons and wearable equipment use crafting quality tiers for their rarity/Enchantment slot ceiling: Tier I Common, Tier II Uncommon, Tier III Rare, Tier IV Very Rare. This does not itself make a weapon magical.
+- Built-in catalogue schema is **v11**. On GM startup the module upgrades old default Blacksmith recipe descriptions; it preserves GM-custom descriptions, custom recipes and current recipe images. It backs up the prior database as \`backupBlacksmith110\`.
+- Already-crafted Items with an unmodified original description receive the replacement text, retaining additional notes and enchantments. **Existing Loot Item documents are not forcibly converted to Equipment**, because changing an embedded Item type in place may damage existing world data. Newly crafted items use the correct native types. Similarly, compendium synchronization does not overwrite GM-edited or previously created compendium Items: new entries are correct but older copies may need manual replacement.
+
+Five new native Blacksmith regression checks run in GitHub Actions alongside existing crafting, Enchanting and artwork tests.
 
 ## One simple workflow
 
