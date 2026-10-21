@@ -17,7 +17,7 @@ export const reducedDays=days=>Math.max(1,Math.ceil(Number(days)*0.7));
 const baseRank=cost=>cost<=250?1:cost<=500?2:cost<=800?3:cost<=1200?4:5;
 const weapon=(id,name,cost,days,description,extra={})=>({id:'weapon-'+id,name,kind:'weapon',cost,days:reducedDays(days),description,rank:baseRank(cost),allowed:['weapon'],slots:1,...extra});
 const armor=(id,name,cost,days,description,extra={})=>({id:'armor-'+id,name,kind:'armor',cost,days:reducedDays(days),description,rank:baseRank(cost),allowed:['armor','shield'],slots:1,...extra});
-export const ENCHANTMENTS=Object.freeze([
+const BASE_ENCHANTMENTS=[
   weapon('spell-channel','Spell Channel',125,2,'The weapon can be used as a spellcasting focus.'),
   weapon('arcane-infusion','Arcane Infusion',250,5,'The weapon becomes magical and gains a +1 bonus to attack and damage rolls.',{magicalBonus:1,exclusive:'arcane-infusion'}),
   weapon('greater-arcane-infusion','Greater Arcane Infusion',1000,10,'The weapon becomes magical and gains a +2 bonus to attack and damage rolls.',{magicalBonus:2,exclusive:'arcane-infusion',rank:4,slots:2}),
@@ -105,8 +105,32 @@ export const ENCHANTMENTS=Object.freeze([
   armor('sunward','Sunward',1550,13,'Once per Long Rest, emit daylight for 10 minutes.',{allowed:['armor','shield'],rank:5,slots:2,power:{spell:'Daylight',uses:1}}),
   armor('aegis-of-life','Aegis of Life',2100,16,'Once per Long Rest, cast Aid at 3rd level.',{allowed:['armor'],rank:5,slots:2,power:{spell:'Aid (3rd level)',uses:1}}),
   armor('warden-rune','Warden Rune',600,7,'Gain +1 on Insight checks while equipped.',{allowed:['armor','shield'],passive:{skill:'ins',bonus:1}})
+];
+// Retain the original generic elemental formulas for old Items, pending jobs and
+// already learned formula flags. They are no longer offered as selectable cards.
+const LEGACY_ELEMENTAL=Object.freeze(BASE_ENCHANTMENTS.filter(e=>
+ e.id==='weapon-elemental-binding'||e.id==='weapon-greater-elemental-binding'
+));
+const FIXED_ELEMENTAL=Object.freeze(LEGACY_ELEMENTAL.flatMap(original=>
+ ELEMENTS.map(element=>Object.freeze({
+  ...original,
+  id:original.id+'-'+element.toLowerCase(),
+  name:original.name+' — '+element,
+  description:'Adds '+original.elementDice+' '+element+' damage on weapon hits.',
+  fixedElement:element
+ }))
+));
+export const ENCHANTMENTS=Object.freeze([
+ ...BASE_ENCHANTMENTS.filter(e=>!LEGACY_ELEMENTAL.includes(e)),
+ ...FIXED_ELEMENTAL
 ]);
-export const enchantById=id=>ENCHANTMENTS.find(e=>e.id===id)||null;
+export const enchantById=id=>ENCHANTMENTS.find(e=>e.id===id)||LEGACY_ELEMENTAL.find(e=>e.id===id)||null;
+export const sortEnchantments=items=>[...items].sort((a,b)=>a.rank-b.rank||a.name.localeCompare(b.name,'en'));
+export const knowsEnchant=(known,enchant)=>Array.isArray(known)&&(
+ known.includes(enchant.id)||
+ // Characters who learned the old multi-element formula keep that knowledge.
+ (enchant.fixedElement&&known.includes(enchant.id.replace(/-(fire|cold|lightning|acid|thunder)$/,'')))
+);
 const normal=s=>String(s||'').toLowerCase();
 export function itemTags(item){
  if(!item)return [];
@@ -159,7 +183,7 @@ export function professionOf(actor){
  const data=actor?.getFlag?.('gathering-crafting','enchanter')||{};
  return {rank:Math.min(5,Math.max(0,Number(data.rank)||0)),known:Array.isArray(data.known)?data.known:[],training:data.training||null};
 }
-export function learningGate(actor,enchant){const prof=professionOf(actor);return prof.rank<enchant.rank?'Requires '+RANKS[enchant.rank].name:!prof.known.includes(enchant.id)?'Learn this enchantment first':'';}
+export function learningGate(actor,enchant){const prof=professionOf(actor);return prof.rank<enchant.rank?'Requires '+RANKS[enchant.rank].name:!knowsEnchant(prof.known,enchant)?'Learn this enchantment first':'';}
 export function hasTrainingTools(actor){
  return !!(actor?.items||[]).find(i=>Number(i.system?.quantity??1)>0&&/^(jeweler'?s tools|jeweller'?s tools|enchanter'?s tools|enchanting kit)$/i.test(String(i.name||'').replace(/[’‘]/g,"'")));
 }
@@ -194,8 +218,9 @@ export function completionAt(start,days){
 export function displayEnchantEffect(enchant,element){
  if(!enchant)return '';
  if(!enchant.elementDice)return enchant.description;
- if(!ELEMENTS.includes(element))throw new Error('Choose a valid elemental damage type.');
- return 'Adds '+enchant.elementDice+' '+element+' damage on weapon hits.';
+ const damageType=enchant.fixedElement||element;
+ if(!ELEMENTS.includes(damageType))throw new Error('Choose a valid elemental damage type.');
+ return 'Adds '+enchant.elementDice+' '+damageType+' damage on weapon hits.';
 }
 export const lessonCost=e=>Math.max(20,Math.round(e.cost*0.15/5)*5);
 export const lessonDays=e=>Math.max(1,Math.min(4,Math.ceil((e.rank+1)*0.65)));
