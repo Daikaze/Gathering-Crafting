@@ -1,29 +1,33 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import {TOOL_SPECS,requiredForNode,requiredForRecipe,itemForTool,proficiencyLevel,toolGate,craftCheck,actorLevel,proficiencyBonus} from "../scripts/tool-rules.mjs";
+import {TOOL_SPECS,requiredForNode,requiredForRecipe,itemForTool,proficiencyLevel,toolGate,craftCheck,actorLevel,proficiencyBonus,rollFormula} from "../scripts/tool-rules.mjs";
 
 const makeActor=(items=[],tools={},level=5)=>({
  system:{details:{level},attributes:{prof:3},abilities:{str:{mod:3},int:{mod:2},wis:{mod:1},dex:{mod:1}},tools},
  items:items.map((name,i)=>({id:"i"+i,name,type:"tool",system:{quantity:1}}))
 });
 const prof={mason:{value:1},herb:{value:1},leatherworker:{value:1},smith:{value:1},alchemist:{value:1}};
-test("mining automatically needs pickaxe + Mason's Tools proficiency",()=>{
+test("mining requires a pickaxe; Mason's proficiency gives Advantage",()=>{
  assert.equal(requiredForNode({group:"metallurgy"},{group:"Ore & Mineral"}),"pickaxe");
  assert.equal(toolGate(makeActor(["Pickaxe"],prof),"pickaxe").ok,true);
  assert.match(toolGate(makeActor([],prof),"pickaxe").error,/Pickaxe/);
- assert.match(toolGate(makeActor(["Pickaxe"],{}),"pickaxe").error,/Mason/);
+ assert.equal(toolGate(makeActor(["Pickaxe"],{}),"pickaxe").ok,true);
+ assert.equal(toolGate(makeActor(["Pickaxe"],{}),"pickaxe").advantage,false);
+ assert.equal(toolGate(makeActor(["Pickaxe"],prof),"pickaxe").advantage,true);
  assert.equal(itemForTool(makeActor(["Iron Pickaxe Head"],prof),"pickaxe"),null,"A spare axe head is not a pickaxe");
  assert.ok(itemForTool(makeActor(["Miner's Pick"],prof),"pickaxe"));
 });
-test("herb gathering requires Herbalism Kit and learned proficiency",()=>{
+test("herb gathering requires kit, not proficiency",()=>{
  assert.equal(requiredForNode({group:"alchemy"},{group:"Alchemical Ingredient"}),"herbalism");
  assert.equal(toolGate(makeActor(["Herbalism Kit"],prof),"herbalism").ok,true);
- assert.equal(toolGate(makeActor(["Herbalism Kit"],{herb:{value:0.5}}),"herbalism").ok,false,"Half proficiency does not satisfy full proficiency");
+ assert.equal(toolGate(makeActor(["Herbalism Kit"],{herb:{value:0.5}}),"herbalism").ok,true);
+ assert.equal(toolGate(makeActor(["Herbalism Kit"],{}),"herbalism").advantage,false);
 });
-test("monster drops require a skinning knife and Leatherworker's proficiency",()=>{
+test("monster drops require a skinning knife; proficiency is optional",()=>{
  assert.equal(requiredForNode({group:"monster"},{group:"Monster Drop"}),"skinning");
  assert.equal(toolGate(makeActor(["Skinning Knife"],prof),"skinning").ok,true);
- assert.equal(toolGate(makeActor(["Skinning Knife"],{smith:{value:1}}),"skinning").ok,false);
+ assert.equal(toolGate(makeActor(["Skinning Knife"],{smith:{value:1}}),"skinning").ok,true);
+ assert.equal(toolGate(makeActor(["Skinning Knife"],{smith:{value:1}}),"skinning").advantage,false);
 });
 test("recipes require their corresponding artisan tool, not any tool",()=>{
  assert.equal(requiredForRecipe({category:"alchemy"}),"alchemist");
@@ -36,7 +40,8 @@ test("custom GM tool and proficiency overrides stay respected",()=>{
  assert.equal(requiredForNode({requiredTool:"woodcarver",group:"metallurgy"}),"woodcarver");
  assert.equal(requiredForRecipe({category:"alchemy",requiredTool:"smith"}),"smith");
  assert.equal(toolGate(makeActor(["Smith's Tools"],{jeweler:{value:1}}),"smith","jeweler").ok,true);
- assert.equal(toolGate(makeActor(["Smith's Tools"],{smith:{value:1}}),"smith","jeweler").ok,false);
+ assert.equal(toolGate(makeActor(["Smith's Tools"],{smith:{value:1}}),"smith","jeweler").ok,true);
+ assert.equal(toolGate(makeActor(["Smith's Tools"],{smith:{value:1}}),"smith","jeweler").advantage,false);
 });
 test("checks scale with ability + proficiency bonus + level bonus + tool bonus",()=>{
  const actor=makeActor(["Smith's Tools"],prof,5);
@@ -86,4 +91,35 @@ test("proficiency is read from actor.system.tools (D&D5e 5.3.3)",()=>{
 test("unsupported required key is rejected rather than silently bypassed",()=>{
  assert.equal(TOOL_SPECS.pickaxe.label,"Pickaxe");
  assert.equal(toolGate(makeActor(["Pickaxe"],prof),"alien-tool").ok,false);
+});
+
+test("tool matching uses foundry baseItem, subtype, apostrophes, plus variants and flags",()=>{
+ const actor=makeActor([],{},5);
+ actor.items=[
+  {name:"Custom Masterwork Tool",type:"tool",system:{quantity:1,type:{baseItem:"jewel"}}},
+  {name:"Jeweler’s Tools +1",type:"tool",system:{quantity:1}},
+  {name:"Enchanter's Tools",type:"tool",system:{quantity:1}},
+  {name:"Smith's Tools +1",type:"tool",system:{quantity:1}},
+  {name:"Alchemist’s Supplies",type:"tool",system:{quantity:1}},
+  {name:"Boots",type:"equipment",system:{quantity:1}}
+ ];
+ assert.ok(itemForTool(actor,"jeweler"));
+ assert.ok(itemForTool(actor,"enchanter"));
+ assert.ok(itemForTool(actor,"smith"));
+ assert.ok(itemForTool(actor,"alchemist"));
+ assert.equal(itemForTool(actor,"pickaxe"),null);
+ const withBase=makeActor([],{},5);withBase.items=[{name:"Artisan Gear",type:"tool",system:{quantity:1,type:{baseItem:"smith"}}}];
+ assert.equal(itemForTool(withBase,"smith"),withBase.items[0]);
+ const stock=makeActor(["Iron Pickaxe Head"],{});
+ assert.equal(itemForTool(stock,"pickaxe"),null);
+});
+test("tool proficiency controls advantage, not access; canonical and alternate ids supported",()=>{
+ const a=makeActor(["Smith's Tools"],{},5),b=makeActor(["Smith's Tools"],{smith:{value:1}},5);
+ assert.equal(toolGate(a,"smith").ok,true);
+ assert.equal(toolGate(a,"smith").advantage,false);
+ assert.equal(toolGate(b,"smith").advantage,true);
+ assert.equal(rollFormula(false),"1d20 + @bonus");
+ assert.equal(rollFormula(true),"2d20kh + @bonus");
+ assert.equal(proficiencyLevel(makeActor([],{jewel:{value:1}}),"jeweler"),1);
+ assert.equal(proficiencyLevel(makeActor([],{enchanting:{value:1}}),"enchanter"),1);
 });
