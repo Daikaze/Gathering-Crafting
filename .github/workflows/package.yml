@@ -19,9 +19,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Unpack original fantasy item artwork
+      - name: Protect bundled v1.1 artwork
         run: |
-          for bundle in icons/illustrated-assets/*.zip; do\n            [ -f "$bundle" ] || continue\n            unzip -q -n "$bundle" -d .\n          done
+          VERSION="$(node -p "require('./module.json').version")"
+          if [ "$VERSION" = "1.1.0" ]; then
+            node artwork/check_preview_payload.cjs
+          else
+            for bundle in icons/illustrated-assets/*.zip; do
+              [ -f "$bundle" ] || continue
+              unzip -q -o "$bundle" -d .
+            done
+          fi
       - name: Audit all item artwork and module regression tests
         run: |
           node tests/artwork.cjs
