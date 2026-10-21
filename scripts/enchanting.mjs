@@ -541,6 +541,10 @@ const ENCHANT_TARGETS=Object.freeze({
     "belt"
   ]
 });
+// Bracers are not gloves; only suitably passive wrist enchantments work on them.
+for(const id of ['armor-arcane-mesh','armor-enduring-rune','armor-sigil-of-clarity']){
+ ENCHANT_TARGETS[id]=Object.freeze([...ENCHANT_TARGETS[id],'bracers']);
+}
 const BASE_ENCHANTMENTS=Object.freeze(SOURCE_ENCHANTMENTS.map(entry=>{
  const allowed=ENCHANT_TARGETS[entry.id];
  if(!allowed?.length)throw new Error('Missing compatible equipment mapping: '+entry.id);
@@ -579,7 +583,7 @@ export const EQUIPMENT_LABELS=Object.freeze({
  bludgeoning:'Bludgeoning Weapons','heavy-weapon':'Heavy Weapons',
  light:'Light Armor',medium:'Medium Armor',heavy:'Heavy Armor',
  robe:'Robes',shield:'Shields',boots:'Boots',cloak:'Cloaks',
- gloves:'Gloves',helm:'Helmets / Headwear',ring:'Rings',
+ gloves:'Gloves',bracers:'Bracers / Wrist Guards',helm:'Helmets / Headwear',ring:'Rings',
  amulet:'Amulets / Necklaces',belt:'Belts'
 });
 export const enchantTargetLabels=enchant=>(enchant?.allowed||[]).map(tag=>EQUIPMENT_LABELS[tag]||tag);
@@ -624,10 +628,11 @@ export function itemTags(item){
    if(/\b(robes?|vestments?|tunic)\b/.test(descriptor))tags.push('robe');
    else if(/\b(boots?|shoes?|slippers?|greaves)\b/.test(descriptor))tags.push('boots');
    else if(/\b(cloak|cape|mantle)\b/.test(descriptor))tags.push('cloak');
+   else if(/\b(bracers?|vambraces?|wristguards?)\b/.test(descriptor))tags.push('bracers');
    else if(/\b(gloves?|gauntlets?|handwraps?)\b/.test(descriptor))tags.push('gloves');
-   else if(/\b(helmet|helm|headband|circlet|hood|hat)\b/.test(descriptor))tags.push('helm');
+   else if(/\b(helmet|helm|headband|circlet|diadem|tiara|hood|hat)\b/.test(descriptor))tags.push('helm');
    else if(/\b(rings?|bands?)\b/.test(descriptor))tags.push('ring');
-   else if(/\b(amulet|necklace|pendant|medallion|talisman)\b/.test(descriptor))tags.push('amulet');
+   else if(/\b(amulet|necklace|pendant|medallion|talisman|charm)\b/.test(descriptor))tags.push('amulet');
    else if(/\b(belt|girdle|sash)\b/.test(descriptor))tags.push('belt');
   }
  }
