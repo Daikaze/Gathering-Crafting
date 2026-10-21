@@ -3,6 +3,7 @@ const vm=require('node:vm'),fs=require('node:fs'),path=require('node:path'),asse
 const base=path.join(__dirname,'..');
 const catalogJS=fs.readFileSync(path.join(base,'scripts/catalog.js'),'utf8').replace('export const CATALOG','const CATALOG');
 const itemsJS=fs.readFileSync(path.join(base,'scripts/items.js'),'utf8').replaceAll(/^export /gm,'');
+const toolsJS=fs.readFileSync(path.join(base,'scripts/tool-rules.mjs'),'utf8').replaceAll(/^export /gm,'');
 const moduleJS=fs.readFileSync(path.join(base,'scripts/main.js'),'utf8').replace(/^import .*;$/gm,'');
 const cat=JSON.parse(fs.readFileSync(path.join(base,'data/catalog.json'),'utf8'));
 assert.equal(cat.materials.length,102);assert.equal(cat.recipes.length,122);assert.equal(cat.nodes.length,71);
@@ -58,6 +59,9 @@ class Actor{
   async update(change){for(const[k,v]of Object.entries(change)){if(k==='system.attributes.hp.value')this.system.attributes.hp.value=v; if(k==='system.attributes.hp.temp')this.system.attributes.hp.temp=v;}}
 }
 const actor=new Actor();
+actor.system.details={level:5};actor.system.abilities.int={mod:2};actor.system.abilities.wis={mod:1};actor.system.abilities.dex={mod:2};actor.system.attributes.prof=3;
+actor.system.tools={mason:{value:1},herb:{value:1},leatherworker:{value:1},smith:{value:1},alchemist:{value:1}};
+for(const name of ['Pickaxe',"Smith's Tools","Alchemist's Supplies",'Herbalism Kit','Skinning Knife'])actor.items.push(new ItemDoc({name,type:'tool',system:{quantity:1}},actor));
 const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clearTimeout,Hooks:{once:(h,fn)=>hooksOnce.set(h,fn),on:(h,fn)=>hooksOn.set(h,fn)},
   foundry:{utils:{deepClone:deep,randomID:()=>`new${++counter}`},applications:{api:{ApplicationV2:class{constructor(){this.rendered=true;}render(){return Promise.resolve(this);}async _onRender(){}},DialogV2:{confirm:async()=>true}}},documents:{collections:{CompendiumCollection:{createCompendium:async({name,label})=>{const pack={collection:`world.${name}`,locked:false,label,items:[],async getDocuments(){return this.items;},async configure({locked}){this.locked=locked;}};packs.set(pack.collection,pack);return pack;}}}}},
   game:{system:{id:'dnd5e',version:'5.3.3'},user:{isGM:true,character:actor},actors:{contents:[actor]},items:{contents:[]},packs:{get:(key)=>packs.get(key),contents:[mockLegacy,mockPotion]},modules:new Map([['gathering-crafting',{}]]),
@@ -68,7 +72,7 @@ const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clea
   ChatMessage:{getSpeaker:()=>({alias:'Hero'}),create:async msg=>{if(failChat)throw Error('chat is offline');messages.push(msg);}},
   Roll:class{constructor(expr,vars={}){this.total=expr.startsWith('1d20')?roll+Number(vars.bonus||0):7;}async evaluate(){return this;}},
   fromUuid:async()=>null,CONST:{KEYBINDING_PRECEDENCE:{NORMAL:0}}};
-vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork};`,context);
+vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${toolsJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork};`,context);
 const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog,adjustMaterialQuantity,adjustCraftedQuantity,artworkFor,refreshOwnedArtwork}=context.testAPI;
 (async()=>{
   hooksOnce.get('init')();assert.equal(context.game.settings.get('gathering-crafting','database').recipes.length,122);
@@ -134,8 +138,11 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   app.tab='backpack';assert.ok(app.template().includes('Monster Drops'));
   app.tab='gm';assert.ok(!app.template().includes('Compendium Artwork'));assert.ok(!app.template().includes('Rescan Artwork'));app.tab='backpack';
   assert.ok(!/[А-Яа-я]/.test(app.template()),'UI should contain no Bulgarian text');
+  assert.ok(app.template().includes('Unlimited'),'unlimited gather UI should appear');
+  assert.ok(!app.template().includes('attempts left'),'no old daily cap label');
+  assert.ok(!app.craftTab(db,actor,'alchemy').includes('Always succeeds'),'crafting must always roll');
   assert.ok(app.recipeCard(db,db.recipes.find(r=>r.id==='genderflux-elixir'),actor).includes('Genderflux Elixir'));
-  await app.gather('node-iron-ore');assert.equal(actor.getFlag('gathering-crafting','attempts'),1);assert.ok(count(actor,'iron-ore')>0);
+  await app.gather('node-iron-ore');assert.equal(actor.getFlag('gathering-crafting','attempts'),undefined,'no more gather attempt cap');assert.ok(count(actor,'iron-ore')>0);
   await grantMaterial(actor,db.materials.find(m=>m.id==='coal'),8);
   await grantMaterial(actor,db.materials.find(m=>m.id==='iron-ore'),12);
   const before=count(actor,'iron-ore');await app.craft('iron-ingot');assert.equal(count(actor,'iron-ore'),before-3);assert.equal(count(actor,'iron-ingot'),1);
@@ -161,7 +168,7 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const ff=actor.items.find(i=>i.getFlag('gathering-crafting','recipeId')==='featherfall-philter');assert.ok(ff);
   await app.drink(ff.id);assert.ok(messages.some(m=>String(m.content).includes('Featherfall Philter')));
   failOutput=true;const beforeR=count(actor,'redroot'),beforeS=count(actor,'sunpetal');await assert.rejects(()=>app.craft('healing-potion'));assert.equal(count(actor,'redroot'),beforeR);assert.equal(count(actor,'sunpetal'),beforeS);failOutput=false;
-  app.craftMode='inspired';roll=1;await app.craft('iron-ingot');assert.ok(count(actor,'iron-ingot')>=1);
+  app.craftMode='inspired';roll=1;const preFailed=count(actor,'iron-ingot');await app.craft('iron-ingot');assert.equal(count(actor,'iron-ingot'),preFailed,'failed roll never produces an item');roll=19;
   app.craftMode='steady';failChat=true;await app.craft('iron-ingot');failChat=false;
   const old={settings:{dailyLimit:4},materials:[{id:'player-herb',name:'Custom Herb',group:'Alchemical Ingredient'}],nodes:[],recipes:[{id:'player-tonic',name:'Player Tonic',category:'alchemy',ingredients:[{id:'player-herb',qty:1}]}]};
   const migrated=mergeCatalog(old);assert.equal(migrated.settings.dailyLimit,4);assert.ok(migrated.recipes.some(r=>r.id==='player-tonic'));assert.ok(migrated.materials.some(m=>m.id==='player-herb'));
