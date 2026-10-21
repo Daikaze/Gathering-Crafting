@@ -15,10 +15,27 @@ const weaponSpecs={
  'steel-spear':{base:'spear',type:'simpleM',dice:6,damage:'piercing',properties:['thr','ver'],weight:3,value:8,range:[20,60]}
 };
 const shields={'steel-shield':{value:2,weight:6,price:15},'adamantine-shield':{value:2,weight:6,price:300},'dusksteel-buckler':{value:1,weight:4,price:85}};
+/** Complete native wearables, not partial ingredients. Normal armor supplies
+ * proper native AC. Small accessories can be equipped and enchanted but give
+ * no independent AC; the system only applies bonuses explicitly defined.
+ */
+const armorSpecs={
+ 'steel-chain-shirt':{type:'medium',base:'chainshirt',armor:13,dex:2,weight:20,price:50}
+};
+const wearableSpecs={
+ 'copper-bracers':{type:'clothing',subtype:'bracers',base:'bracers',weight:1,price:6},
+ 'steel-gauntlets':{type:'clothing',subtype:'gloves',base:'gloves',weight:2,price:10},
+ 'steel-greaves':{type:'clothing',subtype:'boots',base:'greaves',weight:3,price:10},
+ 'steel-helm':{type:'clothing',subtype:'helm',base:'helmet',weight:3,price:15},
+ 'silver-circlet':{type:'clothing',subtype:'helm',base:'circlet',weight:0.5,price:30},
+ 'platinum-circlet':{type:'clothing',subtype:'helm',base:'circlet',weight:0.5,price:250},
+ 'moonsteel-diadem':{type:'clothing',subtype:'helm',base:'diadem',weight:0.5,price:350},
+ 'dragonsilver-charm':{type:'trinket',subtype:'amulet',base:'charm',weight:0.1,price:180}
+};
 export function outputKind(recipe){
  if(recipe.category==='alchemy')return 'consumable';
  if(weaponSpecs[recipe.id])return 'weapon';
- if(shields[recipe.id])return 'equipment';
+ if(shields[recipe.id]||armorSpecs[recipe.id]||wearableSpecs[recipe.id])return 'equipment';
  return 'loot';
 }
 function damage(number,denomination,types,bonus=''){
@@ -50,7 +67,7 @@ export function makeMaterialData(mat,qty=1){
   flags:{[NS]:{resourceId:mat.id}}};
 }
 export function makeCraftData(recipe,qty=1){
- const kind=outputKind(recipe),spec=weaponSpecs[recipe.id],shield=shields[recipe.id],system={quantity:positive(qty),
+ const kind=outputKind(recipe),spec=weaponSpecs[recipe.id],shield=shields[recipe.id],armor=armorSpecs[recipe.id],wearable=wearableSpecs[recipe.id],system={quantity:positive(qty),
   description:{value:`<p>${escapeHTML(recipe.description||'A handmade item.')}</p><p><strong>Trade:</strong> ${escapeHTML(recipe.subcategory||recipe.category||'Crafting')} · Tier ${positive(recipe.tier)}</p>${kind==='consumable'?'<p>Use with the potion action or the Gathering & Crafting Inventory.</p>':''}`}};
  if(spec){
   Object.assign(system,{type:{value:spec.type,baseItem:spec.base},weight:spec.weight,price:{value:spec.value,denomination:'gp'},
@@ -61,6 +78,20 @@ export function makeCraftData(recipe,qty=1){
  }else if(shield){
   Object.assign(system,{type:{value:'shield',baseItem:'shield'},weight:shield.weight,price:{value:shield.price,denomination:'gp'},equipped:false,
    armor:{type:'shield',value:shield.value,dex:null},properties:[],activities:{}});
+ }else if(armor){
+  // Steel Chain Shirt: base AC 13 + Dexterity (maximum 2), not a +13 AC bonus.
+  Object.assign(system,{type:{value:armor.type,baseItem:armor.base},
+   weight:armor.weight,price:{value:armor.price,denomination:'gp'},
+   equipped:false,identified:true,
+   armor:{type:armor.type,value:armor.armor,dex:armor.dex},
+   properties:[],activities:{}});
+ }else if(wearable){
+  // Headwear, bracers and garments need equip state and a suitable subtype
+  // so that equipment-specific Enchanting restrictions can work.
+  Object.assign(system,{type:{value:wearable.type,baseItem:wearable.base,
+    subtype:wearable.subtype},weight:wearable.weight,
+   price:{value:wearable.price,denomination:'gp'},
+   equipped:false,identified:true,properties:[],activities:{}});
  }else if(kind==='consumable'){
   const f=/^healing:(\d+d\d+\+\d+)$/.exec(recipe.effect||'');
   Object.assign(system,{type:{value:'potion'},weight:0.5,price:{value:Math.max(5,5*Math.pow(3,positive(recipe.tier)-1)),denomination:'gp'},
@@ -72,4 +103,4 @@ export function makeCraftData(recipe,qty=1){
  return {name:recipe.name,type:kind,img:recipe.img||'icons/svg/item-bag.svg',system,
   flags:{[NS]:{recipeId:recipe.id,effect:recipe.effect||'',...(recipe.subcategory==='Smelting'?{resourceId:recipe.id}:{})}}};
 }
-export const nativeTemplates={weapons:weaponSpecs,shields};
+export const nativeTemplates={weapons:weaponSpecs,shields,armor:armorSpecs,wearables:wearableSpecs};
