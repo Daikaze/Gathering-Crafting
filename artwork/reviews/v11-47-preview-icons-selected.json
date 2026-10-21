@@ -1,0 +1,604 @@
+{
+  "schema": 1,
+  "created": "2026-10-21",
+  "target": "Gathering & Crafting Foundry V14 local preview only",
+  "state": "47-preview-icons-selected-not-original-artwork",
+  "summary": {
+    "sourceCells": 387,
+    "targets": 84,
+    "selectedForTemporaryPreview": 47,
+    "suitable": 6,
+    "suggested": 41,
+    "notSelectedWeak": 19,
+    "notSelectedNoMatch": 18,
+    "iconSizePx": 256
+  },
+  "warning": "Source detail ~100px from generated contact sheets. The 47 binary WebPs are in the chat ZIP gathering-crafting-v11-47-selected-preview.zip, not committed as source art in this GitHub branch. Do not mark production-manifest approvals, publish v1.1, or treat upscales as 1024px originals.",
+  "selected": [
+    {
+      "itemId": "recipe:brass-ingot",
+      "name": "Brass Ingot",
+      "atlasCell": "S1_r02_c02",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-brass-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:bronze-ingot",
+      "name": "Bronze Ingot",
+      "atlasCell": "S2_r02_c05",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-bronze-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:copper-ingot",
+      "name": "Copper Ingot",
+      "atlasCell": "S3_r01_c07",
+      "quality": "suitable",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-copper-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:iron-ingot",
+      "name": "Iron Ingot",
+      "atlasCell": "S1_r02_c08",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-iron-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:iron-nails",
+      "name": "Iron Nails",
+      "atlasCell": "S2_r04_c10",
+      "quality": "suitable",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-iron-nails.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:nickel-ingot",
+      "name": "Nickel Ingot",
+      "atlasCell": "S2_r02_c08",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-nickel-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:tin-ingot",
+      "name": "Tin Ingot",
+      "atlasCell": "S1_r02_c03",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-tin-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:cobalt-ingot",
+      "name": "Cobalt Ingot",
+      "atlasCell": "S2_r02_c11",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-cobalt-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:electrum-ingot",
+      "name": "Electrum Ingot",
+      "atlasCell": "S1_r02_c04",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-electrum-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:gold-ingot",
+      "name": "Gold Ingot",
+      "atlasCell": "S2_r02_c09",
+      "quality": "suitable",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-gold-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:silver-ingot",
+      "name": "Silver Ingot",
+      "atlasCell": "S2_r02_c07",
+      "quality": "suitable",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-silver-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:silvered-arrowheads",
+      "name": "Silvered Arrowheads",
+      "atlasCell": "S3_r03_c12",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-silvered-arrowheads.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:steel-arrowheads",
+      "name": "Steel Arrowheads",
+      "atlasCell": "S3_r03_c11",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-steel-arrowheads.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:steel-ingot",
+      "name": "Steel Ingot",
+      "atlasCell": "S2_r02_c10",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-steel-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:blacksteel-ingot",
+      "name": "Blacksteel Ingot",
+      "atlasCell": "S3_r01_c10",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-blacksteel-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:dusksteel-ingot",
+      "name": "Dusksteel Ingot",
+      "atlasCell": "S1_r02_c05",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-dusksteel-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:mithral-ingot",
+      "name": "Mithral Ingot",
+      "atlasCell": "S3_r01_c12",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-mithral-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:platinum-ingot",
+      "name": "Platinum Ingot",
+      "atlasCell": "S3_r01_c08",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-platinum-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:moonsteel-ingot",
+      "name": "Moonsteel Ingot",
+      "atlasCell": "S1_r02_c06",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-moonsteel-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "recipe:starmetal-spearhead",
+      "name": "Starmetal Spearhead",
+      "atlasCell": "S3_r03_c10",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/craft-starmetal-spearhead.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:nickel-ore",
+      "name": "Nickel Ore",
+      "atlasCell": "S3_r01_c05",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/nickel-ore.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:saltpeter",
+      "name": "Saltpeter",
+      "atlasCell": "S3_r09_c04",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/saltpeter.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:tin-ore",
+      "name": "Tin Ore",
+      "atlasCell": "S1_r01_c02",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/tin-ore.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:cobalt-ore",
+      "name": "Cobalt Ore",
+      "atlasCell": "S1_r01_c10",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/cobalt-ore.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:obsidian",
+      "name": "Obsidian",
+      "atlasCell": "S3_r01_c04",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/obsidian.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:brass-ingot",
+      "name": "Brass Ingot",
+      "atlasCell": "S2_r02_c06",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/brass-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:electrum-ingot",
+      "name": "Electrum Ingot",
+      "atlasCell": "S3_r01_c09",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/electrum-ingot.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:pure-water",
+      "name": "Purified Water",
+      "atlasCell": "S3_r09_c11",
+      "quality": "suitable",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/pure-water.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:silverleaf",
+      "name": "Silverleaf",
+      "atlasCell": "S1_r07_c13",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/silverleaf.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:duskshade",
+      "name": "Duskshade",
+      "atlasCell": "S3_r07_c03",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/duskshade.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:frostleaf",
+      "name": "Frostleaf",
+      "atlasCell": "S3_r07_c12",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/frostleaf.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:gravebloom",
+      "name": "Gravebloom",
+      "atlasCell": "S2_r07_c08",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/gravebloom.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:moonbloom",
+      "name": "Moonbloom",
+      "atlasCell": "S3_r07_c09",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/moonbloom.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:stormthistle",
+      "name": "Stormthistle",
+      "atlasCell": "S2_r07_c10",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/stormthistle.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:wolfsbane",
+      "name": "Wolfsbane",
+      "atlasCell": "S2_r07_c06",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/wolfsbane.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:thunderbloom",
+      "name": "Thunderbloom",
+      "atlasCell": "S3_r07_c08",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/thunderbloom.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:spider-silk",
+      "name": "Spider Silk",
+      "atlasCell": "S2_r04_c08",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/handpainted/alchemy/spider-silk.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:wolf-fang",
+      "name": "Wolf Fang",
+      "atlasCell": "S1_r04_c02",
+      "quality": "suitable",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/wolf-fang.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:ghoul-claw",
+      "name": "Ghoul Claw",
+      "atlasCell": "S2_r05_c01",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/ghoul-claw.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:griffon-feather",
+      "name": "Griffon Feather",
+      "atlasCell": "S3_r05_c01",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/griffon-feather.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:venom-sac",
+      "name": "Venom Sac",
+      "atlasCell": "S3_r06_c06",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/venom-sac.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:basilisk-eye",
+      "name": "Basilisk Eye",
+      "atlasCell": "S3_r06_c03",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/basilisk-eye.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:ectoplasm",
+      "name": "Ectoplasm",
+      "atlasCell": "S2_r08_c05",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/ectoplasm.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:manticore-spike",
+      "name": "Manticore Spike",
+      "atlasCell": "S3_r03_c09",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/manticore-spike.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:shadow-essence",
+      "name": "Shadow Essence",
+      "atlasCell": "S1_r09_c16",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/shadow-essence.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:wyvern-stinger",
+      "name": "Wyvern Stinger",
+      "atlasCell": "S2_r05_c05",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/wyvern-stinger.webp",
+      "status": "preview-selected-not-approved"
+    },
+    {
+      "itemId": "material:chimera-horn",
+      "name": "Chimera Horn",
+      "atlasCell": "S2_r05_c11",
+      "quality": "suggested",
+      "temporaryFoundryImgPath": "modules/gathering-crafting/icons/illustrated/chimera-horn.webp",
+      "status": "preview-selected-not-approved"
+    }
+  ],
+  "weak": [
+    {
+      "itemId": "recipe:copper-wire",
+      "name": "Copper Wire",
+      "atlasCell": "S2_r04_c13",
+      "quality": "weak"
+    },
+    {
+      "itemId": "recipe:golden-seal",
+      "name": "Golden Seal",
+      "atlasCell": "S2_r04_c14",
+      "quality": "weak"
+    },
+    {
+      "itemId": "recipe:runesteel-ingot",
+      "name": "Runesteel Ingot",
+      "atlasCell": "S2_r02_c12",
+      "quality": "weak"
+    },
+    {
+      "itemId": "recipe:adamantine-ingot",
+      "name": "Adamantine Ingot",
+      "atlasCell": "S1_r02_c07",
+      "quality": "weak"
+    },
+    {
+      "itemId": "recipe:dragonsilver-charm",
+      "name": "Dragonsilver Charm",
+      "atlasCell": "S1_r08_c13",
+      "quality": "weak"
+    },
+    {
+      "itemId": "recipe:dragonsilver-ingot",
+      "name": "Dragonsilver Ingot",
+      "atlasCell": "S3_r01_c11",
+      "quality": "weak"
+    },
+    {
+      "itemId": "recipe:starmetal-ingot",
+      "name": "Starmetal Ingot",
+      "atlasCell": "S3_r01_c13",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:adamantine-ore",
+      "name": "Adamantine Ore",
+      "atlasCell": "S3_r08_c08",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:starmetal-ore",
+      "name": "Starmetal Ore",
+      "atlasCell": "S2_r03_c05",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:dusksteel-ingot",
+      "name": "Dusksteel Ingot",
+      "atlasCell": "S2_r02_c13",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:runesteel-ingot",
+      "name": "Runesteel Ingot",
+      "atlasCell": "S2_r02_c14",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:merrowreed",
+      "name": "Merrow Reed",
+      "atlasCell": "S1_r07_c14",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:crimson-sap",
+      "name": "Crimson Sap",
+      "atlasCell": "S3_r09_c07",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:ghost-orchid",
+      "name": "Ghost Orchid",
+      "atlasCell": "S2_r07_c03",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:slime-core",
+      "name": "Slime Core",
+      "atlasCell": "S3_r06_c05",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:troll-blood",
+      "name": "Troll Blood",
+      "atlasCell": "S3_r06_c01",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:demon-ichor",
+      "name": "Demon Ichor",
+      "atlasCell": "S3_r06_c02",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:dragon-scale",
+      "name": "Dragon Scale",
+      "atlasCell": "S3_r04_c07",
+      "quality": "weak"
+    },
+    {
+      "itemId": "material:kraken-ink",
+      "name": "Kraken Ink",
+      "atlasCell": "S3_r09_c16",
+      "quality": "weak"
+    }
+  ],
+  "needsArtwork": [
+    {
+      "itemId": "recipe:lantern-frame",
+      "name": "Lantern Frame",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "recipe:tin-solder",
+      "name": "Tin Solder",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "recipe:brass-compass",
+      "name": "Brass Compass",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "recipe:cobalt-lockbox",
+      "name": "Cobalt Lockbox",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "recipe:silver-circlet",
+      "name": "Silver Circlet",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "recipe:steel-rivets",
+      "name": "Steel Rivets",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "recipe:platinum-circlet",
+      "name": "Platinum Circlet",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "recipe:runesteel-chisel",
+      "name": "Runesteel Chisel",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "recipe:moonsteel-diadem",
+      "name": "Moonsteel Diadem",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "material:iron-ingot",
+      "name": "Iron Ingot",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "material:nickel-ingot",
+      "name": "Nickel Ingot",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "material:tin-ingot",
+      "name": "Tin Ingot",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "material:blacksteel-ingot",
+      "name": "Blacksteel Ingot",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "material:platinum-ingot",
+      "name": "Platinum Ingot",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "material:adamantine-ingot",
+      "name": "Adamantine Ingot",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "material:dragonsilver-ingot",
+      "name": "Dragonsilver Ingot",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "material:moonsteel-ingot",
+      "name": "Moonsteel Ingot",
+      "status": "not-matched"
+    },
+    {
+      "itemId": "material:starmetal-ingot",
+      "name": "Starmetal Ingot",
+      "status": "not-matched"
+    }
+  ],
+  "noExternal20Included": true
+}
