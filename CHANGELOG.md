@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.4 — Character-sheet Crafting launcher after Affinity
+
+- Moved the character-sheet Gathering & Crafting action from the full-width sheet header into the primary navigation row directly after **Affinity**, displaying the shorter label **Crafting**.
+- Prevented duplicated launchers and unrelated sheet-tab activation; added compatibility with anchor/button navigation markup and delayed third-party Affinity tabs.
+- Kept the legacy header launcher on sheet layouts without an Affinity tab, plus all Actor Directory access and Enchantment Powers.
+- Added Foundry V14 smoke regressions for button placement, click handling, rerender idempotence and fallback behavior.
+
 ## 1.3.3 — Explicit equipment restrictions and robe support
 
 - Added clear **Compatible with:** labels to every enchantment and enforced the whitelist server-side before beginning work.
