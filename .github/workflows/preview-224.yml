@@ -1,0 +1,74 @@
+name: Validate v1.1 preview artwork update
+
+on:
+  push:
+    branches:
+      - update/v1.1-preview-224
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate the approved 224-ID artwork map
+        run: python -m unittest discover -s tools/tests -p 'test_preview224.py' -v
+      - name: Check for actual WebP asset overlay
+        id: overlay
+        run: |
+          if [ -f artwork/preview-224-overlay.zip ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Full art binaries are not in this GitHub branch yet. A manifest alone is NOT a published update."
+          fi
+      - name: Validate and stage 224 WebPs
+        if: steps.overlay.outputs.present == 'true'
+        run: |
+          python tools/apply-preview-224.py --overlay artwork/preview-224-overlay.zip
+          python tools/apply-preview-224.py --overlay artwork/preview-224-overlay.zip --apply
+          node tests/artwork.cjs
+          node tests/smoke.cjs
+      - name: Assemble v1.1 preview ZIP (not release)
+        if: steps.overlay.outputs.present == 'true'
+        run: |
+          mkdir -p staging/gathering-crafting
+          rsync -a \
+            --exclude=.git --exclude=.github --exclude=dist \
+            --exclude=staging --exclude=artwork --exclude=tools \
+            --exclude=artwork-backups --exclude=illustrated-assets \
+            ./ staging/gathering-crafting/
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          target=Path("staging/gathering-crafting/module.json")
+          data=json.loads(target.read_text())
+          data["version"]="1.1.0-preview.1"
+          data["description"]="Preview update with 224 distinct, user-curated 256px inventory icons; Foundry V14 / dnd5e 5.3.3"
+          data.pop("download",None)
+          target.write_text(json.dumps(data,indent=2)+"\n")
+          main=Path("staging/gathering-crafting/scripts/main.js")
+          text=main.read_text()
+          text=text.replace("const VERSION='1.0.0';","const VERSION='1.1.0-preview.1';")
+          main.write_text(text)
+          PY
+          (cd staging && zip -q -r ../gathering-crafting-v1.1.0-preview.1.zip gathering-crafting)
+          unzip -t gathering-crafting-v1.1.0-preview.1.zip >/dev/null
+          node staging/gathering-crafting/tests/artwork.cjs
+      - uses: actions/upload-artifact@v4
+        if: steps.overlay.outputs.present == 'true'
+        with:
+          name: gathering-crafting-v1.1.0-preview
+          path: gathering-crafting-v1.1.0-preview.1.zip
+          if-no-files-found: error
