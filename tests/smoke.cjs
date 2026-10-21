@@ -4,6 +4,8 @@ const base=path.join(__dirname,'..');
 const catalogJS=fs.readFileSync(path.join(base,'scripts/catalog.js'),'utf8').replace('export const CATALOG','const CATALOG');
 const itemsJS=fs.readFileSync(path.join(base,'scripts/items.js'),'utf8').replaceAll(/^export /gm,'');
 const toolsJS=fs.readFileSync(path.join(base,'scripts/tool-rules.mjs'),'utf8').replaceAll(/^export /gm,'');
+const enchRulesJS=fs.readFileSync(path.join(base,'scripts/enchanting.mjs'),'utf8').replaceAll(/^export /gm,'');
+const enchUIJS=fs.readFileSync(path.join(base,'scripts/enchanting-ui.mjs'),'utf8').replace(/^import .*;$/gm,'').replaceAll(/^export /gm,'');
 const moduleJS=fs.readFileSync(path.join(base,'scripts/main.js'),'utf8').replace(/^import .*;$/gm,'');
 const cat=JSON.parse(fs.readFileSync(path.join(base,'data/catalog.json'),'utf8'));
 assert.equal(cat.materials.length,102);assert.equal(cat.recipes.length,122);assert.equal(cat.nodes.length,71);
@@ -47,7 +49,7 @@ class ItemDoc{
   constructor(data,parent){this.id=data._id||`item${++counter}`;this.name=data.name;this.img=data.img;this.type=data.type;this.flags=deep(data.flags||{});this.system=deep(data.system||{});this.documentName='Item';this.parent=parent;this.sheet={render(){}};}
   getFlag(ns,k){return this.flags[ns]?.[k];}
   toObject(){return{_id:this.id,name:this.name,img:this.img,type:this.type,flags:deep(this.flags),system:deep(this.system)};}
-  async update(ch){for(const[k,v]of Object.entries(ch)){if(k==='system.quantity')this.system.quantity=v;else if(k==='system.attributes.hp.temp')this.system.attributes??={},this.system.attributes.hp??={},this.system.attributes.hp.temp=v;else if(k.startsWith('system.'))this.system[k.slice(7)]=v;else this[k]=v;}}
+  async update(ch){for(const[k,v]of Object.entries(ch)){if(k.startsWith('system.')||k.startsWith('flags.')){const parts=k.split('.');let cur=this;for(let i=0;i<parts.length-1;i++)cur=cur[parts[i]]??={};cur[parts.at(-1)]=v;}else this[k]=v;}}
 }
 class Actor{
   constructor(){this.id='a1';this.name='Hero';this.type='character';this.isOwner=true;this.items=[];this.flags={};this.system={skills:{ath:{total:4},sur:{total:4},inv:{total:4},nat:{total:4}},abilities:{str:{mod:2}},attributes:{prof:2,hp:{value:12,max:20,temp:0}}};}
@@ -56,15 +58,15 @@ class Actor{
   async createEmbeddedDocuments(kind,items){if(failOutput&&items.some(i=>i.flags?.['gathering-crafting']?.recipeId))throw Error('forced output failure');const docs=items.map(i=>new ItemDoc(i,this));this.items.push(...docs);return docs;}
   async updateEmbeddedDocuments(kind,changes){for(const c of changes){const item=this.items.find(i=>i.id===c._id);assert.ok(item);await item.update(c);}}
   async deleteEmbeddedDocuments(kind,ids){this.items=this.items.filter(i=>!ids.includes(i.id));}
-  async update(change){for(const[k,v]of Object.entries(change)){if(k==='system.attributes.hp.value')this.system.attributes.hp.value=v; if(k==='system.attributes.hp.temp')this.system.attributes.hp.temp=v;}}
+  async update(change){for(const[k,v]of Object.entries(change)){if(k==='system.attributes.hp.value')this.system.attributes.hp.value=v; if(k==='system.attributes.hp.temp')this.system.attributes.hp.temp=v; if(k==='system.currency')this.system.currency=deep(v);}}
 }
-const actor=new Actor();
+const actor=new Actor();actor.system.currency={pp:20,gp:500,ep:0,sp:0,cp:0};
 actor.system.details={level:5};actor.system.abilities.int={mod:2};actor.system.abilities.wis={mod:1};actor.system.abilities.dex={mod:2};actor.system.attributes.prof=3;
 actor.system.tools={mason:{value:1},herb:{value:1},leatherworker:{value:1},smith:{value:1},alchemist:{value:1}};
 for(const name of ['Pickaxe',"Smith's Tools","Alchemist's Supplies",'Herbalism Kit','Skinning Knife'])actor.items.push(new ItemDoc({name,type:'tool',system:{quantity:1}},actor));
 const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clearTimeout,Hooks:{once:(h,fn)=>hooksOnce.set(h,fn),on:(h,fn)=>hooksOn.set(h,fn)},
   foundry:{utils:{deepClone:deep,randomID:()=>`new${++counter}`},applications:{api:{ApplicationV2:class{constructor(){this.rendered=true;}render(){return Promise.resolve(this);}async _onRender(){}},DialogV2:{confirm:async()=>true}}},documents:{collections:{CompendiumCollection:{createCompendium:async({name,label})=>{const pack={collection:`world.${name}`,locked:false,label,items:[],async getDocuments(){return this.items;},async configure({locked}){this.locked=locked;}};packs.set(pack.collection,pack);return pack;}}}}},
-  game:{system:{id:'dnd5e',version:'5.3.3'},user:{isGM:true,character:actor},actors:{contents:[actor]},items:{contents:[]},packs:{get:(key)=>packs.get(key),contents:[mockLegacy,mockPotion]},modules:new Map([['gathering-crafting',{}]]),
+  game:{system:{id:'dnd5e',version:'5.3.3'},time:{worldTime:0},user:{isGM:true,character:actor},actors:{contents:[actor]},items:{contents:[]},packs:{get:(key)=>packs.get(key),contents:[mockLegacy,mockPotion]},modules:new Map([['gathering-crafting',{}]]),
     settings:{register:(id,k,o)=>world.set(`${id}.${k}`,deep(o.default)),get:(id,k)=>world.get(`${id}.${k}`),set:async(id,k,v)=>{world.set(`${id}.${k}`,deep(v));}},keybindings:{register(){}}},
   Item:{implementation:{createDocuments:async(arr,{pack})=>{const target=packs.get(pack);const docs=arr.map(x=>new ItemDoc(x,null));target.items.push(...docs);return docs;}}},
   canvas:{tokens:{placeables:[],controlled:[]},grid:{size:100},scene:{grid:{distance:5}}},
@@ -72,7 +74,7 @@ const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clea
   ChatMessage:{getSpeaker:()=>({alias:'Hero'}),create:async msg=>{if(failChat)throw Error('chat is offline');messages.push(msg);}},
   Roll:class{constructor(expr,vars={}){this.total=expr.startsWith('1d20')?roll+Number(vars.bonus||0):7;}async evaluate(){return this;}},
   fromUuid:async()=>null,CONST:{KEYBINDING_PRECEDENCE:{NORMAL:0}}};
-vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${toolsJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork};`,context);
+vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${toolsJS}\n${enchRulesJS}\n${enchUIJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork};`,context);
 const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog,adjustMaterialQuantity,adjustCraftedQuantity,artworkFor,refreshOwnedArtwork}=context.testAPI;
 (async()=>{
   hooksOnce.get('init')();assert.equal(context.game.settings.get('gathering-crafting','database').recipes.length,122);
@@ -81,7 +83,7 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const db=context.game.settings.get('gathering-crafting','database');
   assert.equal(db.catalogVersion,10);
   assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
-  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.1.2');
+  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.2.0');
   assert.ok(db.materials.find(m=>m.id==='iron-ore').img.endsWith('/icons/handpainted/iron-ore.webp'));
   assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
   assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
@@ -182,5 +184,25 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const preview=app.template().replaceAll('modules/gathering-crafting/',`file://${base}/`);
   const css=fs.readFileSync(path.join(base,'styles/module.css'),'utf8');
   fs.writeFileSync(path.join(require('node:os').tmpdir(),'gc-v100-preview.html'),`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
+  // v1.2.0 Enchanting regression: full UI, payment, world-time job, native +1.
+  app.tab='enchanting';app.search='';
+  const enchantedWeapon=new ItemDoc({name:'Enchanted Test Sword',type:'weapon',system:{quantity:1,description:{value:'Existing description'},properties:[],magicalBonus:0}},actor);
+  actor.items.push(enchantedWeapon);app.enchantItemId=enchantedWeapon.id;
+  assert.ok(app.template().includes('Enchanting'));
+  assert.ok(app.template().includes('Spell Channel'));
+  const oldGold=context.game.user.character.system.currency.pp*10+context.game.user.character.system.currency.gp;
+  await beginEnchantment(app,'weapon-arcane-infusion',{actor,announce:async()=>{},notify:()=>{}});
+  assert.equal(enchantedWeapon.getFlag('gathering-crafting','enchantmentPending')?.id,'weapon-arcane-infusion');
+  assert.equal(context.game.user.character.system.currency.pp*10+context.game.user.character.system.currency.gp,oldGold-250);
+  assert.ok(app.template().includes('in progress'));
+  await assert.rejects(()=>finishEnchantment(app,enchantedWeapon.id,{actor,announce:async()=>{},notify:()=>{}}));
+  context.game.time.worldTime=5*86400;
+  await finishEnchantment(app,enchantedWeapon.id,{actor,announce:async()=>{},notify:()=>{}});
+  assert.equal(enchantedWeapon.getFlag('gathering-crafting','enchantmentPending'),null);
+  assert.equal(enchantedWeapon.getFlag('gathering-crafting','enchantments').length,1);
+  assert.equal(enchantedWeapon.system.magicalBonus,1);
+  assert.ok(enchantedWeapon.system.properties.includes('mgc'));
+  assert.ok(enchantedWeapon.system.description.value.includes('Existing description'));
+  assert.ok(enchantedWeapon.system.description.value.includes('Arcane Infusion'));
   console.log('PASS: v1.1.0 224 selected, separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
