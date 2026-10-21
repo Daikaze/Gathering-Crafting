@@ -56,4 +56,4 @@ assert.equal(entries.length, 224);
 assert.equal(seenPaths.size, 224);
 assert.equal(categories.handpainted, 11);
 assert.equal(categories.illustrated, 213);
-console.log(`PASS: ${entries.length} valid, distinct, locally bundled WebP files (${categories.handpainted} independently painted; ${categories.illustrated} illustrated variants).\nAll Blacksmithing and Alchemy item image paths resolve; catalogue data matches game data.`);
+console.log(`PASS: ${entries.length} valid, distinct, locally bundled WebP files (${categories.handpainted} handpainted-path entries; ${categories.illustrated} illustrated-path entries).\nAll Blacksmithing and Alchemy item image paths resolve; catalogue data matches game data.`);
