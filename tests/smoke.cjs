@@ -81,14 +81,14 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   await hooksOnce.get('ready')();assert.equal(packs.size,4);
   assert.equal(packs.get('world.gc-ores-metals').items.length,44);assert.equal(packs.get('world.gc-ingredients').items.length,40);assert.equal(packs.get('world.gc-monster-drops').items.length,18);assert.equal(packs.get('world.gc-ready-items').items.length,122);
   const db=context.game.settings.get('gathering-crafting','database');
-  assert.equal(db.catalogVersion,10);
+  assert.equal(db.catalogVersion,11);
   assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
-  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.5');
+  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.6');
   assert.ok(db.materials.find(m=>m.id==='iron-ore').img.endsWith('/icons/handpainted/iron-ore.webp'));
   assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
   assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
   assert.equal(artworkFor(db.recipes.find(r=>r.id==='supreme-healing-potion')),
-    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.5');
+    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.6');
   await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,44,'sync must not duplicate entries');
   const oldIconItem=packs.get('world.gc-ores-metals').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='iron-ore');
   oldIconItem.img='modules/legacy-content/images/iron-ore.webp';
@@ -104,10 +104,22 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   oldWorld.materials.find(m=>m.id==='silver-ore').img='user-uploads/my-custom-silver.webp';
   oldWorld.materials.find(m=>m.id==='glowshroom').img='user-uploads/custom-glow.webp';
   oldWorld.materials.find(m=>m.id==='iron-ore').name='Iron Ore, Localized by GM';
+  oldWorld.recipes.find(r=>r.id==='steel-helm').description='Reinforced metal helm; GM-defined armor properties.';
+  oldWorld.recipes.find(r=>r.id==='silver-circlet').description='My custom silver circlet description, by the GM.';
+  const legacyHelm=new ItemDoc({name:'Steel Helm',type:'loot',
+    system:{quantity:1,description:{value:'<p>Reinforced metal helm; GM-defined armor properties.</p><p>Player-added lore remains.</p>'}},
+    flags:{'gathering-crafting':{recipeId:'steel-helm'}}},actor);
+  actor.items.push(legacyHelm);
   await context.game.settings.set('gathering-crafting','database',oldWorld);
   await hooksOnce.get('ready')();
   const migratedWorld=context.game.settings.get('gathering-crafting','database');
-  assert.equal(migratedWorld.catalogVersion,10);
+  assert.equal(migratedWorld.catalogVersion,11);
+  assert.ok(migratedWorld.recipes.find(r=>r.id==='steel-helm').description.includes('Equippable headwear'));
+  assert.equal(migratedWorld.recipes.find(r=>r.id==='silver-circlet').description,'My custom silver circlet description, by the GM.');
+  assert.ok(legacyHelm.system.description.value.includes('Equippable headwear'));
+  assert.ok(legacyHelm.system.description.value.includes('Player-added lore remains.'));
+  assert.equal(legacyHelm.type,'loot','Never forcibly swap existing embedded Item type or destroy prior flags');
+  assert.equal(context.game.settings.get('gathering-crafting','backupBlacksmith110').catalogVersion,10);
   assert.equal(migratedWorld.materials.find(m=>m.id==='iron-ore').name,'Iron Ore, Localized by GM');
   assert.ok(migratedWorld.materials.find(m=>m.id==='iron-ore').img.includes('/icons/handpainted/'));
   assert.equal(migratedWorld.materials.find(m=>m.id==='silver-ore').img,'user-uploads/my-custom-silver.webp');
@@ -160,6 +172,19 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const potion=actor.items.find(i=>i.getFlag('gathering-crafting','recipeId')==='healing-potion');assert.ok(potion);assert.equal(potion.type,'consumable');
   assert.equal(makeCraftData(db.recipes.find(r=>r.id==='steel-spear')).type,'weapon');
   assert.equal(makeCraftData(db.recipes.find(r=>r.id==='dusksteel-buckler')).type,'equipment');
+  const chainShirt=makeCraftData(db.recipes.find(r=>r.id==='steel-chain-shirt'));
+  assert.equal(chainShirt.type,'equipment');
+  assert.equal(chainShirt.system.armor.value,13);
+  assert.equal(chainShirt.system.armor.dex,2);
+  assert.equal(chainShirt.system.rarity,'uncommon');
+  const helmData=makeCraftData(db.recipes.find(r=>r.id==='steel-helm'));
+  assert.equal(helmData.type,'equipment');
+  assert.equal(helmData.system.equipped,false);
+  assert.ok(!helmData.system.armor,'Helms must not provide a separate AC bonus');
+  assert.equal(makeCraftData(db.recipes.find(r=>r.id==='dragonsilver-charm')).type,'equipment');
+  assert.equal(makeCraftData(db.recipes.find(r=>r.id==='blacksteel-armor-plates')).type,'loot');
+  const nativeHelm=await actor.createEmbeddedDocuments('Item',[helmData]);
+  assert.equal(nativeHelm[0].type,'equipment','Newly crafted items should be native D&D Equipment');
   assert.equal(makeCraftData(db.recipes.find(r=>r.id==='healing-potion')).system.activities.use.type,'heal');
   await app.drink(potion.id);assert.equal(actor.system.attributes.hp.value,19);assert.ok(!actor.items.includes(potion),'single potion should be consumed');
   // inventory quick add / remove for materials and crafted items
@@ -405,5 +430,5 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   fallbackHeader.className='sheet-header';fallbackRoot.append(fallbackHeader);
   launcher(fallbackRoot,'.sheet-header',actor);
   assert.ok(fallbackHeader.querySelector('.gc-launcher'),'NPC sheets without Affinity retain a header launcher');
-  console.log('PASS: v1.3.5 tool-only access, optional proficiency Advantage, item restrictions and legacy checks;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
+  console.log('PASS: v1.3.6 56 Blacksmith descriptions, native gear, safe migration and legacy checks;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
