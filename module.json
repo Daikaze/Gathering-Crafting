@@ -1,8 +1,8 @@
 {
   "id": "gathering-crafting",
   "title": "Gathering & Crafting",
-  "description": "Gathering & Crafting v1.3.5 for Foundry V14 / dnd5e 5.3.3: owned tools required with fixed inventory detection, proficiency grants Advantage without blocking crafting or enchanting; 107 equipment-specific enchantments, GM-only DCs and market-value prices.",
-  "version": "1.3.5",
+  "description": "Gathering & Crafting v1.3.6 for Foundry V14 / dnd5e 5.3.3: 56 detailed Blacksmith item descriptions, native medium armor and equipable crafted gear, safe catalogue migration, 107 equipment-restricted enchantments, tool-only crafting and GM-only DCs.",
+  "version": "1.3.6",
   "authors": [
     {
       "name": "Averis Workshop"
@@ -34,5 +34,5 @@
   ],
   "url": "https://github.com/Daikaze/Gathering-Crafting",
   "manifest": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/module.json",
-  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v1.3.5.zip"
+  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v1.3.6.zip"
 }
