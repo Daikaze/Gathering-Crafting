@@ -199,8 +199,8 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   app.page=1;
   // Dropdown and search rerenders must retain the current .gc-content scrollTop.
   const scrollHost={scrollTop:460};
-  const root={addEventListener(){}};
-  app.element={querySelector(sel){return sel==='.gc-content'?scrollHost:sel==='.gc-root'?root:null;}};
+  const enchantRoot={addEventListener(){}};
+  app.element={querySelector(sel){return sel==='.gc-content'?scrollHost:sel==='.gc-root'?enchantRoot:null;}};
   await app.change({target:{name:'enchantFilter',value:'learned'}});
   assert.equal(app.pendingScrollTop,460,'dropdown changes preserve scroll position before render');
   await app._onRender({},{});
