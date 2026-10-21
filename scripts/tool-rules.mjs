@@ -77,9 +77,12 @@ export function proficiencyLevel(actor,proficiencyId){
     smith:['smith','smithing','blacksmith']
   })[id]||[id];
   const tools=actor?.system?.tools||{};
-  const entry=alternatives.map(key=>tools[key]).find(v=>v!==undefined&&v!==null);
-  const value=typeof entry==="object"?entry?.value??entry?.proficient??entry?.proficiency:entry;
-  return Math.max(0,Math.min(2,toNumber(value)));
+  // Legacy and system-native ids can coexist; choose the highest known rank.
+  return Math.max(0,...alternatives.map(key=>{
+    const entry=tools[key];
+    const value=typeof entry==="object"?entry?.value??entry?.proficient??entry?.proficiency:entry;
+    return Math.min(2,Math.max(0,toNumber(value)));
+  }));
 }
 export function actorLevel(actor){
   const details=actor?.system?.details??{};
