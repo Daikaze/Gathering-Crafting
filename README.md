@@ -51,7 +51,7 @@ Enchanting now contains **85 learnable formulas: 41 weapon and 44 armor/shield e
 - Common items: **1 slot / max Rank 2**; Uncommon **2 / Rank 3**; Rare **3 / Rank 4**; Very Rare **4 / Rank 5**; Legendary **5 / Rank 5**. Some elite enchantments cost **2 slots**. The GM can override capacity from 0 to 6 on a particular Item.
 - Prevents duplicate, incompatible, conflicting, or simultaneous enchantments. Already-started jobs from v1.2 can still finish.
 - Character sheets gain optional **Enchantment Powers** quick-use controls for equipped items with once-per-Long-Rest powers. These buttons track remaining uses and recover when the system reports a Long Rest; they do not automatically choose targets or resolve spells.
-- +1/+2 magical weapon enhancements use native dnd5e fields. Elemental weapon bonus dice are added to the item's base damage formula. Simple passive bonuses may be written as equipped item Active Effects where supported, while resistances and advanced conditional effects remain GM adjudicated and documented on the Item.
+- +1/+2 magical weapon enhancements use native dnd5e fields. Elemental weapon bonus dice are added to the item's base damage formula. Simple passive skill bonuses, saving throw bonuses and item-granted damage resistances are written as native item Active Effects where the Foundry system supports them. Advanced conditional spells, targets and other reactions still require GM adjudication.
 - All existing Gathering, Alchemy, Blacksmithing, Inventory and source artwork assets remain unchanged.
 
 ## v1.2.0 — Enchanting
