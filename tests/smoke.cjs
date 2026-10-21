@@ -74,7 +74,7 @@ const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clea
   ChatMessage:{getSpeaker:()=>({alias:'Hero'}),create:async msg=>{if(failChat)throw Error('chat is offline');messages.push(msg);}},
   Roll:class{constructor(expr,vars={}){this.total=expr.startsWith('1d20')?roll+Number(vars.bonus||0):7;}async evaluate(){return this;}},
   fromUuid:async()=>null,CONST:{KEYBINDING_PRECEDENCE:{NORMAL:0}}};
-vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${toolsJS}\n${enchRulesJS}\n${enchUIJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment,beginLesson,finishLesson,useEnchantment,recoverEnchantmentUses};`,context);
+vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${toolsJS}\n${enchRulesJS}\n${enchUIJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment,beginLesson,finishLesson,useEnchantment,recoverEnchantmentUses,launcher,affinityTab,placeSheetLauncher};`,context);
 const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog,adjustMaterialQuantity,adjustCraftedQuantity,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment,beginLesson,finishLesson,useEnchantment,recoverEnchantmentUses}=context.testAPI;
 (async()=>{
   hooksOnce.get('init')();assert.equal(context.game.settings.get('gathering-crafting','database').recipes.length,122);
@@ -317,5 +317,59 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   assert.ok(fresh.some(x=>!x.whisper&&!x.content.includes(' vs DC ')),'public messages hide target DC');
   assert.ok(fresh.some(x=>x.whisper?.includes('gm-actor')&&x.content.includes(' vs DC ')),'GM whisper contains target DC');
   context.game.user.isGM=true;
+  // v1.3.4: the sheet launcher is an inline item AFTER Affinity, not an extra header row.
+  class FakeTabNode {
+    constructor(tag,text=''){this.tagName=tag.toUpperCase();this.textContent=text;this.children=[];this.parentElement=null;this.attrs={};this.className='';this.dataset={};this.listeners={};this.isConnected=true;this.classList={
+      contains:name=>this.className.split(/\s+/).includes(name),
+      add:name=>{if(!this.className.split(/\s+/).includes(name))this.className=(this.className+' '+name).trim();}
+    };}
+    append(child){if(child.parentElement){const old=child.parentElement.children;old.splice(old.indexOf(child),1);}this.children.push(child);child.parentElement=this;return child;}
+    after(child){const parent=this.parentElement;if(!parent)throw Error('no parent');if(child.parentElement){const old=child.parentElement.children;old.splice(old.indexOf(child),1);}const i=parent.children.indexOf(this);parent.children.splice(i+1,0,child);child.parentElement=parent;}
+    remove(){if(!this.parentElement)return;const a=this.parentElement.children;a.splice(a.indexOf(this),1);this.parentElement=null;}
+    contains(child){return this===child||this.children.some(x=>x.contains(child));}
+    get nextElementSibling(){if(!this.parentElement)return null;const l=this.parentElement.children;return l[l.indexOf(this)+1]||null;}
+    setAttribute(k,v){this.attrs[k]=v;}
+    getAttribute(k){return this.attrs[k]||null;}
+    addEventListener(k,fn){this.listeners[k]=fn;}
+    querySelector(selector){
+      if(selector.includes('.sheet-header'))return this.find(n=>n.className.includes('sheet-header'));
+      if(selector.includes('.directory-header'))return this.find(n=>n.className.includes('directory-header'));
+      if(selector==='.gc-sheet-tab-holder')return this.find(n=>n.className.includes('gc-sheet-tab-holder'));
+      if(selector==='.gc-sheet-tab')return this.find(n=>n.className.includes('gc-sheet-tab'));
+      if(selector==='.gc-sheet-powers')return this.find(n=>n.className.includes('gc-sheet-powers'));
+      if(selector==='.gc-launcher')return this.find(n=>n.className.includes('gc-launcher'));
+      return null;
+    }
+    querySelectorAll(selector){
+      if(selector==='.gc-launcher:not(.gc-sheet-tab)')return this.list().filter(n=>n.className.split(/\s+/).includes('gc-launcher')&&!n.className.split(/\s+/).includes('gc-sheet-tab'));
+      if(selector.includes('nav')||selector.includes('tabs')||selector.includes('role="tab"'))return this.list().filter(n=>n.dataset.tab==='affinity');
+      return [];
+    }
+    list(){return this.children.flatMap(n=>[n,...n.list()]);}
+    find(predicate){return this.list().find(predicate)||null;}
+  }
+  context.HTMLElement=FakeTabNode;
+  context.document={createElement:tag=>new FakeTabNode(tag)};
+  const sheetRoot=new FakeTabNode('div');
+  const sheetHeader=new FakeTabNode('header');sheetHeader.className='sheet-header';sheetRoot.append(sheetHeader);
+  const nav=new FakeTabNode('nav');nav.className='tabs';sheetRoot.append(nav);
+  const affinity=new FakeTabNode('a','Affinity');affinity.dataset.tab='affinity';nav.append(affinity);
+  const {launcher}=context.testAPI;
+  launcher(sheetRoot,'.sheet-header',actor);
+  assert.equal(nav.children.length,2,'one inline launcher must follow Affinity');
+  assert.equal(nav.children[0],affinity);
+  assert.ok(nav.children[1].className.includes('gc-sheet-tab'));
+  assert.equal(sheetHeader.children.length,0,'old full-width header launcher must not exist');
+  launcher(sheetRoot,'.sheet-header',actor);
+  assert.equal(nav.children.length,2,'repeat sheet render must not duplicate Crafting nav button');
+  assert.equal(sheetHeader.children.length,0);
+  let prevented=false,stopped=false;
+  nav.children[1].listeners.click({preventDefault(){prevented=true;},stopPropagation(){stopped=true;}});
+  assert.ok(prevented&&stopped,'opening crafting must not trigger the Affinity tab');
+  const fallbackRoot=new FakeTabNode('div'),fallbackHeader=new FakeTabNode('header');
+  fallbackHeader.className='sheet-header';fallbackRoot.append(fallbackHeader);
+  launcher(fallbackRoot,'.sheet-header',actor);
+  assert.equal(fallbackHeader.children.length,1,'NPC sheets without Affinity retain the old launcher');
+  assert.ok(fallbackHeader.children[0].className.includes('gc-launcher'));
   console.log('PASS: v1.3.3 item-type restrictions, robe and shield tests, scroll and legacy job checks;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
