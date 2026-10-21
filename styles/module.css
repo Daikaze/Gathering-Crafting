@@ -296,3 +296,37 @@
 .gathering-crafting .gc-enchant-incompatible{display:flex;align-items:center;gap:6px;color:#e7b6aa;font-size:11px}
 .gathering-crafting .gc-enchant-compatible{display:flex;align-items:center;gap:6px;color:#a4dab9;font-size:11px}
 .gathering-crafting .gc-enchant-actions button:disabled{opacity:.58}
+
+
+/* v1.3.4: Character-sheet launcher is an inline navigation item after Affinity. */
+.gc-sheet-tab.gc-launcher {
+  display:inline-flex!important;
+  flex:0 0 auto!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:5px!important;
+  margin:0!important;
+  padding:5px 8px!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:135px!important;
+  height:auto!important;
+  border:0!important;
+  border-bottom:2px solid transparent!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  color:inherit!important;
+  font:inherit!important;
+  font-size:11px!important;
+  line-height:1.25!important;
+  cursor:pointer;
+  white-space:nowrap!important;
+}
+.gc-sheet-tab.gc-launcher:hover,.gc-sheet-tab.gc-launcher:focus-visible{
+  background:rgba(213,168,86,.12)!important;
+  color:#e3bb73!important;
+  border-bottom-color:rgba(213,168,86,.75)!important;
+}
+.gc-sheet-tab.gc-launcher>span{white-space:nowrap!important}
+.gc-sheet-tab-holder{display:inline-flex;align-items:center;flex:0 0 auto;list-style:none}
