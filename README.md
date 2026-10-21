@@ -1,4 +1,4 @@
-# Gathering & Crafting v1.3.0 — The Averis Workshop
+# Gathering & Crafting v1.3.1 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -34,6 +34,16 @@ For players there are five straightforward tabs: **Gather / Alchemy / Blacksmith
 - **Ingots, armor components, jewelry and crafting hardware** are real `loot` Items, not fake weapons or incomplete armor pieces with misleading combat bonuses.
 
 This release passes automated asset/inventory regression checks, but is **not** an assertion that every advanced Active Effect has been validated in a live dnd5e 5.3.3 server. The mock tests exercise the inventory and data path; a live-world test is still recommended.
+
+## v1.3.1 — Private DCs, shorter Enchanting, market-value prices
+
+- **All target DCs are GM-only** in Gathering, Alchemy, Blacksmithing and Enchanting. Public chat shows the result without revealing the target; exact DC comparisons are whispered to GMs. DCs embedded in potion/recipe flavor descriptions are also masked in the player-facing workshop.
+- **Shortened Enchantment crafting times** by approximately 30% (minimum one day). Examples: Arcane Infusion **5 → 4 days**, Greater Arcane Infusion **10 → 7**, Phoenix Binding **14 → 10**. Proficiency training and individual formula study times are shortened too.
+- **GP represents market/service value only** (e.g., "Market value: 250 gp"). No gold is deducted from the enchanter when training, learning or applying any enchantment. An empty coin purse does not block crafting. No customer transaction is automatically created.
+- The original 85 Enchantment **market prices stay the same**. Equipment restrictions, learned-formula requirements, enchant slots, passive effects and item-power charges remain intact.
+- Already-started jobs keep their saved completion timestamps; past payments are not automatically refunded. **See [the current Enchanting reference](ENCHANTING_CATALOG.md).**
+
+**The older release notes below describe their historical behavior; the v1.3.1 rules above take precedence.**
 
 ## v1.3.0 — Enchanting profession, 85 enchantments and item restrictions
 
