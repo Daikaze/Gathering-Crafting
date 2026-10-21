@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.1 — GM-only DCs and Enchanting market values
+
+- Hide all Gathering, Alchemy, Blacksmithing and Enchanting check DC values from non-GM interfaces and public messages; send exact roll-vs-DC details via GM-only whispers.
+- Mask potion/recipe description saving throw DCs from non-GM workshop displays.
+- Reduce Enchantment world-time durations by about 30%, and shorten proficiency training and formula study times.
+- Keep all 85 Enchantment price values **as market/service prices only**; remove automatic character coin deductions and gold availability gates for Enchanting, rank training and formula research.
+- Keep existing pending world-time deadlines, jobs, enchant restrictions, slots, character-sheet powers and all non-Enchanting functionality.
+- Add regression tests for zero-gold enchanters, market-value UI, shortened jobs and GM-only check displays/chat reports.
+
 ## 1.3.0 — 85 enchantments and learnable Enchanting proficiency
 
 - Expanded Enchanting from 25 to **85**: 41 weapon and 44 armor/shield formulas.
