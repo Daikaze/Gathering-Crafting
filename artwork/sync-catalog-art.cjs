@@ -9,6 +9,10 @@ const crypto = require('node:crypto');
 const root = path.resolve(__dirname, '..');
 const complete = process.argv.includes('--complete');
 const apply = process.argv.includes('--apply');
+if (apply && !complete) {
+  throw new Error('Refusing partial catalogue rewrite: --apply requires --complete and 224 approved artworks.');
+}
+
 if (process.argv.includes('--help')) {
   console.log('Usage: node artwork/sync-catalog-art.cjs [--dry-run] [--apply] [--complete]');
   process.exit(0);
@@ -71,6 +75,15 @@ for (const item of plan.items) {
   rewired++;
 }
 if (complete && approved !== 224) throw new Error('Release blocked: only ' + approved + ' of 224 approved');
+if (complete) {
+  // The verifier checks 1024px minimum size, square dimensions, exact 224
+  // catalogue entries, per-item visual approval, and identical file hashes.
+  require('node:child_process').execFileSync(
+    process.execPath, [path.join(__dirname, 'verify.cjs'), '--complete'],
+    {cwd:root, stdio:'inherit'}
+  );
+}
+
 console.log('Original artwork: ' + approved + '/224 approved and verified');
 console.log('Catalogue entries ready for migration: ' + rewired);
 console.log('Still awaiting approval: ' + blocked.length);
