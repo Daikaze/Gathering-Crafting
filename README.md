@@ -1,4 +1,4 @@
-# Gathering & Crafting v1.3.3 — The Averis Workshop
+# Gathering & Crafting v1.3.4 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -34,6 +34,14 @@ For players there are five straightforward tabs: **Gather / Alchemy / Blacksmith
 - **Ingots, armor components, jewelry and crafting hardware** are real `loot` Items, not fake weapons or incomplete armor pieces with misleading combat bonuses.
 
 This release passes automated asset/inventory regression checks, but is **not** an assertion that every advanced Active Effect has been validated in a live dnd5e 5.3.3 server. The mock tests exercise the inventory and data path; a live-world test is still recommended.
+
+## v1.3.4 — Crafting button beside Affinity
+
+- On a D&D5e character sheet that has an **Affinity** navigation tab, the small **Crafting** launcher now appears **immediately after Affinity** in the same tab bar. Hover text retains the full **Gathering & Crafting** name.
+- Removed the extra full-width header-row launcher on such sheets and prevented duplicate buttons after rerendering.
+- The Crafting button opens the same workshop window, without activating or replacing the Affinity tab.
+- On NPC sheets and other unsupported sheet layouts that do not have Affinity, the previous header launcher remains available. If a third-party module inserts Affinity later, the button relocates automatically.
+- Actor Directory access and the Enchantment Powers quick-use controls stay in place. Existing item records, recipes, enchantments, character data and world settings are unchanged.
 
 ## v1.3.3 — Enchantments restricted to exact equipment categories
 
