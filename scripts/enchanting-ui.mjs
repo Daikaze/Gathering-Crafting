@@ -160,7 +160,7 @@ export async function beginEnchantment(app,id,helpers){
  await announce(actor,'<p>Started '+escapeHtml(enchant.name)+' on '+escapeHtml(item.name)+'. Paid '+enchant.cost+' gp; requires '+enchant.days+' world days.</p>');
  notify(enchant.name+' started.');
 }
-const effectChanges=enchant=>{
+export const effectChanges=enchant=>{
  const changes=[];
  if(enchant.passive?.skill)changes.push({key:'system.skills.'+enchant.passive.skill+'.roll.bonus',mode:2,value:String(enchant.passive.bonus),priority:20});
  if(enchant.passive?.concentration)changes.push({key:'system.attributes.concentration.roll.bonus',mode:2,value:String(enchant.passive.concentration),priority:20});
