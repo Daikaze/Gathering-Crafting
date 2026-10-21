@@ -60,10 +60,10 @@ class Actor{
   async deleteEmbeddedDocuments(kind,ids){this.items=this.items.filter(i=>!ids.includes(i.id));}
   async update(change){for(const[k,v]of Object.entries(change)){if(k==='system.attributes.hp.value')this.system.attributes.hp.value=v; if(k==='system.attributes.hp.temp')this.system.attributes.hp.temp=v; if(k==='system.currency')this.system.currency=deep(v);}}
 }
-const actor=new Actor();actor.system.currency={pp:20,gp:500,ep:0,sp:0,cp:0};
+const actor=new Actor();actor.system.currency={pp:20,gp:500,ep:0,sp:0,cp:0};actor.flags['gathering-crafting']={enchanter:{rank:1,known:['weapon-arcane-infusion'],training:null}};
 actor.system.details={level:5};actor.system.abilities.int={mod:2};actor.system.abilities.wis={mod:1};actor.system.abilities.dex={mod:2};actor.system.attributes.prof=3;
 actor.system.tools={mason:{value:1},herb:{value:1},leatherworker:{value:1},smith:{value:1},alchemist:{value:1}};
-for(const name of ['Pickaxe',"Smith's Tools","Alchemist's Supplies",'Herbalism Kit','Skinning Knife'])actor.items.push(new ItemDoc({name,type:'tool',system:{quantity:1}},actor));
+for(const name of ['Pickaxe',"Smith's Tools","Alchemist's Supplies",'Herbalism Kit','Skinning Knife',"Jeweler's Tools"])actor.items.push(new ItemDoc({name,type:'tool',system:{quantity:1}},actor));
 const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clearTimeout,Hooks:{once:(h,fn)=>hooksOnce.set(h,fn),on:(h,fn)=>hooksOn.set(h,fn)},
   foundry:{utils:{deepClone:deep,randomID:()=>`new${++counter}`},applications:{api:{ApplicationV2:class{constructor(){this.rendered=true;}render(){return Promise.resolve(this);}async _onRender(){}},DialogV2:{confirm:async()=>true}}},documents:{collections:{CompendiumCollection:{createCompendium:async({name,label})=>{const pack={collection:`world.${name}`,locked:false,label,items:[],async getDocuments(){return this.items;},async configure({locked}){this.locked=locked;}};packs.set(pack.collection,pack);return pack;}}}}},
   game:{system:{id:'dnd5e',version:'5.3.3'},time:{worldTime:0},user:{isGM:true,character:actor},actors:{contents:[actor]},items:{contents:[]},packs:{get:(key)=>packs.get(key),contents:[mockLegacy,mockPotion]},modules:new Map([['gathering-crafting',{}]]),
@@ -74,8 +74,8 @@ const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clea
   ChatMessage:{getSpeaker:()=>({alias:'Hero'}),create:async msg=>{if(failChat)throw Error('chat is offline');messages.push(msg);}},
   Roll:class{constructor(expr,vars={}){this.total=expr.startsWith('1d20')?roll+Number(vars.bonus||0):7;}async evaluate(){return this;}},
   fromUuid:async()=>null,CONST:{KEYBINDING_PRECEDENCE:{NORMAL:0}}};
-vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${toolsJS}\n${enchRulesJS}\n${enchUIJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment};`,context);
-const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog,adjustMaterialQuantity,adjustCraftedQuantity,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment}=context.testAPI;
+vm.createContext(context);vm.runInContext(`${catalogJS}\n${itemsJS}\n${toolsJS}\n${enchRulesJS}\n${enchUIJS}\n${moduleJS}\nglobalThis.testAPI={GatheringCrafting,count,grantMaterial,consume,makeCraftData,mergeCatalog,syncCompendiums,adjustMaterialQuantity,adjustCraftedQuantity,CATALOG,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment,beginLesson,finishLesson};`,context);
+const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,mergeCatalog,adjustMaterialQuantity,adjustCraftedQuantity,artworkFor,refreshOwnedArtwork,beginEnchantment,finishEnchantment,beginLesson,finishLesson}=context.testAPI;
 (async()=>{
   hooksOnce.get('init')();assert.equal(context.game.settings.get('gathering-crafting','database').recipes.length,122);
   await hooksOnce.get('ready')();assert.equal(packs.size,4);
@@ -83,7 +83,7 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const db=context.game.settings.get('gathering-crafting','database');
   assert.equal(db.catalogVersion,10);
   assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
-  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.2.0');
+  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.0');
   assert.ok(db.materials.find(m=>m.id==='iron-ore').img.endsWith('/icons/handpainted/iron-ore.webp'));
   assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
   assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
@@ -186,7 +186,7 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   fs.writeFileSync(path.join(require('node:os').tmpdir(),'gc-v100-preview.html'),`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
   // v1.2.0 Enchanting regression: full UI, payment, world-time job, native +1.
   app.tab='enchanting';app.search='';
-  const enchantedWeapon=new ItemDoc({name:'Enchanted Test Sword',type:'weapon',system:{quantity:1,description:{value:'Existing description'},properties:[],magicalBonus:0}},actor);
+  const enchantedWeapon=new ItemDoc({name:'Enchanted Test Sword',type:'weapon',system:{quantity:1,description:{value:'Existing description'},rarity:'uncommon',properties:[],magicalBonus:0}},actor);
   actor.items.push(enchantedWeapon);app.enchantItemId=enchantedWeapon.id;
   assert.ok(app.template().includes('Enchanting'));
   assert.ok(app.template().includes('Spell Channel'));
@@ -204,5 +204,17 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   assert.ok(enchantedWeapon.system.properties.includes('mgc'));
   assert.ok(enchantedWeapon.system.description.value.includes('Existing description'));
   assert.ok(enchantedWeapon.system.description.value.includes('Arcane Infusion'));
+  // Profession training must consume world time, gold and Arcana success.
+  actor.flags['gathering-crafting'].enchanter={rank:0,known:[],training:null};
+  await beginLesson(actor,'rank',null,()=>{});
+  assert.equal(actor.getFlag('gathering-crafting','enchanter').rank,0);
+  await assert.rejects(()=>finishLesson(actor,()=>{},async()=>{}));
+  context.game.time.worldTime+=3*86400;
+  await finishLesson(actor,()=>{},async()=>{});
+  assert.equal(actor.getFlag('gathering-crafting','enchanter').rank,1);
+  await beginLesson(actor,'enchant','weapon-spell-channel',()=>{});
+  context.game.time.worldTime+=2*86400;
+  await finishLesson(actor,()=>{},async()=>{});
+  assert.ok(actor.getFlag('gathering-crafting','enchanter').known.includes('weapon-spell-channel'));
   console.log('PASS: v1.1.0 224 selected, separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
