@@ -1,4 +1,4 @@
-# Gathering & Crafting v1.1.0 — The Averis Workshop
+# Gathering & Crafting v1.1.1 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -34,6 +34,13 @@ For players there are four straightforward tabs: **Gather / Alchemy / Blacksmith
 - **Ingots, armor components, jewelry and crafting hardware** are real `loot` Items, not fake weapons or incomplete armor pieces with misleading combat bonuses.
 
 This release passes automated asset/inventory regression checks, but is **not** an assertion that every advanced Active Effect has been validated in a live dnd5e 5.3.3 server. The mock tests exercise the inventory and data path; a live-world test is still recommended.
+
+## v1.1.1 — gathering and crafting rules
+
+- Unlimited gathering is supported.
+- Gathering and crafting require the appropriate physical tool in character inventory and relevant tool proficiency, according to the module's tool rules.
+- Crafting rolls take character level, proficiency bonus and tool bonuses into account. A failed roll is not treated as an automatic success.
+- This update retains the 224 curated item icons from v1.1.0 and Foundry V14 / dnd5e 5.3.3 compatibility.
 
 ## v1.1.0 update — reviewed item artwork
 
