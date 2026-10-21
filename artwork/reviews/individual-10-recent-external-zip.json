@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "date": "2026-10-21",
+  "zipName": "gathering-crafting-10-recent-individual-icons.zip",
+  "count": 10,
+  "sourceResolution": "1254x1254",
+  "previewResolution": "512x512",
+  "sourceType": "separate user-conversation image generations, not atlas crops",
+  "state": "external_zip_prepared_uncommitted_and_unapproved",
+  "notice": "These 10 are from the immediately preceding successful image generation. The new attempt for the next 10 failed; do not confuse this pack with newly completed items. Some records overlap earlier external candidate listings, so review before replacing.",
+  "records": [
+    {
+      "id": "recipe:iron-nails",
+      "sha256": "3c797c0b3a7b7cd5bd9fc9e228c6b90687b21b6314b890f979534fc5c4451f44",
+      "desiredOriginalPath": "icons/original/recipes/iron-nails.webp",
+      "status": "file-in-external-ZIP-needs-QA"
+    },
+    {
+      "id": "recipe:steel-arrowheads",
+      "sha256": "e66765620693834ad0916f23267b048c7fd078e4020e8c9645ba8a2162aefd09",
+      "desiredOriginalPath": "icons/original/recipes/steel-arrowheads.webp",
+      "status": "file-in-external-ZIP-needs-QA"
+    },
+    {
+      "id": "recipe:silvered-arrowheads",
+      "sha256": "55a31964f2772b868232f414dc855f93cffe0792b9b1f28363f24f4f708673d3",
+      "desiredOriginalPath": "icons/original/recipes/silvered-arrowheads.webp",
+      "status": "file-in-external-ZIP-needs-QA"
+    },
+    {
+      "id": "recipe:lantern-frame",
+      "sha256": "a92b0cb6a6fdaf35e8fcfdebcd9acf339287f5fd9a661aa7434aa47ad358cdee",
+      "desiredOriginalPath": "icons/original/recipes/lantern-frame.webp",
+      "status": "file-in-external-ZIP-needs-QA"
+    },
+    {
+      "id": "recipe:brass-compass",
+      "sha256": "fa9d49e0df076484d78b5b6bb29bc85d61739bb7efba582f35361eed00b79149",
+      "desiredOriginalPath": "icons/original/recipes/brass-compass.webp",
+      "status": "file-in-external-ZIP-needs-QA"
+    },
+    {
+      "id": "recipe:blacksteel-armor-plates",
+      "sha256": "07b787d9886cf25b8a406d65269c7fb2238ac644c37a23327c3ee605c270bcc0",
+      "desiredOriginalPath": "icons/original/recipes/blacksteel-armor-plates.webp",
+      "status": "file-in-external-ZIP-needs-QA"
+    },
+    {
+      "id": "recipe:adamantine-blade",
+      "sha256": "3b00be6d63abc781e3397015b2078d0a7e7335b827ad0110ea1460395245ebc7",
+      "desiredOriginalPath": "icons/original/recipes/adamantine-blade.webp",
+      "status": "file-in-external-ZIP-needs-QA"
+    },
+    {
+      "id": "recipe:adamantine-shield",
+      "sha256": "995c1aa3879c90fa37e6091e368443d4d203660bbe5f0bb2fdf30609bd5fdaf7",
+      "desiredOriginalPath": "icons/original/recipes/adamantine-shield.webp",
+      "status": "file-in-external-ZIP-needs-QA"
+    },
+    {
+      "id": "recipe:mithral-chain",
+      "sha256": "722f80c6ea89e545c4f78a6cd27de45228d2c7eaccd864798c2f177c15f5d62b",
+      "desiredOriginalPath": "icons/original/recipes/mithral-chain.webp",
+      "status": "file-in-external-ZIP-needs-QA"
+    },
+    {
+      "id": "recipe:steel-greaves",
+      "sha256": "04ecf6e3112aa046b310062d2d5a570919dbd279c2574d3193aaf0563b3f19b2",
+      "desiredOriginalPath": "icons/original/recipes/steel-greaves.webp",
+      "status": "file-in-external-ZIP-needs-QA"
+    }
+  ]
+}

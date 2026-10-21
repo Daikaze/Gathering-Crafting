@@ -1,0 +1,670 @@
+{
+  "schema": 1,
+  "date": "2026-10-21",
+  "source": "User-supplied 1536x1024 D&D Blacksmith/Alchemist atlas",
+  "purpose": "Draft 66-item themed visual selection for catalogue inspection; NEVER count as genuine stand-alone >=1024px new art or known original potion identity.",
+  "confirmedOriginalIdentities": 0,
+  "uniqueAtlasSlots": 66,
+  "items": [
+    {
+      "officialId": "recipe:acid-flask",
+      "name": "Acid Flask",
+      "boardCode": "A1-3",
+      "sourceCrop": "raw_cells/alchemist_A1_03.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:antitoxin",
+      "name": "Antitoxin Draught",
+      "boardCode": "A2-2",
+      "sourceCrop": "raw_cells/alchemist_A2_02.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:clear-mind-tonic",
+      "name": "Clear Mind Tonic",
+      "boardCode": "A1-15",
+      "sourceCrop": "raw_cells/alchemist_A1_15.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:coolblood-draught",
+      "name": "Coolblood Draught",
+      "boardCode": "A1-17",
+      "sourceCrop": "raw_cells/alchemist_A1_17.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:dew-of-focus",
+      "name": "Dew of Focus",
+      "boardCode": "A1-21",
+      "sourceCrop": "raw_cells/alchemist_A1_21.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:healing-potion",
+      "name": "Healing Potion",
+      "boardCode": "A1-5",
+      "sourceCrop": "raw_cells/alchemist_A1_05.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:minor-healing-potion",
+      "name": "Minor Healing Potion",
+      "boardCode": "A2-1",
+      "sourceCrop": "raw_cells/alchemist_A2_01.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:petrichor-elixir",
+      "name": "Petrichor Elixir",
+      "boardCode": "A2-11",
+      "sourceCrop": "raw_cells/alchemist_A2_11.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:shimmerlight-phial",
+      "name": "Shimmerlight Phial",
+      "boardCode": "A1-14",
+      "sourceCrop": "raw_cells/alchemist_A1_14.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:soothing-mixture",
+      "name": "Soothing Mixture",
+      "boardCode": "A1-16",
+      "sourceCrop": "raw_cells/alchemist_A1_16.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:steady-hand-tonic",
+      "name": "Steady Hand Tonic",
+      "boardCode": "A1-18",
+      "sourceCrop": "raw_cells/alchemist_A1_18.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:warmblood-draught",
+      "name": "Warmblood Draught",
+      "boardCode": "A1-6",
+      "sourceCrop": "raw_cells/alchemist_A1_06.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:mana-restorative",
+      "name": "Arcane Clarity Tonic",
+      "boardCode": "A1-7",
+      "sourceCrop": "raw_cells/alchemist_A1_07.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:breath-of-tides",
+      "name": "Breath of Tides",
+      "boardCode": "A1-4",
+      "sourceCrop": "raw_cells/alchemist_A1_04.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:cinder-breath",
+      "name": "Cinder Breath Phial",
+      "boardCode": "A1-11",
+      "sourceCrop": "raw_cells/alchemist_A1_11.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:courage-tonic",
+      "name": "Courage Tonic",
+      "boardCode": "A2-10",
+      "sourceCrop": "raw_cells/alchemist_A2_10.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:emberguard-draught",
+      "name": "Emberguard Draught",
+      "boardCode": "A1-13",
+      "sourceCrop": "raw_cells/alchemist_A1_13.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:featherfall-philter",
+      "name": "Featherfall Philter",
+      "boardCode": "A1-22",
+      "sourceCrop": "raw_cells/alchemist_A1_22.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:frost-breath",
+      "name": "Frost Breath Phial",
+      "boardCode": "A2-9",
+      "sourceCrop": "raw_cells/alchemist_A2_09.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:frostguard-draught",
+      "name": "Frostguard Draught",
+      "boardCode": "A1-19",
+      "sourceCrop": "raw_cells/alchemist_A1_19.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:graveward-draught",
+      "name": "Graveward Draught",
+      "boardCode": "A2-17",
+      "sourceCrop": "raw_cells/alchemist_A2_17.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:greater-healing-potion",
+      "name": "Greater Healing Potion",
+      "boardCode": "A1-10",
+      "sourceCrop": "raw_cells/alchemist_A1_10.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:hunters-instinct-tonic",
+      "name": "Hunter’s Instinct Tonic",
+      "boardCode": "A1-12",
+      "sourceCrop": "raw_cells/alchemist_A1_12.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:moonveil-tonic",
+      "name": "Moonveil Tonic",
+      "boardCode": "A2-20",
+      "sourceCrop": "raw_cells/alchemist_A2_20.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:night-eye-elixir",
+      "name": "Night-Eye Elixir",
+      "boardCode": "A2-21",
+      "sourceCrop": "raw_cells/alchemist_A2_21.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:night-vision-draught",
+      "name": "Night-Vision Draught",
+      "boardCode": "A1-20",
+      "sourceCrop": "raw_cells/alchemist_A1_20.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:serpent-antivenom",
+      "name": "Serpent Antivenom",
+      "boardCode": "A2-7",
+      "sourceCrop": "raw_cells/alchemist_A2_07.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:shrink-sip",
+      "name": "Shrink Sip",
+      "boardCode": "A2-13",
+      "sourceCrop": "raw_cells/alchemist_A2_13.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:silentstep-elixir",
+      "name": "Silentstep Elixir",
+      "boardCode": "A2-8",
+      "sourceCrop": "raw_cells/alchemist_A2_08.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:sleep-draught",
+      "name": "Sleep Draught",
+      "boardCode": "A2-19",
+      "sourceCrop": "raw_cells/alchemist_A2_19.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:slime-slick-oil",
+      "name": "Slime Slick Oil",
+      "boardCode": "A2-14",
+      "sourceCrop": "raw_cells/alchemist_A2_14.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:spark-bottle",
+      "name": "Spark Bottle",
+      "boardCode": "A2-12",
+      "sourceCrop": "raw_cells/alchemist_A2_12.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:stoneheart-tonic",
+      "name": "Stoneheart Tonic",
+      "boardCode": "A1-9",
+      "sourceCrop": "raw_cells/alchemist_A1_09.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:stormguard-draught",
+      "name": "Stormguard Draught",
+      "boardCode": "A1-2",
+      "sourceCrop": "raw_cells/alchemist_A1_02.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:swiftclaw-mixture",
+      "name": "Swiftclaw Mixture",
+      "boardCode": "A2-16",
+      "sourceCrop": "raw_cells/alchemist_A2_16.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:swiftstep-elixir",
+      "name": "Swiftstep Elixir",
+      "boardCode": "A1-8",
+      "sourceCrop": "raw_cells/alchemist_A1_08.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:toxinward-draught",
+      "name": "Toxinward Draught",
+      "boardCode": "A2-18",
+      "sourceCrop": "raw_cells/alchemist_A2_18.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:basilisk-salve",
+      "name": "Basilisk Salve",
+      "boardCode": "A2-15",
+      "sourceCrop": "raw_cells/alchemist_A2_15.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:bloodrush-tonic",
+      "name": "Bloodrush Tonic",
+      "boardCode": "A2-3",
+      "sourceCrop": "raw_cells/alchemist_A2_03.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:cleansefire-vial",
+      "name": "Cleansefire Vial",
+      "boardCode": "A2-5",
+      "sourceCrop": "raw_cells/alchemist_A2_05.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:dreamwalk-tonic",
+      "name": "Dreamwalk Tonic",
+      "boardCode": "A6-10",
+      "sourceCrop": "raw_cells/alchemist_A6_10.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:faerie-form-draught",
+      "name": "Faerie-Form Draught",
+      "boardCode": "A2-6",
+      "sourceCrop": "raw_cells/alchemist_A2_06.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:genderflux-elixir",
+      "name": "Genderflux Elixir",
+      "boardCode": "A2-22",
+      "sourceCrop": "raw_cells/alchemist_A2_22.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:ghost-ink-tonic",
+      "name": "Ghost-Ink Tonic",
+      "boardCode": "A6-1",
+      "sourceCrop": "raw_cells/alchemist_A6_01.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:glider-mixture",
+      "name": "Glider Mixture",
+      "boardCode": "A6-17",
+      "sourceCrop": "raw_cells/alchemist_A6_17.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:growth-draught",
+      "name": "Growth Draught",
+      "boardCode": "A6-18",
+      "sourceCrop": "raw_cells/alchemist_A6_18.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:ironhide-tonic",
+      "name": "Ironhide Tonic",
+      "boardCode": "A6-13",
+      "sourceCrop": "raw_cells/alchemist_A6_13.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:merrows-embrace",
+      "name": "Merrow’s Embrace",
+      "boardCode": "A6-2",
+      "sourceCrop": "raw_cells/alchemist_A6_02.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:mistveil-phial",
+      "name": "Mistveil Phial",
+      "boardCode": "A6-11",
+      "sourceCrop": "raw_cells/alchemist_A6_11.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:moon-sight-tonic",
+      "name": "Moon-Sight Tonic",
+      "boardCode": "A6-20",
+      "sourceCrop": "raw_cells/alchemist_A6_20.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:purifying-draught",
+      "name": "Purifying Draught",
+      "boardCode": "A2-4",
+      "sourceCrop": "raw_cells/alchemist_A2_04.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:shadow-skin-tonic",
+      "name": "Shadow-Skin Tonic",
+      "boardCode": "A6-4",
+      "sourceCrop": "raw_cells/alchemist_A6_04.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:spider-climb-serum",
+      "name": "Spider-Climb Serum",
+      "boardCode": "A6-8",
+      "sourceCrop": "raw_cells/alchemist_A6_08.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:stoneform-lacquer",
+      "name": "Stoneform Lacquer",
+      "boardCode": "A6-9",
+      "sourceCrop": "raw_cells/alchemist_A6_09.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:stormsight-elixir",
+      "name": "Stormsight Elixir",
+      "boardCode": "A6-14",
+      "sourceCrop": "raw_cells/alchemist_A6_14.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:superior-healing-potion",
+      "name": "Superior Healing Potion",
+      "boardCode": "A6-16",
+      "sourceCrop": "raw_cells/alchemist_A6_16.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:chimera-might-elixir",
+      "name": "Chimera Might Elixir",
+      "boardCode": "A6-6",
+      "sourceCrop": "raw_cells/alchemist_A6_06.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:dragonfire-tonic",
+      "name": "Dragonfire Tonic",
+      "boardCode": "A6-21",
+      "sourceCrop": "raw_cells/alchemist_A6_21.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:dragons-breath-elixir",
+      "name": "Dragon’s Breath Elixir",
+      "boardCode": "A6-19",
+      "sourceCrop": "raw_cells/alchemist_A6_19.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:ichor-philter",
+      "name": "Ichor Philter",
+      "boardCode": "A6-22",
+      "sourceCrop": "raw_cells/alchemist_A6_22.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:inkcloud-tonic",
+      "name": "Inkcloud Tonic",
+      "boardCode": "A6-15",
+      "sourceCrop": "raw_cells/alchemist_A6_15.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:phoenix-renewal",
+      "name": "Phoenix Renewal Elixir",
+      "boardCode": "A6-7",
+      "sourceCrop": "raw_cells/alchemist_A6_07.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:regeneration-serum",
+      "name": "Regeneration Serum",
+      "boardCode": "A6-5",
+      "sourceCrop": "raw_cells/alchemist_A6_05.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:supreme-healing-potion",
+      "name": "Supreme Healing Potion",
+      "boardCode": "A6-3",
+      "sourceCrop": "raw_cells/alchemist_A6_03.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:voidward-philter",
+      "name": "Voidward Philter",
+      "boardCode": "A6-12",
+      "sourceCrop": "raw_cells/alchemist_A6_12.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    },
+    {
+      "officialId": "recipe:wyvern-poison",
+      "name": "Wyvern Poison",
+      "boardCode": "A1-1",
+      "sourceCrop": "raw_cells/alchemist_A1_01.png",
+      "method": "manually_curated_thematic_proposal",
+      "confidence": "unverified",
+      "visualStatus": "not_proven",
+      "requiresManualArtReview": true
+    }
+  ]
+}

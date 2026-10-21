@@ -1,4 +1,4 @@
-# Gathering & Crafting v1.0.0 — The Averis Workshop
+# Gathering & Crafting v1.1.0 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -35,6 +35,12 @@ For players there are four straightforward tabs: **Gather / Alchemy / Blacksmith
 
 This release passes automated asset/inventory regression checks, but is **not** an assertion that every advanced Active Effect has been validated in a live dnd5e 5.3.3 server. The mock tests exercise the inventory and data path; a live-world test is still recommended.
 
+## v1.1.0 update — reviewed item artwork
+
+The original recipes, harvesting and inventory systems are unchanged. The update replaces **224 locally bundled item images** at their existing catalogue paths, including 11 special handpainted-path locations. Every item gets a unique image file and the integrity-checking workflow verifies SHA-256 hashes so older artwork bundles cannot overwrite the new selections.
+
+**Artwork disclaimer:** These are uniformly prepared temporary 256×256 D&D icons; a portion were selected from larger contact sheets, and 140 were curated thematically. They are not 224 unique 1024×1024 original paintings. The update is suitable for regular inventory display; inspect the art before treating it as high-resolution originals.
+
 ## Install / update
 
 **Manifest URL** for Setup → Add-on Modules → Install Module:
@@ -50,10 +56,10 @@ Open the gear in the header → GM Studio. Define new materials, monster drops a
 `data/materials.csv` and `data/recipes.csv` are portable reference catalogs for offline review. `data/catalog.json` holds the same structured settings, resources and recipes. Check `CHANGELOG.md` for upgrade notes.
 
 
-## v1.0.0 release validation
+## v1.1.0 release validation
 
 - All 224 catalogue entries have a distinct, locally bundled WebP file. **No image is missing** from the archive; both professions and the materials catalog load without an external item-art module.
-- Eleven items currently use individual original paintings. The other 213 entries use their own illustrated variant files, **not** separate independent original paintings. This difference is intentionally disclosed and remains a visual-art production task.
+- All 224 items now have unique, user-curated 256×256 WebP images with distinct file hashes. The set combines 84 GM-approved temporary icons and 140 thematic selections. Some were cropped and upscaled from generated image sheets; **these are not 224 independently painted 1024px originals**. The separate high-resolution art production milestone remains open.
 - GitHub Actions tests the catalogue, recipes, inventory rollback, scroll retention, native D&D5e item data, compendium upgrades and all artwork paths. It also audits the installable ZIP for 224 WebP files.
 - A Foundry V14 live-world validation is still recommended before replacing a production campaign install. Back up your World folder before upgrading.
 

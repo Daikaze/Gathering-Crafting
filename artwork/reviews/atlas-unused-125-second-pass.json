@@ -1,0 +1,631 @@
+{
+  "schema": 1,
+  "date": "2026-10-21",
+  "scope": "125 unused cells from original atlas only; external 20 individual Blacksmith originals intentionally NOT considered",
+  "releaseStatus": "proposals-only",
+  "priorMissingVisualCandidates": 107,
+  "newProposals": 23,
+  "remainingMissingVisualCandidates": 84,
+  "remainingUnusedCells": 102,
+  "atlasCropsAreSmall": true,
+  "approvedOriginals": 0,
+  "items": [
+    {
+      "id": "recipe:bronze-shield-boss",
+      "code": "B2-9",
+      "confidence": "possible",
+      "explanationBG": "Щит с релефен централен елемент, но не е отделен shield boss",
+      "name": "Bronze Shield Boss",
+      "status": "needs review",
+      "imageSource": "raw_cells/blacksmith_B2_09.png"
+    },
+    {
+      "id": "recipe:blacksteel-armor-plates",
+      "code": "B3-11",
+      "confidence": "possible",
+      "explanationBG": "Тъмна броня с плочи, а рецептата е само за плочи",
+      "name": "Blacksteel Plates",
+      "status": "needs review",
+      "imageSource": "raw_cells/blacksmith_B3_11.png"
+    },
+    {
+      "id": "recipe:adamantine-blade",
+      "code": "B1-3",
+      "confidence": "possible",
+      "explanationBG": "Орнаментирано тежко острие; металът adamantine не се разпознава",
+      "name": "Adamantine Blade",
+      "status": "needs review",
+      "imageSource": "raw_cells/blacksmith_B1_03.png"
+    },
+    {
+      "id": "recipe:adamantine-shield",
+      "code": "B2-12",
+      "confidence": "possible",
+      "explanationBG": "Масивен украсен щит; adamantine не е доказан",
+      "name": "Adamantine Shield",
+      "status": "needs review",
+      "imageSource": "raw_cells/blacksmith_B2_12.png"
+    },
+    {
+      "id": "recipe:mithral-chain",
+      "code": "B5-18",
+      "confidence": "possible",
+      "explanationBG": "Навита сребриста метална плетка, но не ясно mithral верига",
+      "name": "Mithral Chain",
+      "status": "needs review",
+      "imageSource": "raw_cells/blacksmith_B5_18.png"
+    },
+    {
+      "id": "recipe:iron-chain",
+      "code": "B5-19",
+      "confidence": "possible",
+      "explanationBG": "Навита верижна мрежа, а не единична желязна верига",
+      "name": "Iron Chain",
+      "status": "needs review",
+      "imageSource": "raw_cells/blacksmith_B5_19.png"
+    },
+    {
+      "id": "material:hematite",
+      "code": "A4-18",
+      "confidence": "possible",
+      "explanationBG": "Сивокафяв скален образец, без диагностични белези за хематит",
+      "name": "Hematite",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A4_18.png"
+    },
+    {
+      "id": "material:platinum-ore",
+      "code": "A5-10",
+      "confidence": "possible",
+      "explanationBG": "Светлосиви метални гранули, а не доказана платинова руда",
+      "name": "Platinum Ore",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A5_10.png"
+    },
+    {
+      "id": "material:jade",
+      "code": "A5-13",
+      "confidence": "possible",
+      "explanationBG": "Зелени кристални парчета, но нефритът обикновено е масивен камък",
+      "name": "Jade",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A5_13.png"
+    },
+    {
+      "id": "material:dragonshard",
+      "code": "A5-18",
+      "confidence": "possible",
+      "explanationBG": "Единичен светещ син магически кристал; произходът не е доказан",
+      "name": "Dragonshard",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A5_18.png"
+    },
+    {
+      "id": "material:mithral-ore",
+      "code": "A3-22",
+      "confidence": "possible",
+      "explanationBG": "Син кристален сноп, без скална матрица на руда",
+      "name": "Mithral Ore",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A3_22.png"
+    },
+    {
+      "id": "material:sunstone",
+      "code": "A5-17",
+      "confidence": "possible",
+      "explanationBG": "Оранжево-златисти полупрозрачни камъни, но са няколко",
+      "name": "Sunstone",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A5_17.png"
+    },
+    {
+      "id": "material:moonstone",
+      "code": "A4-1",
+      "confidence": "possible",
+      "explanationBG": "Светлолилави кристали вместо характерен бял лунен камък",
+      "name": "Moonstone",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A4_01.png"
+    },
+    {
+      "id": "material:pearlcap",
+      "code": "A4-2",
+      "confidence": "possible",
+      "explanationBG": "Бледосиви гъби, но са повече от една и липсва перлен блясък",
+      "name": "Pearlcap",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A4_02.png"
+    },
+    {
+      "id": "material:emberblossom",
+      "code": "A3-3",
+      "confidence": "probable",
+      "explanationBG": "Червено цвете като огнен цвят, макар и не ясно оранжево",
+      "name": "Emberblossom",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A3_03.png"
+    },
+    {
+      "id": "material:nightshade",
+      "code": "A3-1",
+      "confidence": "possible",
+      "explanationBG": "Зелена билка с лилави цветчета; не се виждат тъмни плодове",
+      "name": "Nightshade",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A3_01.png"
+    },
+    {
+      "id": "material:thornbriar",
+      "code": "A4-19",
+      "confidence": "probable",
+      "explanationBG": "Единичен трънлив зелен стрък с отчетливи разклонения",
+      "name": "Thornbriar",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A4_19.png"
+    },
+    {
+      "id": "material:ashfern",
+      "code": "A3-16",
+      "confidence": "possible",
+      "explanationBG": "Сухо златисто папратовидно стъбло, но не е пепеливо",
+      "name": "Ashfern",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A3_16.png"
+    },
+    {
+      "id": "material:dreamlily",
+      "code": "A3-18",
+      "confidence": "possible",
+      "explanationBG": "Лилави цветове, но не са разпознаваеми като лилия",
+      "name": "Dreamlily",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A3_18.png"
+    },
+    {
+      "id": "material:whisper-seed",
+      "code": "A4-5",
+      "confidence": "possible",
+      "explanationBG": "Две продълговати семенни шушулки вместо едно шептящо семе",
+      "name": "Whisper Seed",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A4_05.png"
+    },
+    {
+      "id": "material:shade-spore",
+      "code": "A4-16",
+      "confidence": "possible",
+      "explanationBG": "Тъмнолилаво органично образувание; не е доказано спорово тяло",
+      "name": "Shade Spore",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A4_16.png"
+    },
+    {
+      "id": "material:phoenix-ash",
+      "code": "A5-2",
+      "confidence": "possible",
+      "explanationBG": "Червена пепелоподобна насипна субстанция без птиче перо",
+      "name": "Phoenix Ash",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A5_02.png"
+    },
+    {
+      "id": "material:marsh-kelp",
+      "code": "A4-8",
+      "confidence": "possible",
+      "explanationBG": "Зелен мокър растителен сноп, но не е ясно водорасло",
+      "name": "Marsh Kelp",
+      "status": "needs review",
+      "imageSource": "raw_cells/alchemist_A4_08.png"
+    }
+  ],
+  "unassignedCells": [
+    {
+      "code": "B1-2",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-7",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-8",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-9",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-10",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-11",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-12",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-13",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-14",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-15",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-17",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-18",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-19",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-20",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-21",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B1-22",
+      "reason": "Weapon type or additional sword variant; insufficient unique catalog match"
+    },
+    {
+      "code": "B2-2",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-3",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-4",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-5",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-6",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-7",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-8",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-11",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-13",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-16",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-17",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-18",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-19",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-20",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-21",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B2-22",
+      "reason": "Bow, helmet, shield or quiver variant with no distinct official recipe identity"
+    },
+    {
+      "code": "B3-1",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-2",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-3",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-4",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-5",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-6",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-7",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-8",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-9",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-10",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-12",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-13",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-15",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-16",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-17",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-18",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-19",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-20",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B3-22",
+      "reason": "Armor or boots variant without exact item-type match"
+    },
+    {
+      "code": "B4-1",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-2",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-4",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-5",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-7",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-8",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-10",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-11",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-12",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-13",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-14",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-15",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-16",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-17",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-18",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-19",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-20",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-21",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B4-22",
+      "reason": "Ring, belt, boots or gauntlet variant; not a corresponding recipe"
+    },
+    {
+      "code": "B5-14",
+      "reason": "Fur/leather/strap or fantasy ingot variant without justified unique catalog target"
+    },
+    {
+      "code": "B5-16",
+      "reason": "Fur/leather/strap or fantasy ingot variant without justified unique catalog target"
+    },
+    {
+      "code": "B5-17",
+      "reason": "Fur/leather/strap or fantasy ingot variant without justified unique catalog target"
+    },
+    {
+      "code": "B5-20",
+      "reason": "Fur/leather/strap or fantasy ingot variant without justified unique catalog target"
+    },
+    {
+      "code": "B5-21",
+      "reason": "Fur/leather/strap or fantasy ingot variant without justified unique catalog target"
+    },
+    {
+      "code": "B5-22",
+      "reason": "Fur/leather/strap or fantasy ingot variant without justified unique catalog target"
+    },
+    {
+      "code": "A3-9",
+      "reason": "Botanical, root, flower, fungus or crystal whose identity is not sufficiently specific"
+    },
+    {
+      "code": "A3-10",
+      "reason": "Botanical, root, flower, fungus or crystal whose identity is not sufficiently specific"
+    },
+    {
+      "code": "A3-11",
+      "reason": "Botanical, root, flower, fungus or crystal whose identity is not sufficiently specific"
+    },
+    {
+      "code": "A3-13",
+      "reason": "Botanical, root, flower, fungus or crystal whose identity is not sufficiently specific"
+    },
+    {
+      "code": "A3-14",
+      "reason": "Botanical, root, flower, fungus or crystal whose identity is not sufficiently specific"
+    },
+    {
+      "code": "A3-15",
+      "reason": "Botanical, root, flower, fungus or crystal whose identity is not sufficiently specific"
+    },
+    {
+      "code": "A4-3",
+      "reason": "Miscellaneous herb, seed, powder, vial or mineral without safe exact match"
+    },
+    {
+      "code": "A4-6",
+      "reason": "Miscellaneous herb, seed, powder, vial or mineral without safe exact match"
+    },
+    {
+      "code": "A4-7",
+      "reason": "Miscellaneous herb, seed, powder, vial or mineral without safe exact match"
+    },
+    {
+      "code": "A4-10",
+      "reason": "Miscellaneous herb, seed, powder, vial or mineral without safe exact match"
+    },
+    {
+      "code": "A4-11",
+      "reason": "Miscellaneous herb, seed, powder, vial or mineral without safe exact match"
+    },
+    {
+      "code": "A4-14",
+      "reason": "Miscellaneous herb, seed, powder, vial or mineral without safe exact match"
+    },
+    {
+      "code": "A4-15",
+      "reason": "Miscellaneous herb, seed, powder, vial or mineral without safe exact match"
+    },
+    {
+      "code": "A4-20",
+      "reason": "Miscellaneous herb, seed, powder, vial or mineral without safe exact match"
+    },
+    {
+      "code": "A4-21",
+      "reason": "Miscellaneous herb, seed, powder, vial or mineral without safe exact match"
+    },
+    {
+      "code": "A5-1",
+      "reason": "Powder, tool, or gem without reliable mineral/ingredient identification"
+    },
+    {
+      "code": "A5-3",
+      "reason": "Powder, tool, or gem without reliable mineral/ingredient identification"
+    },
+    {
+      "code": "A5-4",
+      "reason": "Powder, tool, or gem without reliable mineral/ingredient identification"
+    },
+    {
+      "code": "A5-7",
+      "reason": "Powder, tool, or gem without reliable mineral/ingredient identification"
+    },
+    {
+      "code": "A5-8",
+      "reason": "Powder, tool, or gem without reliable mineral/ingredient identification"
+    },
+    {
+      "code": "A5-11",
+      "reason": "Powder, tool, or gem without reliable mineral/ingredient identification"
+    },
+    {
+      "code": "A5-12",
+      "reason": "Powder, tool, or gem without reliable mineral/ingredient identification"
+    },
+    {
+      "code": "A5-14",
+      "reason": "Powder, tool, or gem without reliable mineral/ingredient identification"
+    },
+    {
+      "code": "A5-16",
+      "reason": "Powder, tool, or gem without reliable mineral/ingredient identification"
+    },
+    {
+      "code": "A5-20",
+      "reason": "Powder, tool, or gem without reliable mineral/ingredient identification"
+    },
+    {
+      "code": "A5-22",
+      "reason": "Powder, tool, or gem without reliable mineral/ingredient identification"
+    }
+  ]
+}

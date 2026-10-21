@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.0 — 224 reviewed temporary D&D item icons
+
+- Updated all **224 item icon binaries** to unique, user-selected and size-normalized 256×256 WebP images: 84 from the approved replacement package, 66 thematic alchemy choices, and 74 Blacksmithing/material images from the review sheets.
+- Retained exact existing catalogue paths (including eleven handpainted-path entries). Recipes, DCs, crafting items, gathering nodes, inventories and GM overrides were not rewritten.
+- Added fixed SHA-256 audit for all 224 assets. Prevented older illustrated artwork ZIPs from overwriting current images when producing the Foundry module release archive.
+- Maintained Foundry V14 and dnd5e 5.3.3 compatibility; original v1.0.0 distribution remains available for rollback.
+- **Source disclosure:** 256px images are not all new individually hand-painted 1024px originals. Some were cropped from generated fantasy icon sheets and visually selected for their items. The 224-original high-resolution milestone is still outstanding.
+
+
 ## 1.0.0 — Artwork-integrity and installable release
 
 - Published the complete 224-item bundled illustration set across 56 Blacksmithing recipes, 66 Alchemy recipes and 102 materials; all asset paths verified against archive contents.

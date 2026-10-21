@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "created": "2026-10-21",
+  "sourceBoard": "Blacksmith/Alchemist 1536x1024 sheet supplied by user",
+  "reviewedScope": "Blacksmith rows B1-B4, 88 individual cells",
+  "catalogue": "data/catalog.json",
+  "catalogue56Recipes": true,
+  "state": "non-destructive-proposals-only",
+  "notes": "These 32 are obvious nonmatching/redundant variants, NOT the mathematically proven only extras. 20 canonical Blacksmith recipes are ingots, and many canonical non-ingot recipe types aren't depicted on rows B1-B4. Keeping 56 of 88 is NOT equivalent to mapping the official 56 items. No file removal, no approval, no release.",
+  "groups": [
+    {
+      "group": "weapon types without any matching recipe",
+      "reason": "No Blacksmithing recipe for warhammer, axe or mace",
+      "codes": [
+        "B1-8",
+        "B1-11",
+        "B1-14",
+        "B1-15",
+        "B1-19",
+        "B1-20",
+        "B1-21",
+        "B1-22"
+      ]
+    },
+    {
+      "group": "ranged weapons and arrow quivers",
+      "reason": "No recipe for bow, crossbow, quiver or forging hammer; silvered/steel arrowheads are separate objects",
+      "codes": [
+        "B2-2",
+        "B2-3",
+        "B2-4",
+        "B2-5",
+        "B2-6",
+        "B2-7",
+        "B2-8"
+      ]
+    },
+    {
+      "group": "alternative helmets",
+      "reason": "Official catalog has Steel Helm only; B2-15 is kept as the closest tentative helmet representation",
+      "codes": [
+        "B2-16",
+        "B2-17",
+        "B2-18",
+        "B2-19"
+      ]
+    },
+    {
+      "group": "rings and belt duplicates",
+      "reason": "Official Blacksmithing recipes contain no rings or complete belts; B4-9 held provisionally as a Bronze Buckles visual candidate",
+      "codes": [
+        "B4-10",
+        "B4-11",
+        "B4-12",
+        "B4-13",
+        "B4-14",
+        "B4-15",
+        "B4-16",
+        "B4-17",
+        "B4-18",
+        "B4-19",
+        "B4-20",
+        "B4-21",
+        "B4-22"
+      ]
+    }
+  ],
+  "total": 32,
+  "keptWithinReviewedRowsForFurtherMapping": 56
+}

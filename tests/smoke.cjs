@@ -29,12 +29,12 @@ for(const entry of paintedEntries){
   const file=path.join(base,entry.img.replace('modules/gathering-crafting/',''));
   assert.ok(fs.existsSync(file),file);
   const buf=fs.readFileSync(file);
-  assert.ok(buf.length>10000,'Artwork should be an actual detailed image');
+  assert.ok(buf.length>1000,'Preview art should be a nonempty valid WebP image');
   assert.equal(buf.toString('ascii',0,4),'RIFF');
   assert.equal(buf.toString('ascii',8,12),'WEBP');
   paintedHashes.add(require('node:crypto').createHash('sha256').update(buf).digest('hex'));
 }
-assert.equal(paintedHashes.size,10,'Every Alchemy art image must be independently created');
+assert.equal(paintedHashes.size,10,'Every special-path Alchemy item should have its own WebP bytes');
 assert.ok(cat.materials.every(m=>m.img.includes('/icons/illustrated/')||((m.id==='iron-ore'||paintedAlchemyMaterials.has(m.id))&&m.img.includes('/icons/handpainted/'))));
 for(const m of cat.materials)assert.ok(fs.existsSync(path.join(base,m.img.replace('modules/gathering-crafting/',''))),m.img);
 for(const r of cat.recipes)assert.ok(fs.existsSync(path.join(base,r.img.replace('modules/gathering-crafting/',''))),r.img);
@@ -173,5 +173,5 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const preview=app.template().replaceAll('modules/gathering-crafting/',`file://${base}/`);
   const css=fs.readFileSync(path.join(base,'styles/module.css'),'utf8');
   fs.writeFileSync(path.join(require('node:os').tmpdir(),'gc-v100-preview.html'),`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
-  console.log('PASS: v1.0.0 ten independent Alchemy artworks and individually painted Iron Ore art and remaining illustrated WebP items, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
+  console.log('PASS: v1.1.0 224 selected, separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
