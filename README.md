@@ -1,4 +1,4 @@
-# Gathering & Crafting v1.1.2 — The Averis Workshop
+# Gathering & Crafting v1.2.0 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -8,7 +8,7 @@
 2. **Alchemy / Blacksmithing**: open the separate profession tab, see how many required ingredients you own, then press Craft. Use **Craftable only** to hide unavailable recipes; **Craft ×N** crafts in batches up to 10.
 3. **Inventory**: inspect real D&D5e materials, crafted goods and monster drops; use **+ / −** to add or remove item quantities, **Use** crafted potions instantly, or open an item's **Item Sheet**.
 
-For players there are four straightforward tabs: **Gather / Alchemy / Blacksmithing / Inventory**. The GM's full catalogue editor is available from the discreet gear icon in the header.
+For players there are five straightforward tabs: **Gather / Alchemy / Blacksmithing / Enchanting / Inventory**. The GM's full catalogue editor is available from the discreet gear icon in the header.
 
 ## Content
 
@@ -34,6 +34,18 @@ For players there are four straightforward tabs: **Gather / Alchemy / Blacksmith
 - **Ingots, armor components, jewelry and crafting hardware** are real `loot` Items, not fake weapons or incomplete armor pieces with misleading combat bonuses.
 
 This release passes automated asset/inventory regression checks, but is **not** an assertion that every advanced Active Effect has been validated in a live dnd5e 5.3.3 server. The mock tests exercise the inventory and data path; a live-world test is still recommended.
+
+## v1.2.0 — Enchanting
+
+A new **Enchanting** tab provides 11 weapon and 14 armor enchantments, with the exact GP costs and in-world day durations supplied by the campaign GM. "Magewoven Interior" is the corrected name for the supplied "agewoven Interior" entry.
+
+- Choose one nonstacked weapon or armor/shield already in the active character's inventory. Select elemental damage type for Elemental Binding (Fire, Cold, Lightning, Acid or Thunder).
+- Click **Begin Enchantment**, confirm, and pay the listed amount from D&D5e character currency. The module records a pending job on that specific Item. It does not consume ingredients or advance world time.
+- When sufficient **Foundry world time** has passed (24 hours per campaign day), click **Complete Enchantment**. Applied enchantments persist as Item flags and description notes; duplicate or conflicting enchantments cannot stack. One enchantment job per item at a time.
+- **Arcane Infusion** and **Greater Arcane Infusion** write native dnd5e magical weapon bonus values (+1/+2). Other enchanted abilities (including elemental damage, extra spells, once-per-rest powers, resistances, conditions, and stealth/Arcana modifiers) are described on the Item for GM adjudication, **not falsely presented as automated**. These effects can be automated in a subsequent iteration.
+- Original player inventory, existing item descriptions, crafting recipes and gathering nodes are preserved. No artwork assets need to change.
+
+**Note:** Gold is charged when beginning a job. There is currently no cancel/refund button, and one active enchantment per item. Enchanting does not support stacked Items or item categories other than weapons and equipment classified as armor/shields. Character currency is normalized across denominations to make correct change; review the new coin balances when testing.
 
 ## v1.1.2 — artwork packaging repair
 
