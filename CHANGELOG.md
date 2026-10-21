@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.3 — Explicit equipment restrictions and robe support
+
+- Added clear **Compatible with:** labels to every enchantment and enforced the whitelist server-side before beginning work.
+- Classified dnd5e weapon families, Light/Medium/Heavy Armor, Shields, Robes and worn Boots, Cloaks, Gloves, Helmets, Rings, Amulets and Belts.
+- Added 14 specialized wearable formulas for robes, boots, cloaks, gloves and accessories: **107 total**, 49 weapon and 58 armor/gear.
+- Blocked invalid enchantments, such as putting a robe-only enchantment on a shield or a bow-only enchantment on a sword.
+- Preserved existing enchantment jobs, saved elemental choices, learned formulas, GM-only DC visibility, gold as market value and rank/item slot gates.
+- Added pure-rules and full workshop regression tests for equipment classification and incompatible actions.
+
 ## 1.3.2 — Elemental cards, stable scroll and rank ordering
 
 - Removed the general Elemental damage selector and replaced the two generic selectable formulas with ten separate type-specific options: Fire, Cold, Lightning, Acid and Thunder for standard and Greater Elemental Binding.
