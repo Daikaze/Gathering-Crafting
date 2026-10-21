@@ -5,8 +5,10 @@ const fs = require("node:fs");
 const path = require("node:path");
 const assert = require("node:assert/strict");
 const crypto = require("node:crypto");
-const root = path.resolve(__dirname, "..");
-const file = path.join(root, "artwork/reviews/preview-224-sha256.txt");
+const root = process.argv[2] ? path.resolve(process.argv[2]) : path.resolve(__dirname, "..");
+// Always read the immutable review list from the checked-out repository, including
+// when validating the extracted distributable ZIP in a temporary directory.
+const file = path.join(__dirname, "reviews/preview-224-sha256.txt");
 const lines = fs.readFileSync(file, "utf8").split(/\r?\n/).filter(x => x && !x.startsWith("#"));
 assert.equal(lines.length, 224, "Expected exactly 224 approved-for-preview image hashes");
 const catalog = JSON.parse(fs.readFileSync(path.join(root, "data/catalog.json"), "utf8"));
