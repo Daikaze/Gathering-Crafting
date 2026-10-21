@@ -1,8 +1,8 @@
 {
   "id": "gathering-crafting",
   "title": "Gathering & Crafting",
-  "description": "Gathering & Crafting v1.2.0 for Foundry V14 / dnd5e 5.3.3: Gather, Alchemy, Blacksmithing, Enchanting (25 weapon/armor enchantments) and Inventory, with 224 locally bundled item icons.",
-  "version": "1.2.0",
+  "description": "Gathering & Crafting v1.3.0 for Foundry V14 / dnd5e 5.3.3: 85 learnable enchantments, five Enchanter proficiency ranks, item compatibility and slot limits, character-sheet powers, Alchemy, Blacksmithing, Gathering and 224 bundled icons.",
+  "version": "1.3.0",
   "authors": [
     {
       "name": "Averis Workshop"
@@ -34,5 +34,5 @@
   ],
   "url": "https://github.com/Daikaze/Gathering-Crafting",
   "manifest": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/module.json",
-  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v1.2.0.zip"
+  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v1.3.0.zip"
 }
