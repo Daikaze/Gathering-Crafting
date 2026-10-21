@@ -341,7 +341,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     if(a==='learnEnchant')return this.locked(()=>beginLesson(this.checkActor(),'enchant',id,notify));
     if(a==='useEnchant')return this.locked(()=>useEnchantment(this.checkActor(),id,button.dataset.enchant,notify,announce));
     if(a==='startEnchant')return this.locked(()=>beginEnchantment(this,id,{actor:this.checkActor(),announce,notify}));
-    if(a==='finishEnchant')return this.locked(()=>finishEnchantment(this,id,{actor:this.checkActor(),announce,notify}));
+    if(a==='finishEnchant')return this.locked(()=>finishEnchantment(this,id,{actor:this.checkActor(),announce,announceGM,notify}));
     if(a==='drink')return this.locked(()=>this.drink(id));
     if(a==='giveMat')return this.locked(()=>adjustMaterialQuantity(this.checkActor(),id,1));
     if(a==='takeMat')return this.locked(()=>adjustMaterialQuantity(this.checkActor(),id,-1));
