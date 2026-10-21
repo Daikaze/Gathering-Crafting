@@ -1,13 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,reducedDays,lessonDays,enchantById,targetKind,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost,sortEnchantments,knowsEnchant} from '../scripts/enchanting.mjs';
+import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,reducedDays,lessonDays,enchantById,targetKind,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost,sortEnchantments,knowsEnchant,itemClassification,enchantTargetLabels,EQUIPMENT_LABELS} from '../scripts/enchanting.mjs';
 import {effectChanges} from '../scripts/enchanting-ui.mjs';
 
 test('exact weapon and armor enchantment catalog',()=>{
- assert.equal(ENCHANTMENTS.length,93);
+ assert.equal(ENCHANTMENTS.length,107);
  assert.equal(ENCHANTMENTS.filter(e=>e.kind==='weapon').length,49);
- assert.equal(ENCHANTMENTS.filter(e=>e.kind==='armor').length,44);
- assert.equal(new Set(ENCHANTMENTS.map(e=>e.id)).size,93);
+ assert.equal(ENCHANTMENTS.filter(e=>e.kind==='armor').length,58);
+ assert.equal(new Set(ENCHANTMENTS.map(e=>e.id)).size,107);
  assert.equal(ENCHANTMENTS.find(e=>e.id==='weapon-spell-channel').cost,125);
  assert.deepEqual([enchantById('weapon-arcane-infusion').cost,enchantById('weapon-arcane-infusion').days],[250,4]);
  assert.deepEqual([enchantById('weapon-greater-arcane-infusion').cost,enchantById('weapon-greater-arcane-infusion').days],[1000,7]);
@@ -18,7 +18,7 @@ test('exact weapon and armor enchantment catalog',()=>{
  for(const e of ENCHANTMENTS){assert.ok(e.name);assert.ok(e.description);assert.ok(e.cost>0);assert.ok(e.days>0);assert.ok(e.rank>=1&&e.rank<=5);assert.ok(e.allowed.length);}
 });
 test('weapon vs armor eligibility, no repeated or conflicting enhancements',()=>{
- const weapon={type:'weapon',getFlag:()=>null};
+ const weapon={type:'weapon',name:'Longsword',system:{type:{value:'martialM',baseItem:'longsword'}},getFlag:()=>null};
  const armor={type:'equipment',system:{type:{value:'heavy'}},getFlag:()=>null};
  const shield={type:'equipment',system:{type:{value:'shield'}},getFlag:()=>null};
  const ring={type:'equipment',system:{type:{value:'trinket'}},getFlag:()=>null};
@@ -135,4 +135,70 @@ test('legacy learned formulas and existing item enchantments survive upgrade',()
  assert.equal(usedSlots([{id:'weapon-elemental-binding',element:'Cold'}]),1);
  const longsword={type:'weapon',name:'Longsword',system:{type:{value:'martialM',baseItem:'longsword'},rarity:'very rare'},getFlag:()=>null};
  assert.equal(canApplyEnchant(longsword,enchantById('weapon-elemental-binding-fire'),[{id:'weapon-elemental-binding',element:'Cold'}]),false);
+});
+
+test('each enchantment declares exact, named valid equipment types',()=>{
+ const all=new Set(Object.keys(EQUIPMENT_LABELS));
+ for(const enchant of ENCHANTMENTS){
+  assert.ok(enchant.allowed.length>0);
+  assert.ok(enchant.allowed.every(tag=>all.has(tag)),enchant.id+' has an unknown target');
+  assert.ok(enchantTargetLabels(enchant).every(label=>label.length>1));
+  assert.ok(!enchant.allowed.includes('armor')&&!enchant.allowed.includes('weapon'));
+ }
+ assert.equal(enchantTargetLabels(enchantById('armor-guardians-crest')).join(', '),'Shields');
+ assert.equal(enchantTargetLabels(enchantById('armor-mystic-stitching')).join(', '),'Robes');
+ assert.equal(enchantTargetLabels(enchantById('armor-fleetfoot-rune')).join(', '),'Boots');
+ assert.equal(enchantTargetLabels(enchantById('armor-echo-ring')).join(', '),'Rings');
+ assert.ok(enchantTargetLabels(enchantById('weapon-hawkflight')).includes('Bows'));
+});
+test('classifies weapons, armor, robes, and wearable slots without admitting loot',()=>{
+ const equipment=(name,value='wondrous')=>({name,type:'equipment',system:{type:{value}}});
+ const weapon=(name,code='martialM')=>({name,type:'weapon',system:{type:{value:code,baseItem:name.toLowerCase()}}});
+ assert.ok(itemTags(weapon('Longsword')).includes('sword'));
+ assert.ok(itemTags(weapon('Dagger')).includes('dagger'));
+ assert.ok(itemTags(weapon('Greataxe')).includes('axe'));
+ assert.ok(itemTags(weapon('Warhammer')).includes('hammer'));
+ assert.ok(itemTags(weapon('Shortbow','martialR')).includes('bow'));
+ assert.ok(itemTags(weapon('Heavy Crossbow','martialR')).includes('crossbow'));
+ assert.ok(itemTags(weapon('Quarterstaff')).includes('staff'));
+ assert.ok(itemTags(weapon('Spear')).includes('polearm'));
+ for(const [name,tag] of [
+  ['Robe of Stars','robe'],['Enchanter Robe','robe'],['Boots of Elvenkind','boots'],
+  ['Cloak of Protection','cloak'],['Gloves of Dexterity','gloves'],
+  ['Helm of Brilliance','helm'],['Ring of Spell Storing','ring'],
+  ['Amulet of Health','amulet'],["Belt of Giant Strength",'belt']
+ ])assert.ok(itemTags(equipment(name)).includes(tag),'Missing '+tag);
+ assert.ok(itemTags(equipment('Mage Robe','clothing')).includes('robe'));
+ assert.equal(targetKind(equipment('Robe of Stars')),'armor');
+ assert.ok(itemClassification(equipment('Mage Robe','clothing')).includes('Robes'));
+ assert.equal(targetKind({type:'loot',name:'Robe of Stars',system:{type:{value:'clothing'}}}),null);
+ assert.equal(targetKind(equipment('Gemstone')),null);
+ assert.ok(itemTags(equipment('Studded Leather','light')).includes('light'));
+ assert.ok(itemTags(equipment('Breastplate','medium')).includes('medium'));
+ assert.ok(itemTags(equipment('Plate Armor','heavy')).includes('heavy'));
+ assert.ok(itemTags(equipment('Shield','shield')).includes('shield'));
+});
+test('enchantment restrictions never allow robe enchantments on shields or heavy armor',()=>{
+ const gear=(name,value='wondrous',rarity='legendary')=>({name,type:'equipment',
+  system:{type:{value},rarity},getFlag:()=>null});
+ const robe=gear('Arcane Robe','clothing'),shield=gear('Steel Shield','shield'),
+  plate=gear('Plate Armor','heavy'),boots=gear('Wanderer Boots'),
+  gloves=gear('Arcane Gloves');
+ assert.ok(canApplyEnchant(robe,enchantById('armor-mystic-stitching'),[]));
+ assert.ok(canApplyEnchant(robe,enchantById('armor-arcane-mesh'),[]));
+ assert.equal(canApplyEnchant(shield,enchantById('armor-mystic-stitching'),[]),false);
+ assert.equal(canApplyEnchant(plate,enchantById('armor-mystic-stitching'),[]),false);
+ assert.equal(canApplyEnchant(robe,enchantById('armor-guardians-crest'),[]),false);
+ assert.ok(canApplyEnchant(shield,enchantById('armor-guardians-crest'),[]));
+ assert.equal(canApplyEnchant(boots,enchantById('armor-mystic-stitching'),[]),false);
+ assert.ok(canApplyEnchant(boots,enchantById('armor-fleetfoot-rune'),[]));
+ assert.equal(canApplyEnchant(gloves,enchantById('armor-fleetfoot-rune'),[]),false);
+ assert.ok(canApplyEnchant(gloves,enchantById('armor-runic-grip'),[]));
+ assert.equal(canApplyEnchant(gear('Circlet of Insight'),enchantById('armor-echo-ring'),[]),false);
+ const sword={type:'weapon',name:'Longsword',system:{type:{value:'martialM',baseItem:'longsword'},rarity:'legendary'},getFlag:()=>null};
+ const bow={...sword,name:'Longbow',system:{type:{value:'martialR',baseItem:'longbow'},rarity:'legendary'}};
+ assert.equal(canApplyEnchant(bow,enchantById('weapon-keen-edge'),[]),false);
+ assert.ok(canApplyEnchant(sword,enchantById('weapon-keen-edge'),[]));
+ assert.equal(canApplyEnchant(sword,enchantById('weapon-storm-arrow'),[]),false);
+ assert.ok(canApplyEnchant(bow,enchantById('weapon-storm-arrow'),[]));
 });
