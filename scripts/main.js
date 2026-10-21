@@ -1,6 +1,7 @@
 /** Gathering & Crafting v1.0.0 — Foundry V14 / dnd5e 5.3.3. */
 import { CATALOG } from './catalog.js';
 import { makeMaterialData, makeCraftData, outputKind } from './items.js';
+import { toolName, craftingTool, gatheringTool, hasToolProficiency, toolRollFormula } from './tool-rules.js';
 const ID='gathering-crafting';
 const VERSION='1.0.0';
 const clone=value=>foundry.utils.deepClone(value);
@@ -339,12 +340,12 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     if(db.settings.sceneOnly){const near=nearestNodeToken(actor,id);if(!near||near.feet>15)throw new Error('Move your character within 15 ft of the mapped gathering token.');}
     const mat=material(db,node.materialId);if(!mat)throw new Error('The resource no longer exists.');
     const cap=num(db.settings.dailyLimit,6,1,100),used=attempts(actor);if(used>=cap)throw new Error('No gathers left. The GM can reset your attempts.');
-    const risky=this.gatherMode==='bold',dc=num(node.dc,12)+(risky?3:-2),roll=await new Roll('1d20 + @bonus',{bonus:skillBonus(actor,node.skill)}).evaluate();
+    const risky=this.gatherMode==='bold',dc=num(node.dc,12)+(risky?3:-2),neededTool=gatheringTool(mat),toolTrained=hasToolProficiency(actor,neededTool),roll=await new Roll(toolRollFormula(actor,neededTool),{bonus:skillBonus(actor,node.skill)}).evaluate();
     await actor.setFlag(ID,'attempts',used+1);const success=roll.total>=dc;let obtained=0,bonusText='';
     if(success){const minimum=num(node.minYield,1,1,20),maximum=Math.max(minimum,num(node.maxYield,2,1,20));obtained=(minimum+Math.floor(Math.random()*(maximum-minimum+1)))*(risky?2:1);await grantMaterial(actor,mat,obtained);
       const rare=material(db,node.bonusId);if(rare&&Math.random()*100<num(node.bonusChance,0,0,100)){await grantMaterial(actor,rare,1);bonusText=`<p>Rare find: <strong>${esc(rare.name)} ×1</strong></p>`;}
     }
-    await announce(actor,`<p><b>${esc(actor.name)}</b> ${success?'harvested':'failed to harvest'} <b>${esc(node.name)}</b>.</p><p>${esc(skillLabels[node.skill]||node.skill)} ${roll.total} vs DC ${dc} (${risky?'Risky':'Careful'}).</p>${success?`<p>${esc(mat.name)} ×${obtained}</p>${bonusText}`:'<p>No materials gained. One attempt spent.</p>'}`);
+    await announce(actor,`<p><b>${esc(actor.name)}</b> ${success?'harvested':'failed to harvest'} <b>${esc(node.name)}</b>.</p><p>${esc(skillLabels[node.skill]||node.skill)} ${roll.total} vs DC ${dc} (${risky?'Risky':'Careful'}; ${toolTrained?`${esc(toolName(neededTool))} proficient`:`disadvantage — no ${esc(toolName(neededTool))} proficiency`}).</p>${success?`<p>${esc(mat.name)} ×${obtained}</p>${bonusText}`:'<p>No materials gained. One attempt spent.</p>'}`);
     notify(success?`Harvested ${mat.name} ×${obtained}.`:'Gathering failed.');
   }
   async craft(id,maxBatch=1){const actor=this.checkActor(),db=database(),recipe=db.recipes.find(r=>r.id===id);if(!recipe)throw new Error('Recipe not found.');
@@ -352,12 +353,13 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     if(!required.length||required.some(i=>!i.mat||i.have<i.qty))throw new Error('Missing required materials.');
     if(recipe.outputItemUuid){const source=await fromUuid(recipe.outputItemUuid);if(!source||source.documentName!=='Item')throw new Error('Linked Item not found. GM must relink it.');}
     let twice=false,roll=null;
-    if(inspired){roll=await new Roll('1d20 + @bonus',{bonus:skillBonus(actor,recipe.category==='alchemy'?'inv':'ath')}).evaluate();twice=roll.total>=num(recipe.dc,12);}
+    const neededTool=craftingTool(recipe),toolTrained=hasToolProficiency(actor,neededTool);
+    if(inspired){roll=await new Roll(toolRollFormula(actor,neededTool),{bonus:skillBonus(actor,recipe.category==='alchemy'?'inv':'ath')}).evaluate();twice=roll.total>=num(recipe.dc,12);}
     const batch=maxBatch>1&&!inspired?Math.max(1,Math.min(10,...required.map(i=>Math.floor(i.have/i.qty)))):1;
     const consumed=required.map(i=>({id:i.id,qty:i.qty*batch})),amount=num(recipe.outputQuantity,1,1,99)*(twice?2:1)*batch;let paid=false;
     try{await consume(actor,consumed);paid=true;await grantProduct(actor,recipe,amount);}
     catch(e){if(paid){try{await refund(actor,consumed,db);}catch(err){notify('Item creation failed and refund failed. Contact the GM.',true);console.error(err);}}throw e;}
-    await announce(actor,`<p><strong>${esc(actor.name)}</strong> crafted <strong>${esc(recipe.name)} ×${amount}</strong>.</p><p>${inspired?`Inspired craft ${roll.total} / DC ${num(recipe.dc,12)}${twice?' — bonus ×2':' — normal output'}`:`Reliable craft ×${batch} — success guaranteed.`}</p>`);
+    await announce(actor,`<p><strong>${esc(actor.name)}</strong> crafted <strong>${esc(recipe.name)} ×${amount}</strong>.</p><p>${inspired?`Inspired craft ${roll.total} / DC ${num(recipe.dc,12)} (${toolTrained?`${esc(toolName(neededTool))} proficient`:`disadvantage — no ${esc(toolName(neededTool))} proficiency`})${twice?' — bonus ×2':' — normal output'}`:`Reliable craft ×${batch} — success guaranteed.`}</p>`);
     notify(`Crafted ${recipe.name} ×${amount}.`);
   }
   async drink(itemId){const actor=this.checkActor(),item=actor.items.get?.(itemId)||actor.items.find(i=>i.id===itemId);
