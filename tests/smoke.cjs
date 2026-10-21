@@ -298,6 +298,7 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   // Player rendering does not show target DCs on any player-facing tab.
   context.game.user.isGM=false;
   actor.flags['gathering-crafting'].enchanter={rank:1,known:[],training:null};
+  app.enchantItemId=enchantedWeapon.id;
   app.tab='enchanting';app.search='';
   let playerHTML=app.template();
   assert.ok(!/\bDC\s*[+−-]?\s*\d+/i.test(playerHTML),'player Enchanting must not display DCs');
