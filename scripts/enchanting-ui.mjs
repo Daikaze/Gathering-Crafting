@@ -47,6 +47,7 @@ export function enchantingHtml(app,actor,helpers){
  if(pending)output+='<div class="gc-enchant-job"><strong>'+ico('hourglass-half')+' '+escapeHtml(enchantById(pending.id)?.name||pending.id)+' in progress</strong><span>'+jobLine(pending)+' · Market value '+Number(pending.cost??enchantById(pending.id)?.cost??0)+' gp</span><small>Only one active enchantment per item. World time is never advanced automatically.</small><button class="gc-primary" data-action="finishEnchant" data-id="'+escapeHtml(selected.id)+'" '+(now()<Number(pending.finishAt)||app.busy?'disabled':'')+'>Complete Enchantment</button></div>';
  output+='<div class="gc-toolbar gc-compact-toolbar"><div class="gc-enchant-hint">'+ico('circle-info')+' Choose compatible enchantments</div>'+searchBar()+'</div>';
  output+='<div class="gc-enchant-element"><label>Show <select name="enchantFilter">'+[['all','All'],['available','Ready to enchant'],['compatible','Compatible items'],['locked','Unavailable']].map(([k,v])=>'<option value="'+k+'" '+((app.enchantFilter||'all')===k?'selected':'')+'>'+v+'</option>').join('')+'</select></label></div>';
+ let list=sortEnchantments(ENCHANTMENTS.filter(e=>e.kind===targetKind(selected)&&(!app.search||[e.name,e.description,...e.allowed].join(' ').toLowerCase().includes(app.search.toLowerCase()))));
  list=list.filter(e=>{
   const reason=explainCompatibility(selected,e,complete);
   if(app.enchantFilter==='available')return !reason&&toolOK;
