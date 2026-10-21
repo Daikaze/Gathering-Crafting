@@ -326,6 +326,15 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     if(a==='giveRecipe')return this.locked(()=>adjustCraftedQuantity(this.checkActor(),id,1));
     if(a==='takeRecipe')return this.locked(()=>adjustCraftedQuantity(this.checkActor(),id,-1));
     if(a==='sheetItem'){const item=this.actor?.items?.get?.(id)||this.actor?.items?.find(i=>i.id===id);return item?.sheet?.render(true);}
+    if(a==='saveEnchantSlots'&&game.user.isGM)return this.locked(async()=>{
+      const actor=this.checkActor(),item=actor.items.get?.(id)||actor.items.find(i=>i.id===id);
+      if(!item||!['weapon','equipment'].includes(item.type))throw new Error('Select a valid equipment item.');
+      const input=this.element.querySelector('[name=enchantSlots]');
+      const value=Number(input?.value);
+      if(!Number.isInteger(value)||value<0||value>6)throw new Error('Slot capacity must be between 0 and 6.');
+      await item.update({['flags.'+ID+'.enchantSlots']:value});
+      notify('Enchant slots set to '+value+' on '+item.name+'.');
+    });
     if(!game.user.isGM)return;
     if(a==='gmkind'){this.editor={kind:id,id:null};return this.refresh();}
     if(a==='new'){this.editor={kind:this.editor.kind,id:null,isNew:true};return this.refresh();}
