@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.1 — Unlimited gathering and tool-gated crafting
+
+- Enabled unlimited gathering.
+- Required appropriate physical tools in inventory and matching tool proficiency for gathering/crafting, with rule-based overrides.
+- Added crafting rolls factoring in character level, proficiency bonus and tool bonuses, including actual crafting failure handling.
+- Expanded Foundry V14 mocks and CI checks for tool requirements, proficiency handling and crafting formulas.
+- Preserved the 224 curated temporary WebP icons, existing content and Foundry V14 / dnd5e 5.3.3 compatibility.
+
 ## 1.1.0 — 224 reviewed temporary D&D item icons
 
 - Updated all **224 item icon binaries** to unique, user-selected and size-normalized 256×256 WebP images: 84 from the approved replacement package, 66 thematic alchemy choices, and 74 Blacksmithing/material images from the review sheets.
