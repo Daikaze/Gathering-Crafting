@@ -221,3 +221,13 @@ test('enchanter tools proficiency provides advantage only for held matching type
  actor.system.tools.enchanter={value:1};
  assert.equal(enchantingTool(actor).advantage,true);
 });
+
+
+test('using both types prefers a proficient physical tool',()=>{
+ const actor={items:[
+  {name:"Jeweler's Tools",type:"tool",system:{quantity:1}},
+  {name:"Enchanter's Tools",type:"tool",system:{quantity:1}}
+ ],system:{tools:{jeweler:{value:0},enchanter:{value:1}}}};
+ assert.equal(enchantingTool(actor).key,'enchanter');
+ assert.equal(enchantingTool(actor).advantage,true);
+});
