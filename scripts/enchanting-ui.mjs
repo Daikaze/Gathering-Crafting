@@ -12,8 +12,6 @@ const getItem=(app,actor)=>itemList(actor).find(i=>i.id===app.enchantItemId)||it
 const getFlags=(item,key)=>item?.getFlag?.(ENCHANT_NS,key);
 const now=()=>Number(game.time?.worldTime);
 const safeClone=obj=>foundry.utils.deepClone(obj);
-const totalGp=c=>(Number(c?.pp||0)*10+Number(c?.gp||0)+Number(c?.ep||0)*.5+Number(c?.sp||0)*.1+Number(c?.cp||0)*.01);
-const paid=c=>totalGp(c).toFixed(2).replace(/\.00$/,'');
 const toolWarning=actor=>hasTrainingTools(actor)?'':"Requires Jeweler's Tools or Enchanter's Tools in inventory.";
 const jobLine=(job)=>{
  const remaining=Math.max(0,Math.ceil((Number(job.finishAt)-now())/DAY_SECONDS));
@@ -52,7 +50,7 @@ export function enchantingHtml(app,actor,helpers){
      (power?'<button type="button" class="gc-secondary" data-action="useEnchant" data-id="'+escapeHtml(selected.id)+'" data-enchant="'+escapeHtml(e.id)+'" '+(spent>=power.uses?'disabled':'')+'>Use '+(power.uses-spent)+'/'+power.uses+'</button>':'')+'</div>';
   }).join('')+'</div>';
  }
- if(pending)output+='<div class="gc-enchant-job"><strong>'+ico('hourglass-half')+' '+escapeHtml(enchantById(pending.id)?.name||pending.id)+' in progress</strong><span>'+jobLine(pending)+' · Market value '+Number(pending.cost??enchantById(pending.id)?.cost??0)+' gp'</span><small>Only one active enchantment per item. World time is never advanced automatically.</small><button class="gc-primary" data-action="finishEnchant" data-id="'+escapeHtml(selected.id)+'" '+(now()<Number(pending.finishAt)||app.busy?'disabled':'')+'>Complete Enchantment</button></div>';
+ if(pending)output+='<div class="gc-enchant-job"><strong>'+ico('hourglass-half')+' '+escapeHtml(enchantById(pending.id)?.name||pending.id)+' in progress</strong><span>'+jobLine(pending)+' · Market value '+Number(pending.cost??enchantById(pending.id)?.cost??0)+' gp</span><small>Only one active enchantment per item. World time is never advanced automatically.</small><button class="gc-primary" data-action="finishEnchant" data-id="'+escapeHtml(selected.id)+'" '+(now()<Number(pending.finishAt)||app.busy?'disabled':'')+'>Complete Enchantment</button></div>';
  output+='<div class="gc-toolbar gc-compact-toolbar"><div class="gc-enchant-hint">'+ico('circle-info')+' Choose compatible enchantments</div>'+searchBar()+'</div>';
  output+='<div class="gc-enchant-element"><label>Elemental damage <select name="enchantElement">'+ELEMENTS.map(e=>'<option '+(app.enchantElement===e?'selected':'')+' value="'+e+'">'+e+'</option>').join('')+'</select></label><label>Show <select name="enchantFilter">'+[['all','All'],['learned','Learned'],['available','Ready to enchant'],['study','Can study']].map(([k,v])=>'<option value="'+k+'" '+((app.enchantFilter||'all')===k?'selected':'')+'>'+v+'</option>').join('')+'</select></label></div>';
  let list=ENCHANTMENTS.filter(e=>e.kind===targetKind(selected)&&(!app.search||[e.name,e.description,...e.allowed].join(' ').toLowerCase().includes(app.search.toLowerCase())));
@@ -72,7 +70,7 @@ export function enchantingHtml(app,actor,helpers){
   const studyText=learned?'Learned':studyGate||('Study formula · '+lessonDays(e)+'d');
   return '<article class="gc-tile gc-enchant-card"><div class="gc-tile-body"><div class="gc-enchant-title">'+ico(e.kind==='weapon'?'khanda':'shield-halved')+' <strong>'+escapeHtml(e.name)+'</strong></div>'+
     '<div class="gc-enchant-meta"><span>Rank '+e.rank+' · '+escapeHtml(RANKS[e.rank].name)+'</span><span>'+e.slots+' slot(s)</span></div>'+
-    '<div class="gc-enchant-meta"><span>'+ico('coins')+' Market value: '+e.cost+' gp</span><span>'+ico('fa-clock'.replace('fa-',''))+' Crafting: '+e.days+' day(s)</span></div>'+
+    '<div class="gc-enchant-meta"><span>'+ico('coins')+' Market value: '+e.cost+' gp</span><span>'+ico('clock')+' Crafting: '+e.days+' day(s)</span></div>'+
     '<p>'+escapeHtml(displayEnchantEffect(e,e.elementDice?app.enchantElement:undefined))+'</p>'+
     '<small class="gc-enchant-compat">'+ico('filter')+' '+escapeHtml(e.allowed.join(' / '))+(compatible?' · '+escapeHtml(compatible):'')+'</small>'+
     '<div class="gc-enchant-actions"><button type="button" class="gc-secondary" data-action="learnEnchant" data-id="'+escapeHtml(e.id)+'" '+(!canStudy||app.busy?'disabled':'')+'>'+escapeHtml(studyText)+'</button>'+
