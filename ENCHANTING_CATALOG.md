@@ -1,6 +1,6 @@
-# Enchanting Reference — Gathering & Crafting v1.3.2
+# Enchanting Reference — Gathering & Crafting v1.3.3
 
-All 93 Enchantments are available by learning their formulas. **Gold is an estimated market price / service value**, not a crafting material. Using the Enchanting tab never deducts coins from the maker, charges training tuition, or automatically transfers GP to a merchant. The game master may roleplay customer payments separately.
+All 107 Enchantments are available by learning their formulas. **Gold is an estimated market price / service value**, not a crafting material. Using the Enchanting tab never deducts coins from the maker, charges training tuition, or automatically transfers GP to a merchant. The game master may roleplay customer payments separately.
 
 ## Learn Enchanting (without tuition)
 
@@ -28,110 +28,131 @@ Each Enchantment formula must be studied separately; it takes **1–4 world days
 - Weapons: melee, ranged, blade, bow, crossbow, staff, polearm, bludgeoning and piercing tags. Armor: light, medium, heavy and shields.
 - A pending enchantment created before this version retains its original `finishAt` world timestamp; shortened durations apply to **new** jobs. Earlier spending is not retroactively refunded.
 
-## Weapon enchantments (49)
+## Item type restrictions (v1.3.3)
 
-Individual **Elemental Binding** and **Greater Elemental Binding** cards now provide Fire, Cold, Lightning, Acid, and Thunder independently. There is no elemental dropdown. The original two generic formulas are hidden from the list but still resolve for in-progress enchants, stored Item flags, and existing learned formula progress. Characters who already learned a generic formula can use the corresponding five new variants without relearning.
+**Every Enchantment has an explicit "Compatible with" list.** The workshop detects the actual dnd5e Item type and checks the same whitelist when beginning an enchantment. Incompatible choices are shown but locked; there is no fallback that allows any enchantment on any equipment.
 
-| Enchantment | Required proficiency | Compatible equipment | Market value | Enchanting days | Slots |
+- **Weapons:** melee or ranged weapons, swords, daggers, axes, hammers, maces, spears/polearms, bows, crossbows, staves, piercing, bludgeoning or heavy weapons, as appropriate to each recipe.
+- **Armor:** Light, Medium and Heavy Armor are distinct equipment types. Shield enchantments require an actual shield. Robes are separate from armor and never silently count as Heavy Armor.
+- **Wearables:** Robes, Boots, Cloaks, Gloves, Helmets, Rings, Amulets and Belts can have specialized formulas. A robe or accessory must be an actual dnd5e \`equipment\` Item: a \`loot\` item with "robe" in its name is not eligible. Recognized equipment subtypes and item names provide the classification.
+- Existing enchantment flags and pending jobs remain unchanged, and the original elemental types remain compatible with previously learned recipes.
+
+### Weapon enchantments (49)
+
+| Enchantment | Required rank | **Compatible with** | Market value | Days | Slots |
 |---|---|---|---:|---:|---:|
-| Arcane Infusion | Novice | weapon | 250 gp | 4 | 1 |
-| Spell Channel | Novice | weapon | 125 gp | 2 | 1 |
-| Arcane Reservoir | Apprentice | weapon | 500 gp | 2 | 1 |
-| Blessed Weapon | Apprentice | weapon | 350 gp | 2 | 1 |
-| Bloodletter | Apprentice | blade | 450 gp | 5 | 1 |
-| Defender Rune | Apprentice | melee | 500 gp | 5 | 1 |
-| Elemental Binding — Acid | Apprentice | weapon | 300 gp | 3 | 1 |
-| Elemental Binding — Cold | Apprentice | weapon | 300 gp | 3 | 1 |
-| Elemental Binding — Fire | Apprentice | weapon | 300 gp | 3 | 1 |
-| Elemental Binding — Lightning | Apprentice | weapon | 300 gp | 3 | 1 |
-| Elemental Binding — Thunder | Apprentice | weapon | 300 gp | 3 | 1 |
-| Frostbite Edge | Apprentice | blade | 500 gp | 5 | 1 |
-| Hunter’s Sight | Apprentice | ranged | 425 gp | 5 | 1 |
-| Keen Edge | Apprentice | blade | 300 gp | 3 | 1 |
-| Lightweave String | Apprentice | bow | 350 gp | 3 | 1 |
-| Rapid Reload | Apprentice | crossbow | 300 gp | 3 | 1 |
-| Shadow Binding | Apprentice | weapon | 350 gp | 3 | 1 |
-| Soul Binding | Apprentice | weapon | 500 gp | 3 | 1 |
-| Steady Aim | Apprentice | ranged | 300 gp | 3 | 1 |
-| Sundering Strike | Apprentice | melee | 450 gp | 5 | 1 |
-| Venom Channel | Apprentice | piercing, blade | 300 gp | 4 | 1 |
-| Warding Staff | Apprentice | staff | 450 gp | 4 | 1 |
-| Fey Blessing | Adept | weapon | 750 gp | 4 | 1 |
-| Flameburst | Adept | melee | 750 gp | 6 | 1 |
-| Hunter's Marking | Adept | weapon | 600 gp | 3 | 1 |
-| Moonfang | Adept | blade | 650 gp | 6 | 1 |
-| Piercing Winds | Adept | ranged | 600 gp | 5 | 1 |
-| Seeking Shot | Adept | ranged | 750 gp | 7 | 1 |
-| Thunderclap | Adept | bludgeoning, melee | 650 gp | 5 | 1 |
-| Arcane Repeater | Expert | staff | 950 gp | 7 | 1 |
-| Dawnstrike | Expert | melee | 1100 gp | 9 | 1 |
-| Echoing Blow | Expert | bludgeoning | 1100 gp | 9 | 1 |
-| Giant’s Grip | Expert | heavy-weapon | 850 gp | 7 | 1 |
-| Greater Arcane Infusion | Expert | weapon | 1000 gp | 7 | 2 |
-| Greater Elemental Binding — Acid | Expert | weapon | 800 gp | 7 | 2 |
-| Greater Elemental Binding — Cold | Expert | weapon | 800 gp | 7 | 2 |
-| Greater Elemental Binding — Fire | Expert | weapon | 800 gp | 7 | 2 |
-| Greater Elemental Binding — Lightning | Expert | weapon | 800 gp | 7 | 2 |
-| Greater Elemental Binding — Thunder | Expert | weapon | 800 gp | 7 | 2 |
-| Sniper Rune | Expert | ranged | 1150 gp | 8 | 1 |
-| Spellstrike | Expert | staff, melee | 1000 gp | 7 | 1 |
-| Storm Arrow | Expert | bow, crossbow | 850 gp | 7 | 1 |
-| Vampiric Edge | Expert | blade | 950 gp | 8 | 1 |
-| Astral Sever | Master | blade | 1800 gp | 11 | 2 |
-| Gravity Hammer | Master | bludgeoning | 1500 gp | 10 | 2 |
-| Hawkflight | Master | bow | 1600 gp | 11 | 2 |
-| Magepiercer | Master | staff, blade | 1250 gp | 9 | 1 |
-| Sunlance | Master | polearm | 1350 gp | 10 | 2 |
-| Voidlash | Master | melee | 1800 gp | 11 | 2 |
+| Arcane Infusion | Novice | **Melee Weapons, Ranged Weapons** | 250 gp | 4 | 1 |
+| Spell Channel | Novice | **Staves, Swords, Daggers** | 125 gp | 2 | 1 |
+| Arcane Reservoir | Apprentice | **Staves** | 500 gp | 2 | 1 |
+| Blessed Weapon | Apprentice | **Melee Weapons** | 350 gp | 2 | 1 |
+| Bloodletter | Apprentice | **Bladed Weapons** | 450 gp | 5 | 1 |
+| Defender Rune | Apprentice | **Melee Weapons** | 500 gp | 5 | 1 |
+| Elemental Binding — Acid | Apprentice | **Melee Weapons, Ranged Weapons** | 300 gp | 3 | 1 |
+| Elemental Binding — Cold | Apprentice | **Melee Weapons, Ranged Weapons** | 300 gp | 3 | 1 |
+| Elemental Binding — Fire | Apprentice | **Melee Weapons, Ranged Weapons** | 300 gp | 3 | 1 |
+| Elemental Binding — Lightning | Apprentice | **Melee Weapons, Ranged Weapons** | 300 gp | 3 | 1 |
+| Elemental Binding — Thunder | Apprentice | **Melee Weapons, Ranged Weapons** | 300 gp | 3 | 1 |
+| Frostbite Edge | Apprentice | **Bladed Weapons** | 500 gp | 5 | 1 |
+| Hunter’s Sight | Apprentice | **Bows, Crossbows** | 425 gp | 5 | 1 |
+| Keen Edge | Apprentice | **Bladed Weapons** | 300 gp | 3 | 1 |
+| Lightweave String | Apprentice | **Bows** | 350 gp | 3 | 1 |
+| Rapid Reload | Apprentice | **Crossbows** | 300 gp | 3 | 1 |
+| Shadow Binding | Apprentice | **Swords, Daggers, Bows, Crossbows** | 350 gp | 3 | 1 |
+| Soul Binding | Apprentice | **Melee Weapons** | 500 gp | 3 | 1 |
+| Steady Aim | Apprentice | **Bows, Crossbows** | 300 gp | 3 | 1 |
+| Sundering Strike | Apprentice | **Melee Weapons** | 450 gp | 5 | 1 |
+| Venom Channel | Apprentice | **Daggers, Swords, Spears, Bows, Crossbows** | 300 gp | 4 | 1 |
+| Warding Staff | Apprentice | **Staves** | 450 gp | 4 | 1 |
+| Fey Blessing | Adept | **Staves, Swords, Daggers** | 750 gp | 4 | 1 |
+| Flameburst | Adept | **Melee Weapons** | 750 gp | 6 | 1 |
+| Hunter's Marking | Adept | **Bows, Crossbows** | 600 gp | 3 | 1 |
+| Moonfang | Adept | **Bladed Weapons** | 650 gp | 6 | 1 |
+| Piercing Winds | Adept | **Bows, Crossbows** | 600 gp | 5 | 1 |
+| Seeking Shot | Adept | **Bows, Crossbows** | 750 gp | 7 | 1 |
+| Thunderclap | Adept | **Hammers, Maces** | 650 gp | 5 | 1 |
+| Arcane Repeater | Expert | **Staves** | 950 gp | 7 | 1 |
+| Dawnstrike | Expert | **Melee Weapons** | 1100 gp | 9 | 1 |
+| Echoing Blow | Expert | **Hammers, Maces** | 1100 gp | 9 | 1 |
+| Giant’s Grip | Expert | **Axes, Hammers, Swords** | 850 gp | 7 | 1 |
+| Greater Arcane Infusion | Expert | **Melee Weapons, Ranged Weapons** | 1000 gp | 7 | 2 |
+| Greater Elemental Binding — Acid | Expert | **Melee Weapons, Ranged Weapons** | 800 gp | 7 | 2 |
+| Greater Elemental Binding — Cold | Expert | **Melee Weapons, Ranged Weapons** | 800 gp | 7 | 2 |
+| Greater Elemental Binding — Fire | Expert | **Melee Weapons, Ranged Weapons** | 800 gp | 7 | 2 |
+| Greater Elemental Binding — Lightning | Expert | **Melee Weapons, Ranged Weapons** | 800 gp | 7 | 2 |
+| Greater Elemental Binding — Thunder | Expert | **Melee Weapons, Ranged Weapons** | 800 gp | 7 | 2 |
+| Sniper Rune | Expert | **Bows, Crossbows** | 1150 gp | 8 | 1 |
+| Spellstrike | Expert | **Staves, Swords, Daggers** | 1000 gp | 7 | 1 |
+| Storm Arrow | Expert | **Bows, Crossbows** | 850 gp | 7 | 1 |
+| Vampiric Edge | Expert | **Bladed Weapons** | 950 gp | 8 | 1 |
+| Astral Sever | Master | **Bladed Weapons** | 1800 gp | 11 | 2 |
+| Gravity Hammer | Master | **Hammers, Maces** | 1500 gp | 10 | 2 |
+| Hawkflight | Master | **Bows** | 1600 gp | 11 | 2 |
+| Magepiercer | Master | **Staves, Swords, Daggers** | 1250 gp | 9 | 1 |
+| Sunlance | Master | **Spears, Polearms** | 1350 gp | 10 | 2 |
+| Voidlash | Master | **Melee Weapons** | 1800 gp | 11 | 2 |
 
-## Armor and shield enchantments (44)
+### Armor, robe, shield and accessory enchantments (58)
 
-| Enchantment | Required proficiency | Compatible equipment | Market value | Enchanting days | Slots |
+| Enchantment | Required rank | **Compatible with** | Market value | Days | Slots |
 |---|---|---|---:|---:|---:|
-| Arcane Mesh | Novice | armor, shield | 150 gp | 5 | 1 |
-| Magewoven Interior | Novice | armor | 120 gp | 4 | 1 |
-| Arcane Reservoir | Apprentice | armor, shield | 500 gp | 5 | 1 |
-| Enduring Rune | Apprentice | armor | 350 gp | 5 | 1 |
-| Featherweight | Apprentice | armor | 300 gp | 4 | 1 |
-| Guardian’s Crest | Apprentice | shield | 350 gp | 4 | 1 |
-| Iron Sentinel | Apprentice | heavy | 500 gp | 5 | 1 |
-| Shadow Binding | Apprentice | armor | 350 gp | 4 | 1 |
-| Shadowweave | Apprentice | light | 400 gp | 5 | 1 |
-| Sigil of Clarity | Apprentice | armor | 500 gp | 5 | 1 |
-| Soul Binding | Apprentice | armor, shield | 500 gp | 5 | 1 |
-| Stonehide | Apprentice | medium, heavy | 450 gp | 5 | 1 |
-| Acid Ward | Adept | medium, heavy, light | 750 gp | 7 | 1 |
-| Fey Blessing | Adept | armor, shield | 750 gp | 7 | 1 |
-| Flame Ward | Adept | armor, shield | 750 gp | 7 | 1 |
-| Frost Ward | Adept | armor, shield | 750 gp | 7 | 1 |
-| Ironwill | Adept | heavy, medium | 700 gp | 6 | 1 |
-| Quickstep Weave | Adept | light | 550 gp | 5 | 1 |
-| Silent Stitch | Adept | light | 550 gp | 5 | 1 |
-| Stone Binding | Adept | armor | 750 gp | 7 | 1 |
-| Storm Ward | Adept | armor, shield | 750 gp | 7 | 1 |
-| Thornmail | Adept | medium, heavy | 650 gp | 6 | 1 |
-| Venom Guard | Adept | medium, heavy, light | 750 gp | 6 | 1 |
-| Warden Rune | Adept | armor, shield | 600 gp | 5 | 1 |
-| Wind Binding | Adept | boots, light, medium | 750 gp | 7 | 1 |
-| Bastion Weave | Expert | heavy, medium | 1050 gp | 8 | 1 |
-| Celestial Blessing | Expert | armor, shield | 1000 gp | 7 | 1 |
-| Guardian Aura | Expert | shield, heavy, medium | 1200 gp | 9 | 1 |
-| Mindshell | Expert | armor | 950 gp | 8 | 1 |
-| Necrotic Ward | Expert | armor | 1100 gp | 9 | 1 |
-| Nightmantle | Expert | light | 1000 gp | 8 | 1 |
-| Radiant Ward | Expert | armor | 1200 gp | 9 | 1 |
-| Spellbreaker Shield | Expert | shield | 1100 gp | 9 | 1 |
-| Thunder Plate | Expert | heavy | 900 gp | 7 | 1 |
-| Adamant Ward | Master | heavy | 1800 gp | 10 | 2 |
-| Aegis of Life | Master | armor | 2100 gp | 12 | 2 |
-| Glacial Reprisal | Master | medium, heavy | 1300 gp | 10 | 1 |
-| Moonshadow | Master | light | 1500 gp | 10 | 2 |
-| Phoenix Binding | Master | armor, shield | 1500 gp | 10 | 2 |
-| Radiant Bulwark | Master | shield | 1600 gp | 10 | 2 |
-| Reflecting Sigil | Master | shield | 2000 gp | 12 | 2 |
-| Sunward | Master | armor, shield | 1550 gp | 10 | 2 |
-| Titan Ward | Master | heavy | 1250 gp | 10 | 1 |
-| Unyielding Plate | Master | heavy | 1650 gp | 10 | 2 |
+| Arcane Mesh | Novice | **Robes, Light Armor** | 150 gp | 5 | 1 |
+| Magewoven Interior | Novice | **Robes, Light Armor** | 120 gp | 4 | 1 |
+| Mystic Stitching | Novice | **Robes** | 180 gp | 3 | 1 |
+| Arcane Reservoir | Apprentice | **Robes, Light Armor, Medium Armor** | 500 gp | 5 | 1 |
+| Enduring Rune | Apprentice | **Light Armor, Medium Armor, Heavy Armor** | 350 gp | 5 | 1 |
+| Featherweight | Apprentice | **Light Armor, Medium Armor, Heavy Armor** | 300 gp | 4 | 1 |
+| Fleetfoot Rune | Apprentice | **Boots** | 420 gp | 4 | 1 |
+| Guardian’s Crest | Apprentice | **Shields** | 350 gp | 4 | 1 |
+| Iron Sentinel | Apprentice | **Heavy Armor** | 500 gp | 5 | 1 |
+| Runic Grip | Apprentice | **Gloves** | 300 gp | 3 | 1 |
+| Shadow Binding | Apprentice | **Light Armor, Robes, Cloaks** | 350 gp | 4 | 1 |
+| Shadowweave | Apprentice | **Light Armor, Robes, Cloaks** | 400 gp | 5 | 1 |
+| Sigil of Clarity | Apprentice | **Robes, Light Armor** | 500 gp | 5 | 1 |
+| Silent Tread | Apprentice | **Boots** | 340 gp | 3 | 1 |
+| Soul Binding | Apprentice | **Light Armor, Medium Armor, Heavy Armor, Shields, Robes, Cloaks** | 500 gp | 5 | 1 |
+| Stonehide | Apprentice | **Medium Armor, Heavy Armor, Shields** | 450 gp | 5 | 1 |
+| Titan's Cord | Apprentice | **Belts** | 480 gp | 5 | 1 |
+| Windward Cloak | Apprentice | **Cloaks** | 390 gp | 4 | 1 |
+| Acid Ward | Adept | **Light Armor, Medium Armor, Heavy Armor, Robes, Shields** | 750 gp | 7 | 1 |
+| Fey Blessing | Adept | **Robes, Cloaks, Light Armor, Medium Armor** | 750 gp | 7 | 1 |
+| Flame Ward | Adept | **Light Armor, Medium Armor, Heavy Armor, Robes, Shields** | 750 gp | 7 | 1 |
+| Frost Ward | Adept | **Light Armor, Medium Armor, Heavy Armor, Robes, Shields** | 750 gp | 7 | 1 |
+| Guardian Pendant | Adept | **Amulets / Necklaces** | 720 gp | 6 | 1 |
+| Ironwill | Adept | **Medium Armor, Heavy Armor** | 700 gp | 6 | 1 |
+| Mana Mantle | Adept | **Robes, Cloaks** | 550 gp | 5 | 1 |
+| Mindguard Crest | Adept | **Helmets / Headwear** | 680 gp | 6 | 1 |
+| Quickstep Weave | Adept | **Boots** | 550 gp | 5 | 1 |
+| Silent Stitch | Adept | **Light Armor, Robes, Cloaks** | 550 gp | 5 | 1 |
+| Spellthread Gloves | Adept | **Gloves** | 720 gp | 6 | 1 |
+| Spellweave Lining | Adept | **Robes** | 600 gp | 5 | 1 |
+| Stone Binding | Adept | **Medium Armor, Heavy Armor, Shields** | 750 gp | 7 | 1 |
+| Storm Ward | Adept | **Light Armor, Medium Armor, Heavy Armor, Robes, Shields** | 750 gp | 7 | 1 |
+| Thornmail | Adept | **Heavy Armor, Medium Armor** | 650 gp | 6 | 1 |
+| Veil of Shadows | Adept | **Cloaks** | 750 gp | 6 | 1 |
+| Venom Guard | Adept | **Light Armor, Medium Armor, Heavy Armor, Robes, Shields** | 750 gp | 6 | 1 |
+| Warden Rune | Adept | **Robes, Light Armor, Medium Armor, Heavy Armor, Shields, Helmets / Headwear** | 600 gp | 5 | 1 |
+| Wind Binding | Adept | **Boots** | 750 gp | 7 | 1 |
+| Bastion Weave | Expert | **Heavy Armor, Medium Armor** | 1050 gp | 8 | 1 |
+| Celestial Blessing | Expert | **Robes, Light Armor, Medium Armor** | 1000 gp | 7 | 1 |
+| Echo Ring | Expert | **Rings** | 900 gp | 7 | 1 |
+| Guardian Aura | Expert | **Shields, Heavy Armor, Medium Armor** | 1200 gp | 9 | 1 |
+| Mindshell | Expert | **Robes, Light Armor** | 950 gp | 8 | 1 |
+| Necrotic Ward | Expert | **Light Armor, Medium Armor, Heavy Armor, Robes, Shields** | 1100 gp | 9 | 1 |
+| Nightmantle | Expert | **Light Armor, Robes, Cloaks** | 1000 gp | 8 | 1 |
+| Radiant Ward | Expert | **Light Armor, Medium Armor, Heavy Armor, Robes, Shields** | 1200 gp | 9 | 1 |
+| Spellbreaker Shield | Expert | **Shields** | 1100 gp | 9 | 1 |
+| Thunder Plate | Expert | **Heavy Armor** | 900 gp | 7 | 1 |
+| Adamant Ward | Master | **Heavy Armor** | 1800 gp | 10 | 2 |
+| Aegis of Life | Master | **Robes, Light Armor, Medium Armor, Heavy Armor** | 2100 gp | 12 | 2 |
+| Astral Embroidery | Master | **Robes** | 1400 gp | 8 | 2 |
+| Glacial Reprisal | Master | **Heavy Armor, Medium Armor** | 1300 gp | 10 | 1 |
+| Moonshadow | Master | **Light Armor, Robes, Cloaks** | 1500 gp | 10 | 2 |
+| Phoenix Binding | Master | **Heavy Armor, Medium Armor** | 1500 gp | 10 | 2 |
+| Radiant Bulwark | Master | **Shields** | 1600 gp | 10 | 2 |
+| Reflecting Sigil | Master | **Shields** | 2000 gp | 12 | 2 |
+| Sunward | Master | **Robes, Light Armor, Medium Armor, Heavy Armor, Shields, Cloaks, Helmets / Headwear** | 1550 gp | 10 | 2 |
+| Titan Ward | Master | **Heavy Armor** | 1250 gp | 10 | 1 |
+| Unyielding Plate | Master | **Heavy Armor** | 1650 gp | 10 | 2 |
 
 ## DC visibility and automated behavior
 
