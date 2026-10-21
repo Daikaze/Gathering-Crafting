@@ -83,12 +83,12 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const db=context.game.settings.get('gathering-crafting','database');
   assert.equal(db.catalogVersion,10);
   assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
-  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.2');
+  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.3');
   assert.ok(db.materials.find(m=>m.id==='iron-ore').img.endsWith('/icons/handpainted/iron-ore.webp'));
   assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
   assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
   assert.equal(artworkFor(db.recipes.find(r=>r.id==='supreme-healing-potion')),
-    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.2');
+    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.3');
   await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,44,'sync must not duplicate entries');
   const oldIconItem=packs.get('world.gc-ores-metals').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='iron-ore');
   oldIconItem.img='modules/legacy-content/images/iron-ore.webp';
@@ -262,6 +262,30 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   actor.items.push(oldJob);
   await finishEnchantment(app,oldJob.id,{actor,announce:async()=>{},notify:()=>{}});
   assert.ok(oldJob.system.damage.base.bonus.includes('1d4[thunder]'));
+
+  // v1.3.3: robe and equipment whitelist is enforced in the real start action.
+  const newRobe=new ItemDoc({name:'Enchanter Robe',type:'equipment',
+    system:{type:{value:'clothing',subtype:'robe'},quantity:1,rarity:'uncommon',description:{value:'Cloth robes'}}},actor);
+  actor.items.push(newRobe);app.enchantItemId=newRobe.id;
+  actor.flags['gathering-crafting'].enchanter={rank:2,known:['armor-mystic-stitching','armor-guardians-crest'],training:null};
+  app.tab='enchanting';app.search='';app.page=100;app.enchantFilter='all';
+  const robeHTML=app.template();
+  assert.ok(robeHTML.includes('Enchanter Robe (Robes)'),'Robe Item must be listed and classified');
+  assert.ok(robeHTML.includes('Compatible with:'),'Every enchant card must identify permitted equipment');
+  assert.ok(robeHTML.includes('Only for: Shields')||robeHTML.includes('Incompatible with Robes'),'Shield enchants must not be usable on robes');
+  await assert.rejects(()=>beginEnchantment(app,'armor-guardians-crest',{actor,announce:async()=>{},notify:()=>{}}),'Shield-only enchantment cannot start on a robe');
+  assert.equal(newRobe.getFlag('gathering-crafting','enchantmentPending'),undefined);
+  await beginEnchantment(app,'armor-mystic-stitching',{actor,announce:async()=>{},notify:()=>{}});
+  assert.equal(newRobe.getFlag('gathering-crafting','enchantmentPending').id,'armor-mystic-stitching');
+  context.game.time.worldTime+=3*86400;
+  await finishEnchantment(app,newRobe.id,{actor,announce:async()=>{},notify:()=>{}});
+  assert.ok(newRobe.getFlag('gathering-crafting','enchantments').some(x=>x.id==='armor-mystic-stitching'));
+  assert.ok(newRobe.system.description.value.includes('Cloth robes'));
+  const newShield=new ItemDoc({name:'Tower Shield',type:'equipment',
+    system:{type:{value:'shield'},quantity:1,rarity:'uncommon',description:{value:'Shield'}}},actor);
+  actor.items.push(newShield);app.enchantItemId=newShield.id;
+  await assert.rejects(()=>beginEnchantment(app,'armor-mystic-stitching',{actor,announce:async()=>{},notify:()=>{}}),'Robe-only enchantment cannot start on a shield');
+
   assert.equal(JSON.stringify(actor.system.currency),oldGold,'Training and formula study must not deduct gold');
   // Power use is equipment-bound, once per Long Rest, and restores on native long rest.
   enchantedWeapon.system.equipped=true;
