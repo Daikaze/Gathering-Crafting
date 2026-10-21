@@ -172,7 +172,7 @@ export async function finishEnchantment(app,itemId,helpers){
  if(!Number.isFinite(stamp)||stamp<Number(job.finishAt))throw new Error('Required world days have not passed.');
  const completed=safeClone(getFlags(item,'enchantments')||[]);
  // A pre-existing v1.2 job is allowed to finish, but slot/compatibility rules still apply.
- const why=explainCompatibility({...item,getFlag:(ns,k)=>k==='enchantmentPending'?null:item.getFlag(ns,k)},enchant,completed);
+ const why=explainCompatibility({type:item.type,name:item.name,system:item.system,getFlag:(ns,k)=>k==='enchantmentPending'?null:item.getFlag(ns,k)},enchant,completed);
  if(why)throw new Error('Cannot finish enchantment: '+why);
  const effect=displayEnchantEffect(enchant,job.element);
  const block='<section class="gc-item-enchantment" data-gc-enchant="'+escapeHtml(enchant.id)+'"><p><strong>'+escapeHtml(enchant.name)+' (Gathering & Crafting):</strong> '+escapeHtml(effect)+'</p></section>';
