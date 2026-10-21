@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "reviewDate": "2026-10-21",
+  "status": "corrected_in_downloadable_224_preview_zip_not_yet_committed_as_binary_files",
+  "releaseApproved": false,
+  "userApprovedTemporaryAssetsFromPreviousPass": 84,
+  "requirements": "Foundry V14 / D&D5e 5.3.3; do not claim 1024x1024 originals",
+  "correctedIcons": [
+    {
+      "id": "material:tin-ingot",
+      "path": "icons/illustrated/tin-ingot.webp",
+      "sourceCell": "S1_r02_c01",
+      "sha256": "aef07743c5bcacf0d09f2acfe788b0c615c7a2132da29c7e96623151be16ec77",
+      "reason": "Previously showed folded leather instead of a tin ingot; now isolated silver-grey forged bar."
+    },
+    {
+      "id": "material:starmetal-ingot",
+      "path": "icons/illustrated/starmetal-ingot.webp",
+      "sourceCell": "B5-14",
+      "sha256": "707e49a584d6dafc775e4d51dbad4b8533f3d092a901f79a5c792ae6020917ba",
+      "reason": "Previously showed a leather apron; replaced with visually distinct violet-blue crystalline metal ingot."
+    },
+    {
+      "id": "recipe:golden-seal",
+      "path": "icons/illustrated/craft-golden-seal.webp",
+      "sourceCell": "S2_r04_c14",
+      "sha256": "096cb671ee60a6a5fd5716c7731b91a00e313f6fae6ceb9d8398543ec697c51d",
+      "reason": "Metallic round seal refinished in gold instead of blue steel."
+    },
+    {
+      "id": "recipe:silvered-arrowheads",
+      "path": "icons/illustrated/craft-silvered-arrowheads.webp",
+      "sourceCell": "S2_r05_c13",
+      "sha256": "cc3194b6db5de423f8e7d85c43d2d555e7db60cda8612a7afac804308f28e41f",
+      "reason": "Ivory fangs replaced by a sharpened silver-metal point."
+    },
+    {
+      "id": "material:amber-resin",
+      "path": "icons/illustrated/amber-resin.webp",
+      "sourceCell": "S1_r08_c10",
+      "sha256": "c88d07bd9784b2e741315184197acd69ea0cc0a38dc0b8adbda0d9f7c3da3c79",
+      "reason": "Liquid ampoule replaced by solid amber resin crystal."
+    }
+  ],
+  "verifiedCatalogPathExceptions": [
+    {
+      "id": "recipe:healing-potion",
+      "path": "icons/handpainted/alchemy/healing-potion.webp"
+    },
+    {
+      "id": "recipe:featherfall-philter",
+      "path": "icons/handpainted/alchemy/featherfall-philter.webp"
+    },
+    {
+      "id": "recipe:genderflux-elixir",
+      "path": "icons/handpainted/alchemy/genderflux-elixir.webp"
+    },
+    {
+      "id": "recipe:growth-draught",
+      "path": "icons/handpainted/alchemy/growth-draught.webp"
+    },
+    {
+      "id": "recipe:dragonfire-tonic",
+      "path": "icons/handpainted/alchemy/dragonfire-tonic.webp"
+    },
+    {
+      "id": "recipe:voidward-philter",
+      "path": "icons/handpainted/alchemy/voidward-philter.webp"
+    },
+    {
+      "id": "recipe:wyvern-poison",
+      "path": "icons/handpainted/alchemy/wyvern-poison.webp"
+    },
+    {
+      "id": "material:iron-ore",
+      "path": "icons/handpainted/iron-ore.webp"
+    },
+    {
+      "id": "material:kingsfoil",
+      "path": "icons/handpainted/alchemy/kingsfoil.webp"
+    },
+    {
+      "id": "material:glowshroom",
+      "path": "icons/handpainted/alchemy/glowshroom.webp"
+    }
+  ],
+  "comment": "Ten catalog-specific handpainted paths were already correctly represented in the latest 224-preview manifest. No unnecessary path rewrites. Strict original-art gate and published v1.0.0 remain unchanged."
+}
