@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.3.6 — Blacksmith descriptions and native Equipment Items
+
+- Expanded all 56 Blacksmith output descriptions (English, gameplay-grounded) consistently in the built-in catalogue, JSON and CSV.
+- Made Steel Chain Shirt native medium armor with base 13 AC and Dex max +2; made eight other wearable metal goods native equipable D&D5e Equipment instead of Loot.
+- Integrated crafted bracers, headwear and charms with equipment-specific Enchanting categories, without giving them unearned defenses or magical powers.
+- Added quality rarity to finished weapons/armor/accessories so their enchanting slot ceilings follow recipe tier.
+- Added a backup-backed, GM-safe v11 catalogue migration: update only the previous bundled description strings and corresponding unmodified crafted Item description paragraphs; preserve GM descriptions, images, custom recipes and existing enchantments. Legacy Loot types remain untouched for safety.
+- Added five Blacksmith unit tests and expanded the complete Foundry mock regression, with enforcement in the publish workflow.
+
 ## 1.3.5 — Inventory tools required; proficiency optional with Advantage
 
 - Removed mandatory tool-proficiency gates from Gathering, Alchemy, Blacksmithing and Enchanting.
