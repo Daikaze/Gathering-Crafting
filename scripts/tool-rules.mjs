@@ -74,9 +74,9 @@ export function toolGate(actor,toolKey,proficiencyId=null){
   const tool=itemForTool(actor,toolKey);
   if(!tool)return {ok:false,tool:null,error:"Requires "+spec.label+" in the character's inventory."};
   const prof=proficiencyId||spec.proficiency;
-  if(proficiencyLevel(actor,prof)<1)
-    return {ok:false,tool,error:"Requires proficiency in "+(PROF_OPTIONS[prof]||prof)+" (set it on the D&D5e character sheet)."};
-  return {ok:true,tool,error:"",proficiency:prof};
+  // Physical tools still required; missing tool proficiency is NOT a gate.
+  // Untrained means disadvantage; any proficiency above zero avoids it.
+  return {ok:true,tool,error:"",proficiency:prof,disadvantage:proficiencyLevel(actor,prof)<=0};
 }
 export function toolItemBonus(item){
   // An explicit fixed tool/item bonus; no arbitrary formula evaluation.
