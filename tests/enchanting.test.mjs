@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,reducedDays,lessonDays,enchantById,targetKind,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost,sortEnchantments,knowsEnchant,itemClassification,enchantTargetLabels,EQUIPMENT_LABELS} from '../scripts/enchanting.mjs';
+import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,reducedDays,lessonDays,enchantById,targetKind,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost,enchantingTool,sortEnchantments,knowsEnchant,itemClassification,enchantTargetLabels,EQUIPMENT_LABELS} from '../scripts/enchanting.mjs';
 import {effectChanges} from '../scripts/enchanting-ui.mjs';
 
 test('exact weapon and armor enchantment catalog',()=>{
@@ -68,14 +68,14 @@ test('item compatibility by actual weapon class, armor type and rarity slot capa
  assert.equal(canApplyEnchant(sword,enchantById('weapon-keen-edge'),[{id:'weapon-soul-binding'},{id:'weapon-spell-channel'}]),false);
  assert.ok(explainCompatibility(sword,enchantById('weapon-greater-arcane-infusion'),[]).includes('rarer'));
 });
-test('learnable five-rank enchanting progression and physical tools gating',()=>{
+test('old proficiency record preserved but access requires only physical tools',()=>{
  assert.equal(RANKS.length,6);
  assert.equal(RANKS[0].name,'Untrained');assert.equal(RANKS[5].name,'Master');
  const actor={system:{abilities:{int:{mod:3}},skills:{arc:{value:1}},attributes:{prof:3}},items:[{name:"Jeweler's Tools",system:{quantity:1}}],getFlag:()=>({rank:2,known:['weapon-spell-channel']})};
  assert.equal(hasTrainingTools(actor),true);assert.equal(arcanaBonus(actor),6);
  assert.equal(learningGate(actor,enchantById('weapon-spell-channel')),'');
- assert.equal(learningGate(actor,enchantById('weapon-keen-edge')),'Learn this enchantment first');
- assert.equal(learningGate(actor,enchantById('weapon-astral-sever')),'Requires Master');
+ assert.equal(learningGate(actor,enchantById('weapon-keen-edge')),'');
+ assert.equal(learningGate(actor,enchantById('weapon-astral-sever')),'');
  assert.equal(professionOf(actor).rank,2);
  assert.ok(lessonCost(enchantById('weapon-keen-edge'))>0);
  assert.equal(hasTrainingTools({...actor,items:[]}),false);
@@ -201,4 +201,23 @@ test('enchantment restrictions never allow robe enchantments on shields or heavy
  assert.ok(canApplyEnchant(sword,enchantById('weapon-keen-edge'),[]));
  assert.equal(canApplyEnchant(sword,enchantById('weapon-storm-arrow'),[]),false);
  assert.ok(canApplyEnchant(bow,enchantById('weapon-storm-arrow'),[]));
+});
+
+test('enchanting tool availability is independent of learned recipes and proficiency',()=>{
+ const actor={items:[{name:"Jeweler’s Tools +1",type:"tool",system:{quantity:1}}],system:{tools:{}},getFlag:()=>({rank:0,known:[]})};
+ assert.ok(hasTrainingTools(actor));
+ assert.equal(enchantingTool(actor).key,'jeweler');
+ assert.equal(enchantingTool(actor).advantage,false);
+ assert.equal(learningGate(actor,enchantById('armor-phoenix-binding')),'');
+ actor.system.tools.jewel={value:1};
+ assert.equal(enchantingTool(actor).advantage,true);
+ actor.items[0].system.quantity=0;
+ assert.equal(hasTrainingTools(actor),false);
+});
+test('enchanter tools proficiency provides advantage only for held matching type',()=>{
+ const actor={items:[{name:"Enchanter’s Tools",type:"tool",system:{quantity:1}}],system:{tools:{jeweler:{value:1}}}};
+ assert.equal(enchantingTool(actor).key,'enchanter');
+ assert.equal(enchantingTool(actor).advantage,false);
+ actor.system.tools.enchanter={value:1};
+ assert.equal(enchantingTool(actor).advantage,true);
 });
