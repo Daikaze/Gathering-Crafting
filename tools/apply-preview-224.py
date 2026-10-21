@@ -67,7 +67,7 @@ def validate_catalogue(root, items):
 
 
 def dimensions(data):
-    if len(data) < 32 or data[0:4] != b"RIFF" or data[8:12] != b"WEBP":
+    if len(data) < 30 or data[0:4] != b"RIFF" or data[8:12] != b"WEBP":
         raise ValueError("Not a WebP image")
     if int.from_bytes(data[4:8], "little") + 8 != len(data):
         raise ValueError("WebP RIFF byte length incorrect")
