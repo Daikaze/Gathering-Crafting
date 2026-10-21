@@ -1,11 +1,11 @@
 /** Gathering & Crafting v1.0.0 — Foundry V14 / dnd5e 5.3.3. */
 import { CATALOG } from './catalog.js';
 import { makeMaterialData, makeCraftData, outputKind } from './items.js';
-import { TOOL_SPECS, PROF_OPTIONS, requiredForNode, requiredForRecipe, toolGate, proficiencyLevel, toolItemBonus, craftCheck, proficiencyBonus } from './tool-rules.mjs';
+import { TOOL_SPECS, PROF_OPTIONS, requiredForNode, requiredForRecipe, toolGate, proficiencyLevel, toolItemBonus, craftCheck, proficiencyBonus, rollFormula } from './tool-rules.mjs';
 import {enchantingHtml, beginEnchantment, finishEnchantment, beginLesson, finishLesson, useEnchantment, recoverEnchantmentUses} from './enchanting-ui.mjs';
 import {enchantById} from './enchanting.mjs';
 const ID='gathering-crafting';
-const VERSION='1.3.4';
+const VERSION='1.3.5';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -26,7 +26,7 @@ const artworkFor=item=>{
   const src=item?.img||'icons/svg/item-bag.svg';
   const clean=src.split('?')[0];
   return clean.startsWith('modules/gathering-crafting/icons/') && clean.endsWith('.webp')
-    ? clean+'?gc-art=v1.3.4' : src;
+    ? clean+'?gc-art=v1.3.5' : src;
 };
 const material=(db,id)=>db.materials.find(m=>m.id===id);
 const skillLabels={ath:'Athletics',sur:'Survival',prc:'Perception',inv:'Investigation',nat:'Nature',slt:'Sleight of Hand'};
@@ -391,13 +391,13 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     const mod=Number(actor.system?.abilities?.[spec.ability]?.mod||0);
     const toolCheck=mod+proficiencyBonus(actor)*proficiencyLevel(actor,profId);
     const bonus=Math.max(skillBonus(actor,node.skill),toolCheck)+toolItemBonus(gate.tool);
-    const roll=await new Roll('1d20 + @bonus',{bonus}).evaluate();
+    const roll=await new Roll(rollFormula(gate.advantage),{bonus}).evaluate();
     const success=roll.total>=dc;let obtained=0,bonusText='';
     if(success){const minimum=num(node.minYield,1,1,20),maximum=Math.max(minimum,num(node.maxYield,2,1,20));obtained=(minimum+Math.floor(Math.random()*(maximum-minimum+1)))*(risky?2:1);await grantMaterial(actor,mat,obtained);
       const rare=material(db,node.bonusId);if(rare&&Math.random()*100<num(node.bonusChance,0,0,100)){await grantMaterial(actor,rare,1);bonusText=`<p>Rare find: <strong>${esc(rare.name)} ×1</strong></p>`;}
     }
-    await announce(actor,`<p><b>${esc(actor.name)}</b> ${success?'harvested':'failed to harvest'} <b>${esc(node.name)}</b>.</p><p>${esc(skillLabels[node.skill]||node.skill)} + ${esc(TOOL_SPECS[toolKey].label)} roll: ${roll.total} (${risky?'Risky':'Careful'}).</p>${success?`<p>${esc(mat.name)} ×${obtained}</p>${bonusText}`:'<p>No materials gained. You can try gathering again.</p>'}`);
-    await announceGM(actor,`<p>Gathering: ${esc(node.name)} — ${esc(skillLabels[node.skill]||node.skill)} ${roll.total} vs DC ${dc} (${success?'success':'failure'}).</p>`);
+    await announce(actor,`<p><b>${esc(actor.name)}</b> ${success?'harvested':'failed to harvest'} <b>${esc(node.name)}</b>.</p><p>${esc(skillLabels[node.skill]||node.skill)} + ${esc(TOOL_SPECS[toolKey].label)} roll: ${roll.total} (${risky?'Risky':'Careful'}${gate.advantage?', Tool Proficiency Advantage':''}).</p>${success?`<p>${esc(mat.name)} ×${obtained}</p>${bonusText}`:'<p>No materials gained. You can try gathering again.</p>'}`);
+    await announceGM(actor,`<p>Gathering: ${esc(node.name)} — ${esc(skillLabels[node.skill]||node.skill)} ${roll.total} vs DC ${dc} (${success?'success':'failure'}; ${gate.advantage?'Advantage':'Normal'}).</p>`);
     notify(success?`Harvested ${mat.name} ×${obtained}.`:'Gathering failed.');
   }
   async craft(id,maxBatch=1){const actor=this.checkActor(),db=database(),recipe=db.recipes.find(r=>r.id===id);if(!recipe)throw new Error('Recipe not found.');
@@ -407,7 +407,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     const toolKey=requiredForRecipe(recipe),gate=toolGate(actor,toolKey,recipe.toolProficiency);
     if(!gate.ok)throw new Error(gate.error);
     const check=craftCheck(actor,recipe,toolKey,recipe.toolProficiency,gate.tool);
-    const dc=num(recipe.dc,12)+(inspired?3:0),roll=await new Roll('1d20 + @bonus',{bonus:check.total}).evaluate();
+    const dc=num(recipe.dc,12)+(inspired?3:0),roll=await new Roll(rollFormula(gate.advantage),{bonus:check.total}).evaluate();
     const success=roll.total>=dc;
     const batch=maxBatch>1&&!inspired?Math.max(1,Math.min(10,...required.map(i=>Math.floor(i.have/i.qty)))):1;
     const consumed=required.map(i=>({id:i.id,qty:i.qty*batch})),amount=num(recipe.outputQuantity,1,1,99)*(inspired?2:1)*batch;let paid=false;
@@ -415,7 +415,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
       await consume(actor,consumed);paid=true;
       if(success)await grantProduct(actor,recipe,amount);
     }catch(e){if(paid&&success){try{await refund(actor,consumed,db);}catch(err){notify('Item creation failed and refund failed. Contact the GM.',true);console.error(err);}}throw e;}
-    await announce(actor,`<p><strong>${esc(actor.name)}</strong> ${success?'crafted':'failed to craft'} <strong>${esc(recipe.name)}</strong>.</p><p>${esc(TOOL_SPECS[toolKey].label)} check total: <strong>${roll.total}</strong>. ${inspired?'Inspired attempt.':'Standard attempt.'}</p><p>${success?`Produced ×${amount}.`:'Materials were consumed; no item produced.'}</p>`);
+    await announce(actor,`<p><strong>${esc(actor.name)}</strong> ${success?'crafted':'failed to craft'} <strong>${esc(recipe.name)}</strong>.</p><p>${esc(TOOL_SPECS[toolKey].label)} check total: <strong>${roll.total}</strong>. ${gate.advantage?'Advantage (tool proficient).':'Normal roll.'} ${inspired?'Inspired attempt.':'Standard attempt.'}</p><p>${success?`Produced ×${amount}.`:'Materials were consumed; no item produced.'}</p>`);
     await announceGM(actor,`<p>Crafting ${esc(recipe.name)}: d20 + ability ${check.modifier} + PB ${check.pb} × ${check.multiplier} + level ${check.levelBonus} + item ${check.itemBonus} = ${roll.total} vs DC ${dc} (${success?'success':'failure'}).</p>`);
     notify(success?`Crafted ${recipe.name} ×${amount}.`:`Crafting failed: ${recipe.name} (roll ${roll.total}).`);
   }
