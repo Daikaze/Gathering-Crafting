@@ -1,4 +1,4 @@
-# Gathering & Crafting v1.3.1 — The Averis Workshop
+# Gathering & Crafting v1.3.2 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -34,6 +34,14 @@ For players there are five straightforward tabs: **Gather / Alchemy / Blacksmith
 - **Ingots, armor components, jewelry and crafting hardware** are real `loot` Items, not fake weapons or incomplete armor pieces with misleading combat bonuses.
 
 This release passes automated asset/inventory regression checks, but is **not** an assertion that every advanced Active Effect has been validated in a live dnd5e 5.3.3 server. The mock tests exercise the inventory and data path; a live-world test is still recommended.
+
+## v1.3.2 — Fixed elemental enchantments, stable scrolling, rank ordering
+
+- Removed the **Elemental damage type** dropdown in Enchanting. Instead, choose one of five dedicated cards for **Elemental Binding** (Fire, Cold, Lightning, Acid, Thunder), or the five matching **Greater Elemental Binding** cards. Each card states its exact damage type, price, duration and slot requirement.
+- The workshop now lists **93 enchantments** (49 weapon, 44 armor/shield), **sorted by required Enchanting rank** from Novice to Master, with names alphabetized within each rank.
+- Search results, item selectors, enchantment filters and other dropdown changes now **preserve the scrolling position inside the workshop** rather than jumping to the top. Switching main tabs still starts at the top intentionally.
+- Learned generic Elemental Binding formulas from earlier versions remain valid across their corresponding fixed-element variants. In-progress and completed legacy enchantments retain their original chosen damage type. No Item flags, prices, slots or required ranks are reset.
+- Keeps the v1.3.1 GM-only DC rules and reference-only market prices. See [the full current Enchanting catalogue](ENCHANTING_CATALOG.md).
 
 ## v1.3.1 — Private DCs, shorter Enchanting, market-value prices
 
