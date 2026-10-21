@@ -34,6 +34,7 @@ jobs:
         run: |
           node tests/artwork.cjs
           node tests/smoke.cjs
+          node --test tests/tool-rules.test.mjs
           if [ "$(node -p "require('./module.json').version")" = "1.1.0" ]; then
             node artwork/check_preview_payload.cjs
           fi
