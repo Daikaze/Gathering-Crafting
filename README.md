@@ -1,4 +1,4 @@
-# Gathering & Crafting v1.3.2 — The Averis Workshop
+# Gathering & Crafting v1.3.3 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -34,6 +34,17 @@ For players there are five straightforward tabs: **Gather / Alchemy / Blacksmith
 - **Ingots, armor components, jewelry and crafting hardware** are real `loot` Items, not fake weapons or incomplete armor pieces with misleading combat bonuses.
 
 This release passes automated asset/inventory regression checks, but is **not** an assertion that every advanced Active Effect has been validated in a live dnd5e 5.3.3 server. The mock tests exercise the inventory and data path; a live-world test is still recommended.
+
+## v1.3.3 — Enchantments restricted to exact equipment categories
+
+Each enchantment now states **Compatible with:** and lists the allowed equipment categories on its card. The same restriction is verified again when beginning the enchantment, so a Shield-only formula cannot be applied to a Robe or Sword.
+
+- **Weapon types:** Swords, Daggers, Axes, Hammers, Maces, Spears, Polearms, Bows, Crossbows, Staves, and broader melee/ranged/physical traits where appropriate.
+- **Armor:** Light, Medium, Heavy Armor and Shields are classified separately.
+- **Robes and accessories:** Robes, Boots, Cloaks, Gloves, Helmets, Rings, Amulets and Belts are recognized as individual wearable types when stored as dnd5e Equipment Items.
+- Added 14 specialized wearable enchantments, bringing the catalogue to **107 enchantments**: 49 weapon and 58 armor, robe, shield and wearable formulas.
+- The Enchanting Item selector shows the selected Item's equipment category. Every card explains allowed types, and the Enchant action is disabled when the selected Item is incompatible. Item flags are preserved, and existing pending enchantments and learned formulas are retained.
+- All previous GM-only DC rules, free personal enchanting, market-value GP labels, proficiency tiers and slot requirements remain unchanged. The complete category list is in [ENCHANTING_CATALOG.md](ENCHANTING_CATALOG.md).
 
 ## v1.3.2 — Fixed elemental enchantments, stable scrolling, rank ordering
 
