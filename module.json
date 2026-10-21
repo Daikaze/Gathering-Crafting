@@ -1,8 +1,8 @@
 {
   "id": "gathering-crafting",
   "title": "Gathering & Crafting",
-  "description": "Gathering & Crafting v1.3.3 for Foundry V14 / dnd5e 5.3.3: 107 enchantments restricted by weapon type, armor weight, robes, shields and wearables; GM-only DCs, rank training and market-value GP, with Gathering, Alchemy, Blacksmithing, Inventory and 224 bundled icons.",
-  "version": "1.3.3",
+  "description": "Gathering & Crafting v1.3.4 for Foundry V14 / dnd5e 5.3.3: Crafting launch button beside Affinity on character sheets, with 107 equipment-specific enchantments, GM-only DCs, Gathering, Alchemy, Blacksmithing, Inventory and 224 bundled icons.",
+  "version": "1.3.4",
   "authors": [
     {
       "name": "Averis Workshop"
@@ -34,5 +34,5 @@
   ],
   "url": "https://github.com/Daikaze/Gathering-Crafting",
   "manifest": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/module.json",
-  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v1.3.3.zip"
+  "download": "https://raw.githubusercontent.com/Daikaze/Gathering-Crafting/main/dist/gathering-crafting-v1.3.4.zip"
 }
