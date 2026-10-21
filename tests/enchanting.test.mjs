@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,enchantById,targetKind,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost} from '../scripts/enchanting.mjs';
+import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,reducedDays,lessonDays,enchantById,targetKind,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost} from '../scripts/enchanting.mjs';
 import {effectChanges} from '../scripts/enchanting-ui.mjs';
 
 test('exact weapon and armor enchantment catalog',()=>{
@@ -9,11 +9,11 @@ test('exact weapon and armor enchantment catalog',()=>{
  assert.equal(ENCHANTMENTS.filter(e=>e.kind==='armor').length,44);
  assert.equal(new Set(ENCHANTMENTS.map(e=>e.id)).size,85);
  assert.equal(ENCHANTMENTS.find(e=>e.id==='weapon-spell-channel').cost,125);
- assert.deepEqual([enchantById('weapon-arcane-infusion').cost,enchantById('weapon-arcane-infusion').days],[250,5]);
- assert.deepEqual([enchantById('weapon-greater-arcane-infusion').cost,enchantById('weapon-greater-arcane-infusion').days],[1000,10]);
+ assert.deepEqual([enchantById('weapon-arcane-infusion').cost,enchantById('weapon-arcane-infusion').days],[250,4]);
+ assert.deepEqual([enchantById('weapon-greater-arcane-infusion').cost,enchantById('weapon-greater-arcane-infusion').days],[1000,7]);
  assert.equal(enchantById('armor-magewoven-interior').cost,120);
- assert.deepEqual([enchantById('armor-phoenix-binding').cost,enchantById('armor-phoenix-binding').days],[1500,14]);
- assert.equal(enchantById('armor-soul-binding').days,7);
+ assert.deepEqual([enchantById('armor-phoenix-binding').cost,enchantById('armor-phoenix-binding').days],[1500,10]);
+ assert.equal(enchantById('armor-soul-binding').days,5);
  assert.deepEqual(ELEMENTS,['Fire','Cold','Lightning','Acid','Thunder']);
  for(const e of ENCHANTMENTS){assert.ok(e.name);assert.ok(e.description);assert.ok(e.cost>0);assert.ok(e.days>0);assert.ok(e.rank>=1&&e.rank<=5);assert.ok(e.allowed.length);}
 });
@@ -90,4 +90,16 @@ test('equipped item passive Active Effects use supported D&D5e change paths',()=
  assert.equal(concentration[0].key,'system.attributes.concentration.roll.bonus');
  const plain=effectChanges(enchantById('weapon-soul-binding'));
  assert.equal(plain.length,0);
+});
+
+test('shorter crafting and research schedules leave market values unchanged',()=>{
+  assert.equal(reducedDays(5),4);
+  assert.equal(reducedDays(10),7);
+  assert.equal(reducedDays(14),10);
+  assert.equal(reducedDays(16),12);
+  assert.equal(RANKS[1].days,2);
+  assert.equal(RANKS[5].days,10);
+  assert.equal(lessonDays(enchantById('weapon-arcane-infusion')),2);
+  assert.equal(enchantById('weapon-arcane-infusion').cost,250);
+  assert.equal(enchantById('weapon-greater-arcane-infusion').cost,1000);
 });
