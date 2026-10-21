@@ -2,7 +2,7 @@
  * Training and enchantment jobs use Foundry world time, no hidden GM changes.
  * Powers have a visible Use button; special combat effects remain GM-adjudicated.
  */
-import {ENCHANTMENTS,sortEnchantments,knowsEnchant,DAY_SECONDS,RANKS,enchantById,targetKind,itemTags,capacity,usedSlots,explainCompatibility,professionOf,learningGate,hasTrainingTools,arcanaBonus,completionAt,displayEnchantEffect,lessonDays} from './enchanting.mjs';
+import {ENCHANTMENTS,sortEnchantments,knowsEnchant,DAY_SECONDS,RANKS,enchantById,targetKind,itemClassification,enchantTargetLabels,capacity,usedSlots,explainCompatibility,professionOf,learningGate,hasTrainingTools,arcanaBonus,completionAt,displayEnchantEffect,lessonDays} from './enchanting.mjs';
 const ENCHANT_NS='gathering-crafting';
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ico=name=>'<i class="fa-solid fa-'+name+'" aria-hidden="true"></i>';
@@ -23,7 +23,7 @@ export function enchantingHtml(app,actor,helpers){
  const complete=getFlags(selected,'enchantments')||[],pending=getFlags(selected,'enchantmentPending');
  const toolOK=hasTrainingTools(actor),isGM=!!game.user?.isGM;
  const rank=RANKS[prof.rank];
- let output=heading('fa-wand-magic-sparkles','Enchanting',ENCHANTMENTS.length+' learnable enchantments. Train proficiency, study individual formulas and enchant compatible gear.');
+ let output=heading('fa-wand-magic-sparkles','Enchanting',ENCHANTMENTS.length+' learnable enchantments, restricted to specific weapons, armor, robes, shields and wearable equipment.');
  output+='<div class="gc-enchant-progression"><div class="gc-enchant-rank"><strong>'+ico('graduation-cap')+' Enchanting Proficiency: '+escapeHtml(rank.name)+'</strong><span>Rank '+prof.rank+'/5 · '+prof.known.length+'/'+ENCHANTMENTS.length+' formulas learned</span><small>Training bonus: Arcana '+(arcanaBonus(actor)>=0?'+':'')+arcanaBonus(actor)+'</small></div>';
  const next=RANKS[prof.rank+1];
  if(prof.training){
@@ -37,11 +37,11 @@ export function enchantingHtml(app,actor,helpers){
  if(!toolOK)output+='<p class="gc-missing-tool">'+ico('lock')+' '+escapeHtml(toolWarning(actor))+'</p>';
  output+='<p class="gc-help">Train each rank, then learn each formula separately. Each completed study requires an Arcana check. Failed checks delay completion by one world day. Tools are required to train, learn and enchant; Arcana proficiency improves your check.</p>';
  output+='<div class="gc-enchant-summary"><label class="gc-field"><span>Item to enchant</span><select name="enchantItem">';
- output+=items.length?items.map(i=>'<option value="'+escapeHtml(i.id)+'" '+(i===selected?'selected':'')+'>'+escapeHtml(i.name)+' ('+itemTags(i).join(', ')+')</option>').join(''):'<option value="">No eligible equipment</option>';
+ output+=items.length?items.map(i=>'<option value="'+escapeHtml(i.id)+'" '+(i===selected?'selected':'')+'>'+escapeHtml(i.name)+' ('+escapeHtml(itemClassification(i))+')</option>').join(''):'<option value="">No eligible equipment</option>';
  output+='</select></label><div class="gc-enchant-funds">'+ico('coins')+' <strong>Market values</strong><small>Prices are for customers, not deducted from the crafter.</small></div></div>';
  if(!selected)return output+'<div class="gc-empty">Add a single weapon, armor, or shield to the character. Stacked equipment is not eligible.</div>';
  const spent=usedSlots(complete);
- output+='<div class="gc-enchant-selected"><img src="'+escapeHtml(artworkFor(selected))+'" alt=""><div><strong>'+escapeHtml(selected.name)+'</strong><small>'+escapeHtml(itemTags(selected).join(', '))+' · '+spent+'/'+capacity(selected)+' enchantment slots used · '+escapeHtml(selected.system?.rarity||'Common')+' rarity</small></div><button type="button" class="gc-secondary" data-action="sheetItem" data-id="'+escapeHtml(selected.id)+'">'+ico('up-right-from-square')+' Item Sheet</button></div>';
+ output+='<div class="gc-enchant-selected"><img src="'+escapeHtml(artworkFor(selected))+'" alt=""><div><strong>'+escapeHtml(selected.name)+'</strong><small>'+escapeHtml(itemClassification(selected))+' · '+spent+'/'+capacity(selected)+' enchantment slots used · '+escapeHtml(selected.system?.rarity||'Common')+' rarity</small></div><button type="button" class="gc-secondary" data-action="sheetItem" data-id="'+escapeHtml(selected.id)+'">'+ico('up-right-from-square')+' Item Sheet</button></div>';
  if(game.user?.isGM)output+='<div class="gc-enchant-gm-slots"><label>GM item capacity (0–6) <input type="number" name="enchantSlots" min="0" max="6" step="1" value="'+capacity(selected)+'"></label><button class="gc-secondary" data-action="saveEnchantSlots" data-id="'+escapeHtml(selected.id)+'">Set item slots</button></div>';
  if(complete.length){
   output+='<div class="gc-enchant-applied">'+complete.map(e=>{
@@ -72,7 +72,8 @@ export function enchantingHtml(app,actor,helpers){
     '<div class="gc-enchant-meta"><span>Rank '+e.rank+' · '+escapeHtml(RANKS[e.rank].name)+'</span><span>'+e.slots+' slot(s)</span></div>'+
     '<div class="gc-enchant-meta"><span>'+ico('coins')+' Market value: '+e.cost+' gp</span><span>'+ico('clock')+' Crafting: '+e.days+' day(s)</span></div>'+
     '<p>'+escapeHtml(displayEnchantEffect(e))+'</p>'+
-    '<small class="gc-enchant-compat">'+ico('filter')+' '+escapeHtml(e.allowed.join(' / '))+(compatible?' · '+escapeHtml(compatible):'')+'</small>'+
+    '<div class="gc-enchant-targets"><strong>'+ico('filter')+' Compatible with:</strong> <span>'+escapeHtml(enchantTargetLabels(e).join(' · '))+'</span></div>'+
+    (compatible&&compatible.startsWith('Only for:')?'<small class="gc-enchant-incompatible">'+ico('lock')+' Incompatible with '+escapeHtml(itemClassification(selected))+'</small>':compatible?'<small class="gc-enchant-compat">'+escapeHtml(compatible)+'</small>':'<small class="gc-enchant-compatible">'+ico('check-circle')+' Compatible with selected item</small>')+
     '<div class="gc-enchant-actions"><button type="button" class="gc-secondary" data-action="learnEnchant" data-id="'+escapeHtml(e.id)+'" '+(!canStudy||app.busy?'disabled':'')+'>'+escapeHtml(studyText)+'</button>'+
     '<button type="button" class="gc-primary" data-action="startEnchant" data-id="'+escapeHtml(e.id)+'" '+(!canEnchant?'disabled':'')+'>'+escapeHtml(enchantGate||'Enchant')+'</button></div></div></article>';
  });
