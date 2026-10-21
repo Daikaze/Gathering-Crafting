@@ -256,3 +256,22 @@
 .gathering-crafting .gc-enchant-card .gc-primary{width:100%;margin-top:auto}
 .gathering-crafting .gc-enchant-disclaimer{margin-top:17px;font-size:11px;line-height:1.6}
 @media(max-width:650px){.gathering-crafting .gc-enchant-summary{flex-wrap:wrap}.gathering-crafting .gc-enchant-funds{width:100%;justify-content:center}.gathering-crafting .gc-nav{padding:9px 5px!important}}
+
+
+/* v1.3.0 — Enchanting proficiency, formula study, item-specific restrictions */
+.gathering-crafting .gc-enchant-progression{display:grid;grid-template-columns:1fr minmax(190px,1fr);gap:12px;margin:5px 0 12px}
+.gathering-crafting .gc-enchant-rank,.gathering-crafting .gc-enchant-training{padding:13px 15px;display:flex;flex-direction:column;gap:8px;background:#1a2b39;border:1px solid var(--gc-border);border-radius:10px}
+.gathering-crafting .gc-enchant-rank strong,.gathering-crafting .gc-enchant-training strong{color:#e7d09a;font-size:13px}
+.gathering-crafting .gc-enchant-rank span,.gathering-crafting .gc-enchant-training span{font-size:11px;color:#c3ced7}
+.gathering-crafting .gc-enchant-rank small{font-size:11px;color:#99b6cc}
+.gathering-crafting .gc-enchant-training .gc-primary{max-width:230px;margin-top:auto}
+.gathering-crafting .gc-enchant-applied{display:flex;flex-wrap:wrap;gap:9px}
+.gathering-crafting .gc-enchant-applied-entry{border-radius:9px;border:1px solid #466c55;background:#1c352a;display:flex;align-items:center;gap:8px;padding:7px 10px}
+.gathering-crafting .gc-enchant-applied-entry span{padding:0;background:none;border:0;color:#bde6cf}
+.gathering-crafting .gc-enchant-applied-entry button{font-size:11px;min-height:28px;padding:5px 9px!important}
+.gathering-crafting .gc-enchant-compat{color:#a3bbcd;font-size:10px;line-height:1.5}
+.gathering-crafting .gc-enchant-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:auto}
+.gathering-crafting .gc-enchant-actions>button{width:100%;min-width:0;white-space:normal;line-height:1.35;font-size:10px!important;padding:9px 7px!important}
+.gathering-crafting .gc-enchant-element{flex-wrap:wrap;gap:12px}
+.gathering-crafting .gc-enchant-card .gc-enchant-meta:first-of-type{color:#d9c99e}
+@media(max-width:750px){.gathering-crafting .gc-enchant-progression{grid-template-columns:1fr}.gathering-crafting .gc-enchant-actions{grid-template-columns:1fr}}
