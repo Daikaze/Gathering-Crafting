@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.2 — Elemental cards, stable scroll and rank ordering
+
+- Removed the general Elemental damage selector and replaced the two generic selectable formulas with ten separate type-specific options: Fire, Cold, Lightning, Acid and Thunder for standard and Greater Elemental Binding.
+- Increased available Enchanting cards from 85 to **93** (49 weapon, 44 armor/shield), sorted by proficiency rank ascending and alphabetically within a rank.
+- Saved the inner scroll position before all ApplicationV2 rerenders, including search and dropdown changes; avoid search-field focus scrolling the page to the top.
+- Preserved existing learned generic elemental formulas and Item enchantment flags; legacy jobs finish with their original damage type.
+- No changes to market values, DC visibility, training requirements or non-Enchanting recipes.
+
 ## 1.3.1 — GM-only DCs and Enchanting market values
 
 - Hide all Gathering, Alchemy, Blacksmithing and Enchanting check DC values from non-GM interfaces and public messages; send exact roll-vs-DC details via GM-only whispers.
