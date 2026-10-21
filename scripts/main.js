@@ -15,8 +15,9 @@ const database=()=>game.settings.get(ID,'database');
 // Never modify custom GM URLs or persist query strings into existing world data.
 const artworkFor=item=>{
   const src=item?.img||'icons/svg/item-bag.svg';
-  return /^modules\\/gathering-crafting\\/icons\\/.+\\.webp(?:\\?.*)?$/.test(src)
-    ? src.split('?')[0]+'?gc-art=v1.1.2' : src;
+  const clean=src.split('?')[0];
+  return clean.startsWith('modules/gathering-crafting/icons/') && clean.endsWith('.webp')
+    ? clean+'?gc-art=v1.1.2' : src;
 };
 const material=(db,id)=>db.materials.find(m=>m.id===id);
 const skillLabels={ath:'Athletics',sur:'Survival',prc:'Perception',inv:'Investigation',nat:'Nature',slt:'Sleight of Hand'};
