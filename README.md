@@ -1,4 +1,4 @@
-# Gathering & Crafting v1.2.0 — The Averis Workshop
+# Gathering & Crafting v1.3.0 — The Averis Workshop
 
 **Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
 
@@ -34,6 +34,25 @@ For players there are five straightforward tabs: **Gather / Alchemy / Blacksmith
 - **Ingots, armor components, jewelry and crafting hardware** are real `loot` Items, not fake weapons or incomplete armor pieces with misleading combat bonuses.
 
 This release passes automated asset/inventory regression checks, but is **not** an assertion that every advanced Active Effect has been validated in a live dnd5e 5.3.3 server. The mock tests exercise the inventory and data path; a live-world test is still recommended.
+
+## v1.3.0 — Enchanting profession, 85 enchantments and item restrictions
+
+Enchanting now contains **85 learnable formulas: 41 weapon and 44 armor/shield enchantments**. The original 25 enchantments retain their price and completion days; the other 60 are homebrew expansions. Read the [full Enchanting catalogue](ENCHANTING_CATALOG.md) for every price, time, proficiency level and compatible equipment type.
+
+### Learning Enchanting
+- New characters begin **Untrained**, and must carry a physical **Jeweler's Tools** or **Enchanter's Tools** item.
+- Learn Enchanting proficiency through **Novice (3 days / 50 gp / DC 10), Apprentice (5 / 150 gp / DC 12), Adept (7 / 400 gp / DC 14), Expert (10 / 900 gp / DC 16), and Master (14 / 2000 gp / DC 18)**.
+- Training is a world-time job. On completion, roll Arcana (INT + Arcana proficiency and existing Enchanting rank). Failure adds one world day to retry; payment is made only once.
+- Enchantments are not automatically known at each rank: **research each formula separately**. Studying also costs gp, world days, and requires an Arcana check.
+- The UI shows rank, study progress, known enchantments, compatible equipment, and reasons actions are locked.
+
+### Item limits and character-sheet powers
+- Weapon requirements distinguish melee/ranged, blade, bow, crossbow, staff, polearm, bludgeoning, and piercing weapons; armor requirements distinguish light, medium, heavy and shields.
+- Common items: **1 slot / max Rank 2**; Uncommon **2 / Rank 3**; Rare **3 / Rank 4**; Very Rare **4 / Rank 5**; Legendary **5 / Rank 5**. Some elite enchantments cost **2 slots**. The GM can override capacity from 0 to 6 on a particular Item.
+- Prevents duplicate, incompatible, conflicting, or simultaneous enchantments. Already-started jobs from v1.2 can still finish.
+- Character sheets gain optional **Enchantment Powers** quick-use controls for equipped items with once-per-Long-Rest powers. These buttons track remaining uses and recover when the system reports a Long Rest; they do not automatically choose targets or resolve spells.
+- +1/+2 magical weapon enhancements use native dnd5e fields. Elemental weapon bonus dice are added to the item's base damage formula. Simple passive bonuses may be written as equipped item Active Effects where supported, while resistances and advanced conditional effects remain GM adjudicated and documented on the Item.
+- All existing Gathering, Alchemy, Blacksmithing, Inventory and source artwork assets remain unchanged.
 
 ## v1.2.0 — Enchanting
 
