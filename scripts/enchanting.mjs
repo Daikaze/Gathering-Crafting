@@ -5,14 +5,14 @@
 export const ELEMENTS=Object.freeze(['Fire','Cold','Lightning','Acid','Thunder']);
 export const DAY_SECONDS=86400;
 export const RANKS=Object.freeze([
- {name:'Untrained',days:0,cost:0,dc:0},
- {name:'Novice',days:2,cost:50,dc:10},
- {name:'Apprentice',days:4,cost:150,dc:12},
- {name:'Adept',days:5,cost:400,dc:14},
- {name:'Expert',days:7,cost:900,dc:16},
- {name:'Master',days:10,cost:2000,dc:18}
+ {name:'Untrained',days:0,dc:0},
+ {name:'Novice',days:2,dc:10},
+ {name:'Apprentice',days:4,dc:12},
+ {name:'Adept',days:5,dc:14},
+ {name:'Expert',days:7,dc:16},
+ {name:'Master',days:10,dc:18}
 ]);
-// About 25–30% faster than the original days. Existing pending jobs keep their own finishAt.
+// Shorter than the original schedule; market values and in-progress deadlines are unchanged. Existing pending jobs keep their own finishAt.
 export const reducedDays=days=>Math.max(1,Math.ceil(Number(days)*0.7));
 const baseRank=cost=>cost<=250?1:cost<=500?2:cost<=800?3:cost<=1200?4:5;
 const weapon=(id,name,cost,days,description,extra={})=>({id:'weapon-'+id,name,kind:'weapon',cost,days:reducedDays(days),description,rank:baseRank(cost),allowed:['weapon'],slots:1,...extra});
