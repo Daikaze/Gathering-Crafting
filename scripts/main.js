@@ -482,8 +482,9 @@ function affinityTab(root){
   if(!root?.querySelectorAll)return null;
   const selectors=[
     'nav [data-tab]', '.sheet-tabs [data-tab]', '.tabs [data-tab]',
-    '[role="tablist"] [data-tab]', 'nav a', 'nav button',
-    '.sheet-tabs a', '.sheet-tabs button', '.tabs .item', '[role="tab"]'
+    '[role="tablist"] [data-tab]', 'nav a', 'nav button', '.tabs a', '.tabs button',
+    '.sheet-tabs a', '.sheet-tabs button', '.tabs .item',
+    '.sheet-navigation a', '.sheet-navigation button', '[role="tab"]'
   ];
   const candidates=new Set(selectors.flatMap(selector=>[...root.querySelectorAll(selector)]));
   return [...candidates].find(el=>{
