@@ -3,13 +3,13 @@
  * as item notes. Never grant actor-wide damage bonuses for weapon-specific effects.
  */
 import {ENCHANTMENTS, ELEMENTS, DAY_SECONDS, enchantById, targetKind, canApplyEnchant, afterGoldPayment, completionAt, displayEnchantEffect} from './enchanting.mjs';
-const NS='gathering-crafting';
+const ENCHANT_NS='gathering-crafting';
 const escapeHtml = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ico=(name)=>'<i class="fa-solid fa-'+name+'" aria-hidden="true"></i>';
 const qty=i=>Number(i?.system?.quantity??1);
 const itemList=actor=>(actor?.items||[]).filter(i=>targetKind(i)&&qty(i)===1);
 const getItem=(app,actor)=>itemList(actor).find(i=>i.id===app.enchantItemId)||itemList(actor)[0]||null;
-const getFlags=(item,key)=>item?.getFlag?.(NS,key);
+const getFlags=(item,key)=>item?.getFlag?.(ENCHANT_NS,key);
 const timeNow=()=>Number(game.time?.worldTime);
 const moneyText=currency=>{
   const c=currency||{};
@@ -68,10 +68,10 @@ export async function beginEnchantment(app,id,helpers) {
   if(!renewed)throw new Error('Available gold changed while confirming.');
   const pending={id:enchant.id,element,startedAt:now,finishAt:completionAt(now,enchant.days),days:enchant.days,cost:enchant.cost};
   await actor.update({'system.currency':renewed});
-  try {await item.update({['flags.'+NS+'.enchantmentPending']:pending});}
+  try {await item.update({['flags.'+ENCHANT_NS+'.enchantmentPending']:pending});}
   catch(error){
     try{await actor.update({'system.currency':original});}
-    catch(refundError){console.error(NS+' | Gold refund failed',refundError);notify('Refund failed. Ask the GM to restore the gold.',true);}
+    catch(refundError){console.error(ENCHANT_NS+' | Gold refund failed',refundError);notify('Refund failed. Ask the GM to restore the gold.',true);}
     throw error;
   }
   await announce(actor,'<p><b>'+escapeHtml(actor.name)+'</b> began <b>'+escapeHtml(enchant.name)+'</b> on <b>'+escapeHtml(item.name)+'</b>.</p><p>'+enchant.cost+' gp paid. '+enchant.days+' world day(s) required.</p>');
@@ -88,7 +88,7 @@ export async function finishEnchantment(app,itemId,helpers) {
   if(completed.some(e=>e.id===enchant.id))throw new Error('Enchantment was already applied.');
   const effect=displayEnchantEffect(enchant,job.element);
   const block='<section class="gc-item-enchantment" data-gc-enchant="'+escapeHtml(enchant.id)+'"><p><strong>'+escapeHtml(enchant.name)+' (Gathering & Crafting):</strong> '+escapeHtml(effect)+'</p></section>';
-  const updates={['flags.'+NS+'.enchantments']:[...completed,{id:enchant.id,element:job.element||null,completedAt:now}],['flags.'+NS+'.enchantmentPending']:null,'system.description.value':String(item.system?.description?.value||'')+'\n'+block};
+  const updates={['flags.'+ENCHANT_NS+'.enchantments']:[...completed,{id:enchant.id,element:job.element||null,completedAt:now}],['flags.'+ENCHANT_NS+'.enchantmentPending']:null,'system.description.value':String(item.system?.description?.value||'')+'\n'+block};
   if(enchant.magicalBonus){
     const old=Number(enchant.kind==='weapon'?item.system?.magicalBonus:item.system?.armor?.magicalBonus)||0;
     updates[enchant.kind==='weapon'?'system.magicalBonus':'system.armor.magicalBonus']=Math.max(old,enchant.magicalBonus);
