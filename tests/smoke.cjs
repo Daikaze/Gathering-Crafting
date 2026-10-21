@@ -319,6 +319,7 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   await recoverEnchantmentUses(actor,{longRest:true},{type:'long'});
   assert.equal(Object.keys(enchantedWeapon.getFlag('gathering-crafting','enchantmentUses')).length,0);
   // Regular gathering and crafting work with tools alone and get Advantage when proficient.
+  const currentDb=context.game.settings.get('gathering-crafting','database');currentDb.settings.sceneOnly=false;
   const noProfTest=actor.items.find(x=>x.name==="Pickaxe");
   assert.ok(noProfTest);
   actor.system.tools.mason={value:0};
