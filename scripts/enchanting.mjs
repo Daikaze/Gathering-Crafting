@@ -541,12 +541,11 @@ const ENCHANT_TARGETS=Object.freeze({
     "belt"
   ]
 });
-// Bracers are not gloves; only suitably passive wrist enchantments work on them.
-for(const id of ['armor-arcane-mesh','armor-enduring-rune','armor-sigil-of-clarity']){
- ENCHANT_TARGETS[id]=Object.freeze([...ENCHANT_TARGETS[id],'bracers']);
-}
+// Bracers are not gloves; only a narrow set of passive enchantments targets wrists.
+const BRACER_RECIPES=new Set(['armor-arcane-mesh','armor-enduring-rune','armor-sigil-of-clarity']);
 const BASE_ENCHANTMENTS=Object.freeze(SOURCE_ENCHANTMENTS.map(entry=>{
- const allowed=ENCHANT_TARGETS[entry.id];
+ const base=ENCHANT_TARGETS[entry.id];
+ const allowed=base&&BRACER_RECIPES.has(entry.id)?[...base,'bracers']:base;
  if(!allowed?.length)throw new Error('Missing compatible equipment mapping: '+entry.id);
  return Object.freeze({...entry,allowed:Object.freeze(allowed)});
 }));
