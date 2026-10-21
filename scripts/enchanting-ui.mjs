@@ -2,7 +2,7 @@
  * Training and enchantment jobs use Foundry world time, no hidden GM changes.
  * Powers have a visible Use button; special combat effects remain GM-adjudicated.
  */
-import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,RANKS,enchantById,targetKind,itemTags,capacity,usedSlots,explainCompatibility,professionOf,learningGate,hasTrainingTools,arcanaBonus,afterGoldPayment,completionAt,displayEnchantEffect,lessonCost,lessonDays} from './enchanting.mjs';
+import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,RANKS,enchantById,targetKind,itemTags,capacity,usedSlots,explainCompatibility,professionOf,learningGate,hasTrainingTools,arcanaBonus,completionAt,displayEnchantEffect,lessonDays} from './enchanting.mjs';
 const ENCHANT_NS='gathering-crafting';
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ico=name=>'<i class="fa-solid fa-'+name+'" aria-hidden="true"></i>';
@@ -23,7 +23,7 @@ export function enchantingHtml(app,actor,helpers){
  const {heading,renderCards,searchBar,artworkFor}=helpers;
  const prof=professionOf(actor),items=itemList(actor),selected=getItem(app,actor);
  const complete=getFlags(selected,'enchantments')||[],pending=getFlags(selected,'enchantmentPending');
- const currency=actor?.system?.currency||{},toolOK=hasTrainingTools(actor);
+ const toolOK=hasTrainingTools(actor),isGM=!!game.user?.isGM;
  const rank=RANKS[prof.rank];
  let output=heading('fa-wand-magic-sparkles','Enchanting',ENCHANTMENTS.length+' learnable enchantments. Train proficiency, study individual formulas and enchant compatible gear.');
  output+='<div class="gc-enchant-progression"><div class="gc-enchant-rank"><strong>'+ico('graduation-cap')+' Enchanting Proficiency: '+escapeHtml(rank.name)+'</strong><span>Rank '+prof.rank+'/5 · '+prof.known.length+'/'+ENCHANTMENTS.length+' formulas learned</span><small>Training bonus: Arcana '+(arcanaBonus(actor)>=0?'+':'')+arcanaBonus(actor)+'</small></div>';
@@ -31,16 +31,16 @@ export function enchantingHtml(app,actor,helpers){
  if(prof.training){
   const tr=prof.training;
   const label=tr.kind==='rank'?'Train '+RANKS[tr.target].name:'Study '+(enchantById(tr.id)?.name||tr.id);
-  output+='<div class="gc-enchant-training"><strong>'+escapeHtml(label)+'</strong><span>'+jobLine(tr)+' · DC '+tr.dc+' Arcana</span><button type="button" class="gc-primary" data-action="finishLesson" '+(now()<tr.finishAt||app.busy?'disabled':'')+'>'+ico('book')+' Finish Lesson</button></div>';
+  output+='<div class="gc-enchant-training"><strong>'+escapeHtml(label)+'</strong><span>'+jobLine(tr)+(isGM?' · Arcana DC '+tr.dc:' · Arcana check')+'</span><button type="button" class="gc-primary" data-action="finishLesson" '+(now()<tr.finishAt||app.busy?'disabled':'')+'>'+ico('book')+' Finish Lesson</button></div>';
  }else if(next){
-  output+='<div class="gc-enchant-training"><strong>Train '+escapeHtml(next.name)+'</strong><span>'+next.days+' world days · '+next.cost+' gp · DC '+next.dc+' Arcana</span><button type="button" class="gc-primary" data-action="trainRank" '+(!toolOK||afterGoldPayment(currency,next.cost)===null?'disabled':'')+'>'+ico('graduation-cap')+' Begin Training</button></div>';
+  output+='<div class="gc-enchant-training"><strong>Train '+escapeHtml(next.name)+'</strong><span>'+next.days+' world days'+(isGM?' · Arcana DC '+next.dc:' · Arcana check')+'</span><button type="button" class="gc-primary" data-action="trainRank" '+(!toolOK?'disabled':'')+'>'+ico('graduation-cap')+' Begin Training</button></div>';
  }else output+='<div class="gc-enchant-training"><strong>Master Enchanter</strong><span>Maximum proficiency reached.</span></div>';
  output+='</div>';
  if(!toolOK)output+='<p class="gc-missing-tool">'+ico('lock')+' '+escapeHtml(toolWarning(actor))+'</p>';
  output+='<p class="gc-help">Train each rank, then learn each formula separately. Each completed study requires an Arcana check. Failed checks delay completion by one world day. Tools are required to train, learn and enchant; Arcana proficiency improves your check.</p>';
  output+='<div class="gc-enchant-summary"><label class="gc-field"><span>Item to enchant</span><select name="enchantItem">';
  output+=items.length?items.map(i=>'<option value="'+escapeHtml(i.id)+'" '+(i===selected?'selected':'')+'>'+escapeHtml(i.name)+' ('+itemTags(i).join(', ')+')</option>').join(''):'<option value="">No eligible equipment</option>';
- output+='</select></label><div class="gc-enchant-funds">'+ico('coins')+' <strong>'+paid(currency)+' gp</strong><small>Available funds</small></div></div>';
+ output+='</select></label><div class="gc-enchant-funds">'+ico('coins')+' <strong>Market values</strong><small>Prices are for customers, not deducted from the crafter.</small></div></div>';
  if(!selected)return output+'<div class="gc-empty">Add a single weapon, armor, or shield to the character. Stacked equipment is not eligible.</div>';
  const spent=usedSlots(complete);
  output+='<div class="gc-enchant-selected"><img src="'+escapeHtml(artworkFor(selected))+'" alt=""><div><strong>'+escapeHtml(selected.name)+'</strong><small>'+escapeHtml(itemTags(selected).join(', '))+' · '+spent+'/'+capacity(selected)+' enchantment slots used · '+escapeHtml(selected.system?.rarity||'Common')+' rarity</small></div><button type="button" class="gc-secondary" data-action="sheetItem" data-id="'+escapeHtml(selected.id)+'">'+ico('up-right-from-square')+' Item Sheet</button></div>';
@@ -52,7 +52,7 @@ export function enchantingHtml(app,actor,helpers){
      (power?'<button type="button" class="gc-secondary" data-action="useEnchant" data-id="'+escapeHtml(selected.id)+'" data-enchant="'+escapeHtml(e.id)+'" '+(spent>=power.uses?'disabled':'')+'>Use '+(power.uses-spent)+'/'+power.uses+'</button>':'')+'</div>';
   }).join('')+'</div>';
  }
- if(pending)output+='<div class="gc-enchant-job"><strong>'+ico('hourglass-half')+' '+escapeHtml(enchantById(pending.id)?.name||pending.id)+' in progress</strong><span>'+jobLine(pending)+' · '+Number(pending.cost)+' gp paid</span><small>Only one active enchantment per item. World time is never advanced automatically.</small><button class="gc-primary" data-action="finishEnchant" data-id="'+escapeHtml(selected.id)+'" '+(now()<Number(pending.finishAt)||app.busy?'disabled':'')+'>Complete Enchantment</button></div>';
+ if(pending)output+='<div class="gc-enchant-job"><strong>'+ico('hourglass-half')+' '+escapeHtml(enchantById(pending.id)?.name||pending.id)+' in progress</strong><span>'+jobLine(pending)+' · Market value '+Number(pending.cost??enchantById(pending.id)?.cost??0)+' gp'</span><small>Only one active enchantment per item. World time is never advanced automatically.</small><button class="gc-primary" data-action="finishEnchant" data-id="'+escapeHtml(selected.id)+'" '+(now()<Number(pending.finishAt)||app.busy?'disabled':'')+'>Complete Enchantment</button></div>';
  output+='<div class="gc-toolbar gc-compact-toolbar"><div class="gc-enchant-hint">'+ico('circle-info')+' Choose compatible enchantments</div>'+searchBar()+'</div>';
  output+='<div class="gc-enchant-element"><label>Elemental damage <select name="enchantElement">'+ELEMENTS.map(e=>'<option '+(app.enchantElement===e?'selected':'')+' value="'+e+'">'+e+'</option>').join('')+'</select></label><label>Show <select name="enchantFilter">'+[['all','All'],['learned','Learned'],['available','Ready to enchant'],['study','Can study']].map(([k,v])=>'<option value="'+k+'" '+((app.enchantFilter||'all')===k?'selected':'')+'>'+v+'</option>').join('')+'</select></label></div>';
  let list=ENCHANTMENTS.filter(e=>e.kind===targetKind(selected)&&(!app.search||[e.name,e.description,...e.allowed].join(' ').toLowerCase().includes(app.search.toLowerCase())));
@@ -67,54 +67,47 @@ export function enchantingHtml(app,actor,helpers){
   const compatible=explainCompatibility(selected,e,complete);
   const learned=prof.known.includes(e.id),studyGate=prof.rank<e.rank?'Requires '+RANKS[e.rank].name:prof.training?'Training in progress':!toolOK?'Missing tools':'';
   const enchantGate=learningGate(actor,e)||compatible||(!toolOK?'Missing tools':'');
-  const affordable=afterGoldPayment(currency,e.cost)!==null,canStudy=!learned&&!studyGate&&afterGoldPayment(currency,lessonCost(e))!==null;
-  const canEnchant=!enchantGate&&affordable&&!prof.training&&!app.busy;
-  const studyText=learned?'Learned':studyGate||((afterGoldPayment(currency,lessonCost(e))===null)?'Insufficient gold':'Study '+lessonCost(e)+' gp / '+lessonDays(e)+'d');
+  const canStudy=!learned&&!studyGate;
+  const canEnchant=!enchantGate&&!prof.training&&!app.busy;
+  const studyText=learned?'Learned':studyGate||('Study formula · '+lessonDays(e)+'d');
   return '<article class="gc-tile gc-enchant-card"><div class="gc-tile-body"><div class="gc-enchant-title">'+ico(e.kind==='weapon'?'khanda':'shield-halved')+' <strong>'+escapeHtml(e.name)+'</strong></div>'+
     '<div class="gc-enchant-meta"><span>Rank '+e.rank+' · '+escapeHtml(RANKS[e.rank].name)+'</span><span>'+e.slots+' slot(s)</span></div>'+
-    '<div class="gc-enchant-meta"><span>'+ico('coins')+' '+e.cost+' gp</span><span>'+ico('clock')+' '+e.days+' days</span></div>'+
+    '<div class="gc-enchant-meta"><span>'+ico('coins')+' Market value: '+e.cost+' gp</span><span>'+ico('fa-clock'.replace('fa-',''))+' Crafting: '+e.days+' day(s)</span></div>'+
     '<p>'+escapeHtml(displayEnchantEffect(e,e.elementDice?app.enchantElement:undefined))+'</p>'+
     '<small class="gc-enchant-compat">'+ico('filter')+' '+escapeHtml(e.allowed.join(' / '))+(compatible?' · '+escapeHtml(compatible):'')+'</small>'+
     '<div class="gc-enchant-actions"><button type="button" class="gc-secondary" data-action="learnEnchant" data-id="'+escapeHtml(e.id)+'" '+(!canStudy||app.busy?'disabled':'')+'>'+escapeHtml(studyText)+'</button>'+
-    '<button type="button" class="gc-primary" data-action="startEnchant" data-id="'+escapeHtml(e.id)+'" '+(!canEnchant?'disabled':'')+'>'+escapeHtml(enchantGate||(!affordable?'Not enough gold':'Enchant'))+'</button></div></div></article>';
+    '<button type="button" class="gc-primary" data-action="startEnchant" data-id="'+escapeHtml(e.id)+'" '+(!canEnchant?'disabled':'')+'>'+escapeHtml(enchantGate||'Enchant')+'</button></div></div></article>';
  });
- output+='<p class="gc-help gc-enchant-disclaimer">Passive bonuses may use native Active Effects on equipped Items. Elemental damage and +1/+2 bonuses update weapon data. Once-per-Long-Rest powers have Use buttons and recharge after an in-system Long Rest; spell resolution, targets and unusual combat effects still require GM adjudication. The module never auto-picks a target.</p>';
+ output+='<p class="gc-help gc-enchant-disclaimer">Passive bonuses may use native Active Effects on equipped Items. Elemental damage and +1/+2 bonuses update weapon data. Once-per-Long-Rest powers have Use buttons and recharge after an in-system Long Rest; spell resolution, targets and unusual combat effects still require GM adjudication. Market values are reference prices; crafting and training do not deduct gold. The module never auto-picks a target.</p>';
  return output;
 }
-async function charge(actor,cost){
- const original=safeClone(actor.system.currency||{});
- const next=afterGoldPayment(original,cost);
- if(!next)throw new Error('Not enough gold.');
- await actor.update({'system.currency':next});
- return async()=>actor.update({'system.currency':original});
+async function confirmLesson(title,desc){
+ return foundry.applications.api.DialogV2.confirm({window:{title},content:'<p>'+escapeHtml(desc)+'</p><p>Training uses in-world time and Arcana checks. No gold is deducted from the crafter.</p>'});
 }
-async function confirmLesson(title,desc){return foundry.applications.api.DialogV2.confirm({window:{title},content:'<p>'+escapeHtml(desc)+'</p><p>Gold is charged when training begins. Progress uses in-world days; cancelled studies are not refunded automatically.</p>'});}
 export async function beginLesson(actor,kind,id,notify){
  if(!hasTrainingTools(actor))throw new Error(toolWarning(actor));
  const state=professionOf(actor);
  if(state.training)throw new Error('Finish the current lesson first.');
- let duration,cost,dc,target,enchant;
+ let duration,dc,target,enchant;
  if(kind==='rank'){
   if(state.rank>=5)throw new Error('Maximum proficiency reached.');
-  target=state.rank+1;({days:duration,cost,dc}=RANKS[target]);
+  target=state.rank+1;({days:duration,dc}=RANKS[target]);
  }else{
   enchant=enchantById(id);
   if(!enchant)throw new Error('Unknown enchantment.');
   if(state.rank<enchant.rank)throw new Error('Insufficient Enchanting proficiency.');
   if(state.known.includes(enchant.id))throw new Error('Already learned.');
-  duration=lessonDays(enchant);cost=lessonCost(enchant);dc=10+enchant.rank*2;
+  duration=lessonDays(enchant);dc=10+enchant.rank*2;
  }
  const stamp=now();
  if(!Number.isFinite(stamp))throw new Error('Foundry world time is unavailable.');
  const label=kind==='rank'?RANKS[target].name:enchant.name;
- if(!await confirmLesson('Begin Enchanting Lesson',label+' · '+cost+' gp · '+duration+' world days · Arcana DC '+dc))return;
+ if(!await confirmLesson('Begin Enchanting Lesson',label+' · '+duration+' world day(s) · Arcana check'+(game.user?.isGM?' (DC '+dc+')':'')))return;
  const latest=professionOf(actor);if(latest.training||latest.rank!==state.rank)throw new Error('Training changed while confirming.');
- const refund=await charge(actor,cost);
- try{await actor.update({['flags.'+ENCHANT_NS+'.enchanter']:{...latest,training:{kind,id:enchant?.id||null,target,startedAt:stamp,finishAt:completionAt(stamp,duration),dc,cost,attempts:0}}});}
- catch(err){try{await refund();}catch(e){console.error('Enchant training payment rollback failed',e);}throw err;}
+ await actor.update({['flags.'+ENCHANT_NS+'.enchanter']:{...latest,training:{kind,id:enchant?.id||null,target,startedAt:stamp,finishAt:completionAt(stamp,duration),dc,cost:0,attempts:0}}});
  notify('Lesson started: '+label+'.');
 }
-export async function finishLesson(actor,notify,announce){
+export async function finishLesson(actor,notify,announce,announceGM){
  if(!hasTrainingTools(actor))throw new Error(toolWarning(actor));
  const state=professionOf(actor),lesson=state.training;
  if(!lesson)throw new Error('No Enchanting lesson in progress.');
@@ -123,8 +116,9 @@ export async function finishLesson(actor,notify,announce){
  if(check.total<lesson.dc){
   const delayed={...lesson,finishAt:Math.max(lesson.finishAt,now())+DAY_SECONDS,attempts:(lesson.attempts||0)+1};
   await actor.update({['flags.'+ENCHANT_NS+'.enchanter']:{...state,training:delayed}});
-  notify('Arcana '+check.total+' vs DC '+lesson.dc+'. Study failed; retry after one world day.');
-  await announce(actor,'<p>Enchanting lesson: Arcana '+check.total+' vs DC '+lesson.dc+'. Retry after one world day.</p>');
+  notify('Enchanting check failed. Retry after one world day.');
+  await announce(actor,'<p>Enchanting lesson: Arcana roll '+check.total+'. Study failed; retry after one world day.</p>');
+  if(announceGM)await announceGM(actor,'<p>Enchanting study: Arcana '+check.total+' vs DC '+lesson.dc+' (failed).</p>');
   return false;
  }
  const updated={...state,training:null};
@@ -133,7 +127,8 @@ export async function finishLesson(actor,notify,announce){
  await actor.update({['flags.'+ENCHANT_NS+'.enchanter']:updated});
  const label=lesson.kind==='rank'?RANKS[updated.rank].name:enchantById(lesson.id)?.name;
  notify('Enchanter training complete: '+label+'.');
- await announce(actor,'<p>Completed Enchanting study: <strong>'+escapeHtml(label)+'</strong>. Arcana roll '+check.total+' vs DC '+lesson.dc+'.</p>');
+ await announce(actor,'<p>Completed Enchanting study: <strong>'+escapeHtml(label)+'</strong>. Arcana roll '+check.total+'.</p>');
+ if(announceGM)await announceGM(actor,'<p>Enchanting study: Arcana '+check.total+' vs DC '+lesson.dc+' (success).</p>');
  return true;
 }
 export async function beginEnchantment(app,id,helpers){
@@ -149,15 +144,12 @@ export async function beginEnchantment(app,id,helpers){
  const element=enchant.elementDice?app.enchantElement:null;
  const effect=displayEnchantEffect(enchant,element),stamp=now();
  if(!Number.isFinite(stamp))throw new Error('Foundry world time unavailable.');
- if(afterGoldPayment(actor.system.currency,enchant.cost)===null)throw new Error('Not enough gold.');
- const yes=await foundry.applications.api.DialogV2.confirm({window:{title:'Start Enchantment'},content:'<p>'+escapeHtml(item.name)+' — '+escapeHtml(enchant.name)+'</p><p>'+enchant.cost+' gp · '+enchant.days+' world days · '+enchant.slots+' slot(s).</p><p>'+escapeHtml(effect)+'</p>'});
+  const yes=await foundry.applications.api.DialogV2.confirm({window:{title:'Start Enchantment'},content:'<p>'+escapeHtml(item.name)+' — '+escapeHtml(enchant.name)+'</p><p>Market value: '+enchant.cost+' gp · Crafting: '+enchant.days+' world day(s) · '+enchant.slots+' slot(s).</p><p>No gold is deducted from the crafter.</p><p>'+escapeHtml(effect)+'</p>'});
  if(!yes)return;
  if(learningGate(actor,enchant)||explainCompatibility(item,enchant,getFlags(item,'enchantments')||[]))throw new Error('Requirements changed during confirmation.');
- const refund=await charge(actor,enchant.cost);
  const job={id:enchant.id,element,startedAt:stamp,finishAt:completionAt(stamp,enchant.days),days:enchant.days,cost:enchant.cost,slots:enchant.slots};
- try{await item.update({['flags.'+ENCHANT_NS+'.enchantmentPending']:job});}
- catch(err){try{await refund();}catch(e){console.error('Enchant gold rollback failed',e);}throw err;}
- await announce(actor,'<p>Started '+escapeHtml(enchant.name)+' on '+escapeHtml(item.name)+'. Paid '+enchant.cost+' gp; requires '+enchant.days+' world days.</p>');
+ await item.update({['flags.'+ENCHANT_NS+'.enchantmentPending']:job});
+ await announce(actor,'<p>Started '+escapeHtml(enchant.name)+' on '+escapeHtml(item.name)+'. Market value '+enchant.cost+' gp; requires '+enchant.days+' world days. No payment charged.</p>');
  notify(enchant.name+' started.');
 }
 export const effectChanges=enchant=>{
