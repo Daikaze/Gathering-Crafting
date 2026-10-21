@@ -2,7 +2,7 @@
  * Training and enchantment jobs use Foundry world time, no hidden GM changes.
  * Powers have a visible Use button; special combat effects remain GM-adjudicated.
  */
-import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,RANKS,enchantById,targetKind,itemTags,capacity,usedSlots,explainCompatibility,professionOf,learningGate,hasTrainingTools,arcanaBonus,completionAt,displayEnchantEffect,lessonDays} from './enchanting.mjs';
+import {ENCHANTMENTS,sortEnchantments,knowsEnchant,DAY_SECONDS,RANKS,enchantById,targetKind,itemTags,capacity,usedSlots,explainCompatibility,professionOf,learningGate,hasTrainingTools,arcanaBonus,completionAt,displayEnchantEffect,lessonDays} from './enchanting.mjs';
 const ENCHANT_NS='gathering-crafting';
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ico=name=>'<i class="fa-solid fa-'+name+'" aria-hidden="true"></i>';
@@ -52,10 +52,10 @@ export function enchantingHtml(app,actor,helpers){
  }
  if(pending)output+='<div class="gc-enchant-job"><strong>'+ico('hourglass-half')+' '+escapeHtml(enchantById(pending.id)?.name||pending.id)+' in progress</strong><span>'+jobLine(pending)+' · Market value '+Number(pending.cost??enchantById(pending.id)?.cost??0)+' gp</span><small>Only one active enchantment per item. World time is never advanced automatically.</small><button class="gc-primary" data-action="finishEnchant" data-id="'+escapeHtml(selected.id)+'" '+(now()<Number(pending.finishAt)||app.busy?'disabled':'')+'>Complete Enchantment</button></div>';
  output+='<div class="gc-toolbar gc-compact-toolbar"><div class="gc-enchant-hint">'+ico('circle-info')+' Choose compatible enchantments</div>'+searchBar()+'</div>';
- output+='<div class="gc-enchant-element"><label>Elemental damage <select name="enchantElement">'+ELEMENTS.map(e=>'<option '+(app.enchantElement===e?'selected':'')+' value="'+e+'">'+e+'</option>').join('')+'</select></label><label>Show <select name="enchantFilter">'+[['all','All'],['learned','Learned'],['available','Ready to enchant'],['study','Can study']].map(([k,v])=>'<option value="'+k+'" '+((app.enchantFilter||'all')===k?'selected':'')+'>'+v+'</option>').join('')+'</select></label></div>';
- let list=ENCHANTMENTS.filter(e=>e.kind===targetKind(selected)&&(!app.search||[e.name,e.description,...e.allowed].join(' ').toLowerCase().includes(app.search.toLowerCase())));
+ output+='<div class="gc-enchant-element"><label>Show <select name="enchantFilter">'+[['all','All'],['learned','Learned'],['available','Ready to enchant'],['study','Can study']].map(([k,v])=>'<option value="'+k+'" '+((app.enchantFilter||'all')===k?'selected':'')+'>'+v+'</option>').join('')+'</select></label></div>';
+ let list=sortEnchantments(ENCHANTMENTS.filter(e=>e.kind===targetKind(selected)&&(!app.search||[e.name,e.description,...e.allowed].join(' ').toLowerCase().includes(app.search.toLowerCase()))));
  list=list.filter(e=>{
-  const learned=prof.known.includes(e.id);
+  const learned=knowsEnchant(prof.known,e);
   if(app.enchantFilter==='learned')return learned;
   if(app.enchantFilter==='available')return learned&&!learningGate(actor,e)&&!explainCompatibility(selected,e,complete)&&toolOK;
   if(app.enchantFilter==='study')return !learned&&prof.rank>=e.rank;
@@ -63,7 +63,7 @@ export function enchantingHtml(app,actor,helpers){
  });
  output+=renderCards(list,e=>{
   const compatible=explainCompatibility(selected,e,complete);
-  const learned=prof.known.includes(e.id),studyGate=prof.rank<e.rank?'Requires '+RANKS[e.rank].name:prof.training?'Training in progress':!toolOK?'Missing tools':'';
+  const learned=knowsEnchant(prof.known,e),studyGate=prof.rank<e.rank?'Requires '+RANKS[e.rank].name:prof.training?'Training in progress':!toolOK?'Missing tools':'';
   const enchantGate=learningGate(actor,e)||compatible||(!toolOK?'Missing tools':'');
   const canStudy=!learned&&!studyGate;
   const canEnchant=!enchantGate&&!prof.training&&!app.busy;
@@ -71,7 +71,7 @@ export function enchantingHtml(app,actor,helpers){
   return '<article class="gc-tile gc-enchant-card"><div class="gc-tile-body"><div class="gc-enchant-title">'+ico(e.kind==='weapon'?'khanda':'shield-halved')+' <strong>'+escapeHtml(e.name)+'</strong></div>'+
     '<div class="gc-enchant-meta"><span>Rank '+e.rank+' · '+escapeHtml(RANKS[e.rank].name)+'</span><span>'+e.slots+' slot(s)</span></div>'+
     '<div class="gc-enchant-meta"><span>'+ico('coins')+' Market value: '+e.cost+' gp</span><span>'+ico('clock')+' Crafting: '+e.days+' day(s)</span></div>'+
-    '<p>'+escapeHtml(displayEnchantEffect(e,e.elementDice?app.enchantElement:undefined))+'</p>'+
+    '<p>'+escapeHtml(displayEnchantEffect(e))+'</p>'+
     '<small class="gc-enchant-compat">'+ico('filter')+' '+escapeHtml(e.allowed.join(' / '))+(compatible?' · '+escapeHtml(compatible):'')+'</small>'+
     '<div class="gc-enchant-actions"><button type="button" class="gc-secondary" data-action="learnEnchant" data-id="'+escapeHtml(e.id)+'" '+(!canStudy||app.busy?'disabled':'')+'>'+escapeHtml(studyText)+'</button>'+
     '<button type="button" class="gc-primary" data-action="startEnchant" data-id="'+escapeHtml(e.id)+'" '+(!canEnchant?'disabled':'')+'>'+escapeHtml(enchantGate||'Enchant')+'</button></div></div></article>';
@@ -94,7 +94,7 @@ export async function beginLesson(actor,kind,id,notify){
   enchant=enchantById(id);
   if(!enchant)throw new Error('Unknown enchantment.');
   if(state.rank<enchant.rank)throw new Error('Insufficient Enchanting proficiency.');
-  if(state.known.includes(enchant.id))throw new Error('Already learned.');
+  if(knowsEnchant(state.known,enchant))throw new Error('Already learned.');
   duration=lessonDays(enchant);dc=10+enchant.rank*2;
  }
  const stamp=now();
@@ -139,7 +139,7 @@ export async function beginEnchantment(app,id,helpers){
  if(learning)throw new Error(learning);
  const conflict=explainCompatibility(item,enchant,getFlags(item,'enchantments')||[]);
  if(conflict)throw new Error(conflict);
- const element=enchant.elementDice?app.enchantElement:null;
+ const element=enchant.fixedElement||null;
  const effect=displayEnchantEffect(enchant,element),stamp=now();
  if(!Number.isFinite(stamp))throw new Error('Foundry world time unavailable.');
   const yes=await foundry.applications.api.DialogV2.confirm({window:{title:'Start Enchantment'},content:'<p>'+escapeHtml(item.name)+' — '+escapeHtml(enchant.name)+'</p><p>Market value: '+enchant.cost+' gp · Crafting: '+enchant.days+' world day(s) · '+enchant.slots+' slot(s).</p><p>No gold is deducted from the crafter.</p><p>'+escapeHtml(effect)+'</p>'});
