@@ -83,7 +83,7 @@ test("no tool item when quantity is zero and custom flagged tools supported",()=
  actor.items[0].flags={"gathering-crafting":{toolKey:"pickaxe"}};
  assert.equal(itemForTool(actor,"pickaxe"),actor.items[0]);
 });
-test("proficiency is read from actor.system.tools (D&D5e 5.3.3)",()=>{
+test("proficiency is read from actor.system.tools (D&D5e 6.0.6)",()=>{
  assert.equal(proficiencyLevel(makeActor([],{alchemist:{value:1}}),"alchemist"),1);
  assert.equal(proficiencyLevel(makeActor([],{mason:{value:0}}),"mason"),0);
  assert.equal(proficiencyLevel(makeActor([],{smith:{value:2}}),"smith"),2);
