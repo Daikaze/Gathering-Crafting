@@ -1,6 +1,16 @@
-# Gathering & Crafting v1.3.6 — The Averis Workshop
+# Gathering & Crafting v1.3.7 — The Averis Workshop
 
-**Foundry VTT V14 · D&D5e 5.3.3 · English-only UI.** A player-first crafting and gathering module for a fantasy campaign. It uses its own interface and mechanics; it is not a copy of Gatherer or Mastercrafted.
+**Foundry VTT V14 (14.367+) · D&D 5e 6.0.6 · English-only UI.**
+
+## v1.3.7 — D&D 5e 6.0.6 compatibility
+
+- Updated the Foundry module manifest and UI version to target **D&D 5e 6.0.6**.
+- New crafting results use D&D 5e 6.x native physical Item fields: structured weight (system.weight.value), rarity sets (system.rarities), and valid itemUses consumption on potion Activities. Potion uses consume one dose and can remove an empty stack when activated through the native sheet.
+- Enchanting recognizes D&D 6.x rarity sets and retains its existing weapon, armor, shield, and wearable restrictions, slot limits, prices, world-day delays, tool requirements and GM-only DCs.
+- Preserves recipe data, all art, existing world Items, Actor progression, custom inventories, and stored enchantments. No forced world-item rewrite or catalogue migration is introduced by this version; D&D's own migrations handle older item schemas.
+- Regression tests cover native item field formats, potion use, existing Blacksmith armor and Enchanting rarity limits. **In-world verification is still required**, particularly for advanced item Active Effects and third-party modules.
+
+## Prior release notes (v1.3.6)
 
 ## v1.3.6 — Complete Blacksmith item descriptions and real wearable Items
 
