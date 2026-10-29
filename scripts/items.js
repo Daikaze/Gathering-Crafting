@@ -1,4 +1,4 @@
-/** Native dnd5e Item payloads for Foundry 14 / dnd5e 5.3.x.
+/** Native dnd5e Item payloads for Foundry 14 / dnd5e 6.0.6.
  * The optional activity data is only convenience; crafted consumables can also be used
  * with the module's reliable Use button, which manages stacks and recovery itself.
  */
@@ -6,6 +6,8 @@ const NS='gathering-crafting';
 const escapeHTML=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const positive=(n,fall=1)=>Number.isFinite(+n)&&+n>0?Math.min(999,Math.trunc(+n)):fall;
 const blacksmithRarity=tier=>({1:'common',2:'uncommon',3:'rare',4:'veryRare'})[positive(tier)]||'common';
+// D&D5e 6.x uses a structured weight and a set of rarities on physical Items.
+const itemWeight=value=>({value,units:'lb'});
 const weaponSpecs={
  'iron-dagger':{base:'dagger',type:'simpleM',dice:4,damage:'piercing',properties:['fin','lgt','thr'],weight:1,value:2,range:[20,60]},
  'steel-dagger':{base:'dagger',type:'simpleM',dice:4,damage:'piercing',properties:['fin','lgt','thr'],weight:1,value:4,range:[20,60]},
@@ -28,9 +30,9 @@ const wearableSpecs={
  'steel-gauntlets':{type:'clothing',subtype:'gloves',base:'gloves',weight:2,price:10},
  'steel-greaves':{type:'clothing',subtype:'boots',base:'greaves',weight:3,price:10},
  'steel-helm':{type:'clothing',subtype:'helm',base:'helmet',weight:3,price:15},
- 'silver-circlet':{type:'clothing',subtype:'helm',base:'circlet',weight:0.5,price:30},
- 'platinum-circlet':{type:'clothing',subtype:'helm',base:'circlet',weight:0.5,price:250},
- 'moonsteel-diadem':{type:'clothing',subtype:'helm',base:'diadem',weight:0.5,price:350},
+ 'silver-circlet':{type:'clothing',subtype:'helm',base:'circlet',weight:itemWeight(0.5),price:30},
+ 'platinum-circlet':{type:'clothing',subtype:'helm',base:'circlet',weight:itemWeight(0.5),price:250},
+ 'moonsteel-diadem':{type:'clothing',subtype:'helm',base:'diadem',weight:itemWeight(0.5),price:350},
  'dragonsilver-charm':{type:'trinket',subtype:'amulet',base:'charm',weight:0.1,price:180}
 };
 export function outputKind(recipe){
@@ -47,7 +49,7 @@ function healActivity(formula){
  if(!found)return null;
  return {type:'heal',name:'Drink Potion',activation:{type:'bonus',value:1,condition:''},
   healing:damage(+found[1],+found[2],['healing'],found[3]||''),
-  consumption:{targets:[{type:'item',target:'',value:'1',scaling:{mode:'',formula:''}}]},
+  consumption:{targets:[{type:'itemUses',target:'',value:'1',scaling:{mode:'',formula:''}}]},
   target:{template:{count:'',units:'ft',type:''},affects:{count:'1',type:'creature',choice:false,special:''},prompt:false},
   range:{value:null,units:'self',special:''}};
 }
@@ -59,11 +61,11 @@ function physicalActivity(r){
 }
 function utilityActivity(){
  return {type:'utility',name:'Use Item',activation:{type:'action',value:1,condition:''},
-  consumption:{targets:[{type:'item',target:'',value:'1',scaling:{mode:'',formula:''}}]}};
+  consumption:{targets:[{type:'itemUses',target:'',value:'1',scaling:{mode:'',formula:''}}]}};
 }
 export function makeMaterialData(mat,qty=1){
  return {name:mat.name,type:'loot',img:mat.img||'icons/svg/item-bag.svg',
-  system:{quantity:positive(qty),weight:0.1,price:{value:Math.max(1,Math.round(Math.pow(3,positive(mat.tier)))/2),denomination:'gp'},
+  system:{quantity:positive(qty),weight:itemWeight(0.1),price:{value:Math.max(1,Math.round(Math.pow(3,positive(mat.tier)))/2),denomination:'gp'},
    description:{value:`<p>${escapeHTML(mat.description||'Crafting material.')}</p><p><strong>Material:</strong> ${escapeHTML(mat.group)} · Tier ${positive(mat.tier)}</p>`}},
   flags:{[NS]:{resourceId:mat.id}}};
 }
@@ -72,38 +74,39 @@ export function makeCraftData(recipe,qty=1){
   description:{value:`<p>${escapeHTML(recipe.description||'A handmade item.')}</p><p><strong>Trade:</strong> ${escapeHTML(recipe.subcategory||recipe.category||'Crafting')} · Tier ${positive(recipe.tier)}</p>${kind==='consumable'?'<p>Use with the potion action or the Gathering & Crafting Inventory.</p>':''}`}};
  if(spec){
   // Crafting tier sets the quality/slot ceiling, not inherent magical powers.
-  system.rarity=blacksmithRarity(recipe.tier);
-  Object.assign(system,{type:{value:spec.type,baseItem:spec.base},weight:spec.weight,price:{value:spec.value,denomination:'gp'},
+  system.rarities=[blacksmithRarity(recipe.tier)];
+  Object.assign(system,{type:{value:spec.type,baseItem:spec.base},weight:itemWeight(spec.weight),price:{value:spec.value,denomination:'gp'},
    equipped:false,properties:spec.properties,
    damage:{base:damage(1,spec.dice,[spec.damage])},
    activities:{attack:physicalActivity(spec)}});
   if(spec.range)system.range={value:spec.range[0],long:spec.range[1],units:'ft'};
  }else if(shield){
-  system.rarity=blacksmithRarity(recipe.tier);
-  Object.assign(system,{type:{value:'shield',baseItem:'shield'},weight:shield.weight,price:{value:shield.price,denomination:'gp'},equipped:false,
+  system.rarities=[blacksmithRarity(recipe.tier)];
+  Object.assign(system,{type:{value:'shield',baseItem:'shield'},weight:itemWeight(shield.weight),price:{value:shield.price,denomination:'gp'},equipped:false,
    armor:{type:'shield',value:shield.value,dex:null},properties:[],activities:{}});
  }else if(armor){
-  system.rarity=blacksmithRarity(recipe.tier);
+  system.rarities=[blacksmithRarity(recipe.tier)];
   // Steel Chain Shirt: base AC 13 + Dexterity (maximum 2), not a +13 AC bonus.
   Object.assign(system,{type:{value:armor.type,baseItem:armor.base},
-   weight:armor.weight,price:{value:armor.price,denomination:'gp'},
+   weight:itemWeight(armor.weight),price:{value:armor.price,denomination:'gp'},
    equipped:false,identified:true,
    armor:{type:armor.type,value:armor.armor,dex:armor.dex},
    properties:[],activities:{}});
  }else if(wearable){
-  system.rarity=blacksmithRarity(recipe.tier);
+  system.rarities=[blacksmithRarity(recipe.tier)];
   // Headwear, bracers and garments need equip state and a suitable subtype
   // so that equipment-specific Enchanting restrictions can work.
   Object.assign(system,{type:{value:wearable.type,baseItem:wearable.base,
-    subtype:wearable.subtype},weight:wearable.weight,
+    subtype:wearable.subtype},weight:itemWeight(wearable.weight),
    price:{value:wearable.price,denomination:'gp'},
    equipped:false,identified:true,properties:[],activities:{}});
  }else if(kind==='consumable'){
   const f=/^healing:(\d+d\d+\+\d+)$/.exec(recipe.effect||'');
-  Object.assign(system,{type:{value:'potion'},weight:0.5,price:{value:Math.max(5,5*Math.pow(3,positive(recipe.tier)-1)),denomination:'gp'},
+  Object.assign(system,{type:{value:'potion'},weight:itemWeight(0.5),price:{value:Math.max(5,5*Math.pow(3,positive(recipe.tier)-1)),denomination:'gp'},
+   uses:{max:'1',spent:0,autoDestroy:true,recovery:[]},
    activities:{use:f?healActivity(f[1]):utilityActivity()}});
  }else{
-  Object.assign(system,{weight:recipe.subcategory==='Smelting'?1:0.5,
+  Object.assign(system,{weight:itemWeight(recipe.subcategory==='Smelting'?1:0.5),
    price:{value:Math.max(1,2*Math.pow(3,positive(recipe.tier)-1)),denomination:'gp'}});
  }
  return {name:recipe.name,type:kind,img:recipe.img||'icons/svg/item-bag.svg',system,
