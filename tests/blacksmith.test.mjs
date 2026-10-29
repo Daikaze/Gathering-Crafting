@@ -55,7 +55,7 @@ test('8 wearable items are Equipment, not Loot; no invented AC',()=>{
  const bracers=created('copper-bracers');
  assert.ok(canApplyEnchant({...bracers,getFlag:()=>null},enchantById('armor-arcane-mesh'),[]));
  const charm=created('dragonsilver-charm');
- assert.equal(charm.system.rarity,'veryRare');
+ assert.deepEqual(charm.system.rarities,['veryRare']);
  assert.ok(canApplyEnchant({...charm,getFlag:()=>null},enchantById('armor-guardian-pendant'),[]));
 });
 test('unassembled metal parts stay crafting components (loot)',()=>{
