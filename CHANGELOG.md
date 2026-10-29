@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.7 — D&D 5e 6.0.6 support
+
+- Foundry V14 (14.367+) and D&D 5e 6.0.6 compatibility declaration.
+- Native dnd5e 6.x source formats for new crafted items: structured weight and item rarity sets.
+- Fixed crafted potion native Activity consumption with itemUses: one use per dose and automatic removal of spent doses.
+- Updated Enchanting rarity and slot checks to support 6.x item data model without changing the 107 enchantments.
+- Preserved existing world data, recipes, artwork, time rules, and GM-only DCs; expanded regression coverage. Live-world testing still recommended.
+
 ## 1.3.6 — Blacksmith descriptions and native Equipment Items
 
 - Expanded all 56 Blacksmith output descriptions (English, gameplay-grounded) consistently in the built-in catalogue, JSON and CSV.
