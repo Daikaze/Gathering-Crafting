@@ -3,7 +3,7 @@
  * Powers have a visible Use button; special combat effects remain GM-adjudicated.
  */
 import {rollFormula} from './tool-rules.mjs';
-import {ENCHANTMENTS,sortEnchantments,knowsEnchant,DAY_SECONDS,RANKS,enchantById,targetKind,itemClassification,enchantTargetLabels,capacity,usedSlots,explainCompatibility,professionOf,learningGate,hasTrainingTools,enchantingTool,arcanaBonus,completionAt,displayEnchantEffect,lessonDays} from './enchanting.mjs';
+import {ENCHANTMENTS,sortEnchantments,knowsEnchant,DAY_SECONDS,RANKS,enchantById,targetKind,itemClassification,itemRarity,enchantTargetLabels,capacity,usedSlots,explainCompatibility,professionOf,learningGate,hasTrainingTools,enchantingTool,arcanaBonus,completionAt,displayEnchantEffect,lessonDays} from './enchanting.mjs';
 const ENCHANT_NS='gathering-crafting';
 const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ico=name=>'<i class="fa-solid fa-'+name+'" aria-hidden="true"></i>';
@@ -35,7 +35,7 @@ export function enchantingHtml(app,actor,helpers){
  output+='</select></label><div class="gc-enchant-funds">'+ico('coins')+' <strong>Market values</strong><small>Prices are for customers, not deducted from the crafter.</small></div></div>';
  if(!selected)return output+'<div class="gc-empty">Add a single weapon, armor, or shield to the character. Stacked equipment is not eligible.</div>';
  const spent=usedSlots(complete);
- output+='<div class="gc-enchant-selected"><img src="'+escapeHtml(artworkFor(selected))+'" alt=""><div><strong>'+escapeHtml(selected.name)+'</strong><small>'+escapeHtml(itemClassification(selected))+' · '+spent+'/'+capacity(selected)+' enchantment slots used · '+escapeHtml(selected.system?.rarity||'Common')+' rarity</small></div><button type="button" class="gc-secondary" data-action="sheetItem" data-id="'+escapeHtml(selected.id)+'">'+ico('up-right-from-square')+' Item Sheet</button></div>';
+ output+='<div class="gc-enchant-selected"><img src="'+escapeHtml(artworkFor(selected))+'" alt=""><div><strong>'+escapeHtml(selected.name)+'</strong><small>'+escapeHtml(itemClassification(selected))+' · '+spent+'/'+capacity(selected)+' enchantment slots used · '+escapeHtml(itemRarity(selected))+' rarity</small></div><button type="button" class="gc-secondary" data-action="sheetItem" data-id="'+escapeHtml(selected.id)+'">'+ico('up-right-from-square')+' Item Sheet</button></div>';
  if(game.user?.isGM)output+='<div class="gc-enchant-gm-slots"><label>GM item capacity (0–6) <input type="number" name="enchantSlots" min="0" max="6" step="1" value="'+capacity(selected)+'"></label><button class="gc-secondary" data-action="saveEnchantSlots" data-id="'+escapeHtml(selected.id)+'">Set item slots</button></div>';
  if(complete.length){
   output+='<div class="gc-enchant-applied">'+complete.map(e=>{
