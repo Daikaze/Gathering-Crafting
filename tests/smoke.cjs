@@ -1,4 +1,4 @@
-/* Lightweight Foundry V14/dnd5e 5.3.3 mock regression tests: node tests/smoke.cjs */
+/* Lightweight Foundry V14/dnd5e 6.0.6 mock regression tests: node tests/smoke.cjs */
 const vm=require('node:vm'),fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const base=path.join(__dirname,'..');
 const catalogJS=fs.readFileSync(path.join(base,'scripts/catalog.js'),'utf8').replace('export const CATALOG','const CATALOG');
@@ -66,7 +66,7 @@ actor.system.tools={mason:{value:1},herb:{value:1},leatherworker:{value:1},smith
 for(const name of ['Pickaxe',"Smith's Tools","Alchemist's Supplies",'Herbalism Kit','Skinning Knife',"Jeweler's Tools"])actor.items.push(new ItemDoc({name,type:'tool',system:{quantity:1}},actor));
 const context={console,structuredClone,Math,Number,JSON,FormData,setTimeout,clearTimeout,Hooks:{once:(h,fn)=>hooksOnce.set(h,fn),on:(h,fn)=>hooksOn.set(h,fn)},
   foundry:{utils:{deepClone:deep,randomID:()=>`new${++counter}`},applications:{api:{ApplicationV2:class{constructor(){this.rendered=true;}render(){return Promise.resolve(this);}async _onRender(){}},DialogV2:{confirm:async()=>true}}},documents:{collections:{CompendiumCollection:{createCompendium:async({name,label})=>{const pack={collection:`world.${name}`,locked:false,label,items:[],async getDocuments(){return this.items;},async configure({locked}){this.locked=locked;}};packs.set(pack.collection,pack);return pack;}}}}},
-  game:{system:{id:'dnd5e',version:'5.3.3'},time:{worldTime:0},user:{isGM:true,character:actor},actors:{contents:[actor]},items:{contents:[]},packs:{get:(key)=>packs.get(key),contents:[mockLegacy,mockPotion]},modules:new Map([['gathering-crafting',{}]]),
+  game:{system:{id:'dnd5e',version:'6.0.6'},time:{worldTime:0},user:{isGM:true,character:actor},actors:{contents:[actor]},items:{contents:[]},packs:{get:(key)=>packs.get(key),contents:[mockLegacy,mockPotion]},modules:new Map([['gathering-crafting',{}]]),
     settings:{register:(id,k,o)=>world.set(`${id}.${k}`,deep(o.default)),get:(id,k)=>world.get(`${id}.${k}`),set:async(id,k,v)=>{world.set(`${id}.${k}`,deep(v));}},keybindings:{register(){}}},
   Item:{implementation:{createDocuments:async(arr,{pack})=>{const target=packs.get(pack);const docs=arr.map(x=>new ItemDoc(x,null));target.items.push(...docs);return docs;}}},
   canvas:{tokens:{placeables:[],controlled:[]},grid:{size:100},scene:{grid:{distance:5}}},
@@ -83,12 +83,12 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const db=context.game.settings.get('gathering-crafting','database');
   assert.equal(db.catalogVersion,11);
   assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
-  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.6');
+  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.7');
   assert.ok(db.materials.find(m=>m.id==='iron-ore').img.endsWith('/icons/handpainted/iron-ore.webp'));
   assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
   assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
   assert.equal(artworkFor(db.recipes.find(r=>r.id==='supreme-healing-potion')),
-    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.6');
+    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.7');
   await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,44,'sync must not duplicate entries');
   const oldIconItem=packs.get('world.gc-ores-metals').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='iron-ore');
   oldIconItem.img='modules/legacy-content/images/iron-ore.webp';
@@ -176,7 +176,8 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   assert.equal(chainShirt.type,'equipment');
   assert.equal(chainShirt.system.armor.value,13);
   assert.equal(chainShirt.system.armor.dex,2);
-  assert.equal(chainShirt.system.rarity,'uncommon');
+  assert.deepEqual(Array.from(chainShirt.system.rarities),['uncommon']);
+  assert.equal(chainShirt.system.weight.value,20);
   const helmData=makeCraftData(db.recipes.find(r=>r.id==='steel-helm'));
   assert.equal(helmData.type,'equipment');
   assert.equal(helmData.system.equipped,false);
@@ -186,6 +187,13 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const nativeHelm=await actor.createEmbeddedDocuments('Item',[helmData]);
   assert.equal(nativeHelm[0].type,'equipment','Newly crafted items should be native D&D Equipment');
   assert.equal(makeCraftData(db.recipes.find(r=>r.id==='healing-potion')).system.activities.use.type,'heal');
+  const nativePotion=makeCraftData(db.recipes.find(r=>r.id==='healing-potion'));
+  assert.equal(nativePotion.system.uses.max,'1');
+  assert.equal(nativePotion.system.uses.autoDestroy,true);
+  assert.equal(nativePotion.system.activities.use.consumption.targets[0].type,'itemUses');
+  const ore=makeCraftData(db.recipes.find(r=>r.id==='iron-ingot'));
+  assert.equal(ore.system.weight.value,1);
+  assert.equal(typeof ore.system.weight.units,'string');
   await app.drink(potion.id);assert.equal(actor.system.attributes.hp.value,19);assert.ok(!actor.items.includes(potion),'single potion should be consumed');
   // inventory quick add / remove for materials and crafted items
   await adjustMaterialQuantity(actor,'kingsfoil',2);assert.equal(count(actor,'kingsfoil'),2);await adjustMaterialQuantity(actor,'kingsfoil',-1);assert.equal(count(actor,'kingsfoil'),1);
@@ -430,5 +438,5 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   fallbackHeader.className='sheet-header';fallbackRoot.append(fallbackHeader);
   launcher(fallbackRoot,'.sheet-header',actor);
   assert.ok(fallbackHeader.querySelector('.gc-launcher'),'NPC sheets without Affinity retain a header launcher');
-  console.log('PASS: v1.3.6 56 Blacksmith descriptions, native gear, safe migration and legacy checks;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
+  console.log('PASS: v1.3.7 56 Blacksmith descriptions, native gear, safe migration and legacy checks;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});
