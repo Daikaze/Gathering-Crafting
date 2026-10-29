@@ -26,6 +26,8 @@ test('Steel Chain Shirt medium armor: base 13 AC and max Dex +2',()=>{
  assert.equal(i.type,'equipment');
  assert.equal(i.system.type.value,'medium');
  assert.equal(i.system.equipped,false);
+ assert.deepEqual(i.system.rarities,['uncommon']);
+ assert.equal(i.system.weight.value,20);
  assert.equal(i.system.armor.type,'medium');
  assert.equal(i.system.armor.value,13);
  assert.equal(i.system.armor.dex,2);
