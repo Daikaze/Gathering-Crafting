@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,reducedDays,lessonDays,enchantById,targetKind,itemRarity,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost,enchantingTool,sortEnchantments,knowsEnchant,itemClassification,enchantTargetLabels,EQUIPMENT_LABELS} from '../scripts/enchanting.mjs';
+import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,reducedDays,lessonDays,enchantById,targetKind,itemRarity,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,maxRarityRank,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost,enchantingTool,sortEnchantments,knowsEnchant,itemClassification,enchantTargetLabels,EQUIPMENT_LABELS} from '../scripts/enchanting.mjs';
 import {effectChanges} from '../scripts/enchanting-ui.mjs';
 
 test('exact weapon and armor enchantment catalog',()=>{
