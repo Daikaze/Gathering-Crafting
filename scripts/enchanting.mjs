@@ -615,7 +615,7 @@ export function itemTags(item){
   const props=prop instanceof Set?[...prop]:Array.isArray(prop)?prop:Object.entries(prop||{}).filter(([,v])=>v).map(([k])=>k);
   if(props.includes('hvy'))tags.push('heavy-weapon');
  }else if(item.type==='equipment'){
-  // dnd5e 5.3 stores the armor category in system.type.value;
+  // dnd5e 6.x stores the armor category in system.type.value;
   // clothing/wondrous Items often have no meaningful subcategory.
   if(type==='shield'||normal(system.armor?.type)==='shield')tags.push('shield');
   else if(['light','medium','heavy'].includes(type))tags.push('armor',type);
@@ -645,15 +645,22 @@ export const itemClassification=item=>itemTags(item)
  .filter(t=>t!=='weapon'&&t!=='armor'&&t!=='melee'&&t!=='ranged')
  .map(t=>EQUIPMENT_LABELS[t]||t)
  .join(' / ')||'Unknown Equipment';
+/** D&D5e 6.x stores rarities as a Set; legacy items/mocks can still supply a string. */
+export function itemRarity(item){
+ const raw=item?.system?.rarities;
+ const value=raw instanceof Set ? raw.values().next().value
+   : Array.isArray(raw) ? raw[0] : undefined;
+ return normal(value || item?.system?.rarity || 'common');
+}
 export function capacity(item){
  const explicit=item?.getFlag?.('gathering-crafting','enchantSlots');
  if(Number.isInteger(explicit)&&explicit>=0&&explicit<=6)return explicit;
- const rarity=normal(item?.system?.rarity||'common');
+ const rarity=itemRarity(item);
  return ({common:1,uncommon:2,rare:3,'very rare':4,veryrare:4,legendary:5,artifact:5})[rarity]??1;
 }
 export function usedSlots(entries){return(entries||[]).reduce((n,e)=>n+(enchantById(e.id)?.slots||1),0);}
 export function maxRarityRank(item){
- return ({common:2,uncommon:3,rare:4,'very rare':5,veryrare:5,legendary:5,artifact:5})[normal(item?.system?.rarity||'common')]||2;
+ return ({common:2,uncommon:3,rare:4,'very rare':5,veryrare:5,legendary:5,artifact:5})[itemRarity(item)]||2;
 }
 export function explainCompatibility(item,enchant,completed=[]){
  if(!enchant||targetKind(item)!==enchant.kind)return 'Wrong item type';
