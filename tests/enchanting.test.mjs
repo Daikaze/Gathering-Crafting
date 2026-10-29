@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,reducedDays,lessonDays,enchantById,targetKind,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost,enchantingTool,sortEnchantments,knowsEnchant,itemClassification,enchantTargetLabels,EQUIPMENT_LABELS} from '../scripts/enchanting.mjs';
+import {ENCHANTMENTS,ELEMENTS,DAY_SECONDS,reducedDays,lessonDays,enchantById,targetKind,itemRarity,canApplyEnchant,afterGoldPayment,completionAt,displayEnchantEffect,itemTags,capacity,usedSlots,professionOf,learningGate,hasTrainingTools,arcanaBonus,RANKS,explainCompatibility,lessonCost,enchantingTool,sortEnchantments,knowsEnchant,itemClassification,enchantTargetLabels,EQUIPMENT_LABELS} from '../scripts/enchanting.mjs';
 import {effectChanges} from '../scripts/enchanting-ui.mjs';
 
 test('exact weapon and armor enchantment catalog',()=>{
@@ -67,6 +67,16 @@ test('item compatibility by actual weapon class, armor type and rarity slot capa
  assert.equal(usedSlots([{id:'weapon-greater-arcane-infusion'}]),2);
  assert.equal(canApplyEnchant(sword,enchantById('weapon-keen-edge'),[{id:'weapon-soul-binding'},{id:'weapon-spell-channel'}]),false);
  assert.ok(explainCompatibility(sword,enchantById('weapon-greater-arcane-infusion'),[]).includes('rarer'));
+});
+test('D&D5e 6.0.6 item rarities keep native enchantment slot and rank limits',()=>{
+ const make=rarities=>({type:'weapon',name:'Longsword',system:{rarities,type:{value:'martialM',baseItem:'longsword'}},getFlag:()=>null});
+ const rare=make(new Set(['rare']));
+ assert.equal(itemRarity(rare),'rare');
+ assert.equal(capacity(rare),3);
+ assert.equal(maxRarityRank(rare),4);
+ assert.equal(itemRarity(make(['veryRare'])),'veryrare');
+ assert.equal(capacity(make(['veryRare'])),4);
+ assert.equal(capacity({...make([]),system:{rarity:'uncommon'}}),2);
 });
 test('old proficiency record preserved but access requires only physical tools',()=>{
  assert.equal(RANKS.length,6);
