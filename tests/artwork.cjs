@@ -12,7 +12,7 @@ const root = path.resolve(__dirname, '..');
 const catalog = JSON.parse(fs.readFileSync(path.join(root, 'data/catalog.json'), 'utf8'));
 const moduleInfo = JSON.parse(fs.readFileSync(path.join(root, 'module.json'), 'utf8'));
 assert.equal(moduleInfo.id, 'gathering-crafting');
-assert.equal(moduleInfo.compatibility.minimum, '14');
+assert.equal(moduleInfo.compatibility.minimum, '14.367');
 assert.equal(catalog.materials.length, 102);
 assert.equal(catalog.recipes.length, 122);
 assert.equal(catalog.nodes.length, 71);
