@@ -5,7 +5,7 @@ import { TOOL_SPECS, PROF_OPTIONS, requiredForNode, requiredForRecipe, toolGate,
 import {enchantingHtml, beginEnchantment, finishEnchantment, beginLesson, finishLesson, useEnchantment, recoverEnchantmentUses} from './enchanting-ui.mjs';
 import {enchantById} from './enchanting.mjs';
 const ID='gathering-crafting';
-const VERSION='1.3.7';
+const VERSION='1.3.8';
 const clone=value=>foundry.utils.deepClone(value);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const num=(v,f=0,min=0,max=9999)=>Number.isFinite(Number(v))?Math.min(max,Math.max(min,Math.trunc(Number(v)))):f;
@@ -222,7 +222,7 @@ async function syncCompendiums(){
   }finally{syncing=false;}
 }
 class GatheringCrafting extends foundry.applications.api.ApplicationV2{
-  static DEFAULT_OPTIONS={id:'gc-main-window',classes:['gathering-crafting'],window:{title:'Gathering & Crafting',icon:'fa-solid fa-hammer',resizable:true},position:{width:970,height:740}};
+  static DEFAULT_OPTIONS={id:'gc-main-window',classes:['gathering-crafting'],window:{title:'Gathering & Crafting',icon:'fa-solid fa-hammer',frame:true,minimizable:true,resizable:true},position:{width:970,height:740}};
   constructor(opts={}){super(opts);this.actorId=currentActor()?.id||null;this.tab='gather';this.gatherMode='careful';this.craftMode='steady';this.category='all';this.group='all';this.search='';this.page=1;this.showZero=false;this.readyOnly=false;this.editor={kind:'material',id:null};this.busy=false;this.searchTimer=null;this.pendingScrollTop=null;this.enchantItemId=null;this.enchantFilter='all';}
   get actor(){return currentActor(this.actorId);}
   async _renderHTML(){const root=document.createElement('div');root.className='gc-root';root.innerHTML=this.template();return root;}
@@ -242,7 +242,7 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
     return this.render({force:true});
   }
   heading(ic,title,description){return `<header class="gc-section-head"><div><h2>${icon(ic)} ${esc(title)}</h2><p>${esc(description)}</p></div></header>`;}
-  tabButton(id,ic,title){return `<button type="button" class="gc-nav ${this.tab===id?'is-active':''}" data-action="tab" data-id="${id}">${icon(ic)} <span>${title}</span></button>`;}
+  tabButton(id,ic,title){return `<button type="button" class="gc-nav ${this.tab===id?'is-active':''}" data-action="tab" data-id="${id}" ${this.tab===id?'aria-current="page"':''}>${icon(ic)} <span>${title}</span></button>`;}
   filterBar(choices,selected,action){return `<div class="gc-category">${choices.map(([id,label,ic])=>`<button type="button" class="${selected===id?'is-on':''}" data-action="${action}" data-id="${id}">${icon(ic)} ${esc(label)}</button>`).join('')}</div>`;}
   searchBar(){return `<label class="gc-search">${icon('fa-magnifying-glass')}<input type="search" data-search="1" placeholder="Search..." value="${esc(this.search)}"></label>`;}
   renderCards(all,renderer){const pageSize=9;const visible=all.slice(0,this.page*pageSize);
@@ -252,9 +252,9 @@ class GatheringCrafting extends foundry.applications.api.ApplicationV2{
   template(){const db=database();if(!validDb(db))return '<div class="gc-empty">The crafting catalogue could not be loaded.</div>';
     const actor=this.actor,gm=game.user.isGM;
     const choices=ownedActors().map(a=>`<option value="${esc(a.id)}" ${actor?.id===a.id?'selected':''}>${esc(a.name)} (${a.type==='character'?'PC':'NPC'})</option>`).join('');
-    return `<div class="gc-top"><div class="gc-brand"><span class="gc-brand-logo">${icon('fa-hammer')}</span><div><span class="gc-subtitle">THE AVERIS WORKSHOP · v${VERSION}</span><div class="gc-brand-title">Gathering <span>&</span> Crafting</div></div></div>
-      <div class="gc-top-right">${gm?`<button class="gc-gm-shortcut" type="button" data-action="tab" data-id="gm" aria-label="GM Workshop" title="GM Workshop">${icon('fa-gear')}</button>`:''}<label class="gc-selectwrap">${icon('fa-user')}<select name="actor" aria-label="Character">${choices}</select></label><div class="gc-energy" title="No daily gathering limit">${icon('fa-infinity')} <b>Unlimited</b><small>gather attempts</small></div></div></div>
-      <nav class="gc-tabs">${this.tabButton('gather','fa-mountain','Gather')}${this.tabButton('alchemy','fa-flask','Alchemy')}${this.tabButton('blacksmithing','fa-hammer','Blacksmithing')}${this.tabButton('enchanting','fa-wand-magic-sparkles','Enchanting')}${this.tabButton('backpack','fa-box-open','Inventory')}</nav>
+    return `<div class="gc-top"><div class="gc-brand"><strong class="gc-brand-title">Crafting Workshop</strong><span class="gc-subtitle">v${VERSION}</span></div>
+      <div class="gc-top-right">${gm?`<button class="gc-gm-shortcut" type="button" data-action="tab" data-id="gm" aria-label="GM Workshop" title="GM Workshop">${icon('fa-gear')}</button>`:''}<label class="gc-selectwrap">${icon('fa-user')}<select name="actor" aria-label="Character">${choices}</select></label><span class="gc-energy" title="No daily gathering limit">${icon('fa-infinity')} Unlimited gathering</span></div></div>
+      <nav class="gc-tabs" aria-label="Crafting sections">${this.tabButton('gather','fa-mountain','Gather')}${this.tabButton('alchemy','fa-flask','Alchemy')}${this.tabButton('blacksmithing','fa-hammer','Blacksmithing')}${this.tabButton('enchanting','fa-wand-magic-sparkles','Enchanting')}${this.tabButton('backpack','fa-box-open','Inventory')}</nav>
       <div class="gc-content">${!actor&&this.tab!=='gm'?'<div class="gc-empty">Select a character with Owner permission to get started.</div>':this.tab==='gather'?this.gatherTab(db,actor):this.tab==='alchemy'?this.craftTab(db,actor,'alchemy'):this.tab==='blacksmithing'||this.tab==='craft'?this.craftTab(db,actor,'metallurgy'):this.tab==='enchanting'?this.enchantTab(actor):this.tab==='backpack'?this.inventoryTab(db,actor):gm?this.gmTab(db):''}</div>
       <footer class="gc-footer"><span>${icon('fa-box')} Every resource and crafted product is a real D&D 5e Item with bundled fantasy artwork.</span><span>v${VERSION} · Foundry V14 · dnd5e 6.0.6</span></footer>`;
   }
