@@ -1,3 +1,9 @@
+## v1.3.8 — Native Foundry interface
+- Updated Gathering & Crafting to standard Foundry V14 theme controls and typography.
+- Removed the legacy custom theme from the manifest; native-v14.css now provides scoped module layout.
+- Retained ApplicationV2 resize/minimize and all crafting, enchanting and inventory features.
+- Added automated native UI/manifest isolation checks.
+
 # Changelog
 
 ## 1.3.7 — D&D 5e 6.0.6 support

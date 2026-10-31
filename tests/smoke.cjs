@@ -83,12 +83,12 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   const db=context.game.settings.get('gathering-crafting','database');
   assert.equal(db.catalogVersion,11);
   assert.ok(!fs.existsSync(path.join(base,'scripts/art-sources.js')),'external art scanner must be removed');
-  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.7');
+  assert.equal(artworkFor(db.materials.find(m=>m.id==='iron-ore')),db.materials.find(m=>m.id==='iron-ore').img+'?gc-art=v1.3.8');
   assert.ok(db.materials.find(m=>m.id==='iron-ore').img.endsWith('/icons/handpainted/iron-ore.webp'));
   assert.ok(artworkFor(db.recipes.find(r=>r.id==='steel-sword')).includes('/icons/illustrated/'));
   assert.equal(artworkFor({...db.materials.find(m=>m.id==='iron-ore'),img:'user-uploads/ore.webp'}),'user-uploads/ore.webp');
   assert.equal(artworkFor(db.recipes.find(r=>r.id==='supreme-healing-potion')),
-    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.7');
+    'modules/gathering-crafting/icons/illustrated/craft-supreme-healing-potion.webp?gc-art=v1.3.8');
   await syncCompendiums();assert.equal(packs.get('world.gc-ores-metals').items.length,44,'sync must not duplicate entries');
   const oldIconItem=packs.get('world.gc-ores-metals').items.find(i=>i.getFlag('gathering-crafting','resourceId')==='iron-ore');
   oldIconItem.img='modules/legacy-content/images/iron-ore.webp';
@@ -215,7 +215,18 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   await assert.rejects(()=>app.gather('node-iron-ore'),/Move your character/);
   app.tab='blacksmithing';app.page=1;app.search='';
   const preview=app.template().replaceAll('modules/gathering-crafting/',`file://${base}/`);
-  const css=fs.readFileSync(path.join(base,'styles/module.css'),'utf8');
+  // Native theme is loaded on V14; the archived theme must not style other apps.
+  const installedManifest=JSON.parse(fs.readFileSync(path.join(base,'module.json'),'utf8'));
+  assert.deepEqual(installedManifest.styles,['styles/native-v14.css']);
+  assert.equal(installedManifest.version,'1.3.8');
+  assert.equal(GatheringCrafting.DEFAULT_OPTIONS.window.resizable,true);
+  assert.equal(GatheringCrafting.DEFAULT_OPTIONS.window.minimizable,true);
+  assert.equal(GatheringCrafting.DEFAULT_OPTIONS.window.frame,true);
+  const nativeCss=fs.readFileSync(path.join(base,'styles/native-v14.css'),'utf8');
+  assert.ok(nativeCss.includes('.gathering-crafting .gc-content'));
+  assert.match(nativeCss,/@container gc-workshop/);
+  assert.ok(!nativeCss.includes('.window-app button'),'Only style module-owned controls');
+  const css=fs.readFileSync(path.join(base,'styles/native-v14.css'),'utf8');
   fs.writeFileSync(path.join(require('node:os').tmpdir(),'gc-v100-preview.html'),`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
   // v1.2.0 Enchanting regression: full UI, payment, world-time job, native +1.
   app.tab='enchanting';app.search='';
@@ -438,5 +449,5 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   fallbackHeader.className='sheet-header';fallbackRoot.append(fallbackHeader);
   launcher(fallbackRoot,'.sheet-header',actor);
   assert.ok(fallbackHeader.querySelector('.gc-launcher'),'NPC sheets without Affinity retain a header launcher');
-  console.log('PASS: v1.3.7 56 Blacksmith descriptions, native gear, safe migration and legacy checks;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
+  console.log('PASS: v1.3.8 56 Blacksmith descriptions, native gear, safe migration and legacy checks;  separate WebP item icons, verified art paths, no external artwork scans, split professions, safe image migration, inventory, potion use, Show more scroll, rollback.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

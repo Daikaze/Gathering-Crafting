@@ -1,6 +1,15 @@
-# Gathering & Crafting v1.3.7 — The Averis Workshop
+# Gathering & Crafting v1.3.8 — The Averis Workshop
 
 **Foundry VTT V14 (14.367+) · D&D 5e 6.0.6 · English-only UI.**
+
+## v1.3.8 — Native Foundry V14 interface
+
+- Removed the custom charcoal/brass theme from the active module stylesheet. All major panels use Foundry's native text, buttons and input colors.
+- Uses the native ApplicationV2 window controls, resize and titlebar minimization.
+- Compact toolbar and standard navigation for Gathering, Alchemy, Blacksmithing, Enchanting and Inventory; GM Studio remains GM-only.
+- Responsive layout follows **window width** rather than screen width.
+- Existing recipes, enchantment mechanics, item data, chat cards, player permissions, scene launchers and artwork are unchanged.
+- The old `styles/module.css` remains in the repository for historical reference but is **not loaded** by the module.
 
 ## v1.3.7 — D&D 5e 6.0.6 compatibility
 
