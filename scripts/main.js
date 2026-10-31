@@ -26,7 +26,7 @@ const artworkFor=item=>{
   const src=item?.img||'icons/svg/item-bag.svg';
   const clean=src.split('?')[0];
   return clean.startsWith('modules/gathering-crafting/icons/') && clean.endsWith('.webp')
-    ? clean+'?gc-art=v1.3.7' : src;
+    ? clean+'?gc-art=v1.3.8' : src;
 };
 const material=(db,id)=>db.materials.find(m=>m.id===id);
 const skillLabels={ath:'Athletics',sur:'Survival',prc:'Perception',inv:'Investigation',nat:'Nature',slt:'Sleight of Hand'};
