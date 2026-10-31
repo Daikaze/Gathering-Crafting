@@ -215,7 +215,18 @@ const {GatheringCrafting,count,grantMaterial,makeCraftData,syncCompendiums,merge
   await assert.rejects(()=>app.gather('node-iron-ore'),/Move your character/);
   app.tab='blacksmithing';app.page=1;app.search='';
   const preview=app.template().replaceAll('modules/gathering-crafting/',`file://${base}/`);
-  const css=fs.readFileSync(path.join(base,'styles/module.css'),'utf8');
+  // Native theme is loaded on V14; the archived theme must not style other apps.
+  const installedManifest=JSON.parse(fs.readFileSync(path.join(base,'module.json'),'utf8'));
+  assert.deepEqual(installedManifest.styles,['styles/native-v14.css']);
+  assert.equal(installedManifest.version,'1.3.8');
+  assert.equal(GatheringCrafting.DEFAULT_OPTIONS.window.resizable,true);
+  assert.equal(GatheringCrafting.DEFAULT_OPTIONS.window.minimizable,true);
+  assert.equal(GatheringCrafting.DEFAULT_OPTIONS.window.frame,true);
+  const nativeCss=fs.readFileSync(path.join(base,'styles/native-v14.css'),'utf8');
+  assert.match(nativeCss,/\\.gathering-crafting \\.gc-content/);
+  assert.match(nativeCss,/@container gc-workshop/);
+  assert.ok(!nativeCss.includes('.window-app button'),'Only style module-owned controls');
+  const css=fs.readFileSync(path.join(base,'styles/native-v14.css'),'utf8');
   fs.writeFileSync(path.join(require('node:os').tmpdir(),'gc-v100-preview.html'),`<!DOCTYPE html><html lang="en"><meta charset="utf-8"><style>body{background:#101620;font-family:Arial;padding:30px}.gathering-crafting{width:1000px;height:740px;margin:auto;overflow:hidden;border-radius:13px}.gathering-crafting .window-content{height:100%}${css}</style><div class="gathering-crafting"><div class="window-content"><div class="gc-root">${preview}</div></div></div></html>`);
   // v1.2.0 Enchanting regression: full UI, payment, world-time job, native +1.
   app.tab='enchanting';app.search='';
