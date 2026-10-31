@@ -1,0 +1,498 @@
+/*
+ * Gathering & Crafting — native Foundry V14 UI.
+ * Only module-owned selectors. Foundry ApplicationV2 supplies window chrome,
+ * drag, double-click minimization, resizing, button colors, and form controls.
+ */
+.gathering-crafting {
+  --gc-border: var(--color-border-light-primary, var(--color-border-dark-4, #7777));
+  --gc-muted: var(--color-text-secondary, var(--color-text-subtle, inherit));
+  --gc-surface: var(--color-bg-option, rgba(120,120,120,.06));
+  --gc-danger: var(--color-text-danger, #b74b4b);
+  --gc-success: var(--color-level-success, #4b8f60);
+  color: var(--color-text-primary, inherit);
+  font: inherit;
+}
+.gathering-crafting .window-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  container: gc-workshop / inline-size;
+}
+.gathering-crafting .gc-root {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+}
+.gathering-crafting .gc-root * { box-sizing: border-box; }
+.gathering-crafting .gc-top {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--gc-border);
+  background: var(--gc-surface);
+}
+.gathering-crafting .gc-brand {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 7px;
+  min-width: 0;
+}
+.gathering-crafting .gc-brand-title {
+  color: inherit;
+  font: 600 1.05rem var(--font-primary, inherit);
+}
+.gathering-crafting .gc-subtitle {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: normal;
+  color: var(--gc-muted);
+}
+.gathering-crafting .gc-top-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+.gathering-crafting .gc-selectwrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 140px;
+  max-width: 350px;
+}
+.gathering-crafting .gc-selectwrap select {
+  min-width: 150px;
+  max-width: 320px;
+  margin: 0;
+}
+.gathering-crafting .gc-energy {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  white-space: nowrap;
+  color: var(--gc-muted);
+}
+.gathering-crafting .gc-gm-shortcut { min-width: 34px; }
+.gathering-crafting .gc-tabs {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 3px;
+  padding: 7px 12px 0;
+  border-bottom: 1px solid var(--gc-border);
+}
+.gathering-crafting .gc-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 78px;
+  min-height: 34px;
+  margin: 0 0 -1px;
+  padding: 7px 11px;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.gathering-crafting .gc-nav:hover { background: var(--gc-surface); }
+.gathering-crafting .gc-nav.is-active {
+  background: var(--gc-surface);
+  border-color: var(--gc-border);
+  border-bottom-color: transparent;
+  font-weight: 700;
+}
+.gathering-crafting .gc-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  scrollbar-gutter: stable;
+  padding: 16px;
+}
+.gathering-crafting .gc-footer {
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 7px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--gc-border);
+  background: var(--gc-surface);
+  color: var(--gc-muted);
+  font-size: 11px;
+}
+.gathering-crafting .gc-section-head { margin: 0 0 14px; }
+.gathering-crafting .gc-section-head h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 5px;
+  font: 600 1.15rem var(--font-primary, inherit);
+  border: 0;
+}
+.gathering-crafting .gc-section-head p {
+  margin: 0;
+  color: var(--gc-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.gathering-crafting .gc-toolbar,
+.gathering-crafting .gc-browser-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+.gathering-crafting .gc-mode,
+.gathering-crafting .gc-category,
+.gathering-crafting .gc-craft-actions,
+.gathering-crafting .gc-inline-actions,
+.gathering-crafting .gc-stack-adjust,
+.gathering-crafting .gc-row,
+.gathering-crafting .gc-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.gathering-crafting .gc-category { margin: 0 0 12px; }
+.gathering-crafting .gc-mode button,
+.gathering-crafting .gc-category button,
+.gathering-crafting .gc-ready-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 31px;
+  width: auto;
+  padding: 6px 10px;
+  font: inherit;
+}
+.gathering-crafting .gc-mode button small {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--gc-muted);
+}
+.gathering-crafting :is(.gc-mode button.is-on,.gc-category button.is-on,.gc-ready-toggle.is-on,.gc-gm-group.is-on,.gc-library-item.is-active) {
+  outline: 1px solid var(--gc-border);
+  font-weight: 700;
+}
+.gathering-crafting .gc-search {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: 1 1 180px;
+  max-width: 320px;
+  min-width: 135px;
+}
+.gathering-crafting .gc-search input { flex: 1 1 auto; min-width: 0; width: 100%; }
+.gathering-crafting .gc-notice,
+.gathering-crafting .gc-enchant-targets,
+.gathering-crafting .gc-enchant-job,
+.gathering-crafting .gc-ingredients-editor {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px;
+  margin: 0 0 12px;
+  border: 1px solid var(--gc-border);
+  border-radius: 4px;
+  background: var(--gc-surface);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.gathering-crafting .gc-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 10px;
+}
+.gathering-crafting .gc-tile {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--gc-border);
+  border-radius: 4px;
+  background: var(--gc-surface);
+  overflow: hidden;
+}
+.gathering-crafting .gc-tile[hidden] { display:none; }
+.gathering-crafting .gc-tile-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  padding: 8px;
+  background: var(--gc-surface);
+  border-bottom: 1px solid var(--gc-border);
+}
+.gathering-crafting .gc-hero-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 74px;
+  flex: 0 0 74px;
+}
+.gathering-crafting .gc-art-img { width: 100%; height: 100%; object-fit: contain; }
+.gathering-crafting .gc-dc {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  max-width: 70%;
+  padding: 3px 5px;
+  border: 1px solid var(--gc-border);
+  border-radius: 3px;
+  background: var(--gc-surface);
+  font-size: 10px;
+  text-align: right;
+}
+.gathering-crafting .gc-ready-tag {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  padding: 3px 5px;
+  border: 1px solid var(--gc-success);
+  border-radius: 3px;
+  color: var(--gc-success);
+  font-size: 10px;
+}
+.gathering-crafting .gc-tile-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+  padding: 11px;
+}
+.gathering-crafting .gc-tile-body h3 {
+  margin: 0;
+  border: 0;
+  font: 600 0.95rem var(--font-primary, inherit);
+}
+.gathering-crafting .gc-tile-body > p { margin: 0; font-size: 12px; line-height: 1.4; }
+.gathering-crafting .gc-loot,
+.gathering-crafting .gc-ingredient,
+.gathering-crafting .gc-material,
+.gathering-crafting .gc-potion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 7px;
+  border: 1px solid var(--gc-border);
+  border-radius: 4px;
+}
+.gathering-crafting .gc-loot { margin-top: auto; }
+.gathering-crafting .gc-loot > div,
+.gathering-crafting .gc-inv-name,
+.gathering-crafting .gc-potion > div { flex:1 1 auto; min-width:0; }
+.gathering-crafting .gc-loot small,
+.gathering-crafting .gc-inv-name small,
+.gathering-crafting .gc-potion small { display: block; font-size: 11px; color: var(--gc-muted); }
+.gathering-crafting .gc-mat-icon,
+.gathering-crafting .gc-inv-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+}
+.gathering-crafting .gc-mat-icon img,
+.gathering-crafting .gc-inv-icon img { width:100%;height:100%;object-fit:contain; }
+.gathering-crafting .gc-ingredients { display:flex;flex-direction:column;gap:5px; }
+.gathering-crafting .gc-ingredient span:nth-child(2) { flex: 1 1 auto; min-width:0;overflow-wrap:anywhere;font-size:11px; }
+.gathering-crafting .gc-ingredient b { white-space:nowrap;font-size:11px; }
+.gathering-crafting .gc-miss b,
+.gathering-crafting .gc-missing-tool,
+.gathering-crafting .gc-enchant-incompatible { color: var(--gc-danger); }
+.gathering-crafting .gc-primary,
+.gathering-crafting .gc-secondary,
+.gathering-crafting .gc-more,
+.gathering-crafting .gc-gm-shortcut { cursor:pointer; }
+.gathering-crafting .gc-tile-body > .gc-primary { width: 100%; margin-top: auto; }
+.gathering-crafting .gc-craft-actions { margin-top: auto; }
+.gathering-crafting .gc-craft-actions .gc-primary { flex: 1 1 auto; }
+.gathering-crafting .gc-craft-max { flex: 0 0 auto; }
+.gathering-crafting .gc-ready { border-color:var(--gc-success); }
+.gathering-crafting .gc-browser-row .gc-profession-label {display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--gc-muted);}
+.gathering-crafting .gc-browser-row .gc-profession-label strong {color:inherit;}
+.gathering-crafting .gc-stats {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.gathering-crafting .gc-stats > div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--gc-border);
+}
+.gathering-crafting .gc-stats small { font-size: 11px; color: var(--gc-muted); }
+.gathering-crafting .gc-material-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0;}
+.gathering-crafting .gc-material.is-zero { opacity: .6; }
+.gathering-crafting .gc-inv-icon {flex-basis:42px;width:42px;height:42px;}
+.gathering-crafting .gc-inv-title {margin:16px 0 8px;}
+.gathering-crafting .gc-potion-list {display:flex;flex-direction:column;gap:6px;}
+.gathering-crafting .gc-potion-icon {width:43px;height:43px;flex:0 0 43px;object-fit:contain;}
+.gathering-crafting .gc-empty {
+  grid-column:1/-1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:90px;
+  padding:16px;
+  color:var(--gc-muted);
+  border:1px dashed var(--gc-border);
+}
+.gathering-crafting .gc-gm-layout {display:grid;grid-template-columns:180px minmax(0,1fr);gap:10px;}
+.gathering-crafting .gc-gm-side,
+.gathering-crafting .gc-gm-form,
+.gathering-crafting .gc-library {
+  min-width: 0;
+  border:1px solid var(--gc-border);
+  border-radius:4px;
+  background:var(--gc-surface);
+  padding:10px;
+}
+.gathering-crafting .gc-gm-group,
+.gathering-crafting .gc-library-item {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  width:100%;
+  margin:3px 0;
+  text-align:left;
+}
+.gathering-crafting .gc-gm-group span {margin-left:auto;}
+.gathering-crafting .gc-gm-title {margin-bottom:8px;font-weight:600;}
+.gathering-crafting .gc-gm-main {display:grid;grid-template-columns:minmax(150px,.7fr) minmax(230px,1.3fr);gap:10px;min-width:0;align-items:start;}
+.gathering-crafting .gc-lib-header {display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:8px;}
+.gathering-crafting .gc-lib-list {max-height:440px;overflow-y:auto;min-width:0;}
+.gathering-crafting .gc-library-item span {min-width:0;flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;}
+.gathering-crafting .gc-fields {display:flex;flex-direction:column;gap:8px;}
+.gathering-crafting .gc-field {display:flex;flex-direction:column;gap:4px;min-width:0;}
+.gathering-crafting .gc-field span {font-size:11px;color:var(--gc-muted);}
+.gathering-crafting .gc-field :is(input,select,textarea) {width:100%;max-width:100%;}
+.gathering-crafting .gc-ing-row,
+.gathering-crafting .gc-inline {display:flex;align-items:center;gap:6px;}
+.gathering-crafting .gc-ing-row select,
+.gathering-crafting .gc-inline input {flex:1 1 auto;min-width:0;}
+.gathering-crafting .gc-ing-row input {flex:0 0 65px;width:65px;}
+.gathering-crafting .gc-form-actions {margin-top:12px;}
+.gathering-crafting .gc-checkbox {display:flex;align-items:center;gap:7px;}
+.gathering-crafting .gc-help {font-size:11px;line-height:1.4;color:var(--gc-muted);}
+.gathering-crafting .gc-full {width:100%;margin:5px 0;}
+.gathering-crafting .gc-enchant-progression {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:12px;}
+.gathering-crafting .gc-enchant-rank,
+.gathering-crafting .gc-enchant-training,
+.gathering-crafting .gc-enchant-selected,
+.gathering-crafting .gc-enchant-funds {
+  min-width:0;
+  padding:10px;
+  border:1px solid var(--gc-border);
+  border-radius:4px;
+  background:var(--gc-surface);
+}
+.gathering-crafting .gc-enchant-rank,
+.gathering-crafting .gc-enchant-training {display:flex;flex-direction:column;gap:5px;}
+.gathering-crafting .gc-enchant-summary {display:flex;flex-wrap:wrap;align-items:end;gap:8px;margin-bottom:10px;}
+.gathering-crafting .gc-enchant-summary .gc-field {flex:1 1 220px;}
+.gathering-crafting .gc-enchant-selected {display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.gathering-crafting .gc-enchant-selected img {width:54px;height:54px;object-fit:contain;}
+.gathering-crafting .gc-enchant-selected > div {flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:4px;}
+.gathering-crafting .gc-enchant-applied {display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.gathering-crafting .gc-enchant-applied-entry {display:flex;align-items:center;gap:6px;padding:6px;border:1px solid var(--gc-border);border-radius:4px;}
+.gathering-crafting .gc-enchant-job {display:flex;flex-direction:column;}
+.gathering-crafting .gc-enchant-meta {display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+.gathering-crafting .gc-enchant-meta span {padding:4px 6px;border:1px solid var(--gc-border);border-radius:4px;font-size:11px;}
+.gathering-crafting .gc-enchant-title {display:flex;align-items:center;gap:7px;}
+.gathering-crafting .gc-enchant-title strong {font-size:13px;}
+.gathering-crafting .gc-enchant-actions {display:flex;gap:7px;margin-top:auto;}
+.gathering-crafting .gc-enchant-actions button {flex:1 1 auto;}
+.gathering-crafting .gc-enchant-targets {display:flex;flex-wrap:wrap;}
+.gathering-crafting .gc-enchant-hint,
+.gathering-crafting .gc-enchant-compat,
+.gathering-crafting .gc-enchant-disclaimer {font-size:11px;color:var(--gc-muted);}
+.gathering-crafting .gc-enchant-gm-slots {display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px;margin:0 0 12px;}
+.gathering-crafting .gc-art-sources {display:flex;flex-direction:column;gap:7px;margin:10px 0;}
+.gathering-crafting .gc-art-status {font-size:11px;color:var(--gc-muted);}
+/* Buttons, inputs and selects intentionally inherit Foundry V14 styling. */
+.gathering-crafting :is(button,input,select,textarea) {font:inherit;}
+.gathering-crafting button:focus-visible,
+.gathering-crafting input:focus-visible,
+.gathering-crafting select:focus-visible {
+  outline:2px solid var(--color-focus-outline,var(--color-border-highlight,#7b8ecc));
+  outline-offset:1px;
+}
+/* Outside the window: only our module's sheet launcher/powers controls. */
+.gc-launcher,
+.gc-sheet-tab.gc-launcher {display:inline-flex;align-items:center;gap:5px;cursor:pointer;}
+.gc-sheet-tab-holder {display:inline-flex;align-items:center;}
+.gc-sheet-powers {display:inline-block;position:relative;vertical-align:middle;}
+.gc-sheet-powers > summary {cursor:pointer;}
+.gc-sheet-powers[open] .gc-sheet-power-buttons {
+  position:absolute;
+  z-index:30;
+  top:100%;
+  right:0;
+  display:flex;
+  flex-direction:column;
+  min-width:210px;
+  max-height:260px;
+  overflow:auto;
+  gap:6px;
+  padding:8px;
+  background:var(--color-bg, var(--color-cool-5,#20242a));
+  border:1px solid var(--color-border-light-primary,#7778);
+  border-radius:4px;
+}
+@container gc-workshop (max-width:820px){
+  .gathering-crafting .gc-grid {grid-template-columns:repeat(2,minmax(0,1fr));}
+  .gathering-crafting .gc-gm-main {grid-template-columns:minmax(0,1fr);}
+  .gathering-crafting .gc-gm-layout {grid-template-columns:145px minmax(0,1fr);}
+}
+@container gc-workshop (max-width:620px){
+  .gathering-crafting .gc-grid,
+  .gathering-crafting .gc-material-grid,
+  .gathering-crafting .gc-enchant-progression,
+  .gathering-crafting .gc-gm-layout {grid-template-columns:minmax(0,1fr);}
+  .gathering-crafting .gc-gm-main {grid-template-columns:minmax(0,1fr);}
+  .gathering-crafting .gc-toolbar {align-items:stretch;}
+  .gathering-crafting .gc-search {max-width:none;}
+  .gathering-crafting .gc-nav {min-width:60px;}
+  .gathering-crafting .gc-nav span {font-size:11px;}
+  .gathering-crafting .gc-content {padding:10px;}
+  .gathering-crafting .gc-energy {display:none;}
+}
